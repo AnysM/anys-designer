@@ -658,4 +658,8 @@ const tlItems=document.querySelectorAll('.tl-item');
 function updateTL(){if(!tlSection)return;const rect=tlSection.getBoundingClientRect();const progress=Math.max(0,Math.min(1,(-rect.top+window.innerHeight*.6)/tlSection.offsetHeight));tlFill.style.height=(progress*100)+'%';tlItems.forEach((item,i)=>{item.classList.toggle('reached',progress>=(i+.2)/tlItems.length);});}
 window.addEventListener('scroll',updateTL,{passive:true});updateTL();
 
-const skObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.i
+const skObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.querySelectorAll('.sk-fill').forEach(b=>{b.style.width=b.dataset.level+'%';});});},{threshold:.15});
+document.querySelectorAll('#skills .rv-l,#skills .rv-r').forEach(s=>skObs.observe(s));
+</script>
+</body>
+</html>
