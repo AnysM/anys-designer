@@ -78,36 +78,32 @@ section{position:relative;z-index:1;}
 .d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}.d4{transition-delay:.4s;}
 
 /* HERO */
-#hero{min-height:100vh;display:flex;align-items:flex-end;padding-top:100px;position:relative;overflow:hidden;}
-.hero-inner{display:grid;grid-template-columns:1fr auto;gap:0;align-items:flex-end;width:100%;position:relative;z-index:1;}
-@media(max-width:768px){.hero-inner{grid-template-columns:1fr;}}
-.hero-tag{display:inline-flex;align-items:center;gap:8px;font-family:'DM Mono',monospace;font-size:11px;color:var(--blue-l);letter-spacing:.1em;text-transform:uppercase;margin-bottom:24px;opacity:0;animation:fup .8s .3s forwards;}
+#hero{min-height:100vh;display:grid;grid-template-columns:1fr auto;align-items:stretch;padding-top:80px;position:relative;overflow:hidden;}
+@media(max-width:768px){#hero{grid-template-columns:1fr;}}
+.hero-inner{display:flex;flex-direction:column;justify-content:center;padding:40px 0 60px;position:relative;z-index:1;min-height:0;}
+.hero-text-block{height:clamp(320px,50vh,480px);display:flex;flex-direction:column;justify-content:flex-end;}
+.hero-photo-zone{align-self:flex-end;width:clamp(260px,32vw,460px);flex-shrink:0;margin:0;padding:0;line-height:0;}
+.hero-photo-zone img{width:100%;display:block;object-fit:contain;object-position:bottom center;margin:0;padding:0;vertical-align:bottom;}
+@media(max-width:768px){.hero-photo-zone{width:60%;margin:0 auto;}}
+.hero-scroll{display:none;}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;font-family:'DM Mono',monospace;font-size:11px;color:var(--blue-l);letter-spacing:.1em;text-transform:uppercase;margin-bottom:20px;opacity:0;animation:fup .8s .3s forwards;}
 .hero-tag::before{content:'';display:block;width:20px;height:1px;background:var(--blue-l);}
-.hero-title-wrap{font-family:'Syne',sans-serif;font-size:clamp(40px,7vw,84px);font-weight:800;line-height:1;letter-spacing:-.03em;margin-bottom:28px;opacity:0;animation:fup .9s .5s forwards;}
+.hero-title-wrap{font-family:'Syne',sans-serif;font-size:clamp(36px,6vw,80px);font-weight:800;line-height:1;letter-spacing:-.03em;margin-bottom:24px;opacity:0;animation:fup .9s .5s forwards;}
 .line-cream{color:var(--cream);display:block;}
 .line-blue{color:var(--blue-l);display:block;min-height:1.1em;}
 .cur-blink{display:inline-block;width:3px;height:.85em;background:var(--blue-l);margin-left:4px;vertical-align:middle;animation:blink 1s step-end infinite;}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+@keyframes fup{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 .hero-sub-wrap{opacity:0;animation:fup .9s .8s forwards;}
-.hero-sub{font-size:clamp(14px,1.7vw,16px);font-weight:300;color:var(--cream2);max-width:560px;line-height:1.7;margin-bottom:20px;}
+.hero-sub{font-size:clamp(14px,1.7vw,16px);font-weight:300;color:var(--cream2);line-height:1.7;margin-bottom:16px;}
 .hero-sub strong{color:var(--cream);font-weight:500;}
-.hero-sub-detail{font-size:13px;font-weight:300;color:var(--cream2);max-width:560px;line-height:1.7;opacity:.7;}
-.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px;opacity:0;animation:fup .9s 1s forwards;}
+.hero-sub-detail{font-size:13px;font-weight:300;color:var(--cream2);line-height:1.7;opacity:.7;}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px;opacity:0;animation:fup .9s 1s forwards;}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border-radius:4px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;text-decoration:none;cursor:pointer;transition:all .25s;border:none;}
 .btn-p{background:var(--blue);color:#fff;}
 .btn-p:hover{background:var(--blue-l);box-shadow:0 0 40px rgba(74,122,255,.4);transform:translateY(-2px);}
 .btn-s{background:transparent;color:var(--cream2);border:1px solid rgba(240,234,216,.1);}
 .btn-s:hover{border-color:rgba(240,234,216,.22);color:var(--cream);}
-.hero-photo-zone{width:clamp(240px,30vw,440px);flex-shrink:0;align-self:flex-end;opacity:0;animation:fup .9s 1.1s forwards;}
-.hero-photo-zone img{width:100%;display:block;object-fit:contain;object-position:bottom center;vertical-align:bottom;}
-.img-ph{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--cream2);opacity:.2;height:300px;}
-.img-ph svg{width:40px;height:40px;}
-.img-ph span{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;}
-.hero-scroll{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fup .9s 1.4s forwards;}
-.hero-scroll span{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--cream2);opacity:.4;}
-.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--cream2),transparent);animation:sp 2s ease-in-out infinite;}
-@keyframes sp{0%,100%{opacity:.3}50%{opacity:.9}}
-@keyframes fup{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
 
 /* SPECTRUM */
 .spectrum-wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
@@ -305,9 +301,9 @@ body.fr span[data-en]{display:none;}
 
 <section id="hero" class="sec-dark">
   <div class="photo-bg" style="background-image:url('photo-hero.jpg');"></div>
-  <div class="container">
-    <div class="hero-inner">
-      <div style="padding-bottom:80px;">
+  <div class="hero-inner">
+    <div class="container">
+      <div class="hero-text-block">
         <div class="hero-tag" data-en>Product Builder · Full Remote · Available</div>
         <div class="hero-tag" data-fr>Product Builder · Full Remote · Disponible</div>
         <div class="hero-title-wrap">
@@ -327,12 +323,11 @@ body.fr span[data-en]{display:none;}
           </div>
         </div>
       </div>
-      <div class="hero-photo-zone">
-        <img src="photo-anys.png" alt="Anys Mechkar">
-      </div>
     </div>
   </div>
-  <div class="hero-scroll"><div class="scroll-line"></div><span>scroll</span></div>
+  <div class="hero-photo-zone">
+    <img src="photo-anys.png" alt="Anys Mechkar">
+  </div>
 </section>
 
 <section id="spectrum" class="sec-dark">
