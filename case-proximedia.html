@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Study — Publicis Webformance / Proximedia | Anys Mechkar</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0c0d10;--cream:#f0ead8;--cream2:#b8b09a;--blue:#1a4fd6;--blue-l:#4a7aff;--yellow:#f5c842;--coral:#e8533c;--pad:clamp(20px,5vw,48px);}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--cream);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden;}
+@media(pointer:fine){body{cursor:none;}}
+.cur,.cur-ring{position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);display:none;}
+.cur{width:10px;height:10px;background:var(--blue-l);border-radius:50%;}
+.cur-ring{width:36px;height:36px;border:1px solid rgba(74,122,255,.5);border-radius:50%;z-index:9998;}
+@media(pointer:fine){.cur,.cur-ring{display:block;}}
+#bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;}
+@keyframes fup{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:20px var(--pad);gap:16px;}
+nav::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(12,13,16,.95) 0%,transparent 100%);pointer-events:none;}
+.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:18px;color:var(--cream);text-decoration:none;position:relative;z-index:1;}
+.nav-back{font-family:'DM Mono',monospace;font-size:11px;color:var(--cream2);text-decoration:none;letter-spacing:.08em;text-transform:uppercase;transition:color .2s;position:relative;z-index:1;display:flex;align-items:center;gap:8px;}
+.nav-back:hover{color:var(--cream);}
+.lang-toggle{display:flex;gap:4px;background:rgba(255,255,255,.04);border:1px solid rgba(240,234,216,.08);border-radius:20px;padding:4px;position:relative;z-index:1;}
+.lang-btn{font-family:'DM Mono',monospace;font-size:11px;padding:4px 10px;border-radius:16px;border:none;background:transparent;color:var(--cream2);cursor:pointer;transition:all .2s;letter-spacing:.06em;}
+.lang-btn.active{background:var(--blue);color:#fff;}
+
+.container{max-width:900px;margin:0 auto;padding:0 var(--pad);}
+.rv{opacity:0;transform:translateY(32px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);}
+.rv.on{opacity:1;transform:none;}
+.d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}
+
+/* HERO CASE */
+.case-hero{min-height:60vh;display:flex;flex-direction:column;justify-content:flex-end;padding:120px var(--pad) 80px;position:relative;overflow:hidden;}
+.case-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(15,42,122,.3) 0%,transparent 60%);pointer-events:none;}
+.case-hero-inner{position:relative;z-index:1;max-width:900px;margin:0 auto;width:100%;animation:fup .9s .2s both;}
+.case-label{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-l);margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+.case-label::before{content:'';display:block;width:24px;height:1px;background:var(--blue-l);}
+.case-num{font-family:'DM Mono',monospace;font-size:11px;color:rgba(74,122,255,.4);letter-spacing:.1em;}
+.case-title{font-family:'Syne',sans-serif;font-size:clamp(32px,5vw,64px);font-weight:800;line-height:1.05;letter-spacing:-.02em;margin-bottom:24px;color:var(--cream);}
+.case-title em{color:var(--blue-l);font-style:normal;}
+.case-intro{font-size:clamp(15px,1.8vw,18px);font-weight:300;color:var(--cream2);max-width:640px;line-height:1.7;}
+.case-meta-bar{display:flex;gap:32px;flex-wrap:wrap;margin-top:40px;padding-top:32px;border-top:1px solid rgba(240,234,216,.08);}
+.meta-item{display:flex;flex-direction:column;gap:4px;}
+.meta-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--cream2);opacity:.5;}
+.meta-val{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--cream);}
+
+/* STATS */
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin:80px 0 0;}
+@media(max-width:600px){.stats-row{grid-template-columns:1fr;}}
+.stat-card{background:rgba(255,255,255,.03);border:1px solid rgba(240,234,216,.07);padding:36px 28px;position:relative;overflow:hidden;}
+.stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--blue-l);transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.16,1,.3,1);}
+.stat-card.on::before{transform:scaleX(1);}
+.stat-val{font-family:'Syne',sans-serif;font-size:clamp(36px,5vw,56px);font-weight:800;color:var(--blue-l);line-height:1;letter-spacing:-.03em;}
+.stat-desc{font-family:'DM Mono',monospace;font-size:11px;color:var(--cream2);margin-top:8px;letter-spacing:.06em;text-transform:uppercase;}
+
+/* CONTENT */
+.case-body{padding:80px 0;}
+.case-body section{margin-bottom:72px;}
+.section-tag{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--blue-l);margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+.section-tag::after{content:'';flex:1;max-width:40px;height:1px;background:rgba(74,122,255,.3);}
+.section-tag.yellow{color:var(--yellow);}
+.section-tag.yellow::after{background:rgba(245,200,66,.3);}
+.section-tag.coral{color:var(--coral);}
+.section-tag.coral::after{background:rgba(232,83,60,.3);}
+h2.block-title{font-family:'Syne',sans-serif;font-size:clamp(22px,3vw,32px);font-weight:700;color:var(--cream);line-height:1.2;margin-bottom:24px;letter-spacing:-.01em;}
+.body-text{font-size:15px;font-weight:300;color:var(--cream2);line-height:1.8;margin-bottom:20px;}
+.body-text strong{color:var(--cream);font-weight:500;}
+
+/* TIMELINE INTERNE */
+.inner-tl{display:flex;flex-direction:column;gap:0;margin-top:12px;}
+.itl-item{display:grid;grid-template-columns:120px 1fr;gap:0 32px;position:relative;}
+@media(max-width:500px){.itl-item{grid-template-columns:80px 1fr;gap:0 16px;}}
+.itl-item::before{content:'';position:absolute;left:120px;top:8px;bottom:-16px;width:1px;background:rgba(74,122,255,.15);}
+@media(max-width:500px){.itl-item::before{left:80px;}}
+.itl-item:last-child::before{display:none;}
+.itl-year{font-family:'DM Mono',monospace;font-size:11px;color:var(--blue-l);padding-top:4px;opacity:.7;}
+.itl-content{padding-bottom:32px;}
+.itl-role{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--cream);margin-bottom:6px;}
+.itl-desc{font-size:13px;color:var(--cream2);font-weight:300;line-height:1.65;}
+
+/* ACTIONS LIST */
+.actions{display:flex;flex-direction:column;gap:12px;margin-top:8px;}
+.action-item{display:grid;grid-template-columns:28px 1fr;gap:0 16px;align-items:start;padding:16px 20px;background:rgba(255,255,255,.02);border:1px solid rgba(240,234,216,.06);transition:all .3s;}
+.action-item:hover{border-color:rgba(74,122,255,.2);background:rgba(74,122,255,.04);}
+.action-num{font-family:'DM Mono',monospace;font-size:10px;color:rgba(74,122,255,.4);padding-top:3px;}
+.action-text{font-size:14px;color:var(--cream2);font-weight:300;line-height:1.6;}
+.action-text strong{color:var(--cream);font-weight:500;}
+
+/* INSIGHT */
+.insight-block{padding:36px 40px;border-left:3px solid var(--blue-l);background:rgba(74,122,255,.05);margin:48px 0;}
+.insight-block p{font-family:'Syne',sans-serif;font-size:clamp(16px,2.2vw,22px);font-weight:400;font-style:italic;color:var(--cream);line-height:1.5;opacity:.9;}
+
+/* OUTCOME */
+.outcome-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:12px;}
+@media(max-width:500px){.outcome-grid{grid-template-columns:1fr;}}
+.outcome-card{padding:28px 24px;background:rgba(255,255,255,.02);border:1px solid rgba(245,200,66,.1);}
+.outcome-card .oc-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--yellow);margin-bottom:10px;opacity:.7;}
+.outcome-card p{font-size:13px;color:var(--cream2);font-weight:300;line-height:1.6;}
+.outcome-card p strong{color:var(--cream);font-weight:500;}
+
+/* CTA */
+.case-cta{padding:80px 0;border-top:1px solid rgba(240,234,216,.07);}
+.cta-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:32px;}
+.cta-text h3{font-family:'Syne',sans-serif;font-size:clamp(20px,3vw,28px);font-weight:700;color:var(--cream);margin-bottom:8px;}
+.cta-text p{font-size:14px;color:var(--cream2);font-weight:300;}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:4px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;text-decoration:none;cursor:pointer;transition:all .25s;border:none;}
+.btn-p{background:var(--blue);color:#fff;}
+.btn-p:hover{background:var(--blue-l);box-shadow:0 0 40px rgba(74,122,255,.4);transform:translateY(-2px);}
+.btn-s{background:transparent;color:var(--cream2);border:1px solid rgba(240,234,216,.1);}
+.btn-s:hover{border-color:rgba(240,234,216,.22);color:var(--cream);}
+
+/* NAV CASES */
+.cases-nav{padding:48px 0;border-top:1px solid rgba(240,234,216,.05);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.case-nav-link{text-decoration:none;display:flex;flex-direction:column;gap:4px;max-width:240px;}
+.case-nav-link .cnl-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--cream2);opacity:.5;}
+.case-nav-link .cnl-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--cream2);transition:color .2s;}
+.case-nav-link:hover .cnl-title{color:var(--blue-l);}
+.case-nav-link.next{text-align:right;}
+body.fr [data-en]{display:none;}
+body:not(.fr) [data-fr]{display:none;}
+</style>
+</head>
+<body>
+<canvas id="bg-canvas"></canvas>
+<div class="cur" id="cur"></div>
+<div class="cur-ring" id="cur-ring"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">AM.</a>
+  <a href="index.html#cases" class="nav-back">← <span data-en>All cases</span><span data-fr>Tous les cas</span></a>
+  <div class="lang-toggle">
+    <button class="lang-btn active" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" onclick="setLang('fr')">FR</button>
+  </div>
+</nav>
+
+<div class="case-hero">
+  <div class="case-hero-inner">
+    <div class="case-label"><span class="case-num">Case 01 / 04</span> <span data-en>Transition Management</span><span data-fr>Management de transition</span></div>
+    <h1 class="case-title" data-en>From 3 to 25 people.<br><em>3 countries.</em> From scratch.</h1>
+    <h1 class="case-title" data-fr>De 3 à 25 personnes.<br><em>3 pays.</em> From scratch.</h1>
+    <p class="case-intro" data-en>Entered as a front-end developer. Left as Head of Product & Innovation. Between the two: a full product organization built from nothing, across three countries, in a Publicis Groupe subsidiary.</p>
+    <p class="case-intro" data-fr>Entré comme développeur front. Sorti Responsable Produit & Innovation. Entre les deux : une organisation produit complète bâtie de zéro, sur trois pays, dans une filiale du Groupe Publicis.</p>
+    <div class="case-meta-bar">
+      <div class="meta-item"><div class="meta-label" data-en>Company</div><div class="meta-label" data-fr>Entreprise</div><div class="meta-val">Publicis Webformance / Proximedia</div></div>
+      <div class="meta-item"><div class="meta-label" data-en>Group</div><div class="meta-label" data-fr>Groupe</div><div class="meta-val">Publicis Groupe</div></div>
+      <div class="meta-item"><div class="meta-label" data-en>Duration</div><div class="meta-label" data-fr>Durée</div><div class="meta-val" data-en>5 years</div><div class="meta-val" data-fr>5 ans</div></div>
+      <div class="meta-item"><div class="meta-label" data-en>Countries</div><div class="meta-label" data-fr>Pays</div><div class="meta-val">France · Belgique · Hollande · Espagne</div></div>
+      <div class="meta-item"><div class="meta-label" data-en>Entry role</div><div class="meta-label" data-fr>Rôle à l'entrée</div><div class="meta-val" data-en>Front-end developer</div><div class="meta-val" data-fr>Développeur front-end</div></div>
+      <div class="meta-item"><div class="meta-label" data-en>Exit role</div><div class="meta-label" data-fr>Rôle à la sortie</div><div class="meta-val" data-en>Head of Product & Innovation</div><div class="meta-val" data-fr>Responsable Produit & Innovation</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="stats-row rv d1">
+    <div class="stat-card"><div class="stat-val">3→25</div><div class="stat-desc" data-en>People in the team</div><div class="stat-desc" data-fr>Personnes dans l'équipe</div></div>
+    <div class="stat-card"><div class="stat-val">3</div><div class="stat-desc" data-en>Countries covered</div><div class="stat-desc" data-fr>Pays couverts</div></div>
+    <div class="stat-card"><div class="stat-val">150p</div><div class="stat-desc" data-en>Diagnosis document</div><div class="stat-desc" data-fr>Document de diagnostic</div></div>
+  </div>
+
+  <div class="case-body">
+
+    <section class="rv d1">
+      <div class="section-tag" data-en>Context</div>
+      <div class="section-tag" data-fr>Contexte</div>
+      <h2 class="block-title" data-en>A group subsidiary. A broken internal system. No one to fix it.</h2>
+      <h2 class="block-title" data-fr>Une filiale de groupe. Un système interne cassé. Personne pour le réparer.</h2>
+      <p class="body-text" data-en>Publicis Webformance (later renamed Proximedia) was a Publicis Groupe subsidiary addressing the digital communication needs of SMEs and craftsmen — building websites at scale, with teams of project managers, designers and copywriters spread across France, Belgium, the Netherlands and Spain.</p>
+      <p class="body-text" data-fr>Publicis Webformance (renommée ensuite Proximedia) était une filiale du Groupe Publicis adressant les besoins de communication digitale des TPE, PME et artisans — créer des sites web à l'échelle, avec des équipes de chefs de projet, designers et copywriters répartis en France, Belgique, Hollande et Espagne.</p>
+      <p class="body-text" data-en>The internal system used to create those sites had been cobbled together by interns. Fragile, inconsistent, impossible to scale. The teams were working around it rather than with it. No one had framed this as a product problem — it was just "the way things were."</p>
+      <p class="body-text" data-fr>Le système interne utilisé pour créer ces sites avait été bricolé par des stagiaires. Fragile, incohérent, impossible à faire évoluer. Les équipes travaillaient en contournant l'outil plutôt qu'avec. Personne n'avait cadré ça comme un problème produit — c'était juste "comme ça que ça marchait".</p>
+    </section>
+
+    <section class="rv d1">
+      <div class="section-tag" data-en>The signal</div>
+      <div class="section-tag" data-fr>Le signal</div>
+      <h2 class="block-title" data-en>I was hired to improve design quality. I saw a systemic problem.</h2>
+      <h2 class="block-title" data-fr>J'ai été recruté pour améliorer la qualité design. J'ai vu un problème systémique.</h2>
+      <p class="body-text" data-en>My official role was front-end developer and designer — improving the visual quality of the sites being produced. Within weeks, it became clear that the design quality issue was a symptom. The real problem was structural: <strong>there was no internal tooling worthy of the scale they were operating at.</strong></p>
+      <p class="body-text" data-fr>Mon rôle officiel était développeur front-end et designer — améliorer la qualité visuelle des sites produits. En quelques semaines, il est devenu évident que le problème de qualité design était un symptôme. Le vrai problème était structurel : <strong>il n'y avait pas d'outil interne à la hauteur de l'échelle à laquelle ils opéraient.</strong></p>
+      <div class="insight-block">
+        <p data-en>"I could have fixed the design templates and moved on. But the root problem was elsewhere. I chose to name it and bring a solution."</p>
+        <p data-fr>"J'aurais pu corriger les templates design et passer à autre chose. Mais le problème de fond était ailleurs. J'ai choisi de le nommer et d'apporter une solution."</p>
+      </div>
+    </section>
+
+    <section class="rv d1">
+      <div class="section-tag" data-en>What I built</div>
+      <div class="section-tag" data-fr>Ce que j'ai construit</div>
+      <h2 class="block-title" data-en>A 150-page diagnosis. A pitch. A team. A product.</h2>
+      <h2 class="block-title" data-fr>Un diagnostic de 150 pages. Un pitch. Une équipe. Un produit.</h2>
+      <div class="actions rv d2">
+        <div class="action-item"><div class="action-num">01</div><div class="action-text" data-en><strong>Deep diagnosis across all roles</strong> — interviewed project managers, designers, copywriters across all countries. Produced a 150-page document mapping all pain points, needs and opportunities.</div><div class="action-text" data-fr><strong>Diagnostic complet sur tous les métiers</strong> — interviews des chefs de projet, designers, copywriters dans tous les pays. Produit un document de 150 pages cartographiant tous les points de friction, besoins et opportunités.</div></div>
+        <div class="action-item"><div class="action-num">02</div><div class="action-text" data-en><strong>Pitched the direction to management</strong> — presented a full plan for an internal CMS built from scratch. Got the green light and the budget to hire.</div><div class="action-text" data-fr><strong>Pitch de la direction à la hiérarchie</strong> — présenté un plan complet pour un CMS interne construit from scratch. Obtenu le feu vert et le budget pour recruter.</div></div>
+        <div class="action-item"><div class="action-num">03</div><div class="action-text" data-en><strong>Built the team from 3 to 25 people</strong> — recruited UX designers, UI designers, a Product Owner, developers. First recruit: an intern I trained from scratch into a full UX designer.</div><div class="action-text" data-fr><strong>Équipe passée de 3 à 25 personnes</strong> — recruté des designers UX, UI, un Product Owner, des développeurs. Premier recrutement : un stagiaire formé from scratch en designer UX confirmé.</div></div>
+        <div class="action-item"><div class="action-num">04</div><div class="action-text" data-en><strong>Implemented Agile across 3 countries</strong> — introduced Scrum methodology, set up rituals, aligned France, Belgium, the Netherlands and Spain on a shared product process.</div><div class="action-text" data-fr><strong>Déploiement de l'Agilité sur 3 pays</strong> — introduit la méthodologie Scrum, mis en place les rituels, aligné la France, la Belgique, la Hollande et l'Espagne sur un process produit commun.</div></div>
+        <div class="action-item"><div class="action-num">05</div><div class="action-text" data-en><strong>Piloted the full product for 2 years</strong> — product strategy, roadmap, backlog, design system, quality standards. End-to-end ownership from conception to production.</div><div class="action-text" data-fr><strong>Piloté le produit complet pendant 2 ans</strong> — stratégie produit, roadmap, backlog, design system, standards qualité. Ownership de bout en bout de la conception à la production.</div></div>
+      </div>
+    </section>
+
+    <section class="rv d1">
+      <div class="section-tag yellow" data-en>Evolution</div>
+      <div class="section-tag yellow" data-fr>Évolution</div>
+      <h2 class="block-title" data-en>A journey across 5 roles in 5 years.</h2>
+      <h2 class="block-title" data-fr>Un parcours sur 5 rôles en 5 ans.</h2>
+      <div class="inner-tl">
+        <div class="itl-item"><div class="itl-year">2013</div><div class="itl-content"><div class="itl-role" data-en>Front-end Developer & Designer</div><div class="itl-role" data-fr>Développeur Front-end & Designer</div><div class="itl-desc" data-en>Hired to improve site quality. Quickly understood the systemic nature of the problem.</div><div class="itl-desc" data-fr>Recruté pour améliorer la qualité des sites. Identifié rapidement le caractère systémique du problème.</div></div></div>
+        <div class="itl-item"><div class="itl-year">2014</div><div class="itl-content"><div class="itl-role" data-en>Project Manager</div><div class="itl-role" data-fr>Chef de projet</div><div class="itl-desc" data-en>Led the diagnostic phase. Produced the 150-page document. Pitched the internal CMS project to management.</div><div class="itl-desc" data-fr>Conduit la phase de diagnostic. Produit le document de 150 pages. Pitché le projet CMS interne à la direction.</div></div></div>
+        <div class="itl-item"><div class="itl-year">2015</div><div class="itl-content"><div class="itl-role" data-en>Head of Product</div><div class="itl-role" data-fr>Responsable Produit</div><div class="itl-desc" data-en>Built and led the product team. Recruited designers. Implemented Agile. Launched the CMS development.</div><div class="itl-desc" data-fr>Construit et piloté l'équipe produit. Recruté les designers. Implémenté l'Agile. Lancé le développement du CMS.</div></div></div>
+        <div class="itl-item"><div class="itl-year">2016</div><div class="itl-content"><div class="itl-role" data-en>Head of Product & Innovation</div><div class="itl-role" data-fr>Responsable Produit & Innovation</div><div class="itl-desc" data-en>Extended scope to organizational transformation. Deployed Agile across 4 countries. Led change management internationally.</div><div class="itl-desc" data-fr>Périmètre étendu à la transformation organisationnelle. Déployé l'Agile sur 4 pays. Piloté la conduite du changement à l'international.</div></div></div>
+        <div class="itl-item"><div class="itl-year">2018</div><div class="itl-content"><div class="itl-role" data-en>End of mission</div><div class="itl-role" data-fr>Fin de mission</div><div class="itl-desc" data-en>Management change at group level. Decision to stop investing in the internal CMS. Project suspended despite strong team and solid product foundation.</div><div class="itl-desc" data-fr>Changement de direction au niveau du groupe. Décision d'arrêter l'investissement dans le CMS interne. Projet suspendu malgré une équipe solide et des fondations produit robustes.</div></div></div>
+      </div>
+    </section>
+
+    <section class="rv d1">
+      <div class="section-tag coral" data-en>Outcomes</div>
+      <div class="section-tag coral" data-fr>Résultats</div>
+      <h2 class="block-title" data-en>What existed after me that didn't before.</h2>
+      <h2 class="block-title" data-fr>Ce qui existait après moi qui n'existait pas avant.</h2>
+      <div class="outcome-grid">
+        <div class="outcome-card"><div class="oc-label" data-en>Team</div><div class="oc-label" data-fr>Équipe</div><p data-en>A structured 25-person product team with clear roles, rituals, and a shared design system.</p><p data-fr>Une équipe produit structurée de 25 personnes avec des rôles clairs, des rituels, et un design system partagé.</p></div>
+        <div class="outcome-card"><div class="oc-label" data-en>Process</div><div class="oc-label" data-fr>Process</div><p data-en>Agile methodology deployed and adopted across 4 countries — France, Belgium, Netherlands, Spain.</p><p data-fr>Méthodologie Agile déployée et adoptée sur 4 pays — France, Belgique, Hollande, Espagne.</p></div>
+        <div class="outcome-card"><div class="oc-label" data-en>Culture</div><div class="oc-label" data-fr>Culture</div><p data-en>A product culture where none existed. Teams thinking in user stories, not just deliverables.</p><p data-fr>Une culture produit là où il n'y en avait pas. Des équipes qui pensent en user stories, pas juste en livrables.</p></div>
+        <div class="outcome-card"><div class="oc-label" data-en>Talent</div><div class="oc-label" data-fr>Talent</div><p data-en><strong>An intern trained into a full UX designer.</strong> Multiple designers recruited and onboarded from scratch.</p><p data-fr><strong>Un stagiaire formé en designer UX confirmé.</strong> Plusieurs designers recrutés et intégrés from scratch.</p></div>
+      </div>
+      <div class="insight-block" style="margin-top:40px;">
+        <p data-en>"The project was stopped by a management decision at group level. Not by the team. Not by the product. The organization I built kept running — and the people I trained kept growing."</p>
+        <p data-fr>"Le projet a été arrêté par une décision de direction au niveau du groupe. Pas par l'équipe. Pas par le produit. L'organisation que j'avais bâtie continuait à tourner — et les personnes que j'avais formées continuaient à grandir."</p>
+      </div>
+    </section>
+
+    <div class="case-cta rv">
+      <div class="cta-inner">
+        <div class="cta-text">
+          <h3 data-en>You have a similar challenge?</h3>
+          <h3 data-fr>Vous avez un défi similaire ?</h3>
+          <p data-en>In 45 minutes, we get clear on where you are, where you want to go, and what it takes to get there.</p>
+          <p data-fr>En 45 minutes, on pose la clarté sur où vous en êtes, où vous voulez aller, et ce qu'il faut pour y arriver.</p>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="https://calendly.com/a-mechkar/decouverte-45-min" target="_blank" class="btn btn-p" data-en>Book a free 45-min call →</a>
+          <a href="https://calendly.com/a-mechkar/decouverte-45-min" target="_blank" class="btn btn-p" data-fr>Réserver un appel gratuit →</a>
+          <a href="index.html" class="btn btn-s" data-en>Back to home</a>
+          <a href="index.html" class="btn btn-s" data-fr>Retour à l'accueil</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="cases-nav rv">
+      <div></div>
+      <a href="case-deligreens.html" class="case-nav-link next">
+        <div class="cnl-label" data-en>Next case</div>
+        <div class="cnl-label" data-fr>Cas suivant</div>
+        <div class="cnl-title" data-en>Full product, zero to one →</div>
+        <div class="cnl-title" data-fr>Produit complet, zéro à un →</div>
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const canvas=document.getElementById('bg-canvas');const ctx=canvas.getContext('2d');let W,H;function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}resize();window.addEventListener('resize',resize);
+const pts=[];for(let i=0;i<40;i++)pts.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.2+.2,vx:(Math.random()-.5)*.2,vy:(Math.random()-.5)*.2,a:Math.random()*.2+.04});
+let tick=0;function draw(){tick++;const r=74,g=122,b=255;ctx.clearRect(0,0,W,H);const t=tick*.002;const g1=ctx.createRadialGradient(W*.3+Math.sin(t)*W*.15,H*.4+Math.cos(t*.7)*H*.1,0,W*.3,H*.4,W*.7);g1.addColorStop(0,`rgba(${r},${g},${b},.1)`);g1.addColorStop(1,`rgba(0,0,0,0)`);ctx.fillStyle=g1;ctx.fillRect(0,0,W,H);pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=`rgba(${r},${g},${b},${p.a})`;ctx.fill();});requestAnimationFrame(draw);}draw();
+const cur=document.getElementById('cur'),cr=document.getElementById('cur-ring');let mx=0,my=0,rx=0,ry=0;document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});(function ar(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;cr.style.left=rx+'px';cr.style.top=ry+'px';requestAnimationFrame(ar);})();
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');}});},{threshold:.08});document.querySelectorAll('.rv,.stat-card').forEach(el=>{obs.observe(el);});
+function setLang(l){document.body.classList.toggle('fr',l==='fr');document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent===l.toUpperCase()));}
+</script>
+</body>
+</html>

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Study — Millet Mountain Group | Anys Mechkar</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0c0d10;--cream:#f0ead8;--cream2:#b8b09a;--blue:#1a4fd6;--blue-l:#4a7aff;--yellow:#f5c842;--coral:#e8533c;--violet:#9b6dff;--pad:clamp(20px,5vw,48px);}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--cream);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden;}
+@media(pointer:fine){body{cursor:none;}}
+.cur,.cur-ring{position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);display:none;}
+.cur{width:10px;height:10px;background:var(--violet);border-radius:50%;}
+.cur-ring{width:36px;height:36px;border:1px solid rgba(155,109,255,.5);border-radius:50%;z-index:9998;}
+@media(pointer:fine){.cur,.cur-ring{display:block;}}
+#bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;}
+@keyframes fup{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:20px var(--pad);gap:16px;}
+nav::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(12,13,16,.95) 0%,transparent 100%);pointer-events:none;}
+.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:18px;color:var(--cream);text-decoration:none;position:relative;z-index:1;}
+.nav-back{font-family:'DM Mono',monospace;font-size:11px;color:var(--cream2);text-decoration:none;letter-spacing:.08em;text-transform:uppercase;transition:color .2s;position:relative;z-index:1;display:flex;align-items:center;gap:8px;}
+.nav-back:hover{color:var(--cream);}
+.lang-toggle{display:flex;gap:4px;background:rgba(255,255,255,.04);border:1px solid rgba(240,234,216,.08);border-radius:20px;padding:4px;position:relative;z-index:1;}
+.lang-btn{font-family:'DM Mono',monospace;font-size:11px;padding:4px 10px;border-radius:16px;border:none;background:transparent;color:var(--cream2);cursor:pointer;transition:all .2s;letter-spacing:.06em;}
+.lang-btn.active{background:var(--violet);color:#fff;}
+.container{max-width:900px;margin:0 auto;padding:0 var(--pad);}
+.rv{opacity:0;transform:translateY(32px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);}
+.rv.on{opacity:1;transform:none;}
+.d1{transition-delay:.1s;}.d2{transition-delay:.2s;}
+.case-hero{min-height:60vh;display:flex;flex-direction:column;justify-content:flex-end;padding:120px var(--pad) 80px;position:relative;overflow:hidden;}
+.case-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(155,109,255,.12) 0%,transparent 60%);pointer-events:none;}
+.case-hero-inner{position:relative;z-index:1;max-width:900px;margin:0 auto;width:100%;animation:fup .9s .2s both;}
+.case-label{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--violet);margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+.case-label::before{content:'';display:block;width:24px;height:1px;background:var(--violet);}
+.case-num{font-size:11px;color:rgba(155,109,255,.4);}
+.case-title{font-family:'Syne',sans-serif;font-size:clamp(32px,5vw,64px);font-weight:800;line-height:1.05;letter-spacing:-.02em;margin-bottom:24px;color:var(--cream);}
+.case-title em{color:var(--violet);font-style:normal;}
+.case-intro{font-size:clamp(15px,1.8vw,18px);font-weight:300;color:var(--cream2);max-width:640px;line-height:1.7;}
+.case-meta-bar{display:flex;gap:32px;flex-wrap:wrap;margin-top:40px;padding-top:32px;border-top:1px solid rgba(240,234,216,.08);}
+.meta-item{display:flex;flex-direction:column;gap:4px;}
+.meta-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--cream2);opacity:.5;}
+.meta-val{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--cream);}
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin:80px 0 0;}
+@media(max-width:600px){.stats-row{grid-template-columns:1fr;}}
+.stat-card{background:rgba(255,255,255,.03);border:1px solid rgba(240,234,216,.07);padding:36px 28px;position:relative;overflow:hidden;}
+.stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--violet);transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.16,1,.3,1);}
+.stat-card.on::before{transform:scaleX(1);}
+.stat-val{font-family:'Syne',sans-serif;font-size:clamp(36px,5vw,56px);font-weight:800;color:var(--violet);line-height:1;letter-spacing:-.03em;}
+.stat-desc{font-family:'DM Mono',monospace;font-size:11px;color:var(--cream2);margin-top:8px;letter-spacing:.06em;text-transform:uppercase;}
+.case-body{padding:80px 0;}
+.case-body section{margin-bottom:72px;}
+.section-tag{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--violet);margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+.section-tag::after{content:'';flex:1;max-width:40px;height:1px;background:rgba(155,109,255,.3);}
+.section-tag.yellow{color:var(--yellow);}
+.section-tag.yellow::after{background:rgba(245,200,66,.3);}
+.section-tag.blue{color:var(--blue-l);}
+.section-tag.blue::after{background:rgba(74,122,255,.3);}
+h2.block-title{font-family:'Syne',sans-serif;font-size:clamp(22px,3vw,32px);font-weight:700;color:var(--cream);line-height:1.2;margin-bottom:24px;letter-spacing:-.01em;}
+.body-text{font-size:15px;font-weight:300;color:var(--cream2);line-height:1.8;margin-bottom:20px;}
+.body-text strong{color:var(--cream);font-weight:500;}
+.actors-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:12px;}
+@media(max-width:600px){.actors-grid{grid-template-columns:1fr;}}
+.actor-card{padding:24px 20px;background:rgba(155,109,255,.05);border:1px solid rgba(155,109,255,.15);}
+.actor-card .ac-role{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--violet);margin-bottom:8px;opacity:.8;}
+.actor-card .ac-name{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--cream);margin-bottom:6px;}
+.actor-card .ac-desc{font-size:12px;color:var(--cream2);font-weight:300;line-height:1.6;}
+.program-block{margin-top:12px;}
+.prog-item{display:grid;grid-template-columns:40px 1fr;gap:0 20px;padding:20px 0;border-bottom:1px solid rgba(240,234,216,.06);}
+.prog-item:last-child{border-bottom:none;}
+.prog-time{font-family:'DM Mono',monospace;font-size:10px;color:var(--violet);opacity:.6;padding-top:3px;}
+.prog-content .prog-title{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--cream);margin-bottom:4px;}
+.prog-content .prog-desc{font-size:13px;color:var(--cream2);font-weight:300;line-height:1.6;}
+.insight-block{padding:36px 40px;border-left:3px solid var(--violet);background:rgba(155,109,255,.05);margin:48px 0;}
+.insight-block p{font-family:'Syne',sans-serif;font-size:clamp(16px,2.2vw,22px);font-weight:400;font-style:italic;color:var(--cream);line-height:1.5;opacity:.9;}
+.outcome-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:12px;}
+@media(max-width:500px){.outcome-grid{grid-template-columns:1fr;}}
+.outcome-card{padding:28px 24px;background:rgba(255,255,255,.02);border:1px solid rgba(245,200,66,.1);}
+.outcome-card .oc-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--yellow);margin-bottom:10px;opacity:.7;}
+.outcome-card p{font-size:13px;color:var(--cream2);font-weight:300;line-height:1.6;}
+.outcome-card p strong{color:var(--cream);font-weight:500;}
+.brand-banner{padding:28px 32px;background:rgba(155,109,255,.06);border:1px solid rgba(155,109,255,.2);display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin:40px 0;}
+.bb-year{font-family:'Syne',sans-serif;font-size:48px;font-weight:800;color:rgba(155,109,255,.3);line-height:1;flex-shrink:0;}
+.bb-text .bb-title{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--cream);margin-bottom:4px;}
+.bb-text .bb-sub{font-size:13px;color:var(--cream2);font-weight:300;line-height:1.6;}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:4px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;text-decoration:none;cursor:pointer;transition:all .25s;border:none;}
+.btn-p{background:var(--violet);color:#fff;}
+.btn-p:hover{opacity:.85;box-shadow:0 0 40px rgba(155,109,255,.4);transform:translateY(-2px);}
+.btn-s{background:transparent;color:var(--cream2);border:1px solid rgba(240,234,216,.1);}
+.btn-s:hover{border-color:rgba(240,234,216,.22);color:var(--cream);}
+.case-cta{padding:80px 0;border-top:1px solid rgba(240,234,216,.07);}
+.cta-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:32px;}
+.cta-text h3{font-family:'Syne',sans-serif;font-size:clamp(20px,3vw,28px);font-weight:700;color:var(--cream);margin-bottom:8px;}
+.cta-text p{font-size:14px;color:var(--cream2);font-weight:300;}
+.cases-nav{padding:48px 0;border-top:1px solid rgba(240,234,216,.05);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.case-nav-link{text-decoration:none;display:flex;flex-direction:column;gap:4px;max-width:240px;}
+.case-nav-link .cnl-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--cream2);opacity:.5;}
+.case-nav-link .cnl-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--cream2);transition:color .2s;}
+.case-nav-link:hover .cnl-title{color:var(--violet);}
+body.fr [data-en]{display:none;}
+body:not(.fr) [data-fr]{display:none;}
+</style>
+</head>
+<body>
+<canvas id="bg-canvas"></canvas>
+<div class="cur" id="cur"></div>
+<div class="cur-ring" id="cur-ring"></div>
+<nav>
+  <a href="index.html" class="nav-logo">AM.</a>
+  <a href="index.html#cases" class="nav-back">← <span data-en>All cases</span><span data-fr>Tous les cas</span></a>
+  <div class="lang-toggle">
+    <button class="lang-btn active" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" onclick="setLang('fr')">FR</button>
+  </div>
+</nav>
+
+<div class="case-hero">
+  <div class="case-hero-inner">
+    <div class="case-label"><span class="case-num">Case 04 / 04</span> <span data-en>Facilitation + Governance</span><span data-fr>Facilitation + Gouvernance</span></div>
+    <h1 class="case-title" data-en>Governance transformation<br>for a <em>100-year-old</em> mountain brand.</h1>
+    <h1 class="case-title" data-fr>Transformation de gouvernance<br>pour une marque <em>centenaire</em> de montagne.</h1>
+    <p class="case-intro" data-en>A full-day organizational restructuring and team building facilitation for Millet Mountain Group — the French outdoor brand founded in 1921 — delivered through Archipel Kyosei collective in partnership with Résiliences.</p>
+    <p class="case-intro" data-fr>Une journée complète de restructuration organisationnelle et de facilitation team building pour Millet Mountain Group — la marque outdoor française fondée en 1921 — réalisée via le collectif Archipel Kyosei en partenariat avec Résiliences.</p>
+    <div class="case-meta-bar">
+      <div class="meta-item"><div class="meta-label" data-en>Client</div><div class="meta-label" data-fr>Client</div><div class="meta-val">Millet Mountain Group</div></div>
+      <div class="meta-item"><div class="meta-label" data-en>Founded</div><div class="meta-label" data-fr>Fondée en</div><div class="meta-val">1921</div></div>
+      <div class="meta-item"><div class="meta-label" data-en>Delivered via</div><div class="meta-label" data-fr>Réalisé via</div><div class="meta-val">Archipel Kyosei</div></div>
+      <div class="meta-item"><div class="meta-label" data-en>Partner</div><div class="meta-label" data-fr>Partenaire</div><div class="meta-val">Résiliences</div></div>
+      <div class="meta-item"><div class="meta-label" data-en>Format</div><div class="meta-label" data-fr>Format</div><div class="meta-val" data-en>Full-day facilitation</div><div class="meta-val" data-fr>Facilitation journée complète</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="stats-row rv d1">
+    <div class="stat-card"><div class="stat-val">1921</div><div class="stat-desc" data-en>Year Millet was founded</div><div class="stat-desc" data-fr>Année de fondation de Millet</div></div>
+    <div class="stat-card"><div class="stat-val">1d</div><div class="stat-desc" data-en>Full-day intensive facilitation</div><div class="stat-desc" data-fr>Facilitation intensive journée complète</div></div>
+    <div class="stat-card"><div class="stat-val">3</div><div class="stat-desc" data-en>Experts mobilized (Anys + Archipel + Résiliences)</div><div class="stat-desc" data-fr>Experts mobilisés (Anys + Archipel + Résiliences)</div></div>
+  </div>
+
+  <div class="case-body">
+
+    <section class="rv d1">
+      <div class="section-tag" data-en>Context</div>
+      <div class="section-tag" data-fr>Contexte</div>
+      <h2 class="block-title" data-en>A century-old brand exploring new ways to organize.</h2>
+      <h2 class="block-title" data-fr>Une marque centenaire qui explore de nouvelles façons de s'organiser.</h2>
+
+      <div class="brand-banner">
+        <div class="bb-year">1921</div>
+        <div class="bb-text">
+          <div class="bb-title" data-en>Millet Mountain Group — a French outdoor institution</div>
+          <div class="bb-title" data-fr>Millet Mountain Group — une institution outdoor française</div>
+          <div class="bb-sub" data-en>Founded in 1921 in Annecy, Millet is one of the oldest and most respected outdoor equipment brands in France — known for mountaineering packs, technical clothing, and equipment trusted by alpinists and trekkers worldwide.</div>
+          <div class="bb-sub" data-fr>Fondée en 1921 à Annecy, Millet est l'une des marques d'équipement outdoor les plus anciennes et respectées de France — connue pour ses sacs d'alpinisme, vêtements techniques et équipements reconnus par les alpinistes et trekkeurs du monde entier.</div>
+        </div>
+      </div>
+
+      <p class="body-text" data-en>Like many established organizations, Millet was navigating a tension familiar to any leader: <strong>how to preserve what made the brand great while evolving the way teams organize and collaborate.</strong> The question wasn't whether to change — it was how to do it without losing the culture that made them who they are.</p>
+      <p class="body-text" data-fr>Comme beaucoup d'organisations établies, Millet naviguait une tension familière à tout dirigeant : <strong>comment préserver ce qui a fait la grandeur de la marque tout en faisant évoluer la façon dont les équipes s'organisent et collaborent.</strong> La question n'était pas de savoir s'il fallait changer — mais comment le faire sans perdre la culture qui les définit.</p>
+    </section>
+
+    <section class="rv d1">
+      <div class="section-tag blue" data-en>The team</div>
+      <div class="section-tag blue" data-fr>L'équipe</div>
+      <h2 class="block-title" data-en>Three perspectives. One mission.</h2>
+      <h2 class="block-title" data-fr>Trois perspectives. Une mission.</h2>
+      <div class="actors-grid">
+        <div class="actor-card">
+          <div class="ac-role" data-en>Facilitator & Product</div>
+          <div class="ac-role" data-fr>Facilitateur & Produit</div>
+          <div class="ac-name">Anys Mechkar</div>
+          <div class="ac-desc" data-en>Facilitation, holacracy methodology, group dynamics, change management.</div>
+          <div class="ac-desc" data-fr>Facilitation, méthodologie holacratie, dynamiques de groupe, conduite du changement.</div>
+        </div>
+        <div class="actor-card">
+          <div class="ac-role" data-en>Collective</div>
+          <div class="ac-role" data-fr>Collectif</div>
+          <div class="ac-name">Archipel Kyosei</div>
+          <div class="ac-desc" data-en>Systemic design, collective intelligence, regenerative economics, organizational transformation.</div>
+          <div class="ac-desc" data-fr>Design systémique, intelligence collective, économie régénérative, transformation organisationnelle.</div>
+        </div>
+        <div class="actor-card">
+          <div class="ac-role" data-en>Partner firm</div>
+          <div class="ac-role" data-fr>Cabinet partenaire</div>
+          <div class="ac-name">Résiliences</div>
+          <div class="ac-desc" data-en>Consulting cooperative specialized in shared governance, holacracy and collective intelligence since 2019.</div>
+          <div class="ac-desc" data-fr>Coopérative de conseil spécialisée en gouvernance partagée, holacratie et intelligence collective depuis 2019.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="rv d1">
+      <div class="section-tag yellow" data-en>The day</div>
+      <div class="section-tag yellow" data-fr>La journée</div>
+      <h2 class="block-title" data-en>One day. Two objectives. Lasting impact.</h2>
+      <h2 class="block-title" data-fr>Une journée. Deux objectifs. Un impact durable.</h2>
+      <p class="body-text" data-en>The intervention was designed as a full-day immersive experience combining team building and organizational restructuring. Not a passive workshop — an active, sometimes uncomfortable, always honest exploration of how the organization works and how it could work better.</p>
+      <p class="body-text" data-fr>L'intervention a été conçue comme une expérience immersive d'une journée combinant team building et restructuration organisationnelle. Pas un atelier passif — une exploration active, parfois inconfortable, toujours honnête de la façon dont l'organisation fonctionne et comment elle pourrait fonctionner mieux.</p>
+      <div class="program-block">
+        <div class="prog-item">
+          <div class="prog-time">AM</div>
+          <div class="prog-content">
+            <div class="prog-title" data-en>Team building — reconnecting to what matters</div>
+            <div class="prog-title" data-fr>Team building — se reconnecter à ce qui compte</div>
+            <div class="prog-desc" data-en>Structured activities to surface team dynamics, strengths, tensions and unspoken patterns. Creating the conditions for honest conversation.</div>
+            <div class="prog-desc" data-fr>Activités structurées pour faire émerger les dynamiques d'équipe, forces, tensions et patterns non dits. Créer les conditions d'une conversation honnête.</div>
+          </div>
+        </div>
+        <div class="prog-item">
+          <div class="prog-time">Mid</div>
+          <div class="prog-content">
+            <div class="prog-title" data-en>Introduction to distributed governance</div>
+            <div class="prog-title" data-fr>Introduction à la gouvernance distribuée</div>
+            <div class="prog-desc" data-en>Explaining the principles of holacracy and sociocracy. Not as a theoretical framework — as a practical alternative to hierarchical patterns that slow organizations down.</div>
+            <div class="prog-desc" data-fr>Expliquer les principes de l'holacratie et de la sociocratie. Pas comme un cadre théorique — comme une alternative pratique aux schémas hiérarchiques qui ralentissent les organisations.</div>
+          </div>
+        </div>
+        <div class="prog-item">
+          <div class="prog-time">PM</div>
+          <div class="prog-content">
+            <div class="prog-title" data-en>Organizational restructuring — applied work</div>
+            <div class="prog-title" data-fr>Restructuration organisationnelle — travail appliqué</div>
+            <div class="prog-desc" data-en>Working directly on Millet's organizational structure. Mapping roles, tensions, decision-making flows. Building a shared vision of how the organization could be governed differently.</div>
+            <div class="prog-desc" data-fr>Travailler directement sur la structure organisationnelle de Millet. Cartographier les rôles, tensions, flux de décision. Construire une vision partagée de comment l'organisation pourrait être gouvernée différemment.</div>
+          </div>
+        </div>
+      </div>
+      <div class="insight-block">
+        <p data-en>"Transforming governance in a century-old organization isn't about replacing its culture. It's about giving that culture a structure that lets it grow without losing itself."</p>
+        <p data-fr>"Transformer la gouvernance dans une organisation centenaire, ce n'est pas remplacer sa culture. C'est donner à cette culture une structure qui lui permet de grandir sans se perdre."</p>
+      </div>
+    </section>
+
+    <section class="rv d1">
+      <div class="section-tag" data-en>What this demonstrates</div>
+      <div class="section-tag" data-fr>Ce que ça démontre</div>
+      <h2 class="block-title" data-en>Operating at the highest level of organizational complexity.</h2>
+      <h2 class="block-title" data-fr>Opérer au niveau le plus élevé de complexité organisationnelle.</h2>
+      <div class="outcome-grid">
+        <div class="outcome-card"><div class="oc-label" data-en>Established organizations</div><div class="oc-label" data-fr>Organisations établies</div><p data-en>Facilitating transformation in a 100-year-old company requires a different approach than a startup. Respecting the legacy while challenging the structure.</p><p data-fr>Faciliter la transformation dans une entreprise centenaire demande une approche différente qu'une startup. Respecter l'héritage tout en challengeant la structure.</p></div>
+        <div class="outcome-card"><div class="oc-label" data-en>Collective work</div><div class="oc-label" data-fr>Travail collectif</div><p data-en>Ability to lead and operate within a multi-expert team — bringing a distinct perspective while integrating with complementary specialists.</p><p data-fr>Capacité à piloter et opérer dans une équipe multi-experts — apporter une perspective distincte tout en s'intégrant avec des spécialistes complémentaires.</p></div>
+        <div class="outcome-card"><div class="oc-label" data-en>Facilitation depth</div><div class="oc-label" data-fr>Profondeur de facilitation</div><p data-en>Combining team dynamics facilitation with organizational restructuring in a single session — both the human layer and the structural layer, simultaneously.</p><p data-fr>Combiner facilitation des dynamiques d'équipe et restructuration organisationnelle en une seule session — la couche humaine et la couche structurelle, simultanément.</p></div>
+        <div class="outcome-card"><div class="oc-label" data-en>Methodology</div><div class="oc-label" data-fr>Méthodologie</div><p data-en><strong>Holacracy and sociocracy applied in context</strong> — not theoretical delivery, but real organizational work adapted to the specific culture and needs of an established brand.</p><p data-fr><strong>Holacratie et sociocratie appliquées en contexte</strong> — pas de delivery théorique, mais un vrai travail organisationnel adapté à la culture et aux besoins spécifiques d'une marque établie.</p></div>
+      </div>
+    </section>
+
+    <div class="case-cta rv">
+      <div class="cta-inner">
+        <div class="cta-text">
+          <h3 data-en>You're navigating organizational complexity?</h3>
+          <h3 data-fr>Vous naviguez dans la complexité organisationnelle ?</h3>
+          <p data-en>In 45 minutes, we get clear on where you are, where you want to go, and what it takes to get there.</p>
+          <p data-fr>En 45 minutes, on pose la clarté sur où vous en êtes, où vous voulez aller, et ce qu'il faut pour y arriver.</p>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="https://calendly.com/a-mechkar/decouverte-45-min" target="_blank" class="btn btn-p" data-en>Book a free 45-min call →</a>
+          <a href="https://calendly.com/a-mechkar/decouverte-45-min" target="_blank" class="btn btn-p" data-fr>Réserver un appel gratuit →</a>
+          <a href="index.html" class="btn btn-s" data-en>Back to home</a>
+          <a href="index.html" class="btn btn-s" data-fr>Retour à l'accueil</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="cases-nav rv">
+      <a href="case-geneve-loisirs.html" class="case-nav-link">
+        <div class="cnl-label" data-en>Previous case</div>
+        <div class="cnl-label" data-fr>Cas précédent</div>
+        <div class="cnl-title" data-en>← 140 children, zero paper</div>
+        <div class="cnl-title" data-fr>← 140 enfants, zéro papier</div>
+      </a>
+      <a href="case-proximedia.html" class="case-nav-link next">
+        <div class="cnl-label" data-en>Back to first case</div>
+        <div class="cnl-label" data-fr>Retour au premier cas</div>
+        <div class="cnl-title" data-en>3 to 25 people →</div>
+        <div class="cnl-title" data-fr>3 à 25 personnes →</div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+const canvas=document.getElementById('bg-canvas');const ctx=canvas.getContext('2d');let W,H;function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}resize();window.addEventListener('resize',resize);
+const pts=[];for(let i=0;i<40;i++)pts.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.2+.2,vx:(Math.random()-.5)*.2,vy:(Math.random()-.5)*.2,a:Math.random()*.2+.04});
+let tick=0;function draw(){tick++;const r=155,g=109,b=255;ctx.clearRect(0,0,W,H);const t=tick*.002;const g1=ctx.createRadialGradient(W*.3+Math.sin(t)*W*.15,H*.4+Math.cos(t*.7)*H*.1,0,W*.3,H*.4,W*.7);g1.addColorStop(0,`rgba(${r},${g},${b},.1)`);g1.addColorStop(1,`rgba(0,0,0,0)`);ctx.fillStyle=g1;ctx.fillRect(0,0,W,H);pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=`rgba(${r},${g},${b},${p.a})`;ctx.fill();});requestAnimationFrame(draw);}draw();
+const cur=document.getElementById('cur'),cr=document.getElementById('cur-ring');let mx=0,my=0,rx=0,ry=0;document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});(function ar(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;cr.style.left=rx+'px';cr.style.top=ry+'px';requestAnimationFrame(ar);})();
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');}});},{threshold:.08});document.querySelectorAll('.rv,.stat-card').forEach(el=>{obs.observe(el);});
+function setLang(l){document.body.classList.toggle('fr',l==='fr');document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent===l.toUpperCase()));}
+</script>
+</body>
+</html>

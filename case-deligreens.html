@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Study — Deligreens | Anys Mechkar</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0c0d10;--cream:#f0ead8;--cream2:#b8b09a;--blue:#1a4fd6;--blue-l:#4a7aff;--yellow:#f5c842;--coral:#e8533c;--green:#3cb87a;--pad:clamp(20px,5vw,48px);}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--cream);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden;}
+@media(pointer:fine){body{cursor:none;}}
+.cur,.cur-ring{position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);display:none;}
+.cur{width:10px;height:10px;background:var(--green);border-radius:50%;}
+.cur-ring{width:36px;height:36px;border:1px solid rgba(60,184,122,.5);border-radius:50%;z-index:9998;}
+@media(pointer:fine){.cur,.cur-ring{display:block;}}
+#bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;}
+@keyframes fup{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:20px var(--pad);gap:16px;}
+nav::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(12,13,16,.95) 0%,transparent 100%);pointer-events:none;}
+.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:18px;color:var(--cream);text-decoration:none;position:relative;z-index:1;}
+.nav-back{font-family:'DM Mono',monospace;font-size:11px;color:var(--cream2);text-decoration:none;letter-spacing:.08em;text-transform:uppercase;transition:color .2s;position:relative;z-index:1;display:flex;align-items:center;gap:8px;}
+.nav-back:hover{color:var(--cream);}
+.lang-toggle{display:flex;gap:4px;background:rgba(255,255,255,.04);border:1px solid rgba(240,234,216,.08);border-radius:20px;padding:4px;position:relative;z-index:1;}
+.lang-btn{font-family:'DM Mono',monospace;font-size:11px;padding:4px 10px;border-radius:16px;border:none;background:transparent;color:var(--cream2);cursor:pointer;transition:all .2s;letter-spacing:.06em;}
+.lang-btn.active{background:var(--green);color:#fff;}
+.container{max-width:900px;margin:0 auto;padding:0 var(--pad);}
+.rv{opacity:0;transform:translateY(32px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);}
+.rv.on{opacity:1;transform:none;}
+.d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}
+.case-hero{min-height:60vh;display:flex;flex-direction:column;justify-content:flex-end;padding:120px var(--pad) 80px;position:relative;overflow:hidden;}
+.case-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(60,184,122,.15) 0%,transparent 60%);pointer-events:none;}
+.case-hero-inner{position:relative;z-index:1;max-width:900px;margin:0 auto;width:100%;animation:fup .9s .2s both;}
+.case-label{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+.case-label::before{content:'';display:block;width:24px;height:1px;background:var(--green);}
+.case-num{font-family:'DM Mono',monospace;font-size:11px;color:rgba(60,184,122,.4);letter-spacing:.1em;}
+.case-title{font-family:'Syne',sans-serif;font-size:clamp(32px,5vw,64px);font-weight:800;line-height:1.05;letter-spacing:-.02em;margin-bottom:24px;color:var(--cream);}
+.case-title em{color:var(--green);font-style:normal;}
+.case-intro{font-size:clamp(15px,1.8vw,18px);font-weight:300;color:var(--cream2);max-width:640px;line-height:1.7;}
+.case-meta-bar{display:flex;gap:32px;flex-wrap:wrap;margin-top:40px;padding-top:32px;border-top:1px solid rgba(240,234,216,.08);}
+.meta-item{display:flex;flex-direction:column;gap:4px;}
+.meta-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--cream2);opacity:.5;}
+.meta-val{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--cream);}
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin:80px 0 0;}
+@media(max-width:600px){.stats-row{grid-template-columns:1fr;}}
+.stat-card{background:rgba(255,255,255,.03);border:1px solid rgba(240,234,216,.07);padding:36px 28px;position:relative;overflow:hidden;}
+.stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--green);transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.16,1,.3,1);}
+.stat-card.on::before{transform:scaleX(1);}
+.stat-val{font-family:'Syne',sans-serif;font-size:clamp(36px,5vw,56px);font-weight:800;color:var(--green);line-height:1;letter-spacing:-.03em;}
+.stat-desc{font-family:'DM Mono',monospace;font-size:11px;color:var(--cream2);margin-top:8px;letter-spacing:.06em;text-transform:uppercase;}
+.case-body{padding:80px 0;}
+.case-body section{margin-bottom:72px;}
+.section-tag{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--green);margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+.section-tag::after{content:'';flex:1;max-width:40px;height:1px;background:rgba(60,184,122,.3);}
+.section-tag.yellow{color:var(--yellow);}
+.section-tag.yellow::after{background:rgba(245,200,66,.3);}
+.section-tag.coral{color:var(--coral);}
+.section-tag.coral::after{background:rgba(232,83,60,.3);}
+h2.block-title{font-family:'Syne',sans-serif;font-size:clamp(22px,3vw,32px);font-weight:700;color:var(--cream);line-height:1.2;margin-bottom:24px;letter-spacing:-.01em;}
+.body-text{font-size:15px;font-weight:300;color:var(--cream2);line-height:1.8;margin-bottom:20px;}
+.body-text strong{color:var(--cream);font-weight:500;}
+.actions{display:flex;flex-direction:column;gap:12px;margin-top:8px;}
+.action-item{display:grid;grid-template-columns:28px 1fr;gap:0 16px;align-items:start;padding:16px 20px;background:rgba(255,255,255,.02);border:1px solid rgba(240,234,216,.06);transition:all .3s;}
+.action-item:hover{border-color:rgba(60,184,122,.2);background:rgba(60,184,122,.04);}
+.action-num{font-family:'DM Mono',monospace;font-size:10px;color:rgba(60,184,122,.4);padding-top:3px;}
+.action-text{font-size:14px;color:var(--cream2);font-weight:300;line-height:1.6;}
+.action-text strong{color:var(--cream);font-weight:500;}
+.insight-block{padding:36px 40px;border-left:3px solid var(--green);background:rgba(60,184,122,.05);margin:48px 0;}
+.insight-block p{font-family:'Syne',sans-serif;font-size:clamp(16px,2.2vw,22px);font-weight:400;font-style:italic;color:var(--cream);line-height:1.5;opacity:.9;}
+.outcome-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:12px;}
+@media(max-width:500px){.outcome-grid{grid-template-columns:1fr;}}
+.outcome-card{padding:28px 24px;background:rgba(255,255,255,.02);border:1px solid rgba(245,200,66,.1);}
+.outcome-card .oc-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--yellow);margin-bottom:10px;opacity:.7;}
+.outcome-card p{font-size:13px;color:var(--cream2);font-weight:300;line-height:1.6;}
+.outcome-card p strong{color:var(--cream);font-weight:500;}
+.acquisition-banner{padding:28px 32px;background:rgba(60,184,122,.08);border:1px solid rgba(60,184,122,.2);display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin:40px 0;}
+.ab-icon{font-size:28px;flex-shrink:0;}
+.ab-text .ab-title{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--cream);margin-bottom:4px;}
+.ab-text .ab-sub{font-size:13px;color:var(--cream2);font-weight:300;line-height:1.6;}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:4px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;text-decoration:none;cursor:pointer;transition:all .25s;border:none;}
+.btn-p{background:var(--green);color:#fff;}
+.btn-p:hover{opacity:.85;box-shadow:0 0 40px rgba(60,184,122,.4);transform:translateY(-2px);}
+.btn-s{background:transparent;color:var(--cream2);border:1px solid rgba(240,234,216,.1);}
+.btn-s:hover{border-color:rgba(240,234,216,.22);color:var(--cream);}
+.case-cta{padding:80px 0;border-top:1px solid rgba(240,234,216,.07);}
+.cta-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:32px;}
+.cta-text h3{font-family:'Syne',sans-serif;font-size:clamp(20px,3vw,28px);font-weight:700;color:var(--cream);margin-bottom:8px;}
+.cta-text p{font-size:14px;color:var(--cream2);font-weight:300;}
+.cases-nav{padding:48px 0;border-top:1px solid rgba(240,234,216,.05);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.case-nav-link{text-decoration:none;display:flex;flex-direction:column;gap:4px;max-width:240px;}
+.case-nav-link .cnl-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--cream2);opacity:.5;}
+.case-nav-link .cnl-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--cream2);transition:color .2s;}
+.case-nav-link:hover .cnl-title{color:var(--green);}
+.case-nav-link.next{text-align:right;}
+body.fr [data-en]{display:none;}
+body:not(.fr) [data-fr]{display:none;}
+</style>
+</head>
+<body>
+<canvas id="bg-canvas"></canvas>
+<div class="cur" id="cur"></div>
+<div class="cur-ring" id="cur-ring"></div>
+<nav>
+  <a href="index.html" class="nav-logo">AM.</a>
+  <a href="index.html#cases" class="nav-back">← <span data-en>All cases</span><span data-fr>Tous les cas</span></a>
+  <div class="lang-toggle">
+    <button class="lang-btn active" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" onclick="setLang('fr')">FR</button>
+  </div>
+</nav>
+
+<div class="case-hero">
+  <div class="case-hero-inner">
+    <div class="case-label"><span class="case-num">Case 02 / 04</span> <span data-en>Startup / Zero to One</span><span data-fr>Startup / Zéro à un</span></div>
+    <h1 class="case-title" data-en>Full product, <em>zero to one.</em><br>Brand. Platform. App. Governance.</h1>
+    <h1 class="case-title" data-fr>Produit complet, <em>zéro à un.</em><br>Marque. Plateforme. App. Gouvernance.</h1>
+    <p class="case-intro" data-en>A bio food delivery startup backed by Carrefour. No identity, no tools, no structure. I co-built everything — from the logo to the logistics app to the organizational model. The concept proved so solid it was later acquired.</p>
+    <p class="case-intro" data-fr>Une startup de livraison bio soutenue par Carrefour. Pas d'identité, pas d'outils, pas de structure. J'ai tout co-construit — du logo à l'app logistique en passant par le modèle organisationnel. Le concept s'est avéré si solide qu'il a été racheté.</p>
+    <div class="case-meta-bar">
+      <div class="meta-item"><div class="meta-label">Startup</div><div class="meta-val">Deligreens</div></div>
+      <div class="meta-item"><div class="meta-label" data-en>Investor</div><div class="meta-label" data-fr>Investisseur</div><div class="meta-val">Carrefour</div></div>
+      <div class="meta-item"><div class="meta-label" data-en>Acquired by</div><div class="meta-label" data-fr>Racheté par</div><div class="meta-val">Le Comptoir Local</div></div>
+      <div class="meta-item"><div class="meta-label" data-en>My role</div><div class="meta-label" data-fr>Mon rôle</div><div class="meta-val" data-en>Lead Product & Artistic Director</div><div class="meta-val" data-fr>Lead Produit & Directeur Artistique</div></div>
+      <div class="meta-item"><div class="meta-label" data-en>Scope</div><div class="meta-label" data-fr>Périmètre</div><div class="meta-val" data-en>Branding · E-commerce · App · Governance</div><div class="meta-val" data-fr>Branding · E-commerce · App · Gouvernance</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="stats-row rv d1">
+    <div class="stat-card"><div class="stat-val">0→1</div><div class="stat-desc" data-en>Full product from scratch</div><div class="stat-desc" data-fr>Produit complet from scratch</div></div>
+    <div class="stat-card"><div class="stat-val">4</div><div class="stat-desc" data-en>Products delivered simultaneously</div><div class="stat-desc" data-fr>Produits livrés simultanément</div></div>
+    <div class="stat-card"><div class="stat-val">✓</div><div class="stat-desc" data-en>Concept acquired by Le Comptoir Local</div><div class="stat-desc" data-fr>Concept racheté par Le Comptoir Local</div></div>
+  </div>
+
+  <div class="case-body">
+
+    <section class="rv d1">
+      <div class="section-tag" data-en>Context</div>
+      <div class="section-tag" data-fr>Contexte</div>
+      <h2 class="block-title" data-en>Three founders. One big idea. Nothing built yet.</h2>
+      <h2 class="block-title" data-fr>Trois fondateurs. Une grande idée. Rien de construit.</h2>
+      <p class="body-text" data-en>Deligreens was built on a simple and powerful idea: deliver fresh, local, organic products directly from producers to consumers at home — no middlemen, short supply chains, transparent sourcing. The startup had the vision and the backing of Carrefour as an investor.</p>
+      <p class="body-text" data-fr>Deligreens était construit sur une idée simple et puissante : livrer des produits frais, locaux, bio directement des producteurs aux consommateurs à domicile — pas d'intermédiaires, circuits courts, traçabilité totale. La startup avait la vision et le soutien de Carrefour comme investisseur.</p>
+      <p class="body-text" data-en>What it didn't have: a brand identity, an e-commerce platform, internal logistics tools, or a governance model capable of scaling. <strong>Three founders, a clear mission, and a blank page.</strong></p>
+      <p class="body-text" data-fr>Ce qu'elle n'avait pas : une identité de marque, une plateforme e-commerce, des outils logistiques internes, ou un modèle de gouvernance capable de scaler. <strong>Trois fondateurs, une mission claire, et une page blanche.</strong></p>
+    </section>
+
+    <section class="rv d1">
+      <div class="section-tag" data-en>What I built</div>
+      <div class="section-tag" data-fr>Ce que j'ai construit</div>
+      <h2 class="block-title" data-en>Everything. At once. Fast.</h2>
+      <h2 class="block-title" data-fr>Tout. En même temps. Vite.</h2>
+      <div class="actions rv d2">
+        <div class="action-item"><div class="action-num">01</div><div class="action-text" data-en><strong>Full brand identity</strong> — logo, visual direction, tone of voice, brand guidelines. Built from zero to a coherent, trustworthy visual identity that reflected the freshness and locality of the products.</div><div class="action-text" data-fr><strong>Identité visuelle complète</strong> — logo, direction artistique, ton éditorial, charte graphique. Construit from scratch jusqu'à une identité visuelle cohérente et rassurante, reflétant la fraîcheur et la proximité des produits.</div></div>
+        <div class="action-item"><div class="action-num">02</div><div class="action-text" data-en><strong>E-commerce platform design and management</strong> — full UX, UI design and product management of the consumer-facing website. Product catalog, ordering flow, producer pages, subscription model.</div><div class="action-text" data-fr><strong>Design et gestion de la plateforme e-commerce</strong> — UX, UI design et pilotage produit du site consommateur. Catalogue produits, tunnel de commande, pages producteurs, modèle d'abonnement.</div></div>
+        <div class="action-item"><div class="action-num">03</div><div class="action-text" data-en><strong>Custom logistics tablet app — built in-house</strong> — instead of buying an off-the-shelf tool (too complex, poor ergonomics, bad fit), I designed and managed the development of a custom tablet app for order management. Real-time stock, delivery planning, producer coordination. The right tool for the real need.</div><div class="action-text" data-fr><strong>Application tablette logistique sur mesure — construite en interne</strong> — plutôt qu'acheter un outil du marché (trop complexe, ergonomie pauvre, mauvais fit), j'ai conçu et piloté le développement d'une app tablette sur mesure pour la gestion des commandes. Stock en temps réel, planification livraisons, coordination producteurs. Le bon outil pour le vrai besoin.</div></div>
+        <div class="action-item"><div class="action-num">04</div><div class="action-text" data-en><strong>Holacracy governance model</strong> — structured the organization with a distributed governance framework. Defined roles, responsibilities, domains, purpose for each position. Moved from informal hierarchy to a clear, scalable organizational structure.</div><div class="action-text" data-fr><strong>Modèle de gouvernance holacratie</strong> — structuré l'organisation avec un cadre de gouvernance distribuée. Défini les rôles, responsabilités, domaines, raison d'être de chaque poste. Passé d'une hiérarchie informelle à une structure organisationnelle claire et scalable.</div></div>
+      </div>
+      <div class="insight-block">
+        <p data-en>"The off-the-shelf logistics tools existed. None of them fit. Building the right tool took less time than forcing the wrong one to work."</p>
+        <p data-fr>"Les outils logistiques du marché existaient. Aucun ne correspondait. Construire le bon outil a pris moins de temps qu'essayer de faire fonctionner le mauvais."</p>
+      </div>
+    </section>
+
+    <section class="rv d1">
+      <div class="section-tag coral" data-en>End of mission</div>
+      <div class="section-tag coral" data-fr>Fin de mission</div>
+      <h2 class="block-title" data-en>An external event. Not a product failure.</h2>
+      <h2 class="block-title" data-fr>Un événement externe. Pas un échec produit.</h2>
+      <p class="body-text" data-en>Deligreens depended on Carrefour's support at a critical growth phase. A leadership change at Carrefour — the internal champion who backed the startup was let go in a restructuring. The investment dried up. The startup wasn't yet profitable enough to survive without it.</p>
+      <p class="body-text" data-fr>Deligreens dépendait du soutien de Carrefour à une phase de croissance critique. Un changement de direction chez Carrefour — la personne en interne qui portait le projet a été virée lors d'une restructuration. L'investissement s'est tari. La startup n'était pas encore suffisamment rentable pour survivre sans lui.</p>
+      <p class="body-text" data-en>The company closed. But the <strong>concept was so solid it was acquired</strong> — and lives on today as Le Comptoir Local, delivering fresh local produce across Île-de-France with the same direct-from-producer model.</p>
+      <p class="body-text" data-fr>La société a fermé. Mais le <strong>concept était si solide qu'il a été racheté</strong> — et continue aujourd'hui sous le nom Le Comptoir Local, livrant des produits frais locaux en Île-de-France avec le même modèle en direct producteur.</p>
+
+      <div class="acquisition-banner">
+        <div class="ab-icon">🌱</div>
+        <div class="ab-text">
+          <div class="ab-title" data-en>The concept survived and was acquired</div>
+          <div class="ab-title" data-fr>Le concept a survécu et a été racheté</div>
+          <div class="ab-sub" data-en>Le Comptoir Local — lecomptoirlocal.fr — delivers fresh local products to over 200 producers across Île-de-France. The same model, the same values, still running.</div>
+          <div class="ab-sub" data-fr>Le Comptoir Local — lecomptoirlocal.fr — livre des produits frais locaux depuis plus de 200 producteurs en Île-de-France. Le même modèle, les mêmes valeurs, toujours en cours.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="rv d1">
+      <div class="section-tag yellow" data-en>Outcomes</div>
+      <div class="section-tag yellow" data-fr>Résultats</div>
+      <h2 class="block-title" data-en>What this case demonstrates.</h2>
+      <h2 class="block-title" data-fr>Ce que ce cas démontre.</h2>
+      <div class="outcome-grid">
+        <div class="outcome-card"><div class="oc-label" data-en>Speed</div><div class="oc-label" data-fr>Vitesse</div><p data-en>Four products built simultaneously — brand, e-commerce, logistics app, governance — in a lean startup environment with tight constraints.</p><p data-fr>Quatre produits construits simultanément — marque, e-commerce, app logistique, gouvernance — dans un environnement startup lean avec des contraintes fortes.</p></div>
+        <div class="outcome-card"><div class="oc-label" data-en>Judgment</div><div class="oc-label" data-fr>Jugement</div><p data-en><strong>Make-or-buy decision:</strong> chose to build a custom logistics app instead of adapting an inadequate market solution. The right call.</p><p data-fr><strong>Décision make-or-buy :</strong> choix de construire une app logistique sur mesure plutôt qu'adapter une solution du marché inadaptée. Le bon choix.</p></div>
+        <div class="outcome-card"><div class="oc-label" data-en>Proof of concept</div><div class="oc-label" data-fr>Validation du concept</div><p data-en>The startup closed due to investor withdrawal — not product failure. The concept's acquisition by Le Comptoir Local validates the model.</p><p data-fr>La startup a fermé à cause du retrait de l'investisseur — pas d'un échec produit. Le rachat du concept par Le Comptoir Local valide le modèle.</p></div>
+        <div class="outcome-card"><div class="oc-label" data-en>Full spectrum</div><div class="oc-label" data-fr>Spectre complet</div><p data-en>From brand identity to organizational governance — covered the full product and organizational scope, alone, from day one.</p><p data-fr>De l'identité de marque à la gouvernance organisationnelle — couvert le spectre complet produit et organisationnel, seul, dès le premier jour.</p></div>
+      </div>
+    </section>
+
+    <div class="case-cta rv">
+      <div class="cta-inner">
+        <div class="cta-text">
+          <h3 data-en>You're building something from scratch?</h3>
+          <h3 data-fr>Vous construisez quelque chose from scratch ?</h3>
+          <p data-en>In 45 minutes, we get clear on where you are, where you want to go, and what it takes to get there.</p>
+          <p data-fr>En 45 minutes, on pose la clarté sur où vous en êtes, où vous voulez aller, et ce qu'il faut pour y arriver.</p>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="https://calendly.com/a-mechkar/decouverte-45-min" target="_blank" class="btn btn-p" data-en>Book a free 45-min call →</a>
+          <a href="https://calendly.com/a-mechkar/decouverte-45-min" target="_blank" class="btn btn-p" data-fr>Réserver un appel gratuit →</a>
+          <a href="index.html" class="btn btn-s" data-en>Back to home</a>
+          <a href="index.html" class="btn btn-s" data-fr>Retour à l'accueil</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="cases-nav rv">
+      <a href="case-proximedia.html" class="case-nav-link">
+        <div class="cnl-label" data-en>Previous case</div>
+        <div class="cnl-label" data-fr>Cas précédent</div>
+        <div class="cnl-title" data-en>← 3 to 25 people, 3 countries</div>
+        <div class="cnl-title" data-fr>← 3 à 25 personnes, 3 pays</div>
+      </a>
+      <a href="case-geneve-loisirs.html" class="case-nav-link next">
+        <div class="cnl-label" data-en>Next case</div>
+        <div class="cnl-label" data-fr>Cas suivant</div>
+        <div class="cnl-title" data-en>140 children, zero paper →</div>
+        <div class="cnl-title" data-fr>140 enfants, zéro papier →</div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+const canvas=document.getElementById('bg-canvas');const ctx=canvas.getContext('2d');let W,H;function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}resize();window.addEventListener('resize',resize);
+const pts=[];for(let i=0;i<40;i++)pts.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.2+.2,vx:(Math.random()-.5)*.2,vy:(Math.random()-.5)*.2,a:Math.random()*.2+.04});
+let tick=0;function draw(){tick++;const r=60,g=184,b=122;ctx.clearRect(0,0,W,H);const t=tick*.002;const g1=ctx.createRadialGradient(W*.3+Math.sin(t)*W*.15,H*.4+Math.cos(t*.7)*H*.1,0,W*.3,H*.4,W*.7);g1.addColorStop(0,`rgba(${r},${g},${b},.08)`);g1.addColorStop(1,`rgba(0,0,0,0)`);ctx.fillStyle=g1;ctx.fillRect(0,0,W,H);pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=`rgba(${r},${g},${b},${p.a})`;ctx.fill();});requestAnimationFrame(draw);}draw();
+const cur=document.getElementById('cur'),cr=document.getElementById('cur-ring');let mx=0,my=0,rx=0,ry=0;document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});(function ar(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;cr.style.left=rx+'px';cr.style.top=ry+'px';requestAnimationFrame(ar);})();
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');}});},{threshold:.08});document.querySelectorAll('.rv,.stat-card').forEach(el=>{obs.observe(el);});
+function setLang(l){document.body.classList.toggle('fr',l==='fr');document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent===l.toUpperCase()));}
+</script>
+</body>
+</html>

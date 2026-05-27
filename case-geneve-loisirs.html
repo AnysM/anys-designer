@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Study — Genève-loisirs | Anys Mechkar</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0c0d10;--cream:#f0ead8;--cream2:#b8b09a;--blue:#1a4fd6;--blue-l:#4a7aff;--yellow:#f5c842;--coral:#e8533c;--amber:#f0923a;--pad:clamp(20px,5vw,48px);}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--cream);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden;}
+@media(pointer:fine){body{cursor:none;}}
+.cur,.cur-ring{position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);display:none;}
+.cur{width:10px;height:10px;background:var(--amber);border-radius:50%;}
+.cur-ring{width:36px;height:36px;border:1px solid rgba(240,146,58,.5);border-radius:50%;z-index:9998;}
+@media(pointer:fine){.cur,.cur-ring{display:block;}}
+#bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;}
+@keyframes fup{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:20px var(--pad);gap:16px;}
+nav::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(12,13,16,.95) 0%,transparent 100%);pointer-events:none;}
+.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:18px;color:var(--cream);text-decoration:none;position:relative;z-index:1;}
+.nav-back{font-family:'DM Mono',monospace;font-size:11px;color:var(--cream2);text-decoration:none;letter-spacing:.08em;text-transform:uppercase;transition:color .2s;position:relative;z-index:1;display:flex;align-items:center;gap:8px;}
+.nav-back:hover{color:var(--cream);}
+.lang-toggle{display:flex;gap:4px;background:rgba(255,255,255,.04);border:1px solid rgba(240,234,216,.08);border-radius:20px;padding:4px;position:relative;z-index:1;}
+.lang-btn{font-family:'DM Mono',monospace;font-size:11px;padding:4px 10px;border-radius:16px;border:none;background:transparent;color:var(--cream2);cursor:pointer;transition:all .2s;letter-spacing:.06em;}
+.lang-btn.active{background:var(--amber);color:#fff;}
+.container{max-width:900px;margin:0 auto;padding:0 var(--pad);}
+.rv{opacity:0;transform:translateY(32px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);}
+.rv.on{opacity:1;transform:none;}
+.d1{transition-delay:.1s;}.d2{transition-delay:.2s;}
+.case-hero{min-height:60vh;display:flex;flex-direction:column;justify-content:flex-end;padding:120px var(--pad) 80px;position:relative;overflow:hidden;}
+.case-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(240,146,58,.12) 0%,transparent 60%);pointer-events:none;}
+.case-hero-inner{position:relative;z-index:1;max-width:900px;margin:0 auto;width:100%;animation:fup .9s .2s both;}
+.case-label{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+.case-label::before{content:'';display:block;width:24px;height:1px;background:var(--amber);}
+.case-num{font-size:11px;color:rgba(240,146,58,.4);}
+.case-title{font-family:'Syne',sans-serif;font-size:clamp(32px,5vw,64px);font-weight:800;line-height:1.05;letter-spacing:-.02em;margin-bottom:24px;color:var(--cream);}
+.case-title em{color:var(--amber);font-style:normal;}
+.case-intro{font-size:clamp(15px,1.8vw,18px);font-weight:300;color:var(--cream2);max-width:640px;line-height:1.7;}
+.case-meta-bar{display:flex;gap:32px;flex-wrap:wrap;margin-top:40px;padding-top:32px;border-top:1px solid rgba(240,234,216,.08);}
+.meta-item{display:flex;flex-direction:column;gap:4px;}
+.meta-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--cream2);opacity:.5;}
+.meta-val{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--cream);}
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin:80px 0 0;}
+@media(max-width:600px){.stats-row{grid-template-columns:1fr;}}
+.stat-card{background:rgba(255,255,255,.03);border:1px solid rgba(240,234,216,.07);padding:36px 28px;position:relative;overflow:hidden;}
+.stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--amber);transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.16,1,.3,1);}
+.stat-card.on::before{transform:scaleX(1);}
+.stat-val{font-family:'Syne',sans-serif;font-size:clamp(36px,5vw,56px);font-weight:800;color:var(--amber);line-height:1;letter-spacing:-.03em;}
+.stat-desc{font-family:'DM Mono',monospace;font-size:11px;color:var(--cream2);margin-top:8px;letter-spacing:.06em;text-transform:uppercase;}
+.case-body{padding:80px 0;}
+.case-body section{margin-bottom:72px;}
+.section-tag{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+.section-tag::after{content:'';flex:1;max-width:40px;height:1px;background:rgba(240,146,58,.3);}
+.section-tag.yellow{color:var(--yellow);}
+.section-tag.yellow::after{background:rgba(245,200,66,.3);}
+.section-tag.blue{color:var(--blue-l);}
+.section-tag.blue::after{background:rgba(74,122,255,.3);}
+h2.block-title{font-family:'Syne',sans-serif;font-size:clamp(22px,3vw,32px);font-weight:700;color:var(--cream);line-height:1.2;margin-bottom:24px;letter-spacing:-.01em;}
+.body-text{font-size:15px;font-weight:300;color:var(--cream2);line-height:1.8;margin-bottom:20px;}
+.body-text strong{color:var(--cream);font-weight:500;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:12px;}
+@media(max-width:600px){.two-col{grid-template-columns:1fr;}}
+.problem-card{padding:24px;background:rgba(232,83,60,.05);border:1px solid rgba(232,83,60,.15);}
+.problem-card .pc-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--coral);margin-bottom:10px;opacity:.8;}
+.problem-card p{font-size:13px;color:var(--cream2);font-weight:300;line-height:1.65;}
+.solution-card{padding:24px;background:rgba(240,146,58,.05);border:1px solid rgba(240,146,58,.15);}
+.solution-card .sc-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:10px;opacity:.8;}
+.solution-card p{font-size:13px;color:var(--cream2);font-weight:300;line-height:1.65;}
+.actions{display:flex;flex-direction:column;gap:12px;margin-top:8px;}
+.action-item{display:grid;grid-template-columns:28px 1fr;gap:0 16px;align-items:start;padding:16px 20px;background:rgba(255,255,255,.02);border:1px solid rgba(240,234,216,.06);transition:all .3s;}
+.action-item:hover{border-color:rgba(240,146,58,.2);background:rgba(240,146,58,.04);}
+.action-num{font-family:'DM Mono',monospace;font-size:10px;color:rgba(240,146,58,.4);padding-top:3px;}
+.action-text{font-size:14px;color:var(--cream2);font-weight:300;line-height:1.6;}
+.action-text strong{color:var(--cream);font-weight:500;}
+.insight-block{padding:36px 40px;border-left:3px solid var(--amber);background:rgba(240,146,58,.05);margin:48px 0;}
+.insight-block p{font-family:'Syne',sans-serif;font-size:clamp(16px,2.2vw,22px);font-weight:400;font-style:italic;color:var(--cream);line-height:1.5;opacity:.9;}
+.outcome-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:12px;}
+@media(max-width:500px){.outcome-grid{grid-template-columns:1fr;}}
+.outcome-card{padding:28px 24px;background:rgba(255,255,255,.02);border:1px solid rgba(245,200,66,.1);}
+.outcome-card .oc-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--yellow);margin-bottom:10px;opacity:.7;}
+.outcome-card p{font-size:13px;color:var(--cream2);font-weight:300;line-height:1.6;}
+.outcome-card p strong{color:var(--cream);font-weight:500;}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:4px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;text-decoration:none;cursor:pointer;transition:all .25s;border:none;}
+.btn-p{background:var(--amber);color:#fff;}
+.btn-p:hover{opacity:.85;box-shadow:0 0 40px rgba(240,146,58,.4);transform:translateY(-2px);}
+.btn-s{background:transparent;color:var(--cream2);border:1px solid rgba(240,234,216,.1);}
+.btn-s:hover{border-color:rgba(240,234,216,.22);color:var(--cream);}
+.case-cta{padding:80px 0;border-top:1px solid rgba(240,234,216,.07);}
+.cta-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:32px;}
+.cta-text h3{font-family:'Syne',sans-serif;font-size:clamp(20px,3vw,28px);font-weight:700;color:var(--cream);margin-bottom:8px;}
+.cta-text p{font-size:14px;color:var(--cream2);font-weight:300;}
+.cases-nav{padding:48px 0;border-top:1px solid rgba(240,234,216,.05);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.case-nav-link{text-decoration:none;display:flex;flex-direction:column;gap:4px;max-width:240px;}
+.case-nav-link .cnl-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--cream2);opacity:.5;}
+.case-nav-link .cnl-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--cream2);transition:color .2s;}
+.case-nav-link:hover .cnl-title{color:var(--amber);}
+.case-nav-link.next{text-align:right;}
+body.fr [data-en]{display:none;}
+body:not(.fr) [data-fr]{display:none;}
+</style>
+</head>
+<body>
+<canvas id="bg-canvas"></canvas>
+<div class="cur" id="cur"></div>
+<div class="cur-ring" id="cur-ring"></div>
+<nav>
+  <a href="index.html" class="nav-logo">AM.</a>
+  <a href="index.html#cases" class="nav-back">← <span data-en>All cases</span><span data-fr>Tous les cas</span></a>
+  <div class="lang-toggle">
+    <button class="lang-btn active" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" onclick="setLang('fr')">FR</button>
+  </div>
+</nav>
+
+<div class="case-hero">
+  <div class="case-hero-inner">
+    <div class="case-label"><span class="case-num">Case 03 / 04</span> <span data-en>Solo build + Org transformation</span><span data-fr>Build solo + Transformation orga</span></div>
+    <h1 class="case-title" data-en>140 children.<br><em>Zero paper.</em> One app.</h1>
+    <h1 class="case-title" data-fr>140 enfants.<br><em>Zéro papier.</em> Une app.</h1>
+    <p class="case-intro" data-en>Designed and built alone a tablet app that replaced all paper workflows at Geneva's largest summer camp. Then transformed the entire organization's governance from chaotic hierarchy to structured holacracy.</p>
+    <p class="case-intro" data-fr>Conçu et construit seul une app tablette qui a remplacé tous les workflows papier du plus grand camp de vacances de Genève. Puis transformé toute la gouvernance organisationnelle d'une hiérarchie chaotique vers une holacratie structurée.</p>
+    <div class="case-meta-bar">
+      <div class="meta-item"><div class="meta-label" data-en>Organization</div><div class="meta-label" data-fr>Organisation</div><div class="meta-val">Genève-loisirs</div></div>
+      <div class="meta-item"><div class="meta-label" data-en>Location</div><div class="meta-label" data-fr>Lieu</div><div class="meta-val" data-en>Parc des Évaux, Geneva</div><div class="meta-val" data-fr>Parc des Évaux, Genève</div></div>
+      <div class="meta-item"><div class="meta-label" data-en>Scale</div><div class="meta-label" data-fr>Échelle</div><div class="meta-val" data-en>Up to 140 children / session</div><div class="meta-val" data-fr>Jusqu'à 140 enfants / session</div></div>
+      <div class="meta-item"><div class="meta-label" data-en>Team</div><div class="meta-label" data-fr>Équipe</div><div class="meta-val" data-en>60 monitors, 30 partner associations</div><div class="meta-val" data-fr>60 moniteurs, 30 associations partenaires</div></div>
+      <div class="meta-item"><div class="meta-label" data-en>Deliverables</div><div class="meta-label" data-fr>Livrables</div><div class="meta-val" data-en>Custom tablet app + Holacracy</div><div class="meta-val" data-fr>App tablette sur mesure + Holacratie</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="stats-row rv d1">
+    <div class="stat-card"><div class="stat-val">140</div><div class="stat-desc" data-en>Children managed in real time</div><div class="stat-desc" data-fr>Enfants gérés en temps réel</div></div>
+    <div class="stat-card"><div class="stat-val">0</div><div class="stat-desc" data-en>Paper sheets remaining</div><div class="stat-desc" data-fr>Feuilles papier restantes</div></div>
+    <div class="stat-card"><div class="stat-val">2in1</div><div class="stat-desc" data-en>Tech product + org transformation</div><div class="stat-desc" data-fr>Produit tech + transformation orga</div></div>
+  </div>
+
+  <div class="case-body">
+
+    <section class="rv d1">
+      <div class="section-tag" data-en>The situation</div>
+      <div class="section-tag" data-fr>La situation</div>
+      <h2 class="block-title" data-en>Dozens of paper sheets. Every week. For everything.</h2>
+      <h2 class="block-title" data-fr>Des dizaines de feuilles papier. Chaque semaine. Pour tout.</h2>
+      <p class="body-text" data-en>Genève-loisirs runs summer camps for 4 to 15 year olds in the Parc des Évaux in Geneva — up to 140 children per session, with 60 monitors and partnerships with 30 local associations. Every week, the team printed dozens of paper sheets: attendance lists, meal counts, special dietary needs, medical information, activity assignments.</p>
+      <p class="body-text" data-fr>Genève-loisirs organise des camps de vacances pour les 4-15 ans dans le parc des Évaux à Genève — jusqu'à 140 enfants par session, avec 60 moniteurs et des partenariats avec 30 associations locales. Chaque semaine, l'équipe imprimait des dizaines de feuilles papier : listes de présence, effectifs repas, spécificités alimentaires, informations médicales, assignations d'activités.</p>
+
+      <div class="two-col rv d2">
+        <div class="problem-card">
+          <div class="pc-label" data-en>The paper problem</div>
+          <div class="pc-label" data-fr>Le problème papier</div>
+          <p data-en>Any modification — a child staying for dinner, a new dietary restriction, a change in activity — required reprinting the entire sheet. Real-time data was impossible. Errors were common.</p>
+          <p data-fr>Toute modification — un enfant qui reste dîner, une nouvelle restriction alimentaire, un changement d'activité — nécessitait réimprimer toute la feuille. La donnée en temps réel était impossible. Les erreurs étaient fréquentes.</p>
+        </div>
+        <div class="problem-card">
+          <div class="pc-label" data-en>The governance problem</div>
+          <div class="pc-label" data-fr>Le problème de gouvernance</div>
+          <p data-en>The organization ran on informal hierarchy and institutional memory. Veterans "knew how things worked" but nothing was formalized. No clear roles, no documented responsibilities. Chaos dressed as routine.</p>
+          <p data-fr>L'organisation fonctionnait sur une hiérarchie informelle et la mémoire institutionnelle. Les anciens "savaient comment ça marchait" mais rien n'était formalisé. Pas de rôles clairs, pas de responsabilités documentées. Du chaos habillé en routine.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="rv d1">
+      <div class="section-tag blue" data-en>The app</div>
+      <div class="section-tag blue" data-fr>L'application</div>
+      <h2 class="block-title" data-en>Built alone. From need to production.</h2>
+      <h2 class="block-title" data-fr>Construit seul. Du besoin à la production.</h2>
+      <p class="body-text" data-en>I started by listening — really listening. Interviews with monitors, team leaders, directors. Mapping every workflow that involved paper. Understanding the edge cases: a child who changes their mind about an activity, dietary restrictions added mid-week, a parent picking up early.</p>
+      <p class="body-text" data-fr>J'ai commencé par écouter — vraiment écouter. Interviews avec les moniteurs, responsables de groupes, direction. Cartographie de chaque workflow impliquant du papier. Comprendre les cas limites : un enfant qui change d'avis sur une activité, des restrictions alimentaires ajoutées en milieu de semaine, un parent qui vient chercher son enfant plus tôt.</p>
+      <div class="actions rv d2">
+        <div class="action-item"><div class="action-num">01</div><div class="action-text" data-en><strong>One tablet per age group</strong> — each "village" (age group) had its own tablet with its full list of children. Real-time attendance, meal choices, activity assignments, special needs visible at a glance.</div><div class="action-text" data-fr><strong>Une tablette par tranche d'âge</strong> — chaque "village" (tranche d'âge) avait sa propre tablette avec sa liste complète d'enfants. Présences, choix repas, assignations activités, besoins spécifiques visibles en un coup d'œil.</div></div>
+        <div class="action-item"><div class="action-num">02</div><div class="action-text" data-en><strong>Real-time sync for the direction</strong> — the management could see total headcounts at any moment: how many children on site, how many staying for dinner, how many in each activity. No more counting by hand, no more waiting for paper reports.</div><div class="action-text" data-fr><strong>Synchronisation temps réel pour la direction</strong> — la direction pouvait voir les effectifs totaux à tout moment : combien d'enfants sur site, combien restent dîner, combien dans chaque activité. Plus de comptages à la main, plus d'attente des rapports papier.</div></div>
+        <div class="action-item"><div class="action-num">03</div><div class="action-text" data-en><strong>Dynamic activity management</strong> — children could attend optional activities that changed daily. The app handled the complexity: a child registered for swimming in the morning might be reassigned to painting in the afternoon. All synchronized.</div><div class="action-text" data-fr><strong>Gestion dynamique des activités</strong> — les enfants pouvaient participer à des activités optionnelles qui changeaient quotidiennement. L'app gérait la complexité : un enfant inscrit à la natation le matin pouvait être réassigné à la peinture l'après-midi. Tout synchronisé.</div></div>
+        <div class="action-item"><div class="action-num">04</div><div class="action-text" data-en><strong>Safety-critical data always accessible</strong> — medical needs, allergies, emergency contacts. Information that used to be buried in paper files was now immediately visible to any monitor who needed it.</div><div class="action-text" data-fr><strong>Données critiques de sécurité toujours accessibles</strong> — besoins médicaux, allergies, contacts d'urgence. Des informations qui étaient auparavant enfouies dans des dossiers papier désormais immédiatement visibles par tout moniteur qui en avait besoin.</div></div>
+      </div>
+      <div class="insight-block">
+        <p data-en>"The app didn't replace the humans. It freed them from the administrative burden so they could focus on the children."</p>
+        <p data-fr>"L'app n'a pas remplacé les humains. Elle les a libérés de la charge administrative pour qu'ils puissent se concentrer sur les enfants."</p>
+      </div>
+    </section>
+
+    <section class="rv d1">
+      <div class="section-tag yellow" data-en>The org transformation</div>
+      <div class="section-tag yellow" data-fr>La transformation orga</div>
+      <h2 class="block-title" data-en>From "that's how we've always done it" to a structure people love.</h2>
+      <h2 class="block-title" data-fr>De "on a toujours fait comme ça" à une structure que les gens adorent.</h2>
+      <p class="body-text" data-en>The technology was only half the mission. The organization itself needed restructuring. In partnership with Archipel Kyosei collective and the Résiliences firm — specialists in distributed governance — we introduced Holacracy.</p>
+      <p class="body-text" data-fr>La technologie n'était que la moitié de la mission. L'organisation elle-même avait besoin d'être restructurée. En partenariat avec le collectif Archipel Kyosei et le cabinet Résiliences — spécialistes de la gouvernance distribuée — nous avons introduit l'holacratie.</p>
+      <p class="body-text" data-en>This meant defining every role's purpose, domain, and accountabilities. Moving from "the veterans know" to "everyone knows." The transition was hard at first — <strong>people who'd worked by feel for years resisted structure.</strong> Then something shifted: when the structure started working, they loved it.</p>
+      <p class="body-text" data-fr>Cela signifiait définir la raison d'être, le domaine et les redevabilités de chaque rôle. Passer de "les anciens savent" à "tout le monde sait". La transition a été difficile au départ — <strong>les personnes qui avaient travaillé à l'intuition pendant des années résistaient à la structure.</strong> Puis quelque chose a basculé : quand la structure a commencé à fonctionner, ils ont adoré.</p>
+      <div class="insight-block">
+        <p data-en>"The hardest part wasn't the technology. It was convincing people who'd worked by intuition for years that a clear structure would give them more freedom, not less."</p>
+        <p data-fr>"La partie la plus difficile n'était pas la technologie. C'était convaincre des personnes qui avaient travaillé à l'intuition pendant des années qu'une structure claire leur donnerait plus de liberté, pas moins."</p>
+      </div>
+    </section>
+
+    <section class="rv d1">
+      <div class="section-tag" data-en>Outcomes</div>
+      <div class="section-tag" data-fr>Résultats</div>
+      <h2 class="block-title" data-en>What changed. What remained.</h2>
+      <h2 class="block-title" data-fr>Ce qui a changé. Ce qui a perduré.</h2>
+      <div class="outcome-grid">
+        <div class="outcome-card"><div class="oc-label" data-en>Operational efficiency</div><div class="oc-label" data-fr>Efficacité opérationnelle</div><p data-en>Massive time savings for the entire team. Zero paper reprinting. Real-time data available to everyone who needs it.</p><p data-fr>Gain de temps massif pour toute l'équipe. Zéro réimpression papier. Données temps réel disponibles pour tous ceux qui en ont besoin.</p></div>
+        <div class="outcome-card"><div class="oc-label" data-en>Child safety</div><div class="oc-label" data-fr>Sécurité des enfants</div><p data-en><strong>Critical safety data always accessible</strong> — allergies, medical needs, emergency contacts — to any monitor in real time.</p><p data-fr><strong>Données de sécurité critiques toujours accessibles</strong> — allergies, besoins médicaux, contacts d'urgence — pour tout moniteur en temps réel.</p></div>
+        <div class="outcome-card"><div class="oc-label" data-en>Governance</div><div class="oc-label" data-fr>Gouvernance</div><p data-en>A formalized organization where roles, responsibilities and domains are clear. The institutional knowledge is now documented, not locked in people's heads.</p><p data-fr>Une organisation formalisée où les rôles, responsabilités et domaines sont clairs. La mémoire institutionnelle est désormais documentée, pas enfermée dans les têtes.</p></div>
+        <div class="outcome-card"><div class="oc-label" data-en>Human impact</div><div class="oc-label" data-fr>Impact humain</div><p data-en>Teams that initially resisted ended up embracing the new structure. The structure gave them clarity and freedom — and they felt it.</p><p data-fr>Les équipes qui résistaient au départ ont fini par adopter la nouvelle structure. La structure leur a donné de la clarté et de la liberté — et ils l'ont ressenti.</p></div>
+      </div>
+    </section>
+
+    <div class="case-cta rv">
+      <div class="cta-inner">
+        <div class="cta-text">
+          <h3 data-en>You have an organization to restructure?</h3>
+          <h3 data-fr>Vous avez une organisation à restructurer ?</h3>
+          <p data-en>In 45 minutes, we get clear on where you are, where you want to go, and what it takes to get there.</p>
+          <p data-fr>En 45 minutes, on pose la clarté sur où vous en êtes, où vous voulez aller, et ce qu'il faut pour y arriver.</p>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="https://calendly.com/a-mechkar/decouverte-45-min" target="_blank" class="btn btn-p" data-en>Book a free 45-min call →</a>
+          <a href="https://calendly.com/a-mechkar/decouverte-45-min" target="_blank" class="btn btn-p" data-fr>Réserver un appel gratuit →</a>
+          <a href="index.html" class="btn btn-s" data-en>Back to home</a>
+          <a href="index.html" class="btn btn-s" data-fr>Retour à l'accueil</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="cases-nav rv">
+      <a href="case-deligreens.html" class="case-nav-link">
+        <div class="cnl-label" data-en>Previous case</div>
+        <div class="cnl-label" data-fr>Cas précédent</div>
+        <div class="cnl-title" data-en>← Full product, zero to one</div>
+        <div class="cnl-title" data-fr>← Produit complet, zéro à un</div>
+      </a>
+      <a href="case-millet.html" class="case-nav-link next">
+        <div class="cnl-label" data-en>Next case</div>
+        <div class="cnl-label" data-fr>Cas suivant</div>
+        <div class="cnl-title" data-en>Millet, governance transformation →</div>
+        <div class="cnl-title" data-fr>Millet, transformation de gouvernance →</div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+const canvas=document.getElementById('bg-canvas');const ctx=canvas.getContext('2d');let W,H;function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}resize();window.addEventListener('resize',resize);
+const pts=[];for(let i=0;i<40;i++)pts.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.2+.2,vx:(Math.random()-.5)*.2,vy:(Math.random()-.5)*.2,a:Math.random()*.2+.04});
+let tick=0;function draw(){tick++;const r=240,g=146,b=58;ctx.clearRect(0,0,W,H);const t=tick*.002;const g1=ctx.createRadialGradient(W*.3+Math.sin(t)*W*.15,H*.4+Math.cos(t*.7)*H*.1,0,W*.3,H*.4,W*.7);g1.addColorStop(0,`rgba(${r},${g},${b},.08)`);g1.addColorStop(1,`rgba(0,0,0,0)`);ctx.fillStyle=g1;ctx.fillRect(0,0,W,H);pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=`rgba(${r},${g},${b},${p.a})`;ctx.fill();});requestAnimationFrame(draw);}draw();
+const cur=document.getElementById('cur'),cr=document.getElementById('cur-ring');let mx=0,my=0,rx=0,ry=0;document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});(function ar(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;cr.style.left=rx+'px';cr.style.top=ry+'px';requestAnimationFrame(ar);})();
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');}});},{threshold:.08});document.querySelectorAll('.rv,.stat-card').forEach(el=>{obs.observe(el);});
+function setLang(l){document.body.classList.toggle('fr',l==='fr');document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent===l.toUpperCase()));}
+</script>
+</body>
+</html>
