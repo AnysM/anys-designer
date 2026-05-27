@@ -17,12 +17,13 @@
   --blue-l:   #4a7aff;
   --yellow:   #f5c842;
   --coral:    #e8533c;
-  --pad: clamp(20px,5vw,48px);
+  --pad: clamp(16px,4vw,48px);
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--cream);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden;}
+body{background:var(--bg);color:var(--cream);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.65;overflow-x:hidden;}
 @media(pointer:fine){body{cursor:none;}}
+@media(max-width:640px){body{font-size:14px;line-height:1.6;}}
 
 /* CURSOR */
 .cur,.cur-ring{position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);display:none;}
@@ -48,13 +49,9 @@ nav::before{content:'';position:absolute;inset:0;background:linear-gradient(to b
 /* SECTIONS */
 section{position:relative;z-index:1;}
 .container{max-width:1100px;margin:0 auto;padding:0 var(--pad);}
-.sec-dark{background:transparent;padding:clamp(60px,10vw,120px) 0;}
-.sec-blue{background:rgba(15,42,122,.85);backdrop-filter:blur(2px);padding:clamp(60px,10vw,120px) 0;}
-.sec-cream{background:var(--cream-bg);padding:clamp(60px,10vw,120px) 0;color:#111;}
-.sec-coral{background:#1a0a06;padding:clamp(60px,10vw,120px) 0;}
 .photo-bg{position:absolute;inset:0;background-size:cover;background-position:center;z-index:0;pointer-events:none;}
 #hero .photo-bg{background-position:right center;opacity:.12;}
-#projects .photo-bg{background-position:center 30%;opacity:.07;}
+#cases .photo-bg{background-position:center 30%;opacity:.07;}
 #contact .photo-bg{background-position:center 40%;opacity:.07;}
 
 .sec-cream .section-label,.sec-cream .sp-num{color:var(--blue);}
@@ -66,8 +63,12 @@ section{position:relative;z-index:1;}
 .sec-coral .section-label{color:var(--coral);}
 .sec-coral .section-title{color:var(--cream);}
 
-.section-label{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--blue-l);margin-bottom:16px;}
-.section-title{font-family:'Syne',sans-serif;font-size:clamp(28px,4vw,52px);font-weight:700;letter-spacing:-.02em;line-height:1.1;margin-bottom:48px;}
+.section-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--blue-l);margin-bottom:12px;}
+.section-title{font-family:'Syne',sans-serif;font-size:clamp(22px,4vw,52px);font-weight:700;letter-spacing:-.02em;line-height:1.1;margin-bottom:36px;}
+.sec-dark{background:transparent;padding:clamp(40px,8vw,120px) 0;}
+.sec-blue{background:rgba(15,42,122,.85);backdrop-filter:blur(2px);padding:clamp(40px,8vw,120px) 0;}
+.sec-cream{background:var(--cream-bg);padding:clamp(40px,8vw,120px) 0;color:#111;}
+.sec-coral{background:#1a0a06;padding:clamp(40px,8vw,120px) 0;}
 
 /* REVEAL — visible par défaut, animation au scroll en bonus */
 .rv,.rv-l,.rv-r{opacity:1;transform:none;transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);}
@@ -88,18 +89,19 @@ section{position:relative;z-index:1;}
 .hero-scroll{display:none;}
 .hero-tag{display:inline-flex;align-items:center;gap:8px;font-family:'DM Mono',monospace;font-size:11px;color:var(--blue-l);letter-spacing:.1em;text-transform:uppercase;margin-bottom:20px;opacity:0;animation:fup .8s .3s forwards;}
 .hero-tag::before{content:'';display:block;width:20px;height:1px;background:var(--blue-l);}
-.hero-title-wrap{font-family:'Syne',sans-serif;font-size:clamp(36px,6vw,80px);font-weight:800;line-height:1;letter-spacing:-.03em;margin-bottom:24px;opacity:0;animation:fup .9s .5s forwards;}
+.hero-title-wrap{font-family:'Syne',sans-serif;font-size:clamp(28px,6vw,80px);font-weight:800;line-height:1;letter-spacing:-.03em;margin-bottom:20px;opacity:0;animation:fup .9s .5s forwards;}
 .line-cream{color:var(--cream);display:block;}
 .line-blue{color:var(--blue-l);display:block;min-height:1.1em;}
 .cur-blink{display:inline-block;width:3px;height:.85em;background:var(--blue-l);margin-left:4px;vertical-align:middle;animation:blink 1s step-end infinite;}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
 @keyframes fup{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 .hero-sub-wrap{opacity:0;animation:fup .9s .8s forwards;}
-.hero-sub{font-size:clamp(14px,1.7vw,16px);font-weight:300;color:var(--cream2);line-height:1.7;margin-bottom:16px;}
+.hero-sub{font-size:clamp(13px,1.7vw,16px);font-weight:300;color:var(--cream2);line-height:1.65;margin-bottom:14px;}
 .hero-sub strong{color:var(--cream);font-weight:500;}
-.hero-sub-detail{font-size:13px;font-weight:300;color:var(--cream2);line-height:1.7;opacity:.7;}
-.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px;opacity:0;animation:fup .9s 1s forwards;}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border-radius:4px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;text-decoration:none;cursor:pointer;transition:all .25s;border:none;}
+.hero-sub-detail{font-size:12px;font-weight:300;color:var(--cream2);line-height:1.65;opacity:.7;}
+.hero-cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px;opacity:0;animation:fup .9s 1s forwards;}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:4px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;text-decoration:none;cursor:pointer;transition:all .25s;border:none;}
+@media(max-width:640px){.btn{padding:10px 16px;font-size:12px;}}
 .btn-p{background:var(--blue);color:#fff;}
 .btn-p:hover{background:var(--blue-l);box-shadow:0 0 40px rgba(74,122,255,.4);transform:translateY(-2px);}
 .btn-s{background:transparent;color:var(--cream2);border:1px solid rgba(240,234,216,.1);}
@@ -267,12 +269,14 @@ section{position:relative;z-index:1;}
 .sdot{width:6px;height:6px;background:#4ade80;border-radius:50%;box-shadow:0 0 8px #4ade80;animation:spls 2s ease-in-out infinite;}
 @keyframes spls{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
 
-/* LANG */
-[data-fr]{display:none;}
-body.fr [data-en]{display:none;}
-body.fr [data-fr]{display:block;}
-body.fr span[data-fr]{display:inline;}
-body.fr span[data-en]{display:none;}
+/* LANG — FR par défaut */
+[data-en]{display:none;}
+body.en [data-fr]{display:none;}
+body.en [data-en]{display:block;}
+body.en span[data-en]{display:inline;}
+body.en span[data-fr]{display:none;}
+body:not(.en) [data-fr]{display:block;}
+body:not(.en) span[data-fr]{display:inline;}
 
 ::-webkit-scrollbar{width:3px;}
 ::-webkit-scrollbar-track{background:var(--bg);}
@@ -294,8 +298,8 @@ body.fr span[data-en]{display:none;}
     <li><a href="https://calendly.com/a-mechkar/decouverte-45-min" target="_blank" data-en>Book a call</a><a href="https://calendly.com/a-mechkar/decouverte-45-min" target="_blank" data-fr>Réserver</a></li>
   </ul>
   <div class="lang-toggle">
-    <button class="lang-btn active" onclick="setLang('en')">EN</button>
-    <button class="lang-btn" onclick="setLang('fr')">FR</button>
+    <button class="lang-btn" onclick="setLang('en')">EN</button>
+    <button class="lang-btn active" onclick="setLang('fr')">FR</button>
   </div>
 </nav>
 
@@ -316,8 +320,8 @@ body.fr span[data-en]{display:none;}
           <p class="hero-sub-detail" data-en>Product strategy · UX/UI · Team building · Agile · Change management · AI. 15 years. 3 countries.</p>
           <p class="hero-sub-detail" data-fr>Stratégie produit · UX/UI · Team building · Agile · Conduite du changement · IA. 15 ans. 3 pays.</p>
           <div class="hero-cta">
-            <a href="https://calendly.com/a-mechkar/decouverte-45-min" target="_blank" class="btn btn-p" data-en>Book a 45-min call →</a>
-            <a href="https://calendly.com/a-mechkar/decouverte-45-min" target="_blank" class="btn btn-p" data-fr>Réserver un appel 45 min →</a>
+            <a href="https://calendly.com/a-mechkar/decouverte-45-min?locale=en" target="_blank" class="btn btn-p" data-en>Book a 45-min call →</a>
+            <a href="https://calendly.com/a-mechkar/decouverte-45-min?locale=fr" target="_blank" class="btn btn-p" data-fr>Réserver un appel 45 min →</a>
             <a href="#cases" class="btn btn-s" data-en>See case studies</a>
             <a href="#cases" class="btn btn-s" data-fr>Voir les cas clients</a>
           </div>
@@ -433,8 +437,23 @@ body.fr span[data-en]{display:none;}
               <div class="tl-role" data-fr>Product Designer & Directeur Créatif</div>
               <div class="tl-period" data-en>9 years running</div>
               <div class="tl-period" data-fr>9 ans en cours</div>
-              <p class="tl-story" data-en>EFIYA — travel planning P2P platform. Genève Loisirs — custom tablet app replacing all paper workflows. IN CARNE — <strong>La Forge</strong>, a gamified app for a 120-day men's program. Designed, built and shipped entirely solo, from concept to production.</p>
-              <p class="tl-story" data-fr>EFIYA — plateforme de planification de voyage P2P. Genève Loisirs — app tablette sur mesure. IN CARNE — <strong>La Forge</strong>, app gamifiée pour un programme de 120 jours pour hommes. Conçue, construite et livrée entièrement seul, du concept à la production.</p>
+              <p class="tl-story" data-en>Genève-loisirs — custom tablet app replacing all paper workflows + Holacracy transformation. IN CARNE — <strong>La Forge</strong>, a gamified app for a 120-day men's program. Multiple branding and product missions for clients.</p>
+              <p class="tl-story" data-fr>Genève-loisirs — app tablette sur mesure + transformation holacratie. IN CARNE — <strong>La Forge</strong>, app gamifiée pour un programme de 120 jours pour hommes. Missions branding et produit pour clients.</p>
+            </div>
+          </div>
+        </div>
+        <div class="tl-item rv d3" id="tl-enedis">
+          <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+          <div class="tl-content">
+            <div class="tl-year">2025</div>
+            <div class="tl-card">
+              <div class="tl-company">Enedis <span style="font-size:11px;opacity:.5;font-weight:400;">via Talan</span></div>
+              <div class="tl-role" data-en>Product Owner — SAFe environment</div>
+              <div class="tl-role" data-fr>Product Owner — environnement SAFe</div>
+              <div class="tl-period" data-en>6 months</div>
+              <div class="tl-period" data-fr>6 mois</div>
+              <p class="tl-story" data-en>Mission at France's main electricity distribution company. Functional framing, user stories, inter-squad coordination, backlog management, acceptance testing. Operating in a <strong>SAFe (Scaled Agile) environment</strong> within a large organisation.</p>
+              <p class="tl-story" data-fr>Mission chez le principal gestionnaire de réseau électrique en France. Cadrage fonctionnel, user stories, coordination inter-squads, gestion du backlog, recettes. Opération en <strong>environnement SAFe (Agile à l'échelle)</strong> dans une grande organisation.</p>
             </div>
           </div>
         </div>
@@ -466,18 +485,18 @@ body.fr span[data-en]{display:none;}
         <a href="case-proximedia.html" class="btn btn-s" style="margin-top:16px;font-size:12px;padding:10px 18px;" data-fr>Lire le cas complet →</a>
       </div>
       <div class="proj-card c-coral rv-r d2">
-        <div class="proj-idx">02 / Startup bio livraison — Investisseur Carrefour</div>
+        <div class="proj-idx">02 / Deligreens — Investisseur Carrefour</div>
         <h3 class="proj-name" data-en>Full product, zero to one.</h3>
         <h3 class="proj-name" data-fr>Produit complet, zéro à un.</h3>
         <p class="proj-ctx" data-en>Brand identity, e-commerce platform, custom logistics app built in-house instead of buying an inadequate off-the-shelf tool. Holacracy governance from day one. The whole product, at once, fast.</p>
         <p class="proj-ctx" data-fr>Identité visuelle, e-commerce, app logistique sur mesure construite en interne plutôt qu'adopter un outil inadapté. Gouvernance holacratie dès le départ. Le produit complet, en même temps, vite.</p>
         <div class="proj-tags"><span class="tag">Branding</span><span class="tag">E-commerce</span><span class="tag">Holacracy</span><span class="tag" data-en>Custom Dev</span><span class="tag" data-fr>Dev sur mesure</span></div>
-        <div class="proj-impact" data-en><strong>A to Z product</strong> · Backed by Carrefour</div>
-        <div class="proj-impact" data-fr><strong>Produit de A à Z</strong> · Soutenu par Carrefour</div>
+        <div class="proj-impact" data-en><strong>A to Z product</strong> · Backed by Carrefour · Acquired by Le Comptoir Local</div>
+        <div class="proj-impact" data-fr><strong>Produit de A à Z</strong> · Soutenu par Carrefour · Racheté par Le Comptoir Local</div>
         <a href="case-deligreens.html" class="btn btn-s" style="margin-top:16px;font-size:12px;padding:10px 18px;" data-en>Read full case →</a>
         <a href="case-deligreens.html" class="btn btn-s" style="margin-top:16px;font-size:12px;padding:10px 18px;" data-fr>Lire le cas complet →</a>
       </div>
-      <div class="proj-card c-blue rv-l d1">
+      <div class="proj-card c-blue rv-l d1" style="grid-column:1/-1;max-width:560px;">
         <div class="proj-idx">03 / Genève-loisirs</div>
         <h3 class="proj-name" data-en>140 children. Zero paper. One app.</h3>
         <h3 class="proj-name" data-fr>140 enfants. Zéro papier. Une app.</h3>
@@ -488,18 +507,6 @@ body.fr span[data-en]{display:none;}
         <div class="proj-impact" data-fr><strong>Gain de temps massif</strong> · Transformation orga complète</div>
         <a href="case-geneve-loisirs.html" class="btn btn-s" style="margin-top:16px;font-size:12px;padding:10px 18px;" data-en>Read full case →</a>
         <a href="case-geneve-loisirs.html" class="btn btn-s" style="margin-top:16px;font-size:12px;padding:10px 18px;" data-fr>Lire le cas complet →</a>
-      </div>
-      <div class="proj-card c-yellow rv-r d2">
-        <div class="proj-idx">04 / Millet Mountain Group × Archipel Kyosei × Résiliences</div>
-        <h3 class="proj-name" data-en>Governance transformation for a 100-year-old brand.</h3>
-        <h3 class="proj-name" data-fr>Transformation de gouvernance pour une marque centenaire.</h3>
-        <p class="proj-ctx" data-en>Facilitated a full-day organizational restructuring and team building session for Millet — the French outdoor brand founded in 1921. Delivered through Archipel Kyosei collective in partnership with Résiliences, specialists in distributed governance.</p>
-        <p class="proj-ctx" data-fr>Animation d'une journée complète de restructuration organisationnelle et team building pour Millet — la marque outdoor française fondée en 1921. Réalisé via le collectif Archipel Kyosei en partenariat avec Résiliences, spécialistes de la gouvernance distribuée.</p>
-        <div class="proj-tags"><span class="tag">Facilitation</span><span class="tag">Holacracy</span><span class="tag" data-en>Team Building</span><span class="tag" data-fr>Team Building</span></div>
-        <div class="proj-impact" data-en><strong>Millet — founded 1921</strong> · Collective mission</div>
-        <div class="proj-impact" data-fr><strong>Millet — fondée en 1921</strong> · Mission collective</div>
-        <a href="case-millet.html" class="btn btn-s" style="margin-top:16px;font-size:12px;padding:10px 18px;" data-en>Read full case →</a>
-        <a href="case-millet.html" class="btn btn-s" style="margin-top:16px;font-size:12px;padding:10px 18px;" data-fr>Lire le cas complet →</a>
       </div>
     </div>
   </div>
@@ -522,7 +529,7 @@ body.fr span[data-en]{display:none;}
       <div class="rv-r d2"><div class="sk-group-title">Product</div>
         <div class="sk-row"><span class="sk-name">Product Management</span><div class="sk-track"><div class="sk-fill" data-level="100"></div></div><span class="sk-lvl">5/5</span></div>
         <div class="sk-row"><span class="sk-name" data-en>Product Strategy</span><span class="sk-name" data-fr>Stratégie produit</span><div class="sk-track"><div class="sk-fill" data-level="80"></div></div><span class="sk-lvl">4/5</span></div>
-        <div class="sk-row"><span class="sk-name">Agile / Scrum</span><div class="sk-track"><div class="sk-fill" data-level="80"></div></div><span class="sk-lvl">4/5</span></div>
+        <div class="sk-row"><span class="sk-name">Agile / Scrum / SAFe</span><div class="sk-track"><div class="sk-fill" data-level="80"></div></div><span class="sk-lvl">4/5</span></div>
       </div>
       <div class="rv-l d1"><div class="sk-group-title">Tech</div>
         <div class="sk-row"><span class="sk-name" data-en>No-code / AI tools</span><span class="sk-name" data-fr>No-code / Outils IA</span><div class="sk-track"><div class="sk-fill" data-level="100"></div></div><span class="sk-lvl">5/5</span></div>
@@ -532,6 +539,26 @@ body.fr span[data-en]{display:none;}
         <div class="sk-row"><span class="sk-name" data-en>Team Management</span><span class="sk-name" data-fr>Management équipe</span><div class="sk-track"><div class="sk-fill" data-level="100"></div></div><span class="sk-lvl">5/5</span></div>
         <div class="sk-row"><span class="sk-name">Facilitation</span><div class="sk-track"><div class="sk-fill" data-level="80"></div></div><span class="sk-lvl">4/5</span></div>
         <div class="sk-row"><span class="sk-name" data-en>Change Management</span><span class="sk-name" data-fr>Conduite du chang.</span><div class="sk-track"><div class="sk-fill" data-level="80"></div></div><span class="sk-lvl">4/5</span></div>
+      </div>
+    </div>
+    <div class="rv" style="margin-top:48px;padding-top:40px;border-top:1px solid rgba(240,234,216,.07);">
+      <div class="section-label" data-en>Certifications & training</div>
+      <div class="section-label" data-fr>Certifications & formations</div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:16px;">
+        <div style="padding:12px 20px;border:1px solid rgba(74,122,255,.2);background:rgba(74,122,255,.05);font-family:'DM Mono',monospace;font-size:11px;color:var(--cream2);">PSPO I <span style="color:var(--blue-l);">· Professional Scrum Product Owner</span></div>
+        <div style="padding:12px 20px;border:1px solid rgba(245,200,66,.2);background:rgba(245,200,66,.05);font-family:'DM Mono',monospace;font-size:11px;color:var(--cream2);" data-en>À l'instant Z <span style="color:var(--yellow);">· Holacracy, Dragon Dreaming & beyond</span></div>
+        <div style="padding:12px 20px;border:1px solid rgba(245,200,66,.2);background:rgba(245,200,66,.05);font-family:'DM Mono',monospace;font-size:11px;color:var(--cream2);" data-fr>À l'instant Z <span style="color:var(--yellow);">· Holacratie, Dragon Dreaming & autres</span></div>
+        <div style="padding:12px 20px;border:1px solid rgba(240,234,216,.1);background:rgba(240,234,216,.03);font-family:'DM Mono',monospace;font-size:11px;color:var(--cream2);" data-en>CYTech / EISTI <span style="color:var(--cream2);opacity:.6;">· Engineer in Computer Science & Management</span></div>
+        <div style="padding:12px 20px;border:1px solid rgba(240,234,216,.1);background:rgba(240,234,216,.03);font-family:'DM Mono',monospace;font-size:11px;color:var(--cream2);" data-fr>CYTech / EISTI <span style="color:var(--cream2);opacity:.6;">· Ingénieur Informatique & Management</span></div>
+      </div>
+    </div>
+    <div class="rv" style="margin-top:40px;padding-top:36px;border-top:1px solid rgba(240,234,216,.07);">
+      <div class="section-label" data-en>They worked with me</div>
+      <div class="section-label" data-fr>Ils ont travaillé avec moi</div>
+      <div style="margin-top:16px;padding:28px 32px;border-left:3px solid var(--blue-l);background:rgba(74,122,255,.04);max-width:720px;">
+        <p style="font-family:'DM Sans',sans-serif;font-size:14px;font-weight:300;color:var(--cream2);line-height:1.75;font-style:italic;" data-en>"He was able to implement the Scrum methodology in the company with regular questioning. The result met expectations despite the skepticism of the stakeholders. He was able to protect the development team from pressure from various parties. He also worked hard to train Product Owners and Scrum Masters to strengthen the team."</p>
+        <p style="font-family:'DM Sans',sans-serif;font-size:14px;font-weight:300;color:var(--cream2);line-height:1.75;font-style:italic;" data-fr>"Il a su mettre en place la méthodologie Scrum dans l'entreprise avec de régulières remises en questions. Le résultat est à la hauteur des attentes et ce malgré le scepticisme des parties prenantes. Il a su préserver l'équipe de développement de la pression mise par divers intervenants. Il s'est également efforcé de former des Products Owners et des Scrum Masters pour renforcer l'équipe."</p>
+        <div style="margin-top:16px;font-family:'DM Mono',monospace;font-size:11px;color:var(--blue-l);letter-spacing:.06em;">Stéphane Ravet <span style="color:var(--cream2);opacity:.5;">· Architecte d'applications Web · IA · Automatisation · Proximedia</span></div>
       </div>
     </div>
   </div>
@@ -578,8 +605,8 @@ body.fr span[data-en]{display:none;}
       <p class="c-sub" data-en>In 45 minutes, we get clear on where you are, where you want to go, and what it takes to get there.</p>
       <p class="c-sub" data-fr>En 45 minutes, on pose la clarté sur où vous en êtes, où vous voulez aller, et ce qu'il faut pour y arriver.</p>
       <div class="c-links">
-        <a href="https://calendly.com/a-mechkar/decouverte-45-min" target="_blank" class="btn btn-p" data-en>Book a free 45-min call →</a>
-        <a href="https://calendly.com/a-mechkar/decouverte-45-min" target="_blank" class="btn btn-p" data-fr>Réserver un appel gratuit 45 min →</a>
+        <a href="https://calendly.com/a-mechkar/decouverte-45-min?locale=en" target="_blank" class="btn btn-p" data-en>Book a free 45-min call →</a>
+        <a href="https://calendly.com/a-mechkar/decouverte-45-min?locale=fr" target="_blank" class="btn btn-p" data-fr>Réserver un appel gratuit 45 min →</a>
         <a href="https://linkedin.com/in/anysmechkar" class="btn btn-s" target="_blank">LinkedIn →</a>
       </div>
       <div class="footer-line">
@@ -642,9 +669,15 @@ function rotateWord(){
   let cur=tl2.textContent;
   let ei=setInterval(()=>{cur=cur.slice(0,-1);tl2.textContent=cur;if(!cur.length){clearInterval(ei);type(tl2,next,45,()=>setTimeout(rotateWord,2200));}},28);
 }
-setTimeout(()=>type(tl1,"Hi, I'm Anys.",60,()=>type(tl2,"Product builder.",50,startRotating)),600);
+setTimeout(()=>type(tl1,"Bonjour, je suis Anys.",60,()=>type(tl2,"Product builder.",50,startRotating)),600);
 
-function setLang(l){document.body.classList.toggle('fr',l==='fr');document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent===l.toUpperCase()));}
+function setLang(l){
+  if(l==='fr'){document.body.classList.remove('en');}
+  else{document.body.classList.add('en');}
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent===l.toUpperCase()));
+}
+// FR par défaut au chargement
+document.body.classList.remove('en');
 
 const rvObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on');});},{threshold:.07});
 document.querySelectorAll('.rv,.rv-l,.rv-r').forEach(el=>{el.classList.add('pre');rvObs.observe(el);});
