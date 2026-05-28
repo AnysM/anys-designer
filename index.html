@@ -108,6 +108,25 @@ section{position:relative;z-index:1;}
 .btn-s{background:transparent;color:var(--cream2);border:1px solid rgba(240,234,216,.1);}
 .btn-s:hover{border-color:rgba(240,234,216,.22);color:var(--cream);}
 
+
+/* WHY SECTION */
+.why-situations{display:flex;flex-direction:column;gap:0;}
+.why-sit{display:grid;grid-template-columns:64px 1fr;gap:0 32px;padding:32px 0;border-top:1px solid rgba(240,234,216,.06);}
+.why-sit:last-child{border-bottom:1px solid rgba(240,234,216,.06);}
+@media(max-width:640px){.why-sit{grid-template-columns:40px 1fr;gap:0 16px;}}
+.why-sit-num{font-family:'DM Mono',monospace;font-size:11px;color:var(--blue-l);opacity:.4;padding-top:4px;letter-spacing:.06em;}
+.why-sit-title{font-family:'Syne',sans-serif;font-size:clamp(16px,1.8vw,20px);font-weight:700;color:var(--cream);line-height:1.3;margin-bottom:12px;letter-spacing:-.01em;}
+.why-sit-desc{font-size:13px;color:rgba(240,234,216,.5);font-weight:300;line-height:1.75;max-width:600px;}
+.why-cost-inner{background:rgba(74,122,255,.05);border:1px solid rgba(74,122,255,.12);border-left:3px solid var(--blue-l);padding:clamp(24px,4vw,40px);}
+.why-cost-label{font-family:'DM Mono',monospace;font-size:10px;color:var(--blue-l);letter-spacing:.12em;text-transform:uppercase;margin-bottom:20px;}
+.why-cost-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px 40px;}
+@media(max-width:640px){.why-cost-grid{grid-template-columns:1fr;}}
+.why-cost-item{font-size:13px;color:rgba(240,234,216,.65);font-weight:300;line-height:1.5;display:flex;gap:10px;align-items:baseline;}
+.why-cost-n{color:var(--blue-l);font-weight:700;flex-shrink:0;}
+.why-diff-label{font-family:'DM Mono',monospace;font-size:10px;color:var(--yellow);letter-spacing:.12em;text-transform:uppercase;margin-bottom:20px;}
+.why-diff-text{font-size:clamp(14px,1.6vw,16px);color:rgba(240,234,216,.7);font-weight:300;line-height:1.8;margin-bottom:16px;}
+.why-diff-text:last-child{margin-bottom:0;}
+
 /* SPECTRUM */
 .spectrum-wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
 @media(max-width:768px){.spectrum-wrap{grid-template-columns:1fr;gap:32px;}}
@@ -216,6 +235,23 @@ section{position:relative;z-index:1;}
 .proj-row-3 .proj-cta{background:var(--blue);color:#fff;}
 .proj-row-3 .proj-cta:hover{background:var(--blue-l);}
 @media(max-width:768px){.proj-row{grid-template-columns:1fr;direction:ltr;}.proj-row .proj-text{direction:ltr;}.proj-visual{min-height:160px;}}
+
+
+/* CROSS-FUNCTIONAL */
+.cross-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,80px);align-items:start;}
+@media(max-width:768px){.cross-grid{grid-template-columns:1fr;}}
+.cross-center{width:80px;height:80px;border-radius:50%;border:2px solid var(--blue-l);display:flex;align-items:center;justify-content:center;margin-bottom:32px;flex-shrink:0;}
+.cross-center-label{font-family:'DM Mono',monospace;font-size:9px;color:var(--blue-l);letter-spacing:.08em;text-transform:uppercase;text-align:center;line-height:1.5;}
+.cross-links{display:flex;flex-direction:column;gap:0;}
+.cross-link{padding:20px 0;border-top:1px solid rgba(240,234,216,.06);}
+.cross-link:last-child{border-bottom:1px solid rgba(240,234,216,.06);}
+.cross-link-tag{font-family:'DM Mono',monospace;font-size:10px;color:var(--blue-l);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;}
+.cross-link-desc{font-size:13px;color:rgba(240,234,216,.5);font-weight:300;line-height:1.65;}
+.cross-proof-label{font-family:'DM Mono',monospace;font-size:10px;color:var(--yellow);letter-spacing:.12em;text-transform:uppercase;margin-bottom:20px;}
+.cross-proof-text{font-size:clamp(13px,1.5vw,15px);color:rgba(240,234,216,.65);font-weight:300;line-height:1.8;margin-bottom:16px;}
+.cross-proof-certs{display:flex;flex-direction:column;gap:8px;margin-top:28px;padding-top:24px;border-top:1px solid rgba(240,234,216,.07);}
+.cross-cert{font-family:'DM Mono',monospace;font-size:11px;color:var(--cream2);opacity:.7;}
+.cross-cert span{opacity:.5;}
 
 /* SKILLS */
 .sk-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:40px 80px;}
@@ -327,6 +363,76 @@ body:not(.en) span[data-fr]{display:inline;}
     <img src="photo-anys.png" alt="Anys Mechkar">
   </div>
 </section>
+
+<section id="why" class="sec-dark" style="padding:clamp(60px,10vw,140px) 0;">
+  <div class="container">
+
+    <div class="rv" style="max-width:680px;margin-bottom:clamp(48px,8vw,96px);">
+      <div class="section-label" data-en>Why call me</div>
+      <div class="section-label" data-fr>Pourquoi faire appel à moi</div>
+      <h2 class="section-title" data-en>Something is stuck.<br>You feel it. You just can't put your finger on it.</h2>
+      <h2 class="section-title" data-fr>Quelque chose coince.<br>Vous le sentez. Mais vous n'arrivez pas à mettre le doigt dessus.</h2>
+    </div>
+
+    <div class="why-situations rv" style="margin-bottom:clamp(48px,8vw,96px);">
+      <div class="why-sit">
+        <div class="why-sit-num">01</div>
+        <div class="why-sit-body">
+          <div class="why-sit-title" data-en>The tools aren't the problem. Or maybe they are. You're not sure anymore.</div>
+          <div class="why-sit-title" data-fr>Les outils ne sont pas le problème. Ou peut-être si. Vous ne savez plus vraiment.</div>
+          <p class="why-sit-desc" data-en>You've changed tools twice. The teams work around them instead of with them. You've bought software that nobody uses. Meanwhile people build their own little workarounds in spreadsheets — and those are the ones that actually run the business.</p>
+          <p class="why-sit-desc" data-fr>Vous avez changé d'outil deux fois. Les équipes travaillent autour plutôt qu'avec. Vous avez acheté des logiciels que personne n'utilise. Pendant ce temps, des gens ont construit leurs propres contournements dans des tableurs — et ce sont eux qui font vraiment tourner le business.</p>
+        </div>
+      </div>
+      <div class="why-sit">
+        <div class="why-sit-num">02</div>
+        <div class="why-sit-body">
+          <div class="why-sit-title" data-en>You have good people. But they don't move in the same direction.</div>
+          <div class="why-sit-title" data-fr>Vous avez de bonnes personnes. Mais elles n'avancent pas dans le même sens.</div>
+          <p class="why-sit-desc" data-en>Everyone is competent. Everyone works hard. But something between them doesn't connect — silos, miscommunication, priorities that aren't shared. The problem isn't individual. It's systemic. And nobody inside can see it clearly because everyone is too close.</p>
+          <p class="why-sit-desc" data-fr>Chacun est compétent. Chacun travaille dur. Mais quelque chose entre eux ne connecte pas — silos, incompréhensions, priorités non partagées. Le problème n'est pas individuel. Il est systémique. Et personne en interne ne le voit clairement parce que tout le monde est trop dedans.</p>
+        </div>
+      </div>
+      <div class="why-sit">
+        <div class="why-sit-num">03</div>
+        <div class="why-sit-body">
+          <div class="why-sit-title" data-en>You have a clear idea. It's a good one. But you don't know how to make it happen.</div>
+          <div class="why-sit-title" data-fr>Vous avez une idée claire. Elle est bonne. Mais vous ne savez pas comment la faire advenir.</div>
+          <p class="why-sit-desc" data-en>A new product, a restructuring, a process overhaul. The direction is right. What's missing is someone who can translate vision into structure, structure into tools, tools into adoption. Someone who speaks the language of both the CEO and the developer.</p>
+          <p class="why-sit-desc" data-fr>Un nouveau produit, une restructuration, une refonte de process. La direction est bonne. Ce qui manque, c'est quelqu'un capable de traduire la vision en structure, la structure en outils, les outils en adoption. Quelqu'un qui parle à la fois le langage du dirigeant et du développeur.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="why-cost rv" style="margin-bottom:clamp(48px,8vw,96px);">
+      <div class="why-cost-inner">
+        <div class="why-cost-label" data-en>What it actually costs you</div>
+        <div class="why-cost-label" data-fr>Ce que ça vous coûte vraiment</div>
+        <div class="why-cost-grid">
+          <div class="why-cost-item" data-en><span class="why-cost-n">→</span> Hours lost to workarounds nobody questions anymore</div>
+          <div class="why-cost-item" data-fr><span class="why-cost-n">→</span> Des heures perdues en contournements que plus personne ne remet en question</div>
+          <div class="why-cost-item" data-en><span class="why-cost-n">→</span> Good people who disengage because nothing seems to move</div>
+          <div class="why-cost-item" data-fr><span class="why-cost-n">→</span> De bonnes personnes qui se démotivent parce que rien ne semble avancer</div>
+          <div class="why-cost-item" data-en><span class="why-cost-n">→</span> Decisions made without the full picture</div>
+          <div class="why-cost-item" data-fr><span class="why-cost-n">→</span> Des décisions prises sans vision d'ensemble</div>
+          <div class="why-cost-item" data-en><span class="why-cost-n">→</span> A level you can see but can't seem to reach</div>
+          <div class="why-cost-item" data-fr><span class="why-cost-n">→</span> Un palier que vous voyez mais que vous n'arrivez pas à franchir</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="why-diff rv" style="max-width:760px;">
+      <div class="why-diff-label" data-en>What's different with me</div>
+      <div class="why-diff-label" data-fr>Ce qui est différent avec moi</div>
+      <p class="why-diff-text" data-en>A consulting firm costs a lot and delivers slides. A permanent hire takes time and creates commitment. What you sometimes need is someone who enters the system, understands it as a whole, acts at the right level — and leaves when the team stands on its own.</p>
+      <p class="why-diff-text" data-fr>Un cabinet de conseil coûte cher et livre des slides. Un recrutement CDI prend du temps et engage. Ce dont vous avez parfois besoin, c'est de quelqu'un qui entre dans le système, le comprend dans sa globalité, agit au bon niveau — et part quand l'équipe tient seule.</p>
+      <p class="why-diff-text" data-en>Not a specialist who optimises one corner. Someone who sees the connections between tools, processes, people, and strategy — and can act on all of them.</p>
+      <p class="why-diff-text" data-fr>Pas un spécialiste qui optimise un seul coin. Quelqu'un qui voit les connexions entre les outils, les process, les personnes et la stratégie — et qui peut agir sur tous ces leviers.</p>
+    </div>
+
+  </div>
+</section>
+
 
 <section id="spectrum" class="sec-dark">
   <div class="container">
@@ -538,55 +644,74 @@ body:not(.en) span[data-fr]{display:inline;}
   </div>
 </section>
 
-<section id="skills" class="sec-dark">
+<section id="skills" class="sec-dark" style="padding:clamp(60px,10vw,140px) 0;">
   <div class="container">
-    <div class="rv">
-      <div class="section-label" data-en>Expertise</div>
-      <div class="section-label" data-fr>Expertise</div>
-      <h2 class="section-title" data-en>Strengths and honest self-assessment.</h2>
-      <h2 class="section-title" data-fr>Forces et auto-évaluation honnête.</h2>
+    <div class="rv" style="max-width:680px;margin-bottom:clamp(40px,7vw,80px);">
+      <div class="section-label" data-en>Why it matters</div>
+      <div class="section-label" data-fr>Pourquoi ça change tout</div>
+      <h2 class="section-title" data-en>Most specialists see one piece.<br>I see how they connect.</h2>
+      <h2 class="section-title" data-fr>La plupart des spécialistes voient une pièce.<br>Je vois comment elles s'articulent.</h2>
     </div>
-    <div class="sk-grid">
-      <div class="rv-l d1"><div class="sk-group-title">Design</div>
-        <div class="sk-row"><span class="sk-name">UX/UI Design</span><div class="sk-track"><div class="sk-fill" data-level="100"></div></div><span class="sk-lvl">5/5</span></div>
-        <div class="sk-row"><span class="sk-name" data-en>Branding / Art Dir.</span><span class="sk-name" data-fr>Branding / DA</span><div class="sk-track"><div class="sk-fill" data-level="100"></div></div><span class="sk-lvl">5/5</span></div>
-        <div class="sk-row"><span class="sk-name">Figma / Prototyping</span><div class="sk-track"><div class="sk-fill" data-level="100"></div></div><span class="sk-lvl">5/5</span></div>
+
+    <div class="cross-grid rv">
+      <div class="cross-conn">
+        <div class="cross-node cross-center rv">
+          <div class="cross-center-label" data-en>The systemic<br>view</div>
+          <div class="cross-center-label" data-fr>La vision<br>systémique</div>
+        </div>
+        <div class="cross-links">
+          <div class="cross-link rv-l d1">
+            <div class="cross-link-tag" data-en>Design × Product</div>
+            <div class="cross-link-tag" data-fr>Design × Produit</div>
+            <p class="cross-link-desc" data-en>A PM without design sense makes blind trade-offs. A designer without product vision builds beautiful things nobody needs.</p>
+            <p class="cross-link-desc" data-fr>Un PM sans sens du design fait des arbitrages à l'aveugle. Un designer sans vision produit construit de belles choses dont personne n'a besoin.</p>
+          </div>
+          <div class="cross-link rv d2">
+            <div class="cross-link-tag" data-en>Product × Organisation</div>
+            <div class="cross-link-tag" data-fr>Produit × Organisation</div>
+            <p class="cross-link-desc" data-en>A good roadmap fails if the team structure doesn't support it. Governance and product strategy have to be designed together.</p>
+            <p class="cross-link-desc" data-fr>Une bonne roadmap échoue si la structure d'équipe ne la soutient pas. Gouvernance et stratégie produit doivent être pensées ensemble.</p>
+          </div>
+          <div class="cross-link rv-r d3">
+            <div class="cross-link-tag" data-en>Organisation × Human</div>
+            <div class="cross-link-tag" data-fr>Organisation × Humain</div>
+            <p class="cross-link-desc" data-en>A process nobody buys into is just paperwork. Change only sticks when the people inside understand why and feel part of it.</p>
+            <p class="cross-link-desc" data-fr>Un process que personne n'adopte, c'est juste de la paperasse. Le changement tient uniquement quand les personnes comprennent pourquoi et s'en sentent partie prenante.</p>
+          </div>
+          <div class="cross-link rv-l d2">
+            <div class="cross-link-tag" data-en>Tech × Design</div>
+            <div class="cross-link-tag" data-fr>Tech × Design</div>
+            <p class="cross-link-desc" data-en>Knowing what's buildable changes how you design. Knowing how to design changes what you build. The best solutions live at that intersection.</p>
+            <p class="cross-link-desc" data-fr>Savoir ce qui est faisable change la façon dont on conçoit. Savoir concevoir change ce qu'on construit. Les meilleures solutions vivent à cette intersection.</p>
+          </div>
+        </div>
       </div>
-      <div class="rv-r d2"><div class="sk-group-title">Product</div>
-        <div class="sk-row"><span class="sk-name">Product Management</span><div class="sk-track"><div class="sk-fill" data-level="100"></div></div><span class="sk-lvl">5/5</span></div>
-        <div class="sk-row"><span class="sk-name" data-en>Product Strategy</span><span class="sk-name" data-fr>Stratégie produit</span><div class="sk-track"><div class="sk-fill" data-level="80"></div></div><span class="sk-lvl">4/5</span></div>
-        <div class="sk-row"><span class="sk-name">Agile / Scrum / SAFe</span><div class="sk-track"><div class="sk-fill" data-level="80"></div></div><span class="sk-lvl">4/5</span></div>
-      </div>
-      <div class="rv-l d1"><div class="sk-group-title">Tech</div>
-        <div class="sk-row"><span class="sk-name" data-en>No-code / AI tools</span><span class="sk-name" data-fr>No-code / Outils IA</span><div class="sk-track"><div class="sk-fill" data-level="100"></div></div><span class="sk-lvl">5/5</span></div>
-        <div class="sk-row"><span class="sk-name" data-en>Front-end Dev</span><span class="sk-name" data-fr>Dev Front-end</span><div class="sk-track"><div class="sk-fill" data-level="60"></div></div><span class="sk-lvl">3/5</span></div>
-      </div>
-      <div class="rv-r d2"><div class="sk-group-title" data-en>Human & Org</div><div class="sk-group-title" data-fr>Humain & Orga</div>
-        <div class="sk-row"><span class="sk-name" data-en>Team Management</span><span class="sk-name" data-fr>Management équipe</span><div class="sk-track"><div class="sk-fill" data-level="100"></div></div><span class="sk-lvl">5/5</span></div>
-        <div class="sk-row"><span class="sk-name">Facilitation</span><div class="sk-track"><div class="sk-fill" data-level="80"></div></div><span class="sk-lvl">4/5</span></div>
-        <div class="sk-row"><span class="sk-name" data-en>Change Management</span><span class="sk-name" data-fr>Conduite du chang.</span><div class="sk-track"><div class="sk-fill" data-level="80"></div></div><span class="sk-lvl">4/5</span></div>
+      <div class="cross-proof rv-r">
+        <div class="cross-proof-label" data-en>In practice</div>
+        <div class="cross-proof-label" data-fr>En pratique</div>
+        <p class="cross-proof-text" data-en>When I enter a team, I don't arrive with a ready-made answer. I look at the whole system — tools, processes, people, culture — and I identify where the actual leverage point is. Sometimes it's a tool. Sometimes it's a governance issue. Often it's both, plus something nobody had named yet.</p>
+        <p class="cross-proof-text" data-fr>Quand j'entre dans une équipe, je n'arrive pas avec une réponse toute faite. Je regarde le système entier — outils, process, personnes, culture — et j'identifie où est le vrai levier. Parfois c'est un outil. Parfois c'est une question de gouvernance. Souvent c'est les deux, plus quelque chose que personne n'avait encore nommé.</p>
+        <p class="cross-proof-text" data-en>That's what 15 years across design, product, tech, coaching and org transformation gives you: the ability to act at the right level, not just the most obvious one.</p>
+        <p class="cross-proof-text" data-fr>C'est ce que 15 ans entre design, produit, tech, coaching et transformation organisationnelle donnent : la capacité d'agir au bon niveau, pas seulement au plus évident.</p>
+        <div class="cross-proof-certs">
+          <div class="cross-cert">PSPO I <span>· Scrum Product Owner™</span></div>
+          <div class="cross-cert" data-en>Formation Instant Z <span>· Shared governance</span></div>
+          <div class="cross-cert" data-fr>Formation Instant Z <span>· Gouvernance partagée</span></div>
+          <div class="cross-cert">CYTech / EISTI · 2012 <span data-en>· Engineer, CS & Management</span><span data-fr>· Ingénieur, Informatique & Management</span></div>
+        </div>
       </div>
     </div>
-    <div class="rv" style="margin-top:48px;padding-top:40px;border-top:1px solid rgba(240,234,216,.07);">
-      <div class="section-label" data-en>Certifications & training</div>
-      <div class="section-label" data-fr>Certifications & formations</div>
-      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:16px;">
-        <div style="padding:12px 20px;border:1px solid rgba(74,122,255,.2);background:rgba(74,122,255,.05);font-family:'DM Mono',monospace;font-size:11px;color:var(--cream2);">PSPO I <span style="color:var(--blue-l);">· Professional Scrum Product Owner™ I</span></div>
-        <div style="padding:12px 20px;border:1px solid rgba(245,200,66,.2);background:rgba(245,200,66,.05);font-family:'DM Mono',monospace;font-size:11px;color:var(--cream2);" data-en>Formation Instant Z <span style="color:var(--yellow);">· Shared governance — Piloting an agile organisation</span></div>
-        <div style="padding:12px 20px;border:1px solid rgba(245,200,66,.2);background:rgba(245,200,66,.05);font-family:'DM Mono',monospace;font-size:11px;color:var(--cream2);" data-fr>Formation Instant Z <span style="color:var(--yellow);">· Gouvernance partagée : Piloter une organisation agile</span></div>
-        <div style="padding:12px 20px;border:1px solid rgba(240,234,216,.1);background:rgba(240,234,216,.03);font-family:'DM Mono',monospace;font-size:11px;color:var(--cream2);" data-en>CYTech / EISTI · 2012 <span style="color:var(--cream2);opacity:.6;">· Engineer — Computer Science & Management Systems</span></div>
-        <div style="padding:12px 20px;border:1px solid rgba(240,234,216,.1);background:rgba(240,234,216,.03);font-family:'DM Mono',monospace;font-size:11px;color:var(--cream2);" data-fr>CYTech / EISTI · 2012 <span style="color:var(--cream2);opacity:.6;">· Ingénieur — Informatique & Management des SI</span></div>
-      </div>
-    </div>
-    <div class="rv" style="margin-top:40px;padding-top:36px;border-top:1px solid rgba(240,234,216,.07);">
+
+    <div class="rv" style="margin-top:clamp(48px,8vw,96px);padding-top:40px;border-top:1px solid rgba(240,234,216,.07);max-width:720px;">
       <div class="section-label" data-en>They worked with me</div>
       <div class="section-label" data-fr>Ils ont travaillé avec moi</div>
-      <div style="margin-top:16px;padding:28px 32px;border-left:3px solid var(--blue-l);background:rgba(74,122,255,.04);max-width:720px;">
-        <p style="font-family:'DM Sans',sans-serif;font-size:14px;font-weight:300;color:var(--cream2);line-height:1.75;font-style:italic;" data-en>"He was able to implement the Scrum methodology in the company with regular questioning. The result met expectations despite the skepticism of the stakeholders. He was able to protect the development team from pressure from various parties. He also worked hard to train Product Owners and Scrum Masters to strengthen the team."</p>
-        <p style="font-family:'DM Sans',sans-serif;font-size:14px;font-weight:300;color:var(--cream2);line-height:1.75;font-style:italic;" data-fr>"Il a su mettre en place la méthodologie Scrum dans l'entreprise avec de régulières remises en questions. Le résultat est à la hauteur des attentes et ce malgré le scepticisme des parties prenantes. Il a su préserver l'équipe de développement de la pression mise par divers intervenants. Il s'est également efforcé de former des Products Owners et des Scrum Masters pour renforcer l'équipe."</p>
-        <div style="margin-top:16px;font-family:'DM Mono',monospace;font-size:11px;color:var(--blue-l);letter-spacing:.06em;">Stéphane Ravet <span style="color:var(--cream2);opacity:.5;">· Architecte d'applications Web · IA · Automatisation · Proximedia</span></div>
+      <div style="margin-top:20px;padding:28px 32px;border-left:3px solid var(--blue-l);background:rgba(74,122,255,.04);">
+        <p style="font-size:14px;font-weight:300;color:var(--cream2);line-height:1.8;font-style:italic;" data-en>"He was able to implement the Scrum methodology with regular questioning. The result met expectations despite stakeholder skepticism. He protected the development team from pressure from various parties, and worked hard to train Product Owners and Scrum Masters to strengthen the team."</p>
+        <p style="font-size:14px;font-weight:300;color:var(--cream2);line-height:1.8;font-style:italic;" data-fr>"Il a su mettre en place la méthodologie Scrum avec de régulières remises en question. Le résultat est à la hauteur des attentes malgré le scepticisme des parties prenantes. Il a su préserver l'équipe de développement de la pression et s'est efforcé de former des Product Owners et Scrum Masters pour renforcer l'équipe."</p>
+        <div style="margin-top:14px;font-family:'DM Mono',monospace;font-size:11px;color:var(--blue-l);letter-spacing:.06em;">Stéphane Ravet <span style="color:var(--cream2);opacity:.5;">· Architecte Web · IA · Proximedia</span></div>
       </div>
     </div>
+
   </div>
 </section>
 
