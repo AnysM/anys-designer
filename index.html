@@ -188,31 +188,34 @@ section{position:relative;z-index:1;}
 .tl-item.reached .tl-card::before{transform:scaleY(1);}
 
 /* PROJECTS */
-.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
-@media(max-width:900px){.proj-grid{grid-template-columns:1fr;gap:2px;}}
-.proj-card{background:rgba(255,255,255,.03);padding:clamp(24px,3vw,40px);display:flex;flex-direction:column;gap:0;transition:background .3s;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.05);}
-.proj-card:hover{background:rgba(255,255,255,.06);}
-.proj-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;transform:scaleX(0);transform-origin:left;transition:transform .4s cubic-bezier(.16,1,.3,1);}
-.proj-card:hover::before{transform:scaleX(1);}
-.proj-card.c-yellow::before{background:var(--yellow);}
-.proj-card.c-coral::before{background:var(--coral);}
-.proj-card.c-blue::before{background:var(--blue-l);}
-.proj-idx{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:20px;opacity:.5;}
-.c-yellow .proj-idx{color:var(--yellow);}
-.c-coral .proj-idx{color:var(--coral);}
-.c-blue .proj-idx{color:var(--blue-l);}
-.proj-result{font-family:'Syne',sans-serif;font-size:clamp(28px,3vw,42px);font-weight:800;line-height:1.05;letter-spacing:-.03em;margin-bottom:16px;}
-.c-yellow .proj-result{color:var(--yellow);}
-.c-coral .proj-result{color:var(--coral);}
-.c-blue .proj-result{color:var(--blue-l);}
-.proj-what{font-size:12px;font-weight:500;color:var(--cream);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;font-family:'DM Mono',monospace;}
-.proj-ctx{font-size:13px;color:rgba(240,234,216,.55);font-weight:300;line-height:1.65;margin-bottom:20px;flex:1;}
-.proj-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:20px;}
-.tag{font-family:'DM Mono',monospace;font-size:10px;padding:3px 10px;border:1px solid rgba(240,234,216,.08);border-radius:20px;color:rgba(240,234,216,.4);letter-spacing:.05em;}
-.proj-cta{display:inline-flex;align-items:center;gap:6px;font-family:'DM Mono',monospace;font-size:11px;color:var(--cream2);letter-spacing:.06em;text-decoration:none;text-transform:uppercase;transition:color .2s;margin-top:auto;}
-.c-yellow .proj-cta:hover{color:var(--yellow);}
-.c-coral .proj-cta:hover{color:var(--coral);}
-.c-blue .proj-cta:hover{color:var(--blue-l);}
+.proj-list{display:flex;flex-direction:column;gap:3px;}
+.proj-row{display:grid;grid-template-columns:1fr 1fr;gap:0;background:rgba(255,255,255,.97);color:#0a0b0e;overflow:hidden;}
+.proj-row:nth-child(even){direction:rtl;}
+.proj-row:nth-child(even) .proj-text{direction:ltr;}
+.proj-text{padding:clamp(32px,5vw,60px) clamp(24px,4vw,56px);display:flex;flex-direction:column;justify-content:center;gap:0;}
+.proj-visual{background:rgba(0,0,0,.06);display:flex;align-items:center;justify-content:center;min-height:280px;position:relative;overflow:hidden;}
+.proj-visual-inner{padding:40px;text-align:center;}
+.proj-big{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(44px,6vw,72px);line-height:1;letter-spacing:-.04em;}
+.proj-row-1 .proj-big{color:var(--yellow);}
+.proj-row-2 .proj-big{color:var(--coral);}
+.proj-row-3 .proj-big{color:var(--blue);}
+.proj-idx{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px;opacity:.4;color:#0a0b0e;}
+.proj-name{font-family:'Syne',sans-serif;font-size:clamp(18px,2vw,24px);font-weight:700;color:#0a0b0e;line-height:1.2;margin-bottom:12px;letter-spacing:-.01em;}
+.proj-what{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px;}
+.proj-row-1 .proj-what{color:var(--blue);}
+.proj-row-2 .proj-what{color:var(--coral);}
+.proj-row-3 .proj-what{color:var(--blue);}
+.proj-ctx{font-size:13px;color:#555;font-weight:300;line-height:1.7;margin-bottom:20px;}
+.proj-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:24px;}
+.tag{font-family:'DM Mono',monospace;font-size:10px;padding:3px 10px;border:1px solid rgba(0,0,0,.12);border-radius:20px;color:#888;letter-spacing:.05em;}
+.proj-cta{display:inline-flex;align-items:center;gap:6px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;font-weight:500;padding:10px 20px;border-radius:3px;transition:all .2s;align-self:flex-start;}
+.proj-row-1 .proj-cta{background:var(--yellow);color:#000;}
+.proj-row-1 .proj-cta:hover{background:#e5b800;}
+.proj-row-2 .proj-cta{background:var(--coral);color:#fff;}
+.proj-row-2 .proj-cta:hover{background:#d4402a;}
+.proj-row-3 .proj-cta{background:var(--blue);color:#fff;}
+.proj-row-3 .proj-cta:hover{background:var(--blue-l);}
+@media(max-width:768px){.proj-row{grid-template-columns:1fr;direction:ltr;}.proj-row .proj-text{direction:ltr;}.proj-visual{min-height:160px;}}
 
 /* SKILLS */
 .sk-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:40px 80px;}
@@ -464,44 +467,73 @@ body:not(.en) span[data-fr]{display:inline;}
       <h2 class="section-title" data-en>Real missions.<br>Real impact.</h2>
       <h2 class="section-title" data-fr>Des missions réelles.<br>Un impact concret.</h2>
     </div>
-    <div class="proj-grid">
-      <div class="proj-card c-yellow rv-l d1">
-        <div class="proj-idx" data-en>01 / Proximedia — Publicis Groupe</div>
-        <div class="proj-idx" data-fr>01 / Proximedia — Publicis Groupe</div>
-        <div class="proj-result" data-en>3 → 25.<br>3 countries.</div>
-        <div class="proj-result" data-fr>3 → 25.<br>3 pays.</div>
-        <div class="proj-what" data-en>Team building · Product · Agile</div>
-        <div class="proj-what" data-fr>Team building · Produit · Agile</div>
-        <p class="proj-ctx" data-en>Entered as a developer. Spotted a systemic problem no one else saw. Built the diagnosis, pitched the direction, got the green light. Created an internal CMS from scratch. Recruited and led the team. Exited as Head of Product & Innovation.</p>
-        <p class="proj-ctx" data-fr>Entré comme développeur. Identifié un problème systémique que personne ne voyait. Construit le diagnostic, pitché la direction, obtenu le feu vert. Créé un CMS maison de zéro. Recruté et dirigé l'équipe. Sorti Resp. Produit & Innovation.</p>
-        <div class="proj-tags"><span class="tag">Product Strategy</span><span class="tag">Team Building</span><span class="tag">Agile / SCRUM</span><span class="tag" data-en>Change Management</span><span class="tag" data-fr>Conduite du changement</span></div>
-        <a href="case-proximedia.html" class="proj-cta" data-en>Read full case →</a>
-        <a href="case-proximedia.html?lang=fr" class="proj-cta" data-fr>Lire le cas complet →</a>
+    <div class="proj-list">
+
+      <div class="proj-row proj-row-1 rv">
+        <div class="proj-text">
+          <div class="proj-idx">01 / Proximedia — Publicis Groupe</div>
+          <div class="proj-name" data-en>From 3 to 25 people.<br>3 countries. Built from nothing.</div>
+          <div class="proj-name" data-fr>De 3 à 25 personnes.<br>3 pays. Construit de zéro.</div>
+          <div class="proj-what" data-en>Team building · Product · Agile</div>
+          <div class="proj-what" data-fr>Team building · Produit · Agile</div>
+          <p class="proj-ctx" data-en>Entered as a developer. Identified a systemic problem no one else saw. Built the diagnosis, pitched the direction, got the green light. Created an internal CMS from scratch, recruited and led the team. Exited as Head of Product & Innovation.</p>
+          <p class="proj-ctx" data-fr>Entré comme développeur. Identifié un problème systémique que personne ne voyait. Construit le diagnostic, pitché la direction, obtenu le feu vert. Créé un CMS maison de zéro, recruté et dirigé l'équipe. Sorti Resp. Produit & Innovation.</p>
+          <div class="proj-tags"><span class="tag">Product Strategy</span><span class="tag">Team Building</span><span class="tag">Agile / SCRUM</span><span class="tag" data-en>Change Management</span><span class="tag" data-fr>Conduite du changement</span></div>
+          <a href="case-proximedia.html" class="proj-cta" data-en>Read full case →</a>
+          <a href="case-proximedia.html?lang=fr" class="proj-cta" data-fr>Lire le cas complet →</a>
+        </div>
+        <div class="proj-visual">
+          <div class="proj-visual-inner">
+            <div class="proj-big">3 → 25</div>
+            <div style="font-family:'DM Mono',monospace;font-size:12px;color:#888;margin-top:8px;letter-spacing:.08em;">FR · BE · NL · ES</div>
+          </div>
+        </div>
       </div>
-      <div class="proj-card c-coral rv d2">
-        <div class="proj-idx">02 / Deligreens — Carrefour</div>
-        <div class="proj-result" data-en>Zero to one.<br>Full product.</div>
-        <div class="proj-result" data-fr>Zéro à un.<br>Produit complet.</div>
-        <div class="proj-what" data-en>Branding · E-commerce · Holacracy</div>
-        <div class="proj-what" data-fr>Branding · E-commerce · Holacratie</div>
-        <p class="proj-ctx" data-en>Brand identity, e-commerce platform, custom logistics app — built in-house instead of a bad off-the-shelf tool. Holacracy from day one. €2.5M raised. Acquired by Le Comptoir Local.</p>
-        <p class="proj-ctx" data-fr>Identité visuelle, e-commerce, app logistique sur mesure — construite en interne plutôt qu'un outil inadapté. Holacratie dès le départ. 2,5M€ levés. Racheté par Le Comptoir Local.</p>
-        <div class="proj-tags"><span class="tag">Branding</span><span class="tag">E-commerce</span><span class="tag">Holacracy</span><span class="tag" data-en>Custom Dev</span><span class="tag" data-fr>Dev sur mesure</span></div>
-        <a href="case-deligreens.html" class="proj-cta" data-en>Read full case →</a>
-        <a href="case-deligreens.html?lang=fr" class="proj-cta" data-fr>Lire le cas complet →</a>
+
+      <div class="proj-row proj-row-2 rv">
+        <div class="proj-text">
+          <div class="proj-idx">02 / Deligreens — Carrefour</div>
+          <div class="proj-name" data-en>A full product, built from scratch.<br>Brand, platform, logistics.</div>
+          <div class="proj-name" data-fr>Un produit complet, de zéro.<br>Marque, plateforme, logistique.</div>
+          <div class="proj-what" data-en>Branding · E-commerce · Holacracy</div>
+          <div class="proj-what" data-fr>Branding · E-commerce · Holacratie</div>
+          <p class="proj-ctx" data-en>Built the full brand identity, e-commerce platform and a custom logistics app — instead of buying an off-the-shelf tool that did not fit. Holacracy from day one. 2.5M euros raised. Acquired by Le Comptoir Local.</p>
+          <p class="proj-ctx" data-fr>Construit l'identité visuelle complète, la plateforme e-commerce et une app logistique sur mesure — plutôt qu'un outil inadapté. Holacratie dès le départ. 2,5M€ levés. Racheté par Le Comptoir Local.</p>
+          <div class="proj-tags"><span class="tag">Branding</span><span class="tag">E-commerce</span><span class="tag">Holacracy</span><span class="tag" data-en>Custom Dev</span><span class="tag" data-fr>Dev sur mesure</span></div>
+          <a href="case-deligreens.html" class="proj-cta" data-en>Read full case →</a>
+          <a href="case-deligreens.html?lang=fr" class="proj-cta" data-fr>Lire le cas complet →</a>
+        </div>
+        <div class="proj-visual">
+          <div class="proj-visual-inner">
+            <div class="proj-big">2.5M€</div>
+            <div style="font-family:'DM Mono',monospace;font-size:12px;color:#888;margin-top:8px;letter-spacing:.08em;" data-en>raised · acquired</div>
+            <div style="font-family:'DM Mono',monospace;font-size:12px;color:#888;margin-top:8px;letter-spacing:.08em;" data-fr>levés · racheté</div>
+          </div>
+        </div>
       </div>
-      <div class="proj-card c-blue rv-r d3">
-        <div class="proj-idx">03 / Genève-loisirs</div>
-        <div class="proj-result" data-en>140 kids.<br>Zero paper.</div>
-        <div class="proj-result" data-fr>140 enfants.<br>Zéro papier.</div>
-        <div class="proj-what" data-en>Solo build · Holacracy · Change</div>
-        <div class="proj-what" data-fr>Build solo · Holacratie · Conduite du changement</div>
-        <p class="proj-ctx" data-en>Designed and built alone a tablet app replacing all paper workflows — attendance, meals, activities, special needs. Then transformed the organisation with Holacracy. Teams that resisted ended up loving it.</p>
-        <p class="proj-ctx" data-fr>Conçu et livré seul une app tablette remplaçant tous les workflows papier — présences, repas, activités, spécificités. Puis transformation holacratie. Les équipes qui résistaient ont fini par adorer.</p>
-        <div class="proj-tags"><span class="tag" data-en>Solo Build</span><span class="tag" data-fr>Build solo</span><span class="tag">Holacracy</span><span class="tag" data-en>UX Research</span><span class="tag" data-fr>Recherche UX</span></div>
-        <a href="case-geneve-loisirs.html" class="proj-cta" data-en>Read full case →</a>
-        <a href="case-geneve-loisirs.html?lang=fr" class="proj-cta" data-fr>Lire le cas complet →</a>
+
+      <div class="proj-row proj-row-3 rv">
+        <div class="proj-text">
+          <div class="proj-idx">03 / Genève-loisirs</div>
+          <div class="proj-name" data-en>140 children. Zero paper.<br>One app, built alone.</div>
+          <div class="proj-name" data-fr>140 enfants. Zéro papier.<br>Une app, construite seul.</div>
+          <div class="proj-what" data-en>Solo build · Holacracy · UX Research</div>
+          <div class="proj-what" data-fr>Build solo · Holacratie · Recherche UX</div>
+          <p class="proj-ctx" data-en>Designed and shipped a tablet app replacing all paper workflows — attendance, meals, activities, special needs. Then led a full Holacracy transformation. Teams that resisted ended up loving it.</p>
+          <p class="proj-ctx" data-fr>Conçu et livré une app tablette remplaçant tous les workflows papier — présences, repas, activités, spécificités. Puis transformation holacratie complète. Les équipes qui résistaient ont fini par adorer.</p>
+          <div class="proj-tags"><span class="tag" data-en>Solo Build</span><span class="tag" data-fr>Build solo</span><span class="tag">Holacracy</span><span class="tag" data-en>Change Management</span><span class="tag" data-fr>Conduite du changement</span></div>
+          <a href="case-geneve-loisirs.html" class="proj-cta" data-en>Read full case →</a>
+          <a href="case-geneve-loisirs.html?lang=fr" class="proj-cta" data-fr>Lire le cas complet →</a>
+        </div>
+        <div class="proj-visual">
+          <div class="proj-visual-inner">
+            <div class="proj-big">140</div>
+            <div style="font-family:'DM Mono',monospace;font-size:12px;color:#888;margin-top:8px;letter-spacing:.08em;" data-en>children · zero paper</div>
+            <div style="font-family:'DM Mono',monospace;font-size:12px;color:#888;margin-top:8px;letter-spacing:.08em;" data-fr>enfants · zéro papier</div>
+          </div>
+        </div>
       </div>
+
     </div>
   </div>
 </section>
