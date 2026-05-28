@@ -20,7 +20,7 @@
   --pad: clamp(16px,4vw,48px);
 }
 *{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
+html{scroll-behavior:smooth;overflow-x:hidden;}
 body{background:var(--bg);color:var(--cream);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.65;overflow-x:hidden;}
 @media(pointer:fine){body{cursor:none;}}
 @media(max-width:640px){body{font-size:14px;line-height:1.6;}}
@@ -64,11 +64,12 @@ section{position:relative;z-index:1;}
 .sec-coral .section-title{color:var(--cream);}
 
 .section-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--blue-l);margin-bottom:12px;}
-.section-title{font-family:'Syne',sans-serif;font-size:clamp(22px,4vw,52px);font-weight:700;letter-spacing:-.02em;line-height:1.1;margin-bottom:36px;}
-.sec-dark{background:transparent;padding:clamp(40px,8vw,120px) 0;}
-.sec-blue{background:rgba(15,42,122,.85);backdrop-filter:blur(2px);padding:clamp(40px,8vw,120px) 0;}
-.sec-cream{background:var(--cream-bg);padding:clamp(40px,8vw,120px) 0;color:#111;}
-.sec-coral{background:#1a0a06;padding:clamp(40px,8vw,120px) 0;}
+.section-title{font-family:'Syne',sans-serif;font-size:clamp(20px,4vw,52px);font-weight:700;letter-spacing:-.02em;line-height:1.1;margin-bottom:28px;}
+@media(max-width:480px){.section-title{font-size:clamp(18px,5vw,24px);}}
+.sec-dark{background:transparent;padding:clamp(48px,9vw,120px) 0;}
+.sec-blue{background:rgba(15,42,122,.85);backdrop-filter:blur(2px);padding:clamp(48px,9vw,120px) 0;}
+.sec-cream{background:var(--cream-bg);padding:clamp(48px,9vw,120px) 0;color:#111;}
+.sec-coral{background:#1a0a06;padding:clamp(48px,9vw,120px) 0;}
 
 /* REVEAL — visible par défaut, animation au scroll en bonus */
 .rv,.rv-l,.rv-r{opacity:1;transform:none;transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);}
@@ -88,19 +89,18 @@ section{position:relative;z-index:1;}
 .hero-photo-zone img{width:100%;display:block;object-fit:contain;object-position:bottom center;margin:0;padding:0;vertical-align:bottom;}
 @media(max-width:768px){.hero-photo-zone{width:52%;margin:16px auto 0;}}
 .hero-scroll{display:none;}
-.hero-tag{display:inline-flex;align-items:center;gap:6px;font-family:'DM Mono',monospace;font-size:9px;color:var(--blue-l);letter-spacing:.07em;text-transform:uppercase;margin-bottom:14px;opacity:0;animation:fup .8s .3s forwards;flex-wrap:wrap;line-height:1.6;}
-.hero-tag::before{content:'';display:block;width:14px;height:1px;background:var(--blue-l);flex-shrink:0;}
-.hero-title-wrap{font-family:'Syne',sans-serif;font-size:clamp(26px,5.5vw,80px);font-weight:800;line-height:1.05;letter-spacing:-.03em;margin-bottom:16px;opacity:0;animation:fup .9s .5s forwards;min-height:2em;}
+.hero-tag{display:block;font-family:'DM Mono',monospace;font-size:9px;color:var(--blue-l);letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px;opacity:0;animation:fup .8s .3s forwards;line-height:1.7;word-break:break-word;}
+.hero-title-wrap{font-family:'Syne',sans-serif;font-size:clamp(26px,5.5vw,80px);font-weight:800;line-height:1.05;letter-spacing:-.03em;margin-bottom:16px;opacity:0;animation:fup .9s .5s forwards;}
 .line-cream{color:var(--cream);display:block;}
 .line-blue{color:var(--blue-l);display:block;min-height:1.1em;}
 .cur-blink{display:inline-block;width:3px;height:.85em;background:var(--blue-l);margin-left:4px;vertical-align:middle;animation:blink 1s step-end infinite;}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
 @keyframes fup{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
-.hero-sub-wrap{opacity:0;animation:fup .9s .8s forwards;}
+.hero-sub-wrap{opacity:0;animation:fup .9s .8s forwards;min-height:180px;}
 .hero-sub{font-size:clamp(13px,1.6vw,15px);font-weight:300;color:var(--cream2);line-height:1.6;margin-bottom:10px;}
 .hero-sub strong{color:var(--cream);font-weight:500;}
 .hero-sub-detail{font-size:11px;font-weight:300;color:var(--cream2);line-height:1.6;opacity:.6;}
-.hero-cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;opacity:0;animation:fup .9s 1s forwards;}
+.hero-cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;opacity:0;animation:fup .9s 1s forwards;min-height:44px;}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:4px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;text-decoration:none;cursor:pointer;transition:all .25s;border:none;}
 @media(max-width:640px){.btn{padding:10px 16px;font-size:12px;}}
 .btn-p{background:var(--blue);color:#fff;}
@@ -187,7 +187,7 @@ section{position:relative;z-index:1;}
 .tl-period{font-family:'DM Mono',monospace;font-size:11px;color:var(--cream2);opacity:.5;margin-bottom:12px;}
 .tl-story{font-size:13px;color:var(--cream2);font-weight:300;line-height:1.65;max-width:560px;}
 .tl-story strong{color:var(--cream);font-weight:500;}
-.tl-card{background:rgba(255,255,255,.02);border:1px solid rgba(240,234,216,.07);border-radius:4px;padding:clamp(16px,2.5vw,28px);margin-bottom:8px;transition:all .4s;position:relative;overflow:hidden;}
+.tl-card{background:rgba(255,255,255,.02);border:1px solid rgba(240,234,216,.07);border-radius:4px;padding:clamp(14px,2.5vw,28px);margin-bottom:8px;transition:all .4s;position:relative;overflow:hidden;}
 .tl-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--blue-l);transform:scaleY(0);transform-origin:top;transition:transform .5s cubic-bezier(.16,1,.3,1);}
 .tl-item.reached .tl-card{border-color:rgba(74,122,255,.18);box-shadow:0 0 40px rgba(74,122,255,.06);}
 .tl-item.reached .tl-card::before{transform:scaleY(1);}
@@ -195,7 +195,7 @@ section{position:relative;z-index:1;}
 /* PROJECTS */
 .proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
 @media(max-width:640px){.proj-grid{grid-template-columns:1fr;}}
-.proj-card{background:rgba(255,255,255,.03);border-radius:4px;padding:clamp(20px,3vw,40px);display:flex;flex-direction:column;gap:16px;transition:all .35s;position:relative;overflow:hidden;}
+.proj-card{background:rgba(255,255,255,.03);border-radius:4px;padding:clamp(16px,3vw,40px);display:flex;flex-direction:column;gap:12px;transition:all .35s;position:relative;overflow:hidden;}
 .proj-card.c-yellow{border:1px solid rgba(245,200,66,.15);}
 .proj-card.c-yellow:hover{border-color:rgba(245,200,66,.35);box-shadow:0 20px 60px rgba(0,0,0,.4),0 0 40px rgba(245,200,66,.08);}
 .proj-card.c-yellow::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--yellow),rgba(245,200,66,.4));transform:scaleX(0);transform-origin:left;transition:transform .45s cubic-bezier(.16,1,.3,1);}
@@ -317,7 +317,7 @@ body:not(.en) span[data-fr]{display:inline;}
           <span class="line-cream" id="tl1"></span>
           <span class="line-blue" id="tl2"></span>
         </div>
-        <div class="hero-sub-wrap" id="hero-sub-wrap" style="display:none;">
+        <div class="hero-sub-wrap" id="hero-sub-wrap" style="visibility:hidden;">
           <p class="hero-sub" data-en>You have a product to launch, a team to structure, or an organization that needs to change. I step into the complexity, clarify, build, consolidate until you stand on your own.</p>
           <p class="hero-sub" data-fr>Vous avez un produit à lancer, une équipe à structurer, ou une organisation qui doit changer. J'interviens dans la complexité, je clarifie, je construis, je consolide jusqu'à ce que vous soyez autonomes.</p>
           <p class="hero-sub-detail" data-en>Product strategy · UX/UI · Team building · Agile · Change management · AI. 15 years. 3 countries.</p>
@@ -660,7 +660,7 @@ const subWrap=document.getElementById('hero-sub-wrap');
 function type(el,text,speed,cb){let i=0;el.textContent='';const t=setInterval(()=>{el.textContent=text.slice(0,i);if(i===text.length){clearInterval(t);if(cb)setTimeout(cb,120);}i++;},speed);}
 function startRotating(){
   tl2.textContent='';
-  subWrap.style.display='block';subWrap.style.opacity='0';subWrap.style.transform='translateY(16px)';subWrap.style.transition='opacity .8s ease,transform .8s ease';
+  subWrap.style.visibility='visible';subWrap.style.opacity='0';subWrap.style.transform='translateY(12px)';subWrap.style.transition='opacity .7s ease,transform .7s ease';
   setTimeout(()=>{subWrap.style.opacity='1';subWrap.style.transform='translateY(0)';},50);
   setTimeout(rotateWord,1200);
 }
