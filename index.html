@@ -115,13 +115,13 @@ section{position:relative;z-index:1;}
 .pb-grid{display:flex;flex-direction:column;gap:2px;}
 .pb-item{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;cursor:pointer;}
 @media(max-width:900px){.pb-item{grid-template-columns:1fr;}}
-.pb-trigger{padding:clamp(24px,4vw,48px);background:rgba(255,255,255,.03);border:1px solid rgba(240,234,216,.05);transition:background .3s;display:flex;flex-direction:column;justify-content:space-between;gap:20px;}
+.pb-trigger{padding:clamp(24px,4vw,48px);background:rgba(255,255,255,.03);border:1px solid rgba(240,234,216,.07);transition:all .3s;display:flex;flex-direction:column;justify-content:space-between;gap:20px;cursor:pointer;}
 .pb-item:hover .pb-trigger{background:rgba(255,255,255,.06);}
 .pb-item.active .pb-trigger{background:rgba(255,255,255,.06);border-color:rgba(240,234,216,.12);}
 .pb-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--blue-l);letter-spacing:.12em;opacity:.5;margin-bottom:8px;}
 .pb-title{font-family:'Syne',sans-serif;font-size:clamp(16px,2vw,22px);font-weight:700;color:var(--cream);line-height:1.25;letter-spacing:-.01em;}
 .pb-subtitle{font-size:12px;color:rgba(240,234,216,.45);font-weight:300;line-height:1.6;margin-top:8px;}
-.pb-arrow{font-size:18px;color:var(--blue-l);opacity:.4;transition:opacity .3s;align-self:flex-end;}
+.pb-arrow{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;color:var(--blue-l);opacity:.6;transition:all .3s;align-self:flex-end;padding:6px 14px;border:1px solid rgba(74,122,255,.3);border-radius:20px;}
 .pb-item.active .pb-arrow,.pb-item:hover .pb-arrow{opacity:1;}
 .pb-detail{padding:clamp(24px,4vw,48px);background:rgba(74,122,255,.04);border:1px solid rgba(74,122,255,.1);display:none;flex-direction:column;gap:0;}
 .pb-item.active .pb-detail{display:flex;}
@@ -133,6 +133,7 @@ section{position:relative;z-index:1;}
 .pb-col-text{font-size:13px;color:rgba(240,234,216,.72);font-weight:300;line-height:1.8;}
 .pb-col-text li{margin-bottom:8px;padding-left:12px;position:relative;}
 .pb-col-text li::before{content:'·';position:absolute;left:0;color:var(--blue-l);}
+.pb-hint{font-size:13px;color:rgba(240,234,216,.55);font-weight:300;line-height:1.65;margin-top:10px;font-style:italic;}
 .pb-shift{margin-top:16px;padding:14px 16px;background:rgba(74,122,255,.08);border-left:2px solid var(--blue-l);font-size:13px;color:rgba(240,234,216,.85);font-weight:300;line-height:1.7;font-style:italic;}
 
 /* WHY SECTION */
@@ -234,27 +235,27 @@ section{position:relative;z-index:1;}
 
 /* PROJECTS */
 .proj-list{display:flex;flex-direction:column;gap:3px;}
-.proj-row{display:grid;grid-template-columns:1fr 1fr;gap:0;background:rgba(255,255,255,.97);color:#0a0b0e;overflow:hidden;}
+.proj-row{display:grid;grid-template-columns:1fr 1fr;gap:0;background:rgba(255,255,255,.06);color:var(--cream);overflow:hidden;border:1px solid rgba(240,234,216,.07);}
 .proj-row:nth-child(even){direction:rtl;}
 .proj-row:nth-child(even) .proj-text{direction:ltr;}
 .proj-text{padding:clamp(32px,5vw,60px) clamp(24px,4vw,56px);display:flex;flex-direction:column;justify-content:center;gap:0;}
-.proj-visual{background:rgba(0,0,0,.06);display:flex;align-items:center;justify-content:center;min-height:280px;position:relative;overflow:hidden;}
+.proj-visual{background:rgba(0,0,0,.25);display:flex;align-items:center;justify-content:center;min-height:280px;position:relative;overflow:hidden;}
 .proj-visual-inner{padding:40px;text-align:center;}
 .proj-big{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(44px,6vw,72px);line-height:1;letter-spacing:-.04em;}
 .proj-row-1 .proj-big{color:var(--yellow);}
 .proj-row-2 .proj-big{color:var(--coral);}
 .proj-row-3 .proj-big{color:var(--blue);}
-.proj-idx{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px;opacity:.4;color:#0a0b0e;}
-.proj-name{font-family:'Syne',sans-serif;font-size:clamp(18px,2vw,24px);font-weight:700;color:#0a0b0e;line-height:1.2;margin-bottom:12px;letter-spacing:-.01em;}
+.proj-idx{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px;opacity:.5;color:var(--cream2);}
+.proj-name{font-family:'Syne',sans-serif;font-size:clamp(18px,2vw,24px);font-weight:700;color:var(--cream);line-height:1.2;margin-bottom:12px;letter-spacing:-.01em;}
 .proj-what{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px;}
 .proj-row-1 .proj-what{color:var(--blue);}
 .proj-row-2 .proj-what{color:var(--coral);}
 .proj-row-3 .proj-what{color:var(--blue);}
-.proj-ctx{font-size:14px;color:#444;font-weight:300;line-height:1.75;margin-bottom:20px;}
+.proj-ctx{font-size:14px;color:rgba(240,234,216,.7);font-weight:300;line-height:1.75;margin-bottom:20px;}
 .proj-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:24px;}
-.tag{font-family:'DM Mono',monospace;font-size:10px;padding:3px 10px;border:1px solid rgba(0,0,0,.12);border-radius:20px;color:#888;letter-spacing:.05em;}
+.tag{font-family:'DM Mono',monospace;font-size:10px;padding:3px 10px;border:1px solid rgba(240,234,216,.1);border-radius:20px;color:rgba(240,234,216,.45);letter-spacing:.05em;}
 .proj-cta{display:inline-flex;align-items:center;gap:6px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;font-weight:500;padding:10px 20px;border-radius:3px;transition:all .2s;align-self:flex-start;}
-.proj-row-1 .proj-cta{background:var(--yellow);color:#000;}
+.proj-row-1 .proj-cta{background:var(--yellow);color:#000;font-weight:600;}
 .proj-row-1 .proj-cta:hover{background:#e5b800;}
 .proj-row-2 .proj-cta{background:var(--coral);color:#fff;}
 .proj-row-2 .proj-cta:hover{background:#d4402a;}
@@ -297,12 +298,12 @@ section{position:relative;z-index:1;}
 .bio-photo-wrap{position:sticky;top:100px;}
 .bio-photo{width:100%;border-radius:4px;display:block;filter:grayscale(20%);}
 .bio-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px;}
-.bio-tag{font-family:'DM Mono',monospace;font-size:10px;padding:4px 10px;border:1px solid rgba(0,0,0,.1);border-radius:20px;color:#666;letter-spacing:.04em;}
-.bio-p{font-size:clamp(14px,1.5vw,16px);color:#444;font-weight:300;line-height:1.85;margin-bottom:20px;}
-.bio-credentials{display:flex;gap:32px;margin-top:32px;padding-top:28px;border-top:1px solid rgba(0,0,0,.08);flex-wrap:wrap;}
+.bio-tag{font-family:'DM Mono',monospace;font-size:10px;padding:4px 10px;border:1px solid rgba(240,234,216,.12);border-radius:20px;color:rgba(240,234,216,.5);letter-spacing:.04em;}
+.bio-p{font-size:clamp(14px,1.5vw,16px);color:rgba(240,234,216,.75);font-weight:300;line-height:1.85;margin-bottom:20px;}
+.bio-credentials{display:flex;gap:32px;margin-top:32px;padding-top:28px;border-top:1px solid rgba(240,234,216,.08);flex-wrap:wrap;}
 .bio-cred{display:flex;align-items:baseline;gap:8px;}
 .bio-cred-n{font-family:'Syne',sans-serif;font-size:32px;font-weight:800;color:var(--blue);letter-spacing:-.03em;}
-.bio-cred-label{font-family:'DM Mono',monospace;font-size:11px;color:#888;letter-spacing:.06em;text-transform:uppercase;}
+.bio-cred-label{font-family:'DM Mono',monospace;font-size:11px;color:rgba(240,234,216,.45);letter-spacing:.06em;text-transform:uppercase;}
 
 /* HUMAN */
 .human-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
@@ -376,724 +377,27 @@ body:not(.en) span[data-fr]{display:inline;}
 <section id="hero" class="sec-dark">
   <div class="photo-bg" style="background-image:url('photo-hero.jpg');"></div>
   <div class="hero-inner">
-    <div class="container">
       <div class="hero-text-block">
         <div class="hero-tag" data-en>Fractional CPO · Transition Manager · Full Remote · Available</div>
         <div class="hero-tag" data-fr>Fractional CPO · Manager de Transition · Full Remote · Disponible</div>
-        <div class="hero-title-wrap">
-          <span class="line-cream" id="tl1"></span>
-          <span class="line-blue" id="tl2"></span>
+        <div class="hero-title-wrap rv">
+          <span class="line-cream">Anys Mechkar.</span>
+          <span class="line-blue" data-en>Change catalyst.</span>
+          <span class="line-blue" data-fr>Catalyseur de transitions.</span>
         </div>
-        <div class="hero-sub-wrap" id="hero-sub-wrap" style="visibility:hidden;">
-          <p class="hero-sub" data-en>You have a product to launch, a team to structure, or an organization that needs to change. I step into the complexity, clarify, build, consolidate until you stand on your own.</p>
-          <p class="hero-sub" data-fr>Vous avez un produit à lancer, une équipe à structurer, ou une organisation qui doit changer. J'interviens dans la complexité, je clarifie, je construis, je consolide jusqu'à ce que vous soyez autonomes.</p>
-          <p class="hero-sub-detail" data-en>Product strategy · UX/UI · Team building · Agile · Change management · AI. 15 years. 3 countries.</p>
-          <p class="hero-sub-detail" data-fr>Stratégie produit · UX/UI · Team building · Agile · Conduite du changement · IA. 15 ans. 3 pays.</p>
-          <div class="hero-cta">
-            <a href="https://calendly.com/a-mechkar/decouverte-45-min?locale=en" target="_blank" class="btn btn-p" data-en>Book a 45-min call →</a>
-            <a href="https://calendly.com/a-mechkar/decouverte-45-min?locale=fr" target="_blank" class="btn btn-p" data-fr>Réserver un appel 45 min →</a>
-            <a href="#cases" class="btn btn-s" data-en>See case studies</a>
+        <div class="hero-sub-wrap rv">
+          <p class="hero-sub" data-en>I work with founders, managers and leaders who want to move to the next level — and need someone who can read the whole system, act at the right level, and leave when the team stands on its own.</p>
+          <p class="hero-sub" data-fr>J'interviens auprès des fondateurs, managers et dirigeants qui veulent passer un cap — et qui ont besoin de quelqu'un capable de lire le système entier, d'agir au bon niveau, et de partir quand l'équipe tient seule.</p>
+          <div class="hero-sub-detail" data-en>Product · Design · Tech · Organisation · Human. 15 years. 3 countries.</div>
+          <div class="hero-sub-detail" data-fr>Produit · Design · Tech · Organisation · Humain. 15 ans. 3 pays.</div>
+          <div class="hero-target" data-en>For startups, SMEs and purpose-driven organisations who refuse to choose between performance and people.</div>
+          <div class="hero-target" data-fr>Pour les startups, TPE/PME et organisations à mission qui refusent de choisir entre performance et humanité.</div>
+          <div class="hero-cta rv">
+            <a href="#contact" class="btn btn-p" data-en>Book a 45-min call →</a>
+            <a href="#contact" class="btn btn-p" data-fr>Réserver un appel 45 min →</a>
+            <a href="#cases" class="btn btn-s" data-en>See the work</a>
             <a href="#cases" class="btn btn-s" data-fr>Voir les cas clients</a>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="hero-photo-zone">
-    <img src="photo-anys.png" alt="Anys Mechkar">
-  </div>
-</section>
-
-<section id="why" class="sec-dark" style="padding:clamp(60px,10vw,140px) 0;">
-  <div class="container">
-
-    <div class="rv" style="max-width:680px;margin-bottom:clamp(48px,8vw,96px);">
-      <div class="section-label" data-en>Why call me</div>
-      <div class="section-label" data-fr>Pourquoi faire appel à moi</div>
-      <h2 class="section-title" data-en>Something is stuck.<br>You feel it. You just can't put your finger on it.</h2>
-      <h2 class="section-title" data-fr>Quelque chose coince.<br>Vous le sentez. Mais vous n'arrivez pas à mettre le doigt dessus.</h2>
-    </div>
-
-    <div class="why-situations rv" style="margin-bottom:clamp(48px,8vw,96px);">
-      <div class="why-sit">
-        <div class="why-sit-num">01</div>
-        <div class="why-sit-body">
-          <div class="why-sit-title" data-en>The tools aren't the problem. Or maybe they are. You're not sure anymore.</div>
-          <div class="why-sit-title" data-fr>Les outils ne sont pas le problème. Ou peut-être si. Vous ne savez plus vraiment.</div>
-          <p class="why-sit-desc" data-en>You've changed tools twice. The teams work around them instead of with them. You've bought software that nobody uses. Meanwhile people build their own little workarounds in spreadsheets — and those are the ones that actually run the business.</p>
-          <p class="why-sit-desc" data-fr>Vous avez changé d'outil deux fois. Les équipes travaillent autour plutôt qu'avec. Vous avez acheté des logiciels que personne n'utilise. Pendant ce temps, des gens ont construit leurs propres contournements dans des tableurs — et ce sont eux qui font vraiment tourner le business.</p>
-        </div>
-      </div>
-      <div class="why-sit">
-        <div class="why-sit-num">02</div>
-        <div class="why-sit-body">
-          <div class="why-sit-title" data-en>You have good people. But they don't move in the same direction.</div>
-          <div class="why-sit-title" data-fr>Vous avez de bonnes personnes. Mais elles n'avancent pas dans le même sens.</div>
-          <p class="why-sit-desc" data-en>Everyone is competent. Everyone works hard. But something between them doesn't connect — silos, miscommunication, priorities that aren't shared. The problem isn't individual. It's systemic. And nobody inside can see it clearly because everyone is too close.</p>
-          <p class="why-sit-desc" data-fr>Chacun est compétent. Chacun travaille dur. Mais quelque chose entre eux ne connecte pas — silos, incompréhensions, priorités non partagées. Le problème n'est pas individuel. Il est systémique. Et personne en interne ne le voit clairement parce que tout le monde est trop dedans.</p>
-        </div>
-      </div>
-      <div class="why-sit">
-        <div class="why-sit-num">03</div>
-        <div class="why-sit-body">
-          <div class="why-sit-title" data-en>You have a clear idea. It's a good one. But you don't know how to make it happen.</div>
-          <div class="why-sit-title" data-fr>Vous avez une idée claire. Elle est bonne. Mais vous ne savez pas comment la faire advenir.</div>
-          <p class="why-sit-desc" data-en>A new product, a restructuring, a process overhaul. The direction is right. What's missing is someone who can translate vision into structure, structure into tools, tools into adoption. Someone who speaks the language of both the CEO and the developer.</p>
-          <p class="why-sit-desc" data-fr>Un nouveau produit, une restructuration, une refonte de process. La direction est bonne. Ce qui manque, c'est quelqu'un capable de traduire la vision en structure, la structure en outils, les outils en adoption. Quelqu'un qui parle à la fois le langage du dirigeant et du développeur.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="why-cost rv" style="margin-bottom:clamp(48px,8vw,96px);">
-      <div class="why-cost-inner">
-        <div class="why-cost-label" data-en>What it actually costs you</div>
-        <div class="why-cost-label" data-fr>Ce que ça vous coûte vraiment</div>
-        <div class="why-cost-grid">
-          <div class="why-cost-item" data-en><span class="why-cost-n">→</span> Hours lost to workarounds nobody questions anymore</div>
-          <div class="why-cost-item" data-fr><span class="why-cost-n">→</span> Des heures perdues en contournements que plus personne ne remet en question</div>
-          <div class="why-cost-item" data-en><span class="why-cost-n">→</span> Good people who disengage because nothing seems to move</div>
-          <div class="why-cost-item" data-fr><span class="why-cost-n">→</span> De bonnes personnes qui se démotivent parce que rien ne semble avancer</div>
-          <div class="why-cost-item" data-en><span class="why-cost-n">→</span> Decisions made without the full picture</div>
-          <div class="why-cost-item" data-fr><span class="why-cost-n">→</span> Des décisions prises sans vision d'ensemble</div>
-          <div class="why-cost-item" data-en><span class="why-cost-n">→</span> A level you can see but can't seem to reach</div>
-          <div class="why-cost-item" data-fr><span class="why-cost-n">→</span> Un palier que vous voyez mais que vous n'arrivez pas à franchir</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="why-diff rv" style="max-width:760px;">
-      <div class="why-diff-label" data-en>What's different with me</div>
-      <div class="why-diff-label" data-fr>Ce qui est différent avec moi</div>
-      <p class="why-diff-text" data-en>A consulting firm costs a lot and delivers slides. A permanent hire takes time and creates commitment. What you sometimes need is someone who enters the system, understands it as a whole, acts at the right level — and leaves when the team stands on its own.</p>
-      <p class="why-diff-text" data-fr>Un cabinet de conseil coûte cher et livre des slides. Un recrutement CDI prend du temps et engage. Ce dont vous avez parfois besoin, c'est de quelqu'un qui entre dans le système, le comprend dans sa globalité, agit au bon niveau — et part quand l'équipe tient seule.</p>
-      <p class="why-diff-text" data-en>Not a specialist who optimises one corner. Someone who sees the connections between tools, processes, people, and strategy — and can act on all of them.</p>
-      <p class="why-diff-text" data-fr>Pas un spécialiste qui optimise un seul coin. Quelqu'un qui voit les connexions entre les outils, les process, les personnes et la stratégie — et qui peut agir sur tous ces leviers.</p>
-    </div>
-
-  </div>
-</section>
-
-<section id="problems" class="sec-dark" style="padding:clamp(60px,10vw,120px) 0;">
-  <div class="container">
-    <div class="rv" style="max-width:680px;margin-bottom:clamp(40px,6vw,64px);">
-      <div class="section-label" data-en>Three situations</div>
-      <div class="section-label" data-fr>Trois situations</div>
-      <h2 class="section-title" data-en>You've probably already tried something.<br>It just didn't stick.</h2>
-      <h2 class="section-title" data-fr>Vous avez probablement déjà essayé quelque chose.<br>Ça n'a pas pris.</h2>
-    </div>
-
-    <div class="pb-grid">
-
-      <!-- 01 COHÉSION -->
-      <div class="pb-item" onclick="this.classList.toggle('active')">
-        <div class="pb-trigger">
-          <div>
-            <div class="pb-num">01</div>
-            <div class="pb-title" data-en>The team is burning out.<br>Nobody says it out loud.</div>
-            <div class="pb-title" data-fr>L'équipe s'épuise.<br>Personne ne le dit vraiment.</div>
-            <div class="pb-subtitle" data-en>Culture · Cohesion · Internal conflict</div>
-            <div class="pb-subtitle" data-fr>Culture · Cohésion · Conflits internes</div>
-          </div>
-          <div class="pb-arrow">↓</div>
-        </div>
-        <div class="pb-detail">
-          <div class="pb-col">
-            <div class="pb-col-label l-grey" data-en>What's happening</div>
-            <div class="pb-col-label l-grey" data-fr>Ce qui se passe</div>
-            <ul class="pb-col-text" data-en>
-              <li>Teams working in silos, a shared vision that doesn't land</li>
-              <li>Rising absenteeism, quiet disengagement, subtle tensions</li>
-              <li>A direction that makes sense on paper but nobody owns it</li>
-              <li>Burnout that management sees coming but doesn't know how to stop</li>
-            </ul>
-            <ul class="pb-col-text" data-fr>
-              <li>Équipes en silos, une vision partagée qui ne passe pas</li>
-              <li>Absentéisme en hausse, désengagement silencieux, tensions sourdes</li>
-              <li>Une direction qui a du sens sur le papier mais que personne ne s'approprie</li>
-              <li>Des burnouts que le management voit venir sans savoir comment les arrêter</li>
-            </ul>
-          </div>
-          <div class="pb-col">
-            <div class="pb-col-label l-orange" data-en>What you've tried</div>
-            <div class="pb-col-label l-orange" data-fr>Ce que vous avez essayé</div>
-            <ul class="pb-col-text" data-en>
-              <li>Team building activities — nice day, nothing changed on Monday</li>
-              <li>A new org chart — same dynamics, different boxes</li>
-              <li>A consultant who delivered a report — still on a shelf somewhere</li>
-              <li>A manager who "manages morale" — surface-level at best</li>
-            </ul>
-            <ul class="pb-col-text" data-fr>
-              <li>Des team buildings — belle journée, rien n'a changé le lundi</li>
-              <li>Un nouvel organigramme — mêmes dynamiques, cases différentes</li>
-              <li>Un consultant qui a livré un rapport — toujours sur une étagère</li>
-              <li>Un manager qui "gère le moral" — cosmétique au mieux</li>
-            </ul>
-          </div>
-          <div class="pb-col">
-            <div class="pb-col-label l-blue" data-en>The real shift</div>
-            <div class="pb-col-label l-blue" data-fr>Le vrai déclic</div>
-            <p class="pb-col-text" data-en>Culture isn't built with events. It's built with clarity — on roles, decisions, and what matters. When people understand the system they're in, and feel genuinely heard, something unlocks. The work is to redesign the structure so it supports people instead of grinding them down.</p>
-            <p class="pb-col-text" data-fr>La culture ne se construit pas avec des événements. Elle se construit avec de la clarté — sur les rôles, les décisions, ce qui compte. Quand les gens comprennent le système dans lequel ils évoluent et se sentent vraiment entendus, quelque chose se débloque. Le travail, c'est de reconstruire la structure pour qu'elle soutienne les gens plutôt qu'elle ne les use.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- 02 INNOVATION -->
-      <div class="pb-item" onclick="this.classList.toggle('active')">
-        <div class="pb-trigger">
-          <div>
-            <div class="pb-num">02</div>
-            <div class="pb-title" data-en>You have ideas. Good ones.<br>They never quite land.</div>
-            <div class="pb-title" data-fr>Vous avez des idées. De bonnes idées.<br>Elles n'aboutissent jamais vraiment.</div>
-            <div class="pb-subtitle" data-en>Innovation · Vision · Execution</div>
-            <div class="pb-subtitle" data-fr>Innovation · Vision · Exécution</div>
-          </div>
-          <div class="pb-arrow">↓</div>
-        </div>
-        <div class="pb-detail">
-          <div class="pb-col">
-            <div class="pb-col-label l-grey" data-en>What's happening</div>
-            <div class="pb-col-label l-grey" data-fr>Ce qui se passe</div>
-            <ul class="pb-col-text" data-en>
-              <li>The run absorbs everything — no space left for building something new</li>
-              <li>People with ideas but no resources, no mandate, no path forward</li>
-              <li>Innovation that starts, then gets deprioritised when things get busy</li>
-              <li>New initiatives that don't root — they stay anecdotal, then disappear</li>
-            </ul>
-            <ul class="pb-col-text" data-fr>
-              <li>Le run absorbe tout — plus d'espace pour construire quelque chose de nouveau</li>
-              <li>Des gens qui ont des idées mais pas les ressources, pas le mandat, pas de chemin</li>
-              <li>Une innovation qui démarre, puis déprioritisée quand ça s'emballe</li>
-              <li>Des initiatives qui ne s'enracinent pas — elles restent anecdotiques, puis disparaissent</li>
-            </ul>
-          </div>
-          <div class="pb-col">
-            <div class="pb-col-label l-orange" data-en>What you've tried</div>
-            <div class="pb-col-label l-orange" data-fr>Ce que vous avez essayé</div>
-            <ul class="pb-col-text" data-en>
-              <li>An "innovation lab" that never connected to the real business</li>
-              <li>A sprint — great energy for two weeks, then back to normal</li>
-              <li>Hiring someone to "lead transformation" — they hit a wall of inertia</li>
-              <li>Waiting for the right moment — which never comes</li>
-            </ul>
-            <ul class="pb-col-text" data-fr>
-              <li>Un "lab d'innovation" qui n'a jamais connecté au vrai business</li>
-              <li>Un sprint — belle énergie deux semaines, puis retour à la normale</li>
-              <li>Recruter quelqu'un pour "piloter la transformation" — il a heurté un mur d'inertie</li>
-              <li>Attendre le bon moment — qui n'arrive jamais</li>
-            </ul>
-          </div>
-          <div class="pb-col">
-            <div class="pb-col-label l-blue" data-en>The real shift</div>
-            <div class="pb-col-label l-blue" data-fr>Le vrai déclic</div>
-            <p class="pb-col-text" data-en>Innovation doesn't need a lab. It needs someone who can hold the vision and move through the organisation's resistance without breaking it. The work is to identify the real blockers — not the stated ones — and to create enough momentum that the new thing becomes more attractive than staying still.</p>
-            <p class="pb-col-text" data-fr>L'innovation n'a pas besoin d'un lab. Elle a besoin de quelqu'un qui peut tenir la vision et traverser la résistance de l'organisation sans la briser. Le travail, c'est d'identifier les vrais blocages — pas ceux qu'on déclare — et de créer suffisamment d'élan pour que la nouveauté devienne plus attractive que le statu quo.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- 03 OUTILS -->
-      <div class="pb-item" onclick="this.classList.toggle('active')">
-        <div class="pb-trigger">
-          <div>
-            <div class="pb-num">03</div>
-            <div class="pb-title" data-en>Your tools are slowing you down.<br>And AI could change everything — if only.</div>
-            <div class="pb-title" data-fr>Vos outils vous ralentissent.<br>Et l'IA pourrait tout changer — si seulement.</div>
-            <div class="pb-subtitle" data-en>Tools · Processes · AI adoption</div>
-            <div class="pb-subtitle" data-fr>Outils · Process · Adoption de l'IA</div>
-          </div>
-          <div class="pb-arrow">↓</div>
-        </div>
-        <div class="pb-detail">
-          <div class="pb-col">
-            <div class="pb-col-label l-grey" data-en>What's happening</div>
-            <div class="pb-col-label l-grey" data-fr>Ce qui se passe</div>
-            <ul class="pb-col-text" data-en>
-              <li>Outdated tools, non-standard processes, everyone doing it their own way</li>
-              <li>Workarounds that became the norm — spreadsheets running the business</li>
-              <li>AI potential everyone can see, but nobody has the time or skills to act on it</li>
-              <li>Hours lost every week to tasks that could be automated in days</li>
-            </ul>
-            <ul class="pb-col-text" data-fr>
-              <li>Des outils vieillissants, des process non harmonisés, chacun fait à sa façon</li>
-              <li>Des contournements devenus la norme — des tableurs qui font tourner le business</li>
-              <li>Un potentiel IA que tout le monde voit, mais personne n'a le temps ni les compétences pour l'activer</li>
-              <li>Des heures perdues chaque semaine sur des tâches automatisables en quelques jours</li>
-            </ul>
-          </div>
-          <div class="pb-col">
-            <div class="pb-col-label l-orange" data-en>What you've tried</div>
-            <div class="pb-col-label l-orange" data-fr>Ce que vous avez essayé</div>
-            <ul class="pb-col-text" data-en>
-              <li>Buying a new tool — adoption was zero, the old way persisted</li>
-              <li>Asking someone internal to "look into AI" — between two other tasks</li>
-              <li>A consultant who recommended an expensive platform — overkill for your size</li>
-              <li>Waiting for someone with the right profile to join — still waiting</li>
-            </ul>
-            <ul class="pb-col-text" data-fr>
-              <li>Acheter un nouvel outil — adoption nulle, l'ancienne façon a persisté</li>
-              <li>Demander à quelqu'un en interne de "regarder l'IA" — entre deux autres tâches</li>
-              <li>Un consultant qui a recommandé une plateforme coûteuse — surdimensionné pour vous</li>
-              <li>Attendre le bon profil — toujours en attente</li>
-            </ul>
-          </div>
-          <div class="pb-col">
-            <div class="pb-col-label l-blue" data-en>The real shift</div>
-            <div class="pb-col-label l-blue" data-fr>Le vrai déclic</div>
-            <p class="pb-col-text" data-en>The problem is rarely the tool. It's the process the tool is supposed to support. Fix the process first, then choose the right tool — not the other way around. With AI, the right intervention can now build a custom, lightweight solution in days that fits exactly how your team works. No over-engineering. No change management nightmare.</p>
-            <p class="pb-col-text" data-fr>Le problème, c'est rarement l'outil. C'est le process que l'outil est censé soutenir. Corriger le process d'abord, choisir le bon outil ensuite — pas l'inverse. Avec l'IA, la bonne intervention peut aujourd'hui construire une solution légère et sur mesure en quelques jours, qui colle exactement à la façon dont votre équipe travaille. Sans usine à gaz. Sans cauchemar de conduite du changement.</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-<section id="whatido" class="sec-blue">
-  <div class="container">
-    <div class="rv">
-      <div class="section-label" data-en>How I work</div>
-      <div class="section-label" data-fr>Comment je travaille</div>
-      <h2 class="section-title" data-en>Clarity fast.<br>Shipped. Your team stands on its own.</h2>
-      <h2 class="section-title" data-fr>De la clarté vite.<br>Un produit livré. Votre équipe autonome.</h2>
-    </div>
-    <div class="wid-grid">
-      <div class="wid-card c-enter rv-l d1"><div class="c-num-bg">01</div><div class="c-phase e" data-en>Week 1</div><div class="c-phase e" data-fr>Semaine 1</div><h3 class="c-title" data-en>You finally know what the real problem is</h3><h3 class="c-title" data-fr>Vous savez enfin quel est le vrai problème</h3><p class="c-body" data-en>Not the one everyone's been talking about. The one underneath. Fast audit, team interviews, no assumptions. You get a clear diagnosis and a direction you can act on.</p><p class="c-body" data-fr>Pas celui dont tout le monde parle. Celui qui est en dessous. Audit rapide, écoute de l'équipe, sans a priori. Vous repartez avec un diagnostic clair et une direction sur laquelle agir.</p></div>
-      <div class="wid-card c-build rv d2"><div class="c-num-bg">02</div><div class="c-phase b" data-en>During the mission</div><div class="c-phase b" data-fr>Pendant la mission</div><h3 class="c-title" data-en>Things move. Without waiting for alignment.</h3><h3 class="c-title" data-fr>Ça avance. Sans attendre l'alignement général.</h3><p class="c-body" data-en>Design, prototype, build, iterate. Decisions are made. You see progress every week — not decks, not promises. Working product.</p><p class="c-body" data-fr>Design, prototype, code, itération. Les décisions sont prises. Vous voyez des avancées chaque semaine — pas des slides, pas des promesses. Un produit qui fonctionne.</p></div>
-      <div class="wid-card c-transmit rv-r d3"><div class="c-num-bg">03</div><div class="c-phase t" data-en>End of mission</div><div class="c-phase t" data-fr>Fin de mission</div><h3 class="c-title" data-en>Your team runs it. You don't need me anymore.</h3><h3 class="c-title" data-fr>Votre équipe tient la route. Sans dépendance.</h3><p class="c-body" data-en>Processes, culture, skills are in place. The team knows what to do and why. That's when I know the mission is done.</p><p class="c-body" data-fr>Process, culture, compétences sont en place. L'équipe sait quoi faire et pourquoi. C'est à ce moment que je sais que la mission est accomplie.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="spectrum" class="sec-dark">
-  <div class="container">
-    <div class="rv">
-      <div class="section-label" data-en>Full spectrum</div>
-      <div class="section-label" data-fr>Spectre complet</div>
-      <h2 class="section-title" data-en>7 dimensions.<br>One person.</h2>
-      <h2 class="section-title" data-fr>7 dimensions.<br>Une seule personne.</h2>
-    </div>
-    <div class="spectrum-wrap">
-      <div>
-        <div class="sp-core-label" data-en>Core expertise — the foundation</div>
-        <div class="sp-core-label" data-fr>Expertise core — la fondation</div>
-        <div class="sp-core-grid">
-          <div class="sp-core rv d1"><div class="sp-core-inner"><div class="sp-num">01</div><div><div class="sp-name">Design</div><div class="sp-desc" data-en>UX/UI, branding, direction artistique. I make products beautiful and intuitive.</div><div class="sp-desc" data-fr>UX/UI, branding, direction artistique. Je rends les produits beaux et intuitifs.</div></div></div></div>
-          <div class="sp-core rv d2"><div class="sp-core-inner"><div class="sp-num">02</div><div><div class="sp-name" data-en>Development</div><div class="sp-name" data-fr>Développement</div><div class="sp-desc" data-en>Front-end, no-code, AI tools. I know what's buildable and I build it.</div><div class="sp-desc" data-fr>Front-end, no-code, outils IA. Je sais ce qui est faisable et je le construis.</div></div></div></div>
-          <div class="sp-core rv d3"><div class="sp-core-inner"><div class="sp-num">03</div><div><div class="sp-name">Product</div><div class="sp-desc" data-en>Strategy, backlog, user stories, KPIs. I structure and prioritize with clarity.</div><div class="sp-desc" data-fr>Stratégie, backlog, user stories, KPIs. Je structure et priorise avec clarté.</div></div></div></div>
-        </div>
-        <div class="sp-diff-label" data-en>What makes the difference</div>
-        <div class="sp-diff-label" data-fr>Ce qui fait la différence</div>
-        <div class="sp-diff-grid">
-          <div class="sp-diff rv d1"><div class="sp-num">04</div><div class="sp-name">Business</div><div class="sp-desc" data-en>Every feature has a why.</div><div class="sp-desc" data-fr>Chaque feature a un pourquoi.</div></div>
-          <div class="sp-diff rv d2"><div class="sp-num">05</div><div class="sp-name" data-en>Organization</div><div class="sp-name" data-fr>Organisation</div><div class="sp-desc" data-en>Agile, Holacracy, team building.</div><div class="sp-desc" data-fr>Agile, Holacratie, team building.</div></div>
-          <div class="sp-diff rv d3"><div class="sp-num">06</div><div class="sp-name" data-en>Human</div><div class="sp-name" data-fr>Humain</div><div class="sp-desc" data-en>Facilitation, coaching, change.</div><div class="sp-desc" data-fr>Facilitation, coaching, changement.</div></div>
-          <div class="sp-diff rv d4"><div class="sp-num">07</div><div class="sp-name" data-en>Creativity</div><div class="sp-name" data-fr>Créativité</div><div class="sp-desc" data-en>Art, music, intuition as tools.</div><div class="sp-desc" data-fr>Art, musique, intuition comme outils.</div></div>
-        </div>
-      </div>
-      <div class="rv-r">
-        <p class="sp-right-text" data-en>Most product designers cover <em>one or two</em> of these dimensions. I cover all seven — which means I can enter a team, <strong>understand the full picture</strong>, and move fast without waiting for everyone to align.</p>
-        <p class="sp-right-text" data-fr>La plupart des product designers couvrent <em>une ou deux</em> de ces dimensions. J'en couvre sept — ce qui me permet d'entrer dans une équipe, <strong>comprendre la situation globale</strong>, et avancer vite sans attendre l'alignement général.</p>
-        <p class="sp-right-text" data-en>The first three are the technical foundation. The last four are <em>what makes the difference</em> between someone who executes and someone who transforms.</p>
-        <p class="sp-right-text" data-fr>Les trois premières sont la fondation technique. Les quatre dernières sont <em>ce qui fait la différence</em> entre quelqu'un qui exécute et quelqu'un qui transforme.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="timeline-section" class="sec-dark">
-  <div class="container">
-    <div class="rv">
-      <div class="section-label" data-en>Track record</div>
-      <div class="section-label" data-fr>Parcours</div>
-      <h2 class="section-title" data-en>15 years changing things from within.</h2>
-      <h2 class="section-title" data-fr>15 ans à changer les choses de l'intérieur.</h2>
-    </div>
-    <div class="tl-outer">
-      <div class="tl-items-col">
-      <div class="tl-fill-line" id="tl-fill"></div>
-        <div class="tl-item rv" id="tl-proximedia">
-          <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
-          <div class="tl-content">
-            <div class="tl-year">2013 — 2018</div>
-            <div class="tl-card">
-              <div class="tl-company">Proximedia / Publicis Groupe</div>
-              <div class="tl-role" data-en>Front-end Dev → Head of Product & Innovation</div>
-              <div class="tl-role" data-fr>Dév. Front → Resp. Produit & Innovation</div>
-              <div class="tl-period" data-en>5 years · 3 roles · France, Belgium, Netherlands, Spain</div>
-              <div class="tl-period" data-fr>5 ans · 3 rôles · France, Belgique, Pays-Bas, Espagne</div>
-              <p class="tl-story" data-en>Entered as a developer. Identified a systemic problem no one saw — the <strong>internal tooling</strong>. Built a 150-page diagnosis, pitched the direction, got the green light. Created an internal CMS from scratch. Recruited and trained UX/UI designers. Implemented Agile (SCRUM). <strong>3 → 25 people</strong>. Exited as Head of Product & Innovation.</p>
-              <p class="tl-story" data-fr>Entré comme développeur. Identifié un problème systémique que personne ne voyait — les <strong>outils internes</strong>. Produit un diagnostic de 150 pages, pitché la direction, obtenu le feu vert. Créé un CMS maison de zéro. Recruté et formé des designers UX/UI. Mis en place l'Agile (SCRUM). <strong>3 → 25 personnes</strong>. Sorti Resp. Produit & Innovation.</p>
-            </div>
-          </div>
-        </div>
-        <div class="tl-item rv d1" id="tl-deligreens">
-          <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
-          <div class="tl-content">
-            <div class="tl-year">2018 — 2019</div>
-            <div class="tl-card">
-              <div class="tl-company">Deligreens <span style="font-size:11px;opacity:.5;font-weight:400;">— Carrefour backed</span></div>
-              <div class="tl-role" data-en>Organisational Coach & Product Lead</div>
-              <div class="tl-role" data-fr>Coach Organisationnel & Responsable Produit</div>
-              <div class="tl-period" data-en>1 year · 25 people · €2.5M raised</div>
-              <div class="tl-period" data-fr>1 an · 25 collaborateurs · 2,5M€ levés</div>
-              <p class="tl-story" data-en>Bio food delivery startup. Built the <strong>full brand identity</strong>, e-commerce platform and a custom logistics app instead of buying an off-the-shelf tool. Recruited front-end devs. Implemented Holacracy from day one. UX research and conversion optimisation. Acquired by Le Comptoir Local.</p>
-              <p class="tl-story" data-fr>Startup livraison bio. Construit l'<strong>identité visuelle complète</strong>, la plateforme e-commerce et une app logistique sur mesure plutôt qu'un outil inadapté. Recruté des devs front. Mis en place l'Holacratie dès le départ. Recherche UX et optimisation tunnel de vente. Racheté par Le Comptoir Local.</p>
-            </div>
-          </div>
-        </div>
-        <div class="tl-item rv d2" id="tl-aoni">
-          <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
-          <div class="tl-content">
-            <div class="tl-year" data-en>2020 — present</div>
-            <div class="tl-year" data-fr>2020 — présent</div>
-            <div class="tl-card">
-              <div class="tl-company">Neoqii + Aoni</div>
-              <div class="tl-role" data-en>Consultant · Product Designer · Creative Director</div>
-              <div class="tl-role" data-fr>Consultant · Product Designer · Directeur Créatif</div>
-              <div class="tl-period" data-en>Independent — ongoing</div>
-              <div class="tl-period" data-fr>Indépendant — en cours</div>
-              <p class="tl-story" data-en>Product and design missions for clients (Genève-loisirs, Millet, Résiliences…). Brand identities, digital products, organisational transformation. IN CARNE — <strong>La Forge</strong>, a gamified React app for a 120-day men's program. Coaching and project creation support.</p>
-              <p class="tl-story" data-fr>Missions produit et design pour clients (Genève-loisirs, Millet, Résiliences…). Identités visuelles, produits digitaux, transformation organisationnelle. IN CARNE — <strong>La Forge</strong>, app React gamifiée pour un programme de 120 jours pour hommes. Coaching et accompagnement à la création de projets.</p>
-            </div>
-          </div>
-        </div>
-        <div class="tl-item rv d3" id="tl-enedis">
-          <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
-          <div class="tl-content">
-            <div class="tl-year">2025</div>
-            <div class="tl-card">
-              <div class="tl-company">Enedis <span style="font-size:11px;opacity:.5;font-weight:400;">via Talan</span></div>
-              <div class="tl-role" data-en>Product Owner — SAFe environment</div>
-              <div class="tl-role" data-fr>Product Owner — environnement SAFe</div>
-              <div class="tl-period" data-en>6 months</div>
-              <div class="tl-period" data-fr>6 mois</div>
-              <p class="tl-story" data-en>Mission at France's main electricity distribution network operator. Functional framing, user stories, inter-squad coordination, backlog management, acceptance testing. <strong>SAFe (Scaled Agile)</strong> environment within a large organisation.</p>
-              <p class="tl-story" data-fr>Mission chez le principal gestionnaire du réseau électrique en France. Cadrage fonctionnel, user stories, coordination inter-squads, gestion du backlog, recettes. Environnement <strong>SAFe (Agile à l'échelle)</strong> dans une grande organisation.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="cases" class="sec-coral">
-  <div class="photo-bg" style="background-image:url('photo-projects.jpg');"></div>
-  <div class="container">
-    <div class="rv">
-      <div class="section-label" data-en>Case studies</div>
-      <div class="section-label" data-fr>Cas de transformation</div>
-      <h2 class="section-title" data-en>Real missions.<br>Real impact.</h2>
-      <h2 class="section-title" data-fr>Des missions réelles.<br>Un impact concret.</h2>
-    </div>
-    <div class="proj-list">
-
-      <div class="proj-row proj-row-1 rv">
-        <div class="proj-text">
-          <div class="proj-idx">01 / Proximedia — Publicis Groupe</div>
-          <div class="proj-name" data-en>From 3 to 25 people.<br>3 countries. Built from nothing.</div>
-          <div class="proj-name" data-fr>De 3 à 25 personnes.<br>3 pays. Construit de zéro.</div>
-          <div class="proj-what" data-en>Team building · Product · Agile</div>
-          <div class="proj-what" data-fr>Team building · Produit · Agile</div>
-          <p class="proj-ctx" data-en>Entered as a developer. Identified a systemic problem no one else saw. Built the diagnosis, pitched the direction, got the green light. Created an internal CMS from scratch, recruited and led the team. Exited as Head of Product & Innovation.</p>
-          <p class="proj-ctx" data-fr>Entré comme développeur. Identifié un problème systémique que personne ne voyait. Construit le diagnostic, pitché la direction, obtenu le feu vert. Créé un CMS maison de zéro, recruté et dirigé l'équipe. Sorti Resp. Produit & Innovation.</p>
-          <div class="proj-tags"><span class="tag">Product Strategy</span><span class="tag">Team Building</span><span class="tag">Agile / SCRUM</span><span class="tag" data-en>Change Management</span><span class="tag" data-fr>Conduite du changement</span></div>
-          <a href="case-proximedia.html" class="proj-cta" data-en>Read full case →</a>
-          <a href="case-proximedia.html?lang=fr" class="proj-cta" data-fr>Lire le cas complet →</a>
-        </div>
-        <div class="proj-visual">
-          <div class="proj-visual-inner">
-            <div class="proj-big">3 → 25</div>
-            <div style="font-family:'DM Mono',monospace;font-size:12px;color:#888;margin-top:8px;letter-spacing:.08em;">FR · BE · NL · ES</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="proj-row proj-row-2 rv">
-        <div class="proj-text">
-          <div class="proj-idx">02 / Deligreens — Carrefour</div>
-          <div class="proj-name" data-en>A full product, built from scratch.<br>Brand, platform, logistics.</div>
-          <div class="proj-name" data-fr>Un produit complet, de zéro.<br>Marque, plateforme, logistique.</div>
-          <div class="proj-what" data-en>Branding · E-commerce · Holacracy</div>
-          <div class="proj-what" data-fr>Branding · E-commerce · Holacratie</div>
-          <p class="proj-ctx" data-en>Built the full brand identity, e-commerce platform and a custom logistics app — instead of buying an off-the-shelf tool that did not fit. Holacracy from day one. 2.5M euros raised. Acquired by Le Comptoir Local.</p>
-          <p class="proj-ctx" data-fr>Construit l'identité visuelle complète, la plateforme e-commerce et une app logistique sur mesure — plutôt qu'un outil inadapté. Holacratie dès le départ. 2,5M€ levés. Racheté par Le Comptoir Local.</p>
-          <div class="proj-tags"><span class="tag">Branding</span><span class="tag">E-commerce</span><span class="tag">Holacracy</span><span class="tag" data-en>Custom Dev</span><span class="tag" data-fr>Dev sur mesure</span></div>
-          <a href="case-deligreens.html" class="proj-cta" data-en>Read full case →</a>
-          <a href="case-deligreens.html?lang=fr" class="proj-cta" data-fr>Lire le cas complet →</a>
-        </div>
-        <div class="proj-visual">
-          <div class="proj-visual-inner">
-            <div class="proj-big">2.5M€</div>
-            <div style="font-family:'DM Mono',monospace;font-size:12px;color:#888;margin-top:8px;letter-spacing:.08em;" data-en>raised · acquired</div>
-            <div style="font-family:'DM Mono',monospace;font-size:12px;color:#888;margin-top:8px;letter-spacing:.08em;" data-fr>levés · racheté</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="proj-row proj-row-3 rv">
-        <div class="proj-text">
-          <div class="proj-idx">03 / Genève-loisirs</div>
-          <div class="proj-name" data-en>140 children. Zero paper.<br>One app, built alone.</div>
-          <div class="proj-name" data-fr>140 enfants. Zéro papier.<br>Une app, construite seul.</div>
-          <div class="proj-what" data-en>Solo build · Holacracy · UX Research</div>
-          <div class="proj-what" data-fr>Build solo · Holacratie · Recherche UX</div>
-          <p class="proj-ctx" data-en>Designed and shipped a tablet app replacing all paper workflows — attendance, meals, activities, special needs. Then led a full Holacracy transformation. Teams that resisted ended up loving it.</p>
-          <p class="proj-ctx" data-fr>Conçu et livré une app tablette remplaçant tous les workflows papier — présences, repas, activités, spécificités. Puis transformation holacratie complète. Les équipes qui résistaient ont fini par adorer.</p>
-          <div class="proj-tags"><span class="tag" data-en>Solo Build</span><span class="tag" data-fr>Build solo</span><span class="tag">Holacracy</span><span class="tag" data-en>Change Management</span><span class="tag" data-fr>Conduite du changement</span></div>
-          <a href="case-geneve-loisirs.html" class="proj-cta" data-en>Read full case →</a>
-          <a href="case-geneve-loisirs.html?lang=fr" class="proj-cta" data-fr>Lire le cas complet →</a>
-        </div>
-        <div class="proj-visual">
-          <div class="proj-visual-inner">
-            <div class="proj-big">140</div>
-            <div style="font-family:'DM Mono',monospace;font-size:12px;color:#888;margin-top:8px;letter-spacing:.08em;" data-en>children · zero paper</div>
-            <div style="font-family:'DM Mono',monospace;font-size:12px;color:#888;margin-top:8px;letter-spacing:.08em;" data-fr>enfants · zéro papier</div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<section id="skills" class="sec-dark" style="padding:clamp(60px,10vw,140px) 0;">
-  <div class="container">
-    <div class="rv" style="max-width:680px;margin-bottom:clamp(40px,7vw,80px);">
-      <div class="section-label" data-en>Why it matters</div>
-      <div class="section-label" data-fr>Pourquoi ça change tout</div>
-      <h2 class="section-title" data-en>Most specialists see one piece.<br>I see how they connect.</h2>
-      <h2 class="section-title" data-fr>La plupart des spécialistes voient une pièce.<br>Je vois comment elles s'articulent.</h2>
-    </div>
-
-    <div class="cross-grid rv">
-      <div class="cross-conn">
-        <div class="cross-node cross-center rv">
-          <div class="cross-center-label" data-en>The systemic<br>view</div>
-          <div class="cross-center-label" data-fr>La vision<br>systémique</div>
-        </div>
-        <div class="cross-links">
-          <div class="cross-link rv-l d1">
-            <div class="cross-link-tag" data-en>Design × Product</div>
-            <div class="cross-link-tag" data-fr>Design × Produit</div>
-            <p class="cross-link-desc" data-en>A PM without design sense makes blind trade-offs. A designer without product vision builds beautiful things nobody needs.</p>
-            <p class="cross-link-desc" data-fr>Un PM sans sens du design fait des arbitrages à l'aveugle. Un designer sans vision produit construit de belles choses dont personne n'a besoin.</p>
-          </div>
-          <div class="cross-link rv d2">
-            <div class="cross-link-tag" data-en>Product × Organisation</div>
-            <div class="cross-link-tag" data-fr>Produit × Organisation</div>
-            <p class="cross-link-desc" data-en>A good roadmap fails if the team structure doesn't support it. Governance and product strategy have to be designed together.</p>
-            <p class="cross-link-desc" data-fr>Une bonne roadmap échoue si la structure d'équipe ne la soutient pas. Gouvernance et stratégie produit doivent être pensées ensemble.</p>
-          </div>
-          <div class="cross-link rv-r d3">
-            <div class="cross-link-tag" data-en>Organisation × Human</div>
-            <div class="cross-link-tag" data-fr>Organisation × Humain</div>
-            <p class="cross-link-desc" data-en>A process nobody buys into is just paperwork. Change only sticks when the people inside understand why and feel part of it.</p>
-            <p class="cross-link-desc" data-fr>Un process que personne n'adopte, c'est juste de la paperasse. Le changement tient uniquement quand les personnes comprennent pourquoi et s'en sentent partie prenante.</p>
-          </div>
-          <div class="cross-link rv-l d2">
-            <div class="cross-link-tag" data-en>Tech × Design</div>
-            <div class="cross-link-tag" data-fr>Tech × Design</div>
-            <p class="cross-link-desc" data-en>Knowing what's buildable changes how you design. Knowing how to design changes what you build. The best solutions live at that intersection.</p>
-            <p class="cross-link-desc" data-fr>Savoir ce qui est faisable change la façon dont on conçoit. Savoir concevoir change ce qu'on construit. Les meilleures solutions vivent à cette intersection.</p>
-          </div>
-        </div>
-      </div>
-      <div class="cross-proof rv-r">
-        <div class="cross-proof-label" data-en>In practice</div>
-        <div class="cross-proof-label" data-fr>En pratique</div>
-        <p class="cross-proof-text" data-en>When I enter a team, I don't arrive with a ready-made answer. I look at the whole system — tools, processes, people, culture — and I identify where the actual leverage point is. Sometimes it's a tool. Sometimes it's a governance issue. Often it's both, plus something nobody had named yet.</p>
-        <p class="cross-proof-text" data-fr>Quand j'entre dans une équipe, je n'arrive pas avec une réponse toute faite. Je regarde le système entier — outils, process, personnes, culture — et j'identifie où est le vrai levier. Parfois c'est un outil. Parfois c'est une question de gouvernance. Souvent c'est les deux, plus quelque chose que personne n'avait encore nommé.</p>
-        <p class="cross-proof-text" data-en>That's what 15 years across design, product, tech, coaching and org transformation gives you: the ability to act at the right level, not just the most obvious one.</p>
-        <p class="cross-proof-text" data-fr>C'est ce que 15 ans entre design, produit, tech, coaching et transformation organisationnelle donnent : la capacité d'agir au bon niveau, pas seulement au plus évident.</p>
-        <div class="cross-proof-certs">
-          <div class="cross-cert">PSPO I <span>· Professional Scrum Product Owner™ I</span></div>
-          <div class="cross-cert" data-en>Formation Instant Z <span>· Shared governance: piloting an agile organisation</span></div>
-          <div class="cross-cert" data-fr>Formation Instant Z <span>· Gouvernance partagée : piloter une organisation agile</span></div>
-          <div class="cross-cert">CYTech / EISTI · 2012 <span data-en>· Engineer — Computer Science & Management Systems</span><span data-fr>· Ingénieur — Informatique & Management des SI</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="rv" style="margin-top:clamp(48px,8vw,96px);padding-top:40px;border-top:1px solid rgba(240,234,216,.07);max-width:720px;">
-      <div class="section-label" data-en>They worked with me</div>
-      <div class="section-label" data-fr>Ils ont travaillé avec moi</div>
-      <div style="margin-top:20px;padding:28px 32px;border-left:3px solid var(--blue-l);background:rgba(74,122,255,.04);">
-        <p style="font-size:14px;font-weight:300;color:var(--cream2);line-height:1.8;font-style:italic;" data-en>"He was able to implement the Scrum methodology with regular questioning. The result met expectations despite stakeholder skepticism. He protected the development team from pressure from various parties, and worked hard to train Product Owners and Scrum Masters to strengthen the team."</p>
-        <p style="font-size:14px;font-weight:300;color:var(--cream2);line-height:1.8;font-style:italic;" data-fr>"Il a su mettre en place la méthodologie Scrum avec de régulières remises en question. Le résultat est à la hauteur des attentes malgré le scepticisme des parties prenantes. Il a su préserver l'équipe de développement de la pression et s'est efforcé de former des Product Owners et Scrum Masters pour renforcer l'équipe."</p>
-        <div style="margin-top:14px;font-family:'DM Mono',monospace;font-size:11px;color:var(--blue-l);letter-spacing:.06em;">Stéphane Ravet <span style="color:var(--cream2);opacity:.5;">· Architecte Web · IA · Proximedia</span></div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<section id="human" class="sec-cream">
-  <div class="container">
-    <div class="bio-grid rv">
-      <div class="bio-photo-col">
-        <div class="bio-photo-wrap">
-          <img src="photo-anys.jpg" alt="Anys Mechkar" class="bio-photo">
-          <div class="bio-tags">
-            <span class="bio-tag">🥋 Kung Fu</span>
-            <span class="bio-tag" data-en>🎨 Painter</span><span class="bio-tag" data-fr>🎨 Peintre</span>
-            <span class="bio-tag" data-en>🎵 Musician</span><span class="bio-tag" data-fr>🎵 Musicien</span>
-            <span class="bio-tag" data-en>🧘 Meditation</span><span class="bio-tag" data-fr>🧘 Méditation</span>
-          </div>
-        </div>
-      </div>
-      <div class="bio-text-col">
-        <div class="section-label sec-cream" data-en>About</div>
-        <div class="section-label sec-cream" data-fr>À propos</div>
-        <h2 class="section-title sec-cream" data-en>Technical depth.<br>Human breadth.<br>One rare combination.</h2>
-        <h2 class="section-title sec-cream" data-fr>Solidité technique.<br>Largeur humaine.<br>Une combinaison rare.</h2>
-
-        <p class="bio-p" data-en>I started as an engineer — computer science, systems architecture, front-end development. Not the kind of tech guy who stays in a corner. The kind who asks why we're building this, who is it for, and what it changes for the people who use it every day.</p>
-        <p class="bio-p" data-fr>J'ai commencé ingénieur — informatique, architecture systèmes, développement front-end. Pas le genre de tech qui reste dans son coin. Le genre qui demande pourquoi on construit ça, pour qui, et ce que ça change pour les gens qui l'utilisent au quotidien.</p>
-
-        <p class="bio-p" data-en>Over 15 years, that question took me from developer to designer, from designer to product lead, from product lead to innovation director. I built teams, tools, platforms, and governance frameworks — in agencies, startups, and large organizations. Each time, the challenge was the same: make things that actually work, with people who actually use them.</p>
-        <p class="bio-p" data-fr>En 15 ans, cette question m'a conduit de développeur à designer, de designer à responsable produit, de responsable produit à directeur de l'innovation. J'ai construit des équipes, des outils, des plateformes, des modes de gouvernance — en agence, en startup, dans de grandes organisations. À chaque fois, le défi était le même : faire des choses qui marchent vraiment, avec des gens qui les utilisent vraiment.</p>
-
-        <p class="bio-p" data-en>In parallel, I trained in facilitation, organizational coaching, Holacracy, and change management. Not as add-ons — as tools that fill the gaps where pure tech falls short. Because a well-designed tool that nobody adopts is just an expensive mistake. And a good process that the team doesn't own is just paperwork.</p>
-        <p class="bio-p" data-fr>En parallèle, je me suis formé à la facilitation, au coaching organisationnel, à l'Holacratie, à la conduite du changement. Pas comme des bonus — comme des outils qui comblent les lacunes où la tech pure ne suffit pas. Parce qu'un outil bien conçu que personne n'adopte, c'est juste une erreur coûteuse. Et un bon process que l'équipe ne s'approprie pas, c'est juste de la paperasse.</p>
-
-        <p class="bio-p" data-en>What gives me a particular perspective: I've always moved between disciplines — between making and thinking, between building and understanding people, between structure and creativity. That's what allows me to see the system as a whole, and to find the right lever, not just the most obvious one.</p>
-        <p class="bio-p" data-fr>Ce qui me donne un regard particulier : j'ai toujours navigué entre les disciplines — entre faire et penser, entre construire et comprendre les gens, entre structure et créativité. C'est ce qui me permet de voir le système dans son ensemble, et de trouver le bon levier, pas seulement le plus évident.</p>
-
-        <div class="bio-credentials">
-          <div class="bio-cred"><span class="bio-cred-n">15</span><span class="bio-cred-label" data-en>years of practice</span><span class="bio-cred-label" data-fr>ans de pratique</span></div>
-          <div class="bio-cred"><span class="bio-cred-n">3</span><span class="bio-cred-label" data-en>countries</span><span class="bio-cred-label" data-fr>pays</span></div>
-          <div class="bio-cred"><span class="bio-cred-n">7</span><span class="bio-cred-label" data-en>disciplines</span><span class="bio-cred-label" data-fr>disciplines</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section></section>
-
-<section id="contact" class="sec-dark">
-  <div class="photo-bg" style="background-image:url('photo-contact.jpg');"></div>
-  <div class="c-glow"></div>
-  <div class="container">
-    <div class="c-inner rv">
-      <div style="display:inline-block;margin-bottom:20px;"><span class="section-label" data-en>Let's talk</span><span class="section-label" data-fr>On se parle ?</span></div>
-      <h2 class="c-title" data-en>You have a product to build,<br>a team to structure,<br>or an organization to transform.</h2>
-      <h2 class="c-title" data-fr>Vous avez un produit à construire,<br>une équipe à structurer,<br>ou une organisation à transformer.</h2>
-      <p class="c-sub" data-en>In 45 minutes, we get clear on where you are, where you want to go, and what it takes to get there.</p>
-      <p class="c-sub" data-fr>En 45 minutes, on pose la clarté sur où vous en êtes, où vous voulez aller, et ce qu'il faut pour y arriver.</p>
-      <div class="c-links">
-        <a href="https://calendly.com/a-mechkar/decouverte-45-min?locale=en" target="_blank" class="btn btn-p" data-en>Book a free 45-min call →</a>
-        <a href="https://calendly.com/a-mechkar/decouverte-45-min?locale=fr" target="_blank" class="btn btn-p" data-fr>Réserver un appel gratuit 45 min →</a>
-        <a href="https://linkedin.com/in/anysmechkar" class="btn btn-s" target="_blank">LinkedIn →</a>
-      </div>
-      <div class="footer-line">
-        <span class="footer-copy">© 2026 Anys Mechkar — aoni.design</span>
-        <span class="footer-status"><span class="sdot"></span><span data-en>Available for new opportunities</span><span data-fr>Disponible pour de nouvelles opportunités</span></span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-const canvas=document.getElementById('bg-canvas');
-const ctx=canvas.getContext('2d');
-let W,H;
-function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
-resize();window.addEventListener('resize',resize);
-const pts=[];
-for(let i=0;i<50;i++)pts.push({x:Math.random()*3000,y:Math.random()*3000,r:Math.random()*1.2+.2,vx:(Math.random()-.5)*.25,vy:(Math.random()-.5)*.25,a:Math.random()*.3+.05});
-let tick=0,cc=[74,122,255],tc=[74,122,255];
-const sectionMap=[{id:'hero',c:[74,122,255]},{id:'spectrum',c:[74,122,255]},{id:'whatido',c:[30,79,180]},{id:'timeline-section',c:[74,122,255]},{id:'projects',c:[180,50,30]},{id:'skills',c:[74,122,255]},{id:'human',c:[200,160,50]},{id:'contact',c:[74,122,255]}];
-function getSec(){for(let s of sectionMap){const el=document.getElementById(s.id);if(el){const r=el.getBoundingClientRect();if(r.top<=H*.6&&r.bottom>=H*.4)return s.c;}}return[74,122,255];}
-function lerp(a,b,t){return a.map((v,i)=>v+(b[i]-v)*t);}
-function draw(){
-  tick++;tc=getSec();cc=lerp(cc,tc,.015);
-  const[r,g,b]=cc;
-  ctx.clearRect(0,0,W,H);
-  const t=tick*.002;
-  const g1=ctx.createRadialGradient(W*.5+Math.sin(t)*W*.2,H*.4+Math.cos(t*.7)*H*.15,0,W*.5,H*.5,W*.9);
-  g1.addColorStop(0,`rgba(${r},${g},${b},.14)`);g1.addColorStop(.6,`rgba(${r},${g},${b},.04)`);g1.addColorStop(1,`rgba(0,0,0,0)`);
-  ctx.fillStyle=g1;ctx.fillRect(0,0,W,H);
-  const g2=ctx.createRadialGradient(W*.15+Math.sin(t*.9+2)*W*.1,H*.65+Math.cos(t*.6)*H*.1,0,W*.15,H*.65,W*.45);
-  g2.addColorStop(0,`rgba(${r},${g},${b},.08)`);g2.addColorStop(1,`rgba(0,0,0,0)`);
-  ctx.fillStyle=g2;ctx.fillRect(0,0,W,H);
-  pts.forEach(p=>{p.x+=p.vx+Math.sin(tick*.009+p.y*.008)*.12;p.y+=p.vy+Math.cos(tick*.007+p.x*.007)*.1;if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;ctx.beginPath();ctx.arc(p.x%W,p.y%H,p.r,0,Math.PI*2);ctx.fillStyle=`rgba(${r},${g},${b},${p.a})`;ctx.fill();});
-  requestAnimationFrame(draw);
-}
-draw();
-
-const cur=document.getElementById('cur'),cr=document.getElementById('cur-ring');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
-(function ar(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;cr.style.left=rx+'px';cr.style.top=ry+'px';requestAnimationFrame(ar);})();
-
-const words_en=["Fractional CPO.","Product builder.","Team builder.","Change catalyst.","Transition manager.","Intrapreneur.","Org designer."];
-const words_fr=["Fractional CPO.","Product builder.","Team builder.","Catalyseur de transformation.","Manager de transition.","Intrapreneur.","Architecte orga."];
-let wIdx=0;
-const tl1=document.getElementById('tl1'),tl2=document.getElementById('tl2');
-const subWrap=document.getElementById('hero-sub-wrap');
-function type(el,text,speed,cb){let i=0;el.textContent='';const t=setInterval(()=>{el.textContent=text.slice(0,i);if(i===text.length){clearInterval(t);if(cb)setTimeout(cb,120);}i++;},speed);}
-function startRotating(){
-  tl2.textContent='';
-  subWrap.style.visibility='visible';subWrap.style.opacity='0';subWrap.style.transform='translateY(12px)';subWrap.style.transition='opacity .7s ease,transform .7s ease';
-  setTimeout(()=>{subWrap.style.opacity='1';subWrap.style.transform='translateY(0)';},50);
-  setTimeout(rotateWord,1200);
-}
-function rotateWord(){
-  const lang=document.body.classList.contains('fr')?'fr':'en';
-  const words=lang==='fr'?words_fr:words_en;
-  const next=words[(++wIdx)%words.length];
-  let cur=tl2.textContent;
-  let ei=setInterval(()=>{cur=cur.slice(0,-1);tl2.textContent=cur;if(!cur.length){clearInterval(ei);type(tl2,next,45,()=>setTimeout(rotateWord,2200));}},28);
-}
-setTimeout(()=>type(tl1,"Bonjour, je suis Anys.",60,()=>type(tl2,"Product builder.",50,startRotating)),600);
-
-function setLang(l){
-  if(l==='fr'){document.body.classList.remove('en');}
-  else{document.body.classList.add('en');}
-  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent===l.toUpperCase()));
-}
-// FR par défaut, mais respecte ?lang= si présent
-const initLang=new URLSearchParams(window.location.search).get('lang');
-if(initLang==='en'){setLang('en');}else{document.body.classList.remove('en');}
-
-const rvObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on');});},{threshold:.07});
-document.querySelectorAll('.rv,.rv-l,.rv-r').forEach(el=>{el.classList.add('pre');rvObs.observe(el);});
-
-const tlSection=document.getElementById('timeline-section');
-const tlFill=document.getElementById('tl-fill');
-const tlItems=document.querySelectorAll('.tl-item');
-function updateTL(){
-  if(!tlSection||!tlFill)return;
-  const colEl=document.querySelector('.tl-items-col');
-  if(!colEl)return;
-  const colRect=colEl.getBoundingClientRect();
-  const viewMid=window.innerHeight*.55;
-  // Position des dots (centre de chaque dot par rapport au haut de la colonne)
-  const dotPositions=Array.from(tlItems).map(item=>{
-    const dot=item.querySelector('.tl-dot');
-    if(!dot)return 0;
-    const r=dot.getBoundingClientRect();
-    return r.top+r.height/2-colRect.top;
-  });
-  const lastDotPos=dotPositions[dotPositions.length-1]||0;
-  // Scroll progress : de 0 à lastDotPos
-  const scrolled=viewMid-colRect.top;
-  const fillH=Math.max(0,Math.min(lastDotPos,scrolled));
-  tlFill.style.height=fillH+'px';
-  // Colorer chaque dot quand le trait l'atteint
-  dotPositions.forEach((pos,i)=>{
-    tlItems[i].classList.toggle('reached',fillH>=pos);
-  });
-}
-window.addEventListener('scroll',updateTL,{passive:true});
-window.addEventListener('resize',updateTL);
-updateTL();
-
-const skObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.querySelectorAll('.sk-fill').forEach(b=>{b.style.width=b.dataset.level+'%';});});},{threshold:.15});
-document.querySelectorAll('#skills .rv-l,#skills .rv-r').forEach(s=>skObs.observe(s));
-</script>
-</body>
-</html>
+    </div>>
