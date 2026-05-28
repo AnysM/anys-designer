@@ -252,6 +252,10 @@ let tick=0;function draw(){tick++;const r=240,g=146,b=58;ctx.clearRect(0,0,W,H);
 const cur=document.getElementById('cur'),cr=document.getElementById('cur-ring');let mx=0,my=0,rx=0,ry=0;document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});(function ar(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;cr.style.left=rx+'px';cr.style.top=ry+'px';requestAnimationFrame(ar);})();
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');}});},{threshold:.08});document.querySelectorAll('.rv,.stat-card').forEach(el=>{obs.observe(el);});
 function setLang(l){document.body.classList.toggle('fr',l==='fr');document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent===l.toUpperCase()));}
+const urlLang=new URLSearchParams(window.location.search).get('lang');if(urlLang)setLang(urlLang);
+function updateBackLinks(){const isFr=document.body.classList.contains('fr');document.querySelectorAll('a[href^="index.html"]').forEach(a=>{const base=a.getAttribute('href').split('?')[0];const hash=base.includes('#')?'':'';a.href=base+(isFr?'?lang=fr':'');});}
+updateBackLinks();
+document.querySelectorAll('.lang-btn').forEach(b=>b.addEventListener('click',()=>setTimeout(updateBackLinks,50)));
 </script>
 </body>
 </html>

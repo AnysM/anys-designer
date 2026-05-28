@@ -479,7 +479,7 @@ body:not(.en) span[data-fr]{display:inline;}
         <div class="proj-impact" data-en><strong>3 → 25 people</strong> · France · Belgium · Netherlands · Spain</div>
         <div class="proj-impact" data-fr><strong>3 → 25 personnes</strong> · France · Belgique · Hollande · Espagne</div>
         <a href="case-proximedia.html" class="btn btn-s" style="margin-top:16px;font-size:12px;padding:10px 18px;" data-en>Read full case →</a>
-        <a href="case-proximedia.html" class="btn btn-s" style="margin-top:16px;font-size:12px;padding:10px 18px;" data-fr>Lire le cas complet →</a>
+        <a href="case-proximedia.html?lang=fr" class="btn btn-s" style="margin-top:16px;font-size:12px;padding:10px 18px;" data-fr>Lire le cas complet →</a>
       </div>
       <div class="proj-card c-coral rv-r d2">
         <div class="proj-idx">02 / Deligreens — Investisseur Carrefour</div>
@@ -491,7 +491,7 @@ body:not(.en) span[data-fr]{display:inline;}
         <div class="proj-impact" data-en><strong>A to Z product</strong> · Backed by Carrefour · Acquired by Le Comptoir Local</div>
         <div class="proj-impact" data-fr><strong>Produit de A à Z</strong> · Soutenu par Carrefour · Racheté par Le Comptoir Local</div>
         <a href="case-deligreens.html" class="btn btn-s" style="margin-top:16px;font-size:12px;padding:10px 18px;" data-en>Read full case →</a>
-        <a href="case-deligreens.html" class="btn btn-s" style="margin-top:16px;font-size:12px;padding:10px 18px;" data-fr>Lire le cas complet →</a>
+        <a href="case-deligreens.html?lang=fr" class="btn btn-s" style="margin-top:16px;font-size:12px;padding:10px 18px;" data-fr>Lire le cas complet →</a>
       </div>
       <div class="proj-card c-blue rv-l d1" style="grid-column:1/-1;max-width:560px;">
         <div class="proj-idx">03 / Genève-loisirs</div>
@@ -503,7 +503,7 @@ body:not(.en) span[data-fr]{display:inline;}
         <div class="proj-impact" data-en><strong>Massive time savings</strong> · Full org transformation</div>
         <div class="proj-impact" data-fr><strong>Gain de temps massif</strong> · Transformation orga complète</div>
         <a href="case-geneve-loisirs.html" class="btn btn-s" style="margin-top:16px;font-size:12px;padding:10px 18px;" data-en>Read full case →</a>
-        <a href="case-geneve-loisirs.html" class="btn btn-s" style="margin-top:16px;font-size:12px;padding:10px 18px;" data-fr>Lire le cas complet →</a>
+        <a href="case-geneve-loisirs.html?lang=fr" class="btn btn-s" style="margin-top:16px;font-size:12px;padding:10px 18px;" data-fr>Lire le cas complet →</a>
       </div>
     </div>
   </div>
@@ -672,8 +672,9 @@ function setLang(l){
   else{document.body.classList.add('en');}
   document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent===l.toUpperCase()));
 }
-// FR par défaut au chargement
-document.body.classList.remove('en');
+// FR par défaut, mais respecte ?lang= si présent
+const initLang=new URLSearchParams(window.location.search).get('lang');
+if(initLang==='en'){setLang('en');}else{document.body.classList.remove('en');}
 
 const rvObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on');});},{threshold:.07});
 document.querySelectorAll('.rv,.rv-l,.rv-r').forEach(el=>{el.classList.add('pre');rvObs.observe(el);});
