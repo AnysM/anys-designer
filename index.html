@@ -364,13 +364,15 @@ body:not(.en) span[data-fr]{display:inline;}
         <div class="hero-tag" data-fr>Fractional CPO · Manager de Transition · Full Remote · Disponible</div>
         <div class="hero-title-wrap">
           <span class="line-cream" id="tl1"></span>
-          <span class="line-blue" id="tl2"></span>
+          <span class="line-blue" id="tl2" style="opacity:0;min-height:1.15em;display:block;"></span>
         </div>
         <div class="hero-sub-wrap" id="hero-sub-wrap" style="visibility:hidden;">
-          <p class="hero-sub" data-en>You have a product to launch, a team to structure, or an organization that needs to change. I step into the complexity, clarify, build, consolidate until you stand on your own.</p>
-          <p class="hero-sub" data-fr>Vous avez un produit à lancer, une équipe à structurer, ou une organisation qui doit changer. J'interviens dans la complexité, je clarifie, je construis, je consolide jusqu'à ce que vous soyez autonomes.</p>
-          <p class="hero-sub-detail" data-en>Product strategy · UX/UI · Team building · Agile · Change management · AI. 15 years. 3 countries.</p>
-          <p class="hero-sub-detail" data-fr>Stratégie produit · UX/UI · Team building · Agile · Conduite du changement · IA. 15 ans. 3 pays.</p>
+          <p class="hero-sub" data-en>I work with founders, managers and leaders who want to move to the next level — and need someone who can read the whole system, act at the right level, and leave when the team stands on its own.</p>
+          <p class="hero-sub" data-fr>J'interviens auprès des fondateurs, managers et dirigeants qui veulent passer un cap — et qui ont besoin de quelqu'un capable de lire le système entier, d'agir au bon niveau, et de partir quand l'équipe tient seule.</p>
+          <div class="hero-sub-detail" data-en>Product · Design · Tech · Organisation · Human. 15 years. 3 countries.</div>
+          <div class="hero-sub-detail" data-fr>Produit · Design · Tech · Organisation · Humain. 15 ans. 3 pays.</div>
+          <div class="hero-target" data-en>For startups, SMEs and purpose-driven organisations who refuse to choose between performance and people.</div>
+          <div class="hero-target" data-fr>Pour les startups, TPE/PME et organisations à mission qui refusent de choisir entre performance et humanité.</div>
           <div class="hero-cta">
             <a href="https://calendly.com/a-mechkar/decouverte-45-min?locale=en" target="_blank" class="btn btn-p" data-en>Book a 45-min call →</a>
             <a href="https://calendly.com/a-mechkar/decouverte-45-min?locale=fr" target="_blank" class="btn btn-p" data-fr>Réserver un appel 45 min →</a>
@@ -1054,48 +1056,35 @@ let mx=0,my=0,rx=0,ry=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
 (function ar(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;cr.style.left=rx+'px';cr.style.top=ry+'px';requestAnimationFrame(ar);})();
 
-const words_en=["Fractional CPO.","Product builder.","Team builder.","Change catalyst.","Transition manager.","Intrapreneur.","Org designer."];
-const words_fr=["Fractional CPO.","Product builder.","Team builder.","Catalyseur de transformation.","Manager de transition.","Intrapreneur.","Architecte orga."];
-let wIdx=0;
+// TYPEWRITER HERO
 const tl1=document.getElementById('tl1'),tl2=document.getElementById('tl2');
 const subWrap=document.getElementById('hero-sub-wrap');
-function type(el,text,speed,cb){let i=0;el.textContent='';const t=setInterval(()=>{el.textContent=text.slice(0,i);if(i===text.length){clearInterval(t);if(cb)setTimeout(cb,120);}i++;},speed);}
-function startRotating(){
-  tl2.textContent='';
-  subWrap.style.visibility='visible';subWrap.style.opacity='0';subWrap.style.transform='translateY(12px)';subWrap.style.transition='opacity .7s ease,transform .7s ease';
-  setTimeout(()=>{subWrap.style.opacity='1';subWrap.style.transform='translateY(0)';},50);
-  setTimeout(rotateWord,1200);
-}
-function rotateWord(){
-  const lang=document.body.classList.contains('fr')?'fr':'en';
-  // TYPEWRITER HERO
-const isFrLang = () => !document.body.classList.contains('en');
-const heroTw = document.getElementById('hero-typewriter');
-const heroSub = document.getElementById('hero-subtitle');
-function typeWriter(el, text, speed, cb) {
-  el.textContent = '';
-  let i = 0;
-  function tick() {
-    if (i < text.length) { el.textContent += text[i++]; setTimeout(tick, speed); }
-    else if (cb) cb();
-  }
-  tick();
-}
-function startHeroAnim() {
-  const fr = isFrLang();
-  const line1 = fr ? 'Bonjour, je suis Anys.' : 'Hello, I'm Anys.';
-  const line2 = fr ? 'Catalyseur de transitions.' : 'Change catalyst.';
-  if (heroSub) heroSub.style.opacity = '0';
-  typeWriter(heroTw, line1, 48, () => {
-    if (heroSub) {
-      heroSub.textContent = line2;
-      heroSub.style.opacity = '1';
+function typeIt(el,text,speed,cb){if(!el)return;el.textContent='';let i=0;const t=setInterval(()=>{el.textContent=text.slice(0,++i);if(i===text.length){clearInterval(t);if(cb)setTimeout(cb,80);}},speed);}
+function startHeroAnim(){
+  const fr=!document.body.classList.contains('en');
+  const line1=fr?'Bonjour, je suis Anys.':'Hello, I\'m Anys.';
+  const line2=fr?'Catalyseur de transitions.':'Change catalyst.';
+  if(tl2){tl2.style.opacity='0';tl2.textContent='';}
+  if(subWrap){subWrap.style.visibility='hidden';}
+  typeIt(tl1,line1,52,()=>{
+    if(tl2){
+      tl2.textContent=line2;
+      tl2.style.transition='opacity .5s';
+      tl2.style.opacity='1';
     }
+    setTimeout(()=>{
+      if(subWrap){
+        subWrap.style.visibility='visible';
+        subWrap.style.opacity='0';
+        subWrap.style.transform='translateY(10px)';
+        subWrap.style.transition='opacity .7s,transform .7s';
+        setTimeout(()=>{subWrap.style.opacity='1';subWrap.style.transform='translateY(0)';},30);
+      }
+    },300);
   });
 }
 startHeroAnim();
-document.querySelectorAll('.lang-btn').forEach(b => b.addEventListener('click', () => setTimeout(startHeroAnim, 50)));
-
+document.querySelectorAll('.lang-btn').forEach(b=>b.addEventListener('click',()=>setTimeout(startHeroAnim,80)));
 
 const rvObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on');});},{threshold:.07});
 document.querySelectorAll('.rv,.rv-l,.rv-r').forEach(el=>{el.classList.add('pre');rvObs.observe(el);});
