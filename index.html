@@ -166,25 +166,19 @@ section{position:relative;z-index:1;}
 
 /* TIMELINE */
 #timeline-section{padding:clamp(40px,8vw,120px) 0;}
-.tl-outer{display:grid;grid-template-columns:auto 1fr;gap:0 40px;position:relative;}
-@media(max-width:640px){.tl-outer{gap:0 20px;}}
-.tl-spine{display:flex;flex-direction:column;align-items:center;position:relative;padding-top:8px;}
-.tl-spine-line{width:2px;flex:1;background:rgba(240,234,216,.07);position:relative;overflow:hidden;}
-.tl-spine-fill{position:absolute;top:0;left:0;right:0;background:linear-gradient(to bottom,var(--blue),var(--blue-l));height:0%;transition:height .1s linear;box-shadow:0 0 12px rgba(74,122,255,.6);}
-.tl-items-col{display:flex;flex-direction:column;gap:0;}
-.tl-item{display:grid;grid-template-columns:auto 1fr;gap:0 24px;align-items:start;padding-bottom:40px;}
-.tl-dot-wrap{display:flex;flex-direction:column;align-items:center;position:relative;top:8px;}
-.tl-dot{width:14px;height:14px;border-radius:50%;border:2px solid rgba(74,122,255,.3);background:var(--bg);flex-shrink:0;transition:all .4s;position:relative;}
-.tl-dot::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:1px solid rgba(74,122,255,0);transition:all .4s;}
-.tl-item.reached .tl-dot{border-color:var(--blue-l);background:var(--blue-l);box-shadow:0 0 16px rgba(74,122,255,.6);}
-.tl-item.reached .tl-dot::after{border-color:rgba(74,122,255,.3);}
-.tl-connector{width:2px;flex:1;background:rgba(240,234,216,.07);min-height:40px;}
-.tl-item.reached .tl-connector{background:linear-gradient(to bottom,var(--blue-l),rgba(74,122,255,.2));}
+.tl-outer{position:relative;}
+.tl-items-col{display:flex;flex-direction:column;gap:0;position:relative;}
+.tl-items-col::before{content:'';position:absolute;left:6px;top:8px;bottom:0;width:2px;background:rgba(240,234,216,.07);}
+.tl-fill-line{position:absolute;left:6px;top:8px;width:2px;height:0%;background:linear-gradient(to bottom,var(--blue),var(--blue-l));box-shadow:0 0 10px rgba(74,122,255,.5);transition:height .1s linear;z-index:1;}
+.tl-item{display:grid;grid-template-columns:28px 1fr;gap:0 28px;align-items:start;padding-bottom:48px;position:relative;}
+.tl-dot-wrap{display:flex;justify-content:center;padding-top:1px;position:relative;z-index:2;}
+.tl-dot{width:14px;height:14px;border-radius:50%;border:2px solid rgba(74,122,255,.3);background:var(--bg);flex-shrink:0;transition:all .4s;}
+.tl-item.reached .tl-dot{border-color:var(--blue-l);background:var(--blue-l);box-shadow:0 0 14px rgba(74,122,255,.7);}
 .tl-content{padding-top:0;}
-.tl-year{font-family:'DM Mono',monospace;font-size:11px;color:var(--blue-l);letter-spacing:.08em;margin-bottom:8px;opacity:.7;}
+.tl-year{font-family:'DM Mono',monospace;font-size:11px;color:var(--blue-l);letter-spacing:.08em;margin-bottom:10px;opacity:.7;}
 .tl-company{font-family:'Syne',sans-serif;font-size:clamp(17px,2vw,22px);font-weight:700;color:var(--cream);margin-bottom:4px;}
 .tl-role{font-size:13px;color:var(--blue-l);margin-bottom:4px;}
-.tl-period{font-family:'DM Mono',monospace;font-size:11px;color:var(--cream2);opacity:.5;margin-bottom:12px;}
+.tl-period{font-family:'DM Mono',monospace;font-size:11px;color:var(--cream2);opacity:.5;margin-bottom:14px;}
 .tl-story{font-size:13px;color:var(--cream2);font-weight:300;line-height:1.65;max-width:560px;}
 .tl-story strong{color:var(--cream);font-weight:500;}
 .tl-card{background:rgba(255,255,255,.02);border:1px solid rgba(240,234,216,.07);border-radius:4px;padding:clamp(14px,2.5vw,28px);margin-bottom:8px;transition:all .4s;position:relative;overflow:hidden;}
@@ -398,8 +392,8 @@ body:not(.en) span[data-fr]{display:inline;}
       <h2 class="section-title" data-fr>15 ans à changer les choses de l'intérieur.</h2>
     </div>
     <div class="tl-outer">
-      <div class="tl-spine"><div class="tl-spine-line"><div class="tl-spine-fill" id="tl-fill"></div></div></div>
       <div class="tl-items-col">
+      <div class="tl-fill-line" id="tl-fill"></div>
         <div class="tl-item rv" id="tl-proximedia">
           <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
           <div class="tl-content">
@@ -687,7 +681,7 @@ document.querySelectorAll('.rv,.rv-l,.rv-r').forEach(el=>{el.classList.add('pre'
 const tlSection=document.getElementById('timeline-section');
 const tlFill=document.getElementById('tl-fill');
 const tlItems=document.querySelectorAll('.tl-item');
-function updateTL(){if(!tlSection)return;const rect=tlSection.getBoundingClientRect();const progress=Math.max(0,Math.min(1,(-rect.top+window.innerHeight*.6)/tlSection.offsetHeight));tlFill.style.height=(progress*100)+'%';tlItems.forEach((item,i)=>{item.classList.toggle('reached',progress>=(i+.2)/tlItems.length);});}
+function updateTL(){if(!tlSection)return;const rect=tlSection.getBoundingClientRect();const progress=Math.max(0,Math.min(1,(-rect.top+window.innerHeight*.6)/tlSection.offsetHeight));if(tlFill)tlFill.style.height=(progress*100)+'%';tlItems.forEach((item,i)=>{item.classList.toggle('reached',progress>=(i+.2)/tlItems.length);});}
 window.addEventListener('scroll',updateTL,{passive:true});updateTL();
 
 const skObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.querySelectorAll('.sk-fill').forEach(b=>{b.style.width=b.dataset.level+'%';});});},{threshold:.15});
