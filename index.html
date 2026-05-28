@@ -110,6 +110,31 @@ section{position:relative;z-index:1;}
 .btn-s:hover{border-color:rgba(240,234,216,.22);color:var(--cream);}
 
 
+
+/* PROBLEMS SECTION */
+.pb-grid{display:flex;flex-direction:column;gap:2px;}
+.pb-item{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;cursor:pointer;}
+@media(max-width:900px){.pb-item{grid-template-columns:1fr;}}
+.pb-trigger{padding:clamp(24px,4vw,48px);background:rgba(255,255,255,.03);border:1px solid rgba(240,234,216,.05);transition:background .3s;display:flex;flex-direction:column;justify-content:space-between;gap:20px;}
+.pb-item:hover .pb-trigger{background:rgba(255,255,255,.06);}
+.pb-item.active .pb-trigger{background:rgba(255,255,255,.06);border-color:rgba(240,234,216,.12);}
+.pb-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--blue-l);letter-spacing:.12em;opacity:.5;margin-bottom:8px;}
+.pb-title{font-family:'Syne',sans-serif;font-size:clamp(16px,2vw,22px);font-weight:700;color:var(--cream);line-height:1.25;letter-spacing:-.01em;}
+.pb-subtitle{font-size:12px;color:rgba(240,234,216,.45);font-weight:300;line-height:1.6;margin-top:8px;}
+.pb-arrow{font-size:18px;color:var(--blue-l);opacity:.4;transition:opacity .3s;align-self:flex-end;}
+.pb-item.active .pb-arrow,.pb-item:hover .pb-arrow{opacity:1;}
+.pb-detail{padding:clamp(24px,4vw,48px);background:rgba(74,122,255,.04);border:1px solid rgba(74,122,255,.1);display:none;flex-direction:column;gap:0;}
+.pb-item.active .pb-detail{display:flex;}
+.pb-col{padding:0;}
+.pb-col-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid rgba(240,234,216,.07);}
+.pb-col-label.l-grey{color:rgba(240,234,216,.35);}
+.pb-col-label.l-orange{color:var(--coral);}
+.pb-col-label.l-blue{color:var(--blue-l);}
+.pb-col-text{font-size:13px;color:rgba(240,234,216,.72);font-weight:300;line-height:1.8;}
+.pb-col-text li{margin-bottom:8px;padding-left:12px;position:relative;}
+.pb-col-text li::before{content:'·';position:absolute;left:0;color:var(--blue-l);}
+.pb-shift{margin-top:16px;padding:14px 16px;background:rgba(74,122,255,.08);border-left:2px solid var(--blue-l);font-size:13px;color:rgba(240,234,216,.85);font-weight:300;line-height:1.7;font-style:italic;}
+
 /* WHY SECTION */
 .why-situations{display:flex;flex-direction:column;gap:0;}
 .why-sit{display:grid;grid-template-columns:64px 1fr;gap:0 32px;padding:32px 0;border-top:1px solid rgba(240,234,216,.06);}
@@ -445,6 +470,183 @@ body:not(.en) span[data-fr]{display:inline;}
       <p class="why-diff-text" data-fr>Pas un spécialiste qui optimise un seul coin. Quelqu'un qui voit les connexions entre les outils, les process, les personnes et la stratégie — et qui peut agir sur tous ces leviers.</p>
     </div>
 
+  </div>
+</section>
+
+<section id="problems" class="sec-dark" style="padding:clamp(60px,10vw,120px) 0;">
+  <div class="container">
+    <div class="rv" style="max-width:680px;margin-bottom:clamp(40px,6vw,64px);">
+      <div class="section-label" data-en>Three situations</div>
+      <div class="section-label" data-fr>Trois situations</div>
+      <h2 class="section-title" data-en>You've probably already tried something.<br>It just didn't stick.</h2>
+      <h2 class="section-title" data-fr>Vous avez probablement déjà essayé quelque chose.<br>Ça n'a pas pris.</h2>
+    </div>
+
+    <div class="pb-grid">
+
+      <!-- 01 COHÉSION -->
+      <div class="pb-item" onclick="this.classList.toggle('active')">
+        <div class="pb-trigger">
+          <div>
+            <div class="pb-num">01</div>
+            <div class="pb-title" data-en>The team is burning out.<br>Nobody says it out loud.</div>
+            <div class="pb-title" data-fr>L'équipe s'épuise.<br>Personne ne le dit vraiment.</div>
+            <div class="pb-subtitle" data-en>Culture · Cohesion · Internal conflict</div>
+            <div class="pb-subtitle" data-fr>Culture · Cohésion · Conflits internes</div>
+          </div>
+          <div class="pb-arrow">↓</div>
+        </div>
+        <div class="pb-detail">
+          <div class="pb-col">
+            <div class="pb-col-label l-grey" data-en>What's happening</div>
+            <div class="pb-col-label l-grey" data-fr>Ce qui se passe</div>
+            <ul class="pb-col-text" data-en>
+              <li>Teams working in silos, a shared vision that doesn't land</li>
+              <li>Rising absenteeism, quiet disengagement, subtle tensions</li>
+              <li>A direction that makes sense on paper but nobody owns it</li>
+              <li>Burnout that management sees coming but doesn't know how to stop</li>
+            </ul>
+            <ul class="pb-col-text" data-fr>
+              <li>Équipes en silos, une vision partagée qui ne passe pas</li>
+              <li>Absentéisme en hausse, désengagement silencieux, tensions sourdes</li>
+              <li>Une direction qui a du sens sur le papier mais que personne ne s'approprie</li>
+              <li>Des burnouts que le management voit venir sans savoir comment les arrêter</li>
+            </ul>
+          </div>
+          <div class="pb-col">
+            <div class="pb-col-label l-orange" data-en>What you've tried</div>
+            <div class="pb-col-label l-orange" data-fr>Ce que vous avez essayé</div>
+            <ul class="pb-col-text" data-en>
+              <li>Team building activities — nice day, nothing changed on Monday</li>
+              <li>A new org chart — same dynamics, different boxes</li>
+              <li>A consultant who delivered a report — still on a shelf somewhere</li>
+              <li>A manager who "manages morale" — surface-level at best</li>
+            </ul>
+            <ul class="pb-col-text" data-fr>
+              <li>Des team buildings — belle journée, rien n'a changé le lundi</li>
+              <li>Un nouvel organigramme — mêmes dynamiques, cases différentes</li>
+              <li>Un consultant qui a livré un rapport — toujours sur une étagère</li>
+              <li>Un manager qui "gère le moral" — cosmétique au mieux</li>
+            </ul>
+          </div>
+          <div class="pb-col">
+            <div class="pb-col-label l-blue" data-en>The real shift</div>
+            <div class="pb-col-label l-blue" data-fr>Le vrai déclic</div>
+            <p class="pb-col-text" data-en>Culture isn't built with events. It's built with clarity — on roles, decisions, and what matters. When people understand the system they're in, and feel genuinely heard, something unlocks. The work is to redesign the structure so it supports people instead of grinding them down.</p>
+            <p class="pb-col-text" data-fr>La culture ne se construit pas avec des événements. Elle se construit avec de la clarté — sur les rôles, les décisions, ce qui compte. Quand les gens comprennent le système dans lequel ils évoluent et se sentent vraiment entendus, quelque chose se débloque. Le travail, c'est de reconstruire la structure pour qu'elle soutienne les gens plutôt qu'elle ne les use.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 02 INNOVATION -->
+      <div class="pb-item" onclick="this.classList.toggle('active')">
+        <div class="pb-trigger">
+          <div>
+            <div class="pb-num">02</div>
+            <div class="pb-title" data-en>You have ideas. Good ones.<br>They never quite land.</div>
+            <div class="pb-title" data-fr>Vous avez des idées. De bonnes idées.<br>Elles n'aboutissent jamais vraiment.</div>
+            <div class="pb-subtitle" data-en>Innovation · Vision · Execution</div>
+            <div class="pb-subtitle" data-fr>Innovation · Vision · Exécution</div>
+          </div>
+          <div class="pb-arrow">↓</div>
+        </div>
+        <div class="pb-detail">
+          <div class="pb-col">
+            <div class="pb-col-label l-grey" data-en>What's happening</div>
+            <div class="pb-col-label l-grey" data-fr>Ce qui se passe</div>
+            <ul class="pb-col-text" data-en>
+              <li>The run absorbs everything — no space left for building something new</li>
+              <li>People with ideas but no resources, no mandate, no path forward</li>
+              <li>Innovation that starts, then gets deprioritised when things get busy</li>
+              <li>New initiatives that don't root — they stay anecdotal, then disappear</li>
+            </ul>
+            <ul class="pb-col-text" data-fr>
+              <li>Le run absorbe tout — plus d'espace pour construire quelque chose de nouveau</li>
+              <li>Des gens qui ont des idées mais pas les ressources, pas le mandat, pas de chemin</li>
+              <li>Une innovation qui démarre, puis déprioritisée quand ça s'emballe</li>
+              <li>Des initiatives qui ne s'enracinent pas — elles restent anecdotiques, puis disparaissent</li>
+            </ul>
+          </div>
+          <div class="pb-col">
+            <div class="pb-col-label l-orange" data-en>What you've tried</div>
+            <div class="pb-col-label l-orange" data-fr>Ce que vous avez essayé</div>
+            <ul class="pb-col-text" data-en>
+              <li>An "innovation lab" that never connected to the real business</li>
+              <li>A sprint — great energy for two weeks, then back to normal</li>
+              <li>Hiring someone to "lead transformation" — they hit a wall of inertia</li>
+              <li>Waiting for the right moment — which never comes</li>
+            </ul>
+            <ul class="pb-col-text" data-fr>
+              <li>Un "lab d'innovation" qui n'a jamais connecté au vrai business</li>
+              <li>Un sprint — belle énergie deux semaines, puis retour à la normale</li>
+              <li>Recruter quelqu'un pour "piloter la transformation" — il a heurté un mur d'inertie</li>
+              <li>Attendre le bon moment — qui n'arrive jamais</li>
+            </ul>
+          </div>
+          <div class="pb-col">
+            <div class="pb-col-label l-blue" data-en>The real shift</div>
+            <div class="pb-col-label l-blue" data-fr>Le vrai déclic</div>
+            <p class="pb-col-text" data-en>Innovation doesn't need a lab. It needs someone who can hold the vision and move through the organisation's resistance without breaking it. The work is to identify the real blockers — not the stated ones — and to create enough momentum that the new thing becomes more attractive than staying still.</p>
+            <p class="pb-col-text" data-fr>L'innovation n'a pas besoin d'un lab. Elle a besoin de quelqu'un qui peut tenir la vision et traverser la résistance de l'organisation sans la briser. Le travail, c'est d'identifier les vrais blocages — pas ceux qu'on déclare — et de créer suffisamment d'élan pour que la nouveauté devienne plus attractive que le statu quo.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 03 OUTILS -->
+      <div class="pb-item" onclick="this.classList.toggle('active')">
+        <div class="pb-trigger">
+          <div>
+            <div class="pb-num">03</div>
+            <div class="pb-title" data-en>Your tools are slowing you down.<br>And AI could change everything — if only.</div>
+            <div class="pb-title" data-fr>Vos outils vous ralentissent.<br>Et l'IA pourrait tout changer — si seulement.</div>
+            <div class="pb-subtitle" data-en>Tools · Processes · AI adoption</div>
+            <div class="pb-subtitle" data-fr>Outils · Process · Adoption de l'IA</div>
+          </div>
+          <div class="pb-arrow">↓</div>
+        </div>
+        <div class="pb-detail">
+          <div class="pb-col">
+            <div class="pb-col-label l-grey" data-en>What's happening</div>
+            <div class="pb-col-label l-grey" data-fr>Ce qui se passe</div>
+            <ul class="pb-col-text" data-en>
+              <li>Outdated tools, non-standard processes, everyone doing it their own way</li>
+              <li>Workarounds that became the norm — spreadsheets running the business</li>
+              <li>AI potential everyone can see, but nobody has the time or skills to act on it</li>
+              <li>Hours lost every week to tasks that could be automated in days</li>
+            </ul>
+            <ul class="pb-col-text" data-fr>
+              <li>Des outils vieillissants, des process non harmonisés, chacun fait à sa façon</li>
+              <li>Des contournements devenus la norme — des tableurs qui font tourner le business</li>
+              <li>Un potentiel IA que tout le monde voit, mais personne n'a le temps ni les compétences pour l'activer</li>
+              <li>Des heures perdues chaque semaine sur des tâches automatisables en quelques jours</li>
+            </ul>
+          </div>
+          <div class="pb-col">
+            <div class="pb-col-label l-orange" data-en>What you've tried</div>
+            <div class="pb-col-label l-orange" data-fr>Ce que vous avez essayé</div>
+            <ul class="pb-col-text" data-en>
+              <li>Buying a new tool — adoption was zero, the old way persisted</li>
+              <li>Asking someone internal to "look into AI" — between two other tasks</li>
+              <li>A consultant who recommended an expensive platform — overkill for your size</li>
+              <li>Waiting for someone with the right profile to join — still waiting</li>
+            </ul>
+            <ul class="pb-col-text" data-fr>
+              <li>Acheter un nouvel outil — adoption nulle, l'ancienne façon a persisté</li>
+              <li>Demander à quelqu'un en interne de "regarder l'IA" — entre deux autres tâches</li>
+              <li>Un consultant qui a recommandé une plateforme coûteuse — surdimensionné pour vous</li>
+              <li>Attendre le bon profil — toujours en attente</li>
+            </ul>
+          </div>
+          <div class="pb-col">
+            <div class="pb-col-label l-blue" data-en>The real shift</div>
+            <div class="pb-col-label l-blue" data-fr>Le vrai déclic</div>
+            <p class="pb-col-text" data-en>The problem is rarely the tool. It's the process the tool is supposed to support. Fix the process first, then choose the right tool — not the other way around. With AI, the right intervention can now build a custom, lightweight solution in days that fits exactly how your team works. No over-engineering. No change management nightmare.</p>
+            <p class="pb-col-text" data-fr>Le problème, c'est rarement l'outil. C'est le process que l'outil est censé soutenir. Corriger le process d'abord, choisir le bon outil ensuite — pas l'inverse. Avec l'IA, la bonne intervention peut aujourd'hui construire une solution légère et sur mesure en quelques jours, qui colle exactement à la façon dont votre équipe travaille. Sans usine à gaz. Sans cauchemar de conduite du changement.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
 
