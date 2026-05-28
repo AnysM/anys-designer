@@ -1059,28 +1059,26 @@ document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.le
 // TYPEWRITER HERO
 const tl1=document.getElementById('tl1'),tl2=document.getElementById('tl2');
 const subWrap=document.getElementById('hero-sub-wrap');
-function typeIt(el,text,speed,cb){if(!el)return;el.textContent='';let i=0;const t=setInterval(()=>{el.textContent=text.slice(0,++i);if(i===text.length){clearInterval(t);if(cb)setTimeout(cb,80);}},speed);}
+function typeIt(el,text,speed,cb){if(!el)return;el.textContent='';let i=0;const t=setInterval(()=>{el.textContent=text.slice(0,++i);if(i===text.length){clearInterval(t);if(cb)setTimeout(cb,120);}},speed);}
 function startHeroAnim(){
   const fr=!document.body.classList.contains('en');
   const line1=fr?'Bonjour, je suis Anys.':'Hello, I\'m Anys.';
   const line2=fr?'Catalyseur de transitions.':'Change catalyst.';
   if(tl2){tl2.style.opacity='0';tl2.textContent='';}
-  if(subWrap){subWrap.style.visibility='hidden';}
+  if(subWrap){subWrap.style.visibility='hidden';subWrap.style.opacity='0';}
   typeIt(tl1,line1,52,()=>{
-    if(tl2){
-      tl2.textContent=line2;
-      tl2.style.transition='opacity .5s';
-      tl2.style.opacity='1';
-    }
-    setTimeout(()=>{
-      if(subWrap){
-        subWrap.style.visibility='visible';
-        subWrap.style.opacity='0';
-        subWrap.style.transform='translateY(10px)';
-        subWrap.style.transition='opacity .7s,transform .7s';
-        setTimeout(()=>{subWrap.style.opacity='1';subWrap.style.transform='translateY(0)';},30);
-      }
-    },300);
+    typeIt(tl2,line2,52,()=>{
+      if(tl2)tl2.style.opacity='1';
+      setTimeout(()=>{
+        if(subWrap){
+          subWrap.style.visibility='visible';
+          subWrap.style.transition='opacity .8s,transform .8s';
+          subWrap.style.transform='translateY(10px)';
+          setTimeout(()=>{subWrap.style.opacity='1';subWrap.style.transform='translateY(0)';},30);
+        }
+      },400);
+    });
+    if(tl2)tl2.style.opacity='1';
   });
 }
 startHeroAnim();
