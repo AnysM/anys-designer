@@ -159,8 +159,8 @@ section{position:relative;z-index:1;}
 
 
 /* CAPSULES COMPÉTENCES */
-.caps-wrap{border-radius:6px;}
-.caps-list{display:flex;flex-wrap:wrap;gap:8px;padding:0 0 24px 0;}
+.caps-wrap{border-radius:8px;border:2px solid rgba(240,234,216,.08);background:rgba(255,255,255,.02);padding:28px 28px 0;transition:border-color .3s;}
+.caps-list{display:flex;flex-wrap:wrap;gap:8px;padding:0 0 24px 0;justify-content:center;}
 .cap{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;letter-spacing:0;padding:9px 16px;border-radius:5px;border:1.5px solid rgba(240,234,216,.12);background:rgba(255,255,255,.04);color:rgba(240,234,216,.5);cursor:pointer;transition:background .2s,border-color .2s,color .2s;display:flex;align-items:center;gap:7px;}
 .cap svg{flex-shrink:0;opacity:.7;}
 .cap:hover{border-color:rgba(74,122,255,.45);color:var(--cream);background:rgba(74,122,255,.08);}
@@ -172,20 +172,20 @@ section{position:relative;z-index:1;}
 .cap[data-idx="4"].active{background:#8a1a3d;border-color:#e8426a;box-shadow:0 4px 16px rgba(220,66,106,.35);}
 .cap[data-idx="5"].active{background:#b5820a;border-color:#f5c842;box-shadow:0 4px 16px rgba(245,200,66,.3);}
 .cap[data-idx="6"].active{background:#1a4a8a;border-color:#4a90e2;box-shadow:0 4px 16px rgba(74,144,226,.35);}
-.cap-panel{padding:28px 32px;background:rgba(255,255,255,.03);border:1.5px solid rgba(240,234,216,.07);border-radius:6px;min-height:110px;transition:border-color .3s;}
+.cap-panel{padding:28px 32px;background:rgba(255,255,255,.02);border-radius:0 0 6px 6px;min-height:110px;}
 .cap-content{display:none;font-size:15px;color:rgba(240,234,216,.82);font-weight:300;line-height:1.85;}
 .cap-content.active{display:block;}
 
 
 /* SYNERGY SVG */
-.synergy-wrap{display:grid;grid-template-columns:360px 1fr;gap:48px;align-items:center;}
-@media(max-width:900px){.synergy-wrap{grid-template-columns:1fr;}}
-.synergy-svg-col svg{width:100%;max-width:360px;display:block;margin:0 auto;}
+.synergy-wrap{display:flex;flex-direction:column;align-items:center;gap:40px;}
+.synergy-svg-col{width:100%;display:flex;justify-content:center;}
+.synergy-svg-col svg{width:100%;max-width:340px;display:block;}
 .synergy-node .node-circle{transition:all .3s;}
 .synergy-node:hover .node-circle{filter:brightness(1.4);r:52;}
-.synergy-node-detail{display:none;}
+.synergy-node-detail{display:none;text-align:left;}
 .synergy-node-detail.active{display:block;}
-.synergy-node-title{font-family:'Syne',sans-serif;font-size:clamp(18px,2vw,24px);font-weight:800;letter-spacing:-.02em;margin-bottom:12px;}
+.synergy-node-title{font-family:'Syne',sans-serif;font-size:clamp(18px,2vw,24px);font-weight:800;letter-spacing:-.02em;margin-bottom:12px;display:inline-block;}
 .cap-panel{transition:border-color .3s;}
 
 /* SPECTRUM PROFIL */
@@ -865,10 +865,10 @@ body:not(.en) span[data-fr]{display:inline;}
         <svg id="synergy-svg" viewBox="0 0 480 520" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px;display:block;margin:0 auto;">
           <!-- Arc de fond -->
           <circle cx="240" cy="270" r="165" fill="none" stroke="rgba(240,234,216,.05)" stroke-width="1"/>
-          <!-- Connecteurs -->
-          <line x1="240" y1="115" x2="386" y2="378" stroke="rgba(240,234,216,.1)" stroke-width="1.5" stroke-dasharray="5 4"/>
-          <line x1="386" y1="378" x2="94" y2="378" stroke="rgba(240,234,216,.1)" stroke-width="1.5" stroke-dasharray="5 4"/>
-          <line x1="94" y1="378" x2="240" y2="115" stroke="rgba(240,234,216,.1)" stroke-width="1.5" stroke-dasharray="5 4"/>
+          <!-- Arcs de connexion -->
+          <path d="M 215 90 A 165 165 0 0 0 94 338" fill="none" stroke="rgba(74,122,255,.2)" stroke-width="1.5" stroke-dasharray="5 4"/>
+          <path d="M 266 90 A 165 165 0 0 1 386 338" fill="none" stroke="rgba(210,40,40,.2)" stroke-width="1.5" stroke-dasharray="5 4"/>
+          <path d="M 116 368 A 165 165 0 0 0 364 368" fill="none" stroke="rgba(200,155,10,.2)" stroke-width="1.5" stroke-dasharray="5 4"/>
           <!-- Cercle central -->
           <circle cx="240" cy="260" r="60" fill="rgba(74,122,255,.08)" stroke="#4a7aff" stroke-width="1.5"/>
           <text x="240" y="254" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="#4a7aff" letter-spacing="2">VISION</text>
@@ -1138,12 +1138,14 @@ document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.le
 
 
 // CAPSULES COMPÉTENCES
-const capColors = ['#4a7aff','#2ecc71','#c84fd8','#e8533c','#2ab8d8','#f5c842','#e84c7a'];
+const capColors = ['#4a7aff','#6b4fff','#b44aff','#d42828','#e8426a','#f5c842','#4a90e2'];
 function showCap(idx) {
   document.querySelectorAll('.cap').forEach(c => c.classList.toggle('active', parseInt(c.dataset.idx) === idx));
   document.querySelectorAll('.cap-content').forEach(c => c.classList.toggle('active', parseInt(c.dataset.idx) === idx));
-  const panel = document.querySelector('.cap-panel');
-  if(panel) panel.style.borderColor = (capColors[idx]||'rgba(240,234,216,.07)') + '55';
+  const col = capColors[idx] || '#4a7aff';
+  const wrap = document.querySelector('.caps-wrap');
+  if(wrap) wrap.style.borderColor = col + '88';
+  if(wrap) wrap.style.boxShadow = '0 0 32px ' + col + '22';
 }
 
 // SYNERGY NODES
