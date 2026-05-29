@@ -21,7 +21,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;overflow-x:hidden;}
-body{background:var(--bg);color:var(--cream);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.65;overflow-x:hidden;}
+body{background:var(--bg);color:var(--cream);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden;}
 @media(pointer:fine){body{cursor:none;}}
 @media(max-width:640px){body{font-size:14px;line-height:1.6;}}
 
@@ -64,7 +64,7 @@ section{position:relative;z-index:1;}
 .sec-coral .section-title{color:var(--cream);}
 
 .section-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--blue-l);margin-bottom:12px;}
-.section-title{font-family:'Syne',sans-serif;font-size:clamp(20px,4vw,52px);font-weight:700;letter-spacing:-.02em;line-height:1.1;margin-bottom:28px;}
+.section-title{font-family:'Syne',sans-serif;font-size:clamp(20px,3vw,38px);font-weight:700;letter-spacing:-.02em;line-height:1.15;margin-bottom:24px;}
 @media(max-width:480px){.section-title{font-size:clamp(18px,5vw,24px);}}
 .sec-dark{background:transparent;padding:clamp(48px,9vw,120px) 0;}
 .sec-blue{background:rgba(15,42,122,.85);backdrop-filter:blur(2px);padding:clamp(48px,9vw,120px) 0;}
@@ -90,19 +90,19 @@ section{position:relative;z-index:1;}
 @media(max-width:768px){.hero-photo-zone{width:48%;margin:24px auto 0;}}
 .hero-scroll{display:none;}
 .hero-tag{display:block;font-family:'DM Mono',monospace;font-size:9px;color:var(--blue-l);letter-spacing:.06em;text-transform:uppercase;margin-bottom:20px;opacity:0;animation:fup .8s .3s forwards;line-height:1.7;}
-.hero-title-wrap{font-family:'Syne',sans-serif;font-size:clamp(24px,4vw,56px);font-weight:800;line-height:1.08;letter-spacing:-.025em;margin-bottom:20px;opacity:0;animation:fup .9s .5s forwards;}
+.hero-title-wrap{font-family:'Syne',sans-serif;font-size:clamp(22px,3.5vw,48px);font-weight:800;line-height:1.08;letter-spacing:-.025em;margin-bottom:20px;opacity:0;animation:fup .9s .5s forwards;}
 .line-cream{color:var(--cream);display:block;}
 .line-blue{color:var(--blue-l);display:block;min-height:1.15em;}
 .cur-blink{display:inline-block;width:3px;height:.8em;background:var(--blue-l);margin-left:4px;vertical-align:middle;animation:blink 1s step-end infinite;}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
 @keyframes fup{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 .hero-sub-wrap{opacity:0;animation:fup .9s .8s forwards;}
-.hero-sub{font-size:14px;font-weight:300;color:var(--cream2);line-height:1.65;margin-bottom:10px;max-width:580px;}
+.hero-sub{font-size:16px;font-weight:300;color:var(--cream2);line-height:1.7;margin-bottom:12px;max-width:580px;}
 .hero-sub strong{color:var(--cream);font-weight:500;}
 .hero-sub-detail{font-size:11px;font-weight:300;color:var(--cream2);line-height:1.6;opacity:.55;}
 .hero-target{font-size:12px;font-weight:400;color:var(--blue-l);line-height:1.6;margin-top:10px;letter-spacing:.01em;opacity:.85;}
 .hero-cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px;opacity:0;animation:fup .9s 1s forwards;}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:4px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;text-decoration:none;cursor:pointer;transition:all .25s;border:none;}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:4px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;text-decoration:none;cursor:pointer;transition:all .25s;border:none;}
 @media(max-width:640px){.btn{padding:10px 16px;font-size:12px;}}
 .btn-p{background:var(--blue);color:#fff;}
 .btn-p:hover{background:var(--blue-l);box-shadow:0 0 40px rgba(74,122,255,.4);transform:translateY(-2px);}
@@ -113,8 +113,8 @@ section{position:relative;z-index:1;}
 
 /* PROBLEMS SECTION */
 .pb-grid{display:flex;flex-direction:column;gap:2px;}
-.pb-item{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;cursor:pointer;}
-@media(max-width:900px){.pb-item{grid-template-columns:1fr;}}
+.pb-item{display:block;cursor:pointer;}
+
 .pb-trigger{padding:clamp(24px,4vw,48px);background:rgba(255,255,255,.03);border:1px solid rgba(240,234,216,.05);transition:background .3s;display:flex;flex-direction:column;justify-content:space-between;gap:20px;}
 .pb-item:hover .pb-trigger{background:rgba(255,255,255,.06);}
 .pb-item.active .pb-trigger{background:rgba(255,255,255,.06);border-color:rgba(240,234,216,.12);}
@@ -124,17 +124,18 @@ section{position:relative;z-index:1;}
 .pb-arrow{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.08em;color:var(--blue-l);border:1px solid rgba(74,122,255,.35);border-radius:20px;padding:5px 14px;align-self:flex-end;transition:all .3s;}
 .pb-item.active .pb-arrow,.pb-item:hover .pb-arrow{background:rgba(74,122,255,.15);}
 .pb-item.active .pb-arrow,.pb-item:hover .pb-arrow{opacity:1;}
-.pb-detail{padding:clamp(24px,4vw,48px);background:rgba(74,122,255,.04);border:1px solid rgba(74,122,255,.1);display:none;flex-direction:column;gap:0;}
-.pb-item.active .pb-detail{display:flex;}
+.pb-detail{padding:clamp(24px,4vw,40px) clamp(24px,4vw,48px);background:rgba(74,122,255,.04);border:1px solid rgba(74,122,255,.1);display:none;}
+.pb-item.active .pb-detail{display:grid;grid-template-columns:1fr 1fr 1.2fr;gap:32px;}
+@media(max-width:900px){.pb-item.active .pb-detail{grid-template-columns:1fr;}}
 .pb-col{padding:0;}
-.pb-col-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid rgba(240,234,216,.07);}
+.pb-col-label{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid rgba(240,234,216,.07);}
 .pb-col-label.l-grey{color:rgba(240,234,216,.35);}
 .pb-col-label.l-orange{color:var(--coral);}
 .pb-col-label.l-blue{color:var(--blue-l);}
-.pb-col-text{font-size:13px;color:rgba(240,234,216,.72);font-weight:300;line-height:1.8;}
+.pb-col-text{font-size:15px;color:rgba(240,234,216,.72);font-weight:300;line-height:1.8;}
 .pb-col-text li{margin-bottom:8px;padding-left:12px;position:relative;}
 .pb-col-text li::before{content:'·';position:absolute;left:0;color:var(--blue-l);}
-.pb-hint{font-size:13px;color:rgba(240,234,216,.55);font-weight:300;line-height:1.65;margin-top:10px;font-style:italic;}
+.pb-hint{font-size:15px;color:rgba(240,234,216,.55);font-weight:300;line-height:1.65;margin-top:10px;font-style:italic;}
 .pb-shift{margin-top:16px;padding:14px 16px;background:rgba(74,122,255,.08);border-left:2px solid var(--blue-l);font-size:13px;color:rgba(240,234,216,.85);font-weight:300;line-height:1.7;font-style:italic;}
 
 /* WHY SECTION */
@@ -244,7 +245,7 @@ section{position:relative;z-index:1;}
 .proj-idx{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px;opacity:.5;color:var(--cream2);}
 .proj-name{font-family:'Syne',sans-serif;font-size:clamp(18px,2vw,24px);font-weight:700;color:var(--cream);line-height:1.2;margin-bottom:12px;letter-spacing:-.01em;}
 .proj-what{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px;}
-.proj-row-1 .proj-what{color:var(--blue);}
+.proj-row-1 .proj-what{color:var(--yellow);}
 .proj-row-2 .proj-what{color:var(--coral);}
 .proj-row-3 .proj-what{color:var(--blue);}
 .proj-ctx{font-size:14px;color:rgba(240,234,216,.7);font-weight:300;line-height:1.75;margin-bottom:20px;}
@@ -295,7 +296,7 @@ section{position:relative;z-index:1;}
 .bio-photo{width:100%;border-radius:4px;display:block;filter:grayscale(20%);}
 .bio-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px;}
 .bio-tag{font-family:'DM Mono',monospace;font-size:10px;padding:4px 10px;border:1px solid rgba(240,234,216,.12);border-radius:20px;color:rgba(240,234,216,.5);letter-spacing:.04em;}
-.bio-p{font-size:clamp(14px,1.5vw,16px);color:rgba(240,234,216,.75);font-weight:300;line-height:1.85;margin-bottom:20px;}
+.bio-p{font-size:clamp(15px,1.5vw,17px);color:rgba(240,234,216,.75);font-weight:300;line-height:1.85;margin-bottom:20px;}
 .bio-credentials{display:flex;gap:32px;margin-top:32px;padding-top:28px;border-top:1px solid rgba(240,234,216,.08);flex-wrap:wrap;}
 .bio-cred{display:flex;align-items:baseline;gap:8px;}
 .bio-cred-n{font-family:'Syne',sans-serif;font-size:32px;font-weight:800;color:var(--blue);letter-spacing:-.03em;}
@@ -804,6 +805,22 @@ body:not(.en) span[data-fr]{display:inline;}
               <div class="tl-period" data-fr>Indépendant, en cours</div>
               <p class="tl-story" data-en>Product and design missions for clients (Genève-loisirs, Millet, Résiliences…). Brand identities, digital products, organisational transformation. IN CARNE, <strong>La Forge</strong>, a gamified React app for a 120-day men's program. Coaching and project creation support.</p>
               <p class="tl-story" data-fr>Missions produit et design pour clients (Genève-loisirs, Millet, Résiliences…). Identités visuelles, produits digitaux, transformation organisationnelle. IN CARNE, <strong>La Forge</strong>, app React gamifiée pour un programme de 120 jours pour hommes. Coaching et accompagnement à la création de projets.</p>
+            </div>
+          </div>
+        </div>
+        <div class="tl-item rv d2" id="tl-vortex">
+          <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+          <div class="tl-content">
+            <div class="tl-year" data-en>2026 — present</div>
+            <div class="tl-year" data-fr>2026 — présent</div>
+            <div class="tl-card">
+              <div class="tl-company">Vortex Activation <span style="font-size:11px;opacity:.5;font-weight:400;">· avec Mehdi Baer</span></div>
+              <div class="tl-role" data-en>Co-creator · Product · Mobile</div>
+              <div class="tl-role" data-fr>Co-créateur · Produit · Mobile</div>
+              <div class="tl-period" data-en>Ongoing</div>
+              <div class="tl-period" data-fr>En cours</div>
+              <p class="tl-story" data-en>Co-created a mobile activation app for successful entrepreneurs. Designed the full product experience, from concept to architecture. Built for a demanding audience that expects both depth and simplicity.</p>
+              <p class="tl-story" data-fr>Co-création d'une application mobile d'activation pour entrepreneurs à succès. Conception de l'expérience produit complète, du concept à l'architecture. Conçue pour une audience exigeante qui attend profondeur et simplicité.</p>
             </div>
           </div>
         </div>
