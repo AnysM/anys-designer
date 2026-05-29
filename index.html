@@ -862,45 +862,41 @@ body:not(.en) span[data-fr]{display:inline;}
     <!-- GRAPHE CIRCULAIRE 3 NATURES -->
     <div class="synergy-wrap rv" style="margin-bottom:clamp(40px,6vw,64px);">
       <div class="synergy-svg-col">
-        <svg id="synergy-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+        <svg id="synergy-svg" viewBox="0 0 480 520" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px;display:block;margin:0 auto;">
           <!-- Arc de fond -->
-          <circle cx="200" cy="200" r="155" fill="none" stroke="rgba(240,234,216,.06)" stroke-width="1.5"/>
+          <circle cx="240" cy="270" r="165" fill="none" stroke="rgba(240,234,216,.05)" stroke-width="1"/>
           <!-- Connecteurs -->
-          <line x1="200" y1="52" x2="354" y2="312" stroke="rgba(240,234,216,.12)" stroke-width="1.5" stroke-dasharray="5 3"/>
-          <line x1="354" y1="312" x2="46" y2="312" stroke="rgba(240,234,216,.12)" stroke-width="1.5" stroke-dasharray="5 3"/>
-          <line x1="46" y1="312" x2="200" y2="52" stroke="rgba(240,234,216,.12)" stroke-width="1.5" stroke-dasharray="5 3"/>
+          <line x1="240" y1="115" x2="386" y2="378" stroke="rgba(240,234,216,.1)" stroke-width="1.5" stroke-dasharray="5 4"/>
+          <line x1="386" y1="378" x2="94" y2="378" stroke="rgba(240,234,216,.1)" stroke-width="1.5" stroke-dasharray="5 4"/>
+          <line x1="94" y1="378" x2="240" y2="115" stroke="rgba(240,234,216,.1)" stroke-width="1.5" stroke-dasharray="5 4"/>
           <!-- Cercle central -->
-          <circle cx="200" cy="200" r="52" fill="rgba(74,122,255,.12)" stroke="#4a7aff" stroke-width="1.5"/>
-          <text x="200" y="193" text-anchor="middle" font-family="DM Mono" font-size="9" fill="#4a7aff" letter-spacing="1" text-transform="uppercase">VISION</text>
-          <text x="200" y="207" text-anchor="middle" font-family="DM Mono" font-size="9" fill="#4a7aff" letter-spacing="1">SYSTÉMIQUE</text>
-          <!-- Cercle 1 : Le Bâtisseur (haut) -->
+          <circle cx="240" cy="260" r="60" fill="rgba(74,122,255,.08)" stroke="#4a7aff" stroke-width="1.5"/>
+          <text x="240" y="254" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="#4a7aff" letter-spacing="2">VISION</text>
+          <text x="240" y="270" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="#4a7aff" letter-spacing="1.5">SYSTÉMIQUE</text>
+          <!-- BÂTISSEUR — haut — BLEU, label au-dessus -->
           <g class="synergy-node" id="node-builder" onclick="highlightNode('builder')" style="cursor:pointer">
-            <circle cx="200" cy="52" r="48" fill="rgba(46,204,113,.12)" stroke="#2ecc71" stroke-width="1.5" class="node-circle"/>
-            <text x="200" y="43" text-anchor="middle" font-family="Syne" font-size="11" font-weight="700" fill="#2ecc71" class="node-label-en">Le</text>
-            <text x="200" y="57" text-anchor="middle" font-family="Syne" font-size="11" font-weight="700" fill="#2ecc71" class="node-label-en">Bâtisseur</text>
-            <text x="200" y="43" text-anchor="middle" font-family="Syne" font-size="11" font-weight="700" fill="#2ecc71" class="node-label-fr" style="display:none">Le</text>
-            <text x="200" y="57" text-anchor="middle" font-family="Syne" font-size="11" font-weight="700" fill="#2ecc71" class="node-label-fr" style="display:none">Bâtisseur</text>
+            <circle cx="240" cy="115" r="50" fill="rgba(74,122,255,.1)" stroke="#4a7aff" stroke-width="2" class="node-circle"/>
+            <text x="240" y="52" text-anchor="middle" font-family="Syne,sans-serif" font-size="14" font-weight="800" fill="#4a7aff">Le Bâtisseur</text>
+            <text x="240" y="70" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="rgba(74,122,255,.6)">Produit · Design · Tech</text>
           </g>
-          <!-- Cercle 2 : L'Architecte (bas droite) -->
+          <!-- ARCHITECTE — bas droite — ROUGE, label à droite -->
           <g class="synergy-node" id="node-architect" onclick="highlightNode('architect')" style="cursor:pointer">
-            <circle cx="354" cy="312" r="48" fill="rgba(232,83,60,.12)" stroke="#e8533c" stroke-width="1.5" class="node-circle"/>
-            <text x="354" y="303" text-anchor="middle" font-family="Syne" font-size="11" font-weight="700" fill="#e8533c">L'</text>
-            <text x="354" y="317" text-anchor="middle" font-family="Syne" font-size="11" font-weight="700" fill="#e8533c">Architecte</text>
+            <circle cx="386" cy="378" r="50" fill="rgba(210,40,40,.1)" stroke="#d42828" stroke-width="2" class="node-circle"/>
+            <text x="430" y="450" text-anchor="middle" font-family="Syne,sans-serif" font-size="14" font-weight="800" fill="#d42828">L'Architecte</text>
+            <text x="430" y="467" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="rgba(212,40,40,.6)">Gouv. · Process · Culture</text>
           </g>
-          <!-- Cercle 3 : L'Accompagnant (bas gauche) -->
+          <!-- ACCOMPAGNANT — bas gauche — OR, label à gauche -->
           <g class="synergy-node" id="node-enabler" onclick="highlightNode('enabler')" style="cursor:pointer">
-            <circle cx="46" cy="312" r="48" fill="rgba(245,200,66,.12)" stroke="#f5c842" stroke-width="1.5" class="node-circle"/>
-            <text x="46" y="303" text-anchor="middle" font-family="Syne" font-size="10" font-weight="700" fill="#f5c842" class="node-label-en">L'</text>
-            <text x="46" y="317" text-anchor="middle" font-family="Syne" font-size="9.5" font-weight="700" fill="#f5c842" class="node-label-en">Accompagnant</text>
-            <text x="46" y="303" text-anchor="middle" font-family="Syne" font-size="10" font-weight="700" fill="#f5c842" class="node-label-fr" style="display:none">L'</text>
-            <text x="46" y="317" text-anchor="middle" font-family="Syne" font-size="9.5" font-weight="700" fill="#f5c842" class="node-label-fr" style="display:none">Accompagnant</text>
+            <circle cx="94" cy="378" r="50" fill="rgba(200,155,10,.1)" stroke="#c89b0a" stroke-width="2" class="node-circle"/>
+            <text x="50" y="450" text-anchor="middle" font-family="Syne,sans-serif" font-size="13" font-weight="800" fill="#c89b0a">L'Accompagnant</text>
+            <text x="50" y="467" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="rgba(200,155,10,.6)">Facilitation · Coaching</text>
           </g>
         </svg>
       </div>
       <div class="synergy-desc-col">
         <div class="synergy-node-detail active" id="detail-builder">
-          <div class="synergy-node-title" style="color:#2ecc71" data-en>The builder</div>
-          <div class="synergy-node-title" style="color:#2ecc71" data-fr>Le bâtisseur</div>
+          <div class="synergy-node-title" style="color:#4a7aff" data-en>The builder</div>
+          <div class="synergy-node-title" style="color:#4a7aff" data-fr>Le bâtisseur</div>
           <div class="sp-nature-tags" style="margin-bottom:14px;">
             <span class="sp-tag" data-en>Product</span><span class="sp-tag" data-fr>Produit</span>
             <span class="sp-tag">Design</span>
