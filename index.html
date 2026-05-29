@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Anys Mechkar, Product Builder</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -174,6 +175,18 @@ section{position:relative;z-index:1;}
 .cap-panel{padding:32px 36px;background:rgba(255,255,255,.03);border:1px solid rgba(240,234,216,.07);border-radius:6px;min-height:130px;}
 .cap-content{display:none;font-size:16px;color:rgba(240,234,216,.82);font-weight:300;line-height:1.85;}
 .cap-content.active{display:block;}
+
+
+/* SYNERGY SVG */
+.synergy-wrap{display:grid;grid-template-columns:360px 1fr;gap:48px;align-items:center;}
+@media(max-width:900px){.synergy-wrap{grid-template-columns:1fr;}}
+.synergy-svg-col svg{width:100%;max-width:360px;display:block;margin:0 auto;}
+.synergy-node .node-circle{transition:all .3s;}
+.synergy-node:hover .node-circle{filter:brightness(1.4);r:52;}
+.synergy-node-detail{display:none;}
+.synergy-node-detail.active{display:block;}
+.synergy-node-title{font-family:'Syne',sans-serif;font-size:clamp(18px,2vw,24px);font-weight:800;letter-spacing:-.02em;margin-bottom:12px;}
+.cap-panel{transition:border-color .3s;}
 
 /* SPECTRUM PROFIL */
 .sp-three{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:clamp(48px,7vw,80px);}
@@ -507,8 +520,8 @@ body:not(.en) span[data-fr]{display:inline;}
         <div class="pb-trigger">
           <div>
             <div class="pb-num">01</div>
-            <div class="pb-title" data-en>The team is burning out.<br>Nobody says it out loud.</div>
-            <div class="pb-title" data-fr>L'équipe s'épuise.<br>Personne ne le dit vraiment.</div>
+            <div class="pb-title" data-en><i data-lucide="flame" style="width:20px;height:20px;color:#e8533c;margin-right:8px;vertical-align:middle;flex-shrink:0;"></i>The team is burning out.<br>Nobody says it out loud.</div>
+            <div class="pb-title" data-fr><i data-lucide="flame" style="width:20px;height:20px;color:#e8533c;margin-right:8px;vertical-align:middle;flex-shrink:0;"></i>L'équipe s'épuise.<br>Personne ne le dit vraiment.</div>
             <div class="pb-subtitle" data-en>Culture · Cohesion · Internal conflict</div>
             <div class="pb-subtitle" data-fr>Culture · Cohésion · Conflits internes</div>
           </div>
@@ -562,8 +575,8 @@ body:not(.en) span[data-fr]{display:inline;}
         <div class="pb-trigger">
           <div>
             <div class="pb-num">02</div>
-            <div class="pb-title" data-en>You have ideas. Good ones.<br>They never quite land.</div>
-            <div class="pb-title" data-fr>Vous avez des idées. De bonnes idées.<br>Elles n'aboutissent jamais vraiment.</div>
+            <div class="pb-title" data-en><i data-lucide="lightbulb" style="width:20px;height:20px;color:#f5c842;margin-right:8px;vertical-align:middle;flex-shrink:0;"></i>You have ideas. Good ones.<br>They never quite land.</div>
+            <div class="pb-title" data-fr><i data-lucide="lightbulb" style="width:20px;height:20px;color:#f5c842;margin-right:8px;vertical-align:middle;flex-shrink:0;"></i>Vous avez des idées. De bonnes idées.<br>Elles n'aboutissent jamais vraiment.</div>
             <div class="pb-subtitle" data-en>Innovation · Vision · Execution</div>
             <div class="pb-subtitle" data-fr>Innovation · Vision · Exécution</div>
           </div>
@@ -617,8 +630,8 @@ body:not(.en) span[data-fr]{display:inline;}
         <div class="pb-trigger">
           <div>
             <div class="pb-num">03</div>
-            <div class="pb-title" data-en>Your tools are slowing you down.<br>And AI could change everything, if only.</div>
-            <div class="pb-title" data-fr>Vos outils vous ralentissent.<br>Et l'IA pourrait tout changer, si seulement.</div>
+            <div class="pb-title" data-en><i data-lucide="wrench" style="width:20px;height:20px;color:#4a7aff;margin-right:8px;vertical-align:middle;flex-shrink:0;"></i>Your tools are slowing you down.<br>And AI could change everything, if only.</div>
+            <div class="pb-title" data-fr><i data-lucide="wrench" style="width:20px;height:20px;color:#4a7aff;margin-right:8px;vertical-align:middle;flex-shrink:0;"></i>Vos outils vous ralentissent.<br>Et l'IA pourrait tout changer, si seulement.</div>
             <div class="pb-subtitle" data-en>Tools · Processes · AI adoption</div>
             <div class="pb-subtitle" data-fr>Outils · Process · Adoption de l'IA</div>
           </div>
@@ -796,13 +809,13 @@ body:not(.en) span[data-fr]{display:inline;}
     <!-- CAPSULES CLIQUABLES -->
     <div class="caps-wrap rv" style="margin-bottom:clamp(32px,5vw,56px);">
       <div class="caps-list">
-        <button class="cap active" data-idx="0" onclick="showCap(0)"><span data-en>Systemic vision</span><span data-fr>Vision systémique</span></button>
-        <button class="cap" data-idx="1" onclick="showCap(1)"><span data-en>Product strategy</span><span data-fr>Stratégie produit</span></button>
-        <button class="cap" data-idx="2" onclick="showCap(2)">UX / Design</button>
-        <button class="cap" data-idx="3" onclick="showCap(3)">Tech &amp; IA</button>
-        <button class="cap" data-idx="4" onclick="showCap(4)"><span data-en>Governance & process</span><span data-fr>Gouvernance & process</span></button>
-        <button class="cap" data-idx="5" onclick="showCap(5)"><span data-en>Facilitation & coaching</span><span data-fr>Facilitation & coaching</span></button>
-        <button class="cap" data-idx="6" onclick="showCap(6)"><span data-en>Change management</span><span data-fr>Conduite du changement</span></button>
+        <button class="cap active" data-idx="0" onclick="showCap(0)"><i data-lucide="globe-2" style="width:15px;height:15px;flex-shrink:0;"></i><span data-en>Systemic vision</span><span data-fr>Vision systémique</span></button>
+        <button class="cap" data-idx="1" onclick="showCap(1)"><i data-lucide="layers" style="width:15px;height:15px;flex-shrink:0;"></i><span data-en>Product strategy</span><span data-fr>Stratégie produit</span></button>
+        <button class="cap" data-idx="2" onclick="showCap(2)"><i data-lucide="pen-tool" style="width:15px;height:15px;flex-shrink:0;"></i>UX / Design</button>
+        <button class="cap" data-idx="3" onclick="showCap(3)"><i data-lucide="cpu" style="width:15px;height:15px;flex-shrink:0;"></i>Tech &amp; IA</button>
+        <button class="cap" data-idx="4" onclick="showCap(4)"><i data-lucide="network" style="width:15px;height:15px;flex-shrink:0;"></i><span data-en>Governance & process</span><span data-fr>Gouvernance & process</span></button>
+        <button class="cap" data-idx="5" onclick="showCap(5)"><i data-lucide="users" style="width:15px;height:15px;flex-shrink:0;"></i><span data-en>Facilitation & coaching</span><span data-fr>Facilitation & coaching</span></button>
+        <button class="cap" data-idx="6" onclick="showCap(6)"><i data-lucide="git-branch" style="width:15px;height:15px;flex-shrink:0;"></i><span data-en>Change management</span><span data-fr>Conduite du changement</span></button>
       </div>
       <div class="cap-panel">
         <div class="cap-content active" data-idx="0">
@@ -846,40 +859,78 @@ body:not(.en) span[data-fr]{display:inline;}
       <p style="font-size:clamp(15px,1.6vw,17px);color:rgba(240,234,216,.78);font-weight:300;line-height:1.85;" data-fr>C'est ce que 15 ans entre design, produit, tech, coaching et transformation organisationnelle donnent : la capacité d'agir au bon niveau. Pour délivrer, je travaille avec des spécialistes. Ce que j'apporte, c'est la vision globale qui manque quand chacun regarde son coin.</p>
     </div>
 
-    <!-- 3 NATURES + 4 CONNEXIONS -->
-    <div class="sp-three rv" style="margin-bottom:clamp(40px,6vw,64px);">
-      <div class="sp-nature">
-        <div class="sp-nature-label" data-en>The builder</div>
-        <div class="sp-nature-label" data-fr>Le bâtisseur</div>
-        <div class="sp-nature-tags">
-          <span class="sp-tag" data-en>Product</span><span class="sp-tag" data-fr>Produit</span>
-          <span class="sp-tag">Design</span>
-          <span class="sp-tag">Tech &amp; IA</span>
-        </div>
-        <p class="sp-nature-desc" data-en>Knowing what's buildable changes how you design. Knowing how to design changes what you build.</p>
-        <p class="sp-nature-desc" data-fr>Savoir ce qui est faisable change la façon de concevoir. Savoir concevoir change ce qu'on construit.</p>
+    <!-- GRAPHE CIRCULAIRE 3 NATURES -->
+    <div class="synergy-wrap rv" style="margin-bottom:clamp(40px,6vw,64px);">
+      <div class="synergy-svg-col">
+        <svg id="synergy-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+          <!-- Arc de fond -->
+          <circle cx="200" cy="200" r="155" fill="none" stroke="rgba(240,234,216,.06)" stroke-width="1.5"/>
+          <!-- Connecteurs -->
+          <line x1="200" y1="52" x2="354" y2="312" stroke="rgba(240,234,216,.08)" stroke-width="1.5" stroke-dasharray="4 4"/>
+          <line x1="354" y1="312" x2="46" y2="312" stroke="rgba(240,234,216,.08)" stroke-width="1.5" stroke-dasharray="4 4"/>
+          <line x1="46" y1="312" x2="200" y2="52" stroke="rgba(240,234,216,.08)" stroke-width="1.5" stroke-dasharray="4 4"/>
+          <!-- Cercle central -->
+          <circle cx="200" cy="200" r="52" fill="rgba(74,122,255,.12)" stroke="#4a7aff" stroke-width="1.5"/>
+          <text x="200" y="193" text-anchor="middle" font-family="DM Mono" font-size="9" fill="#4a7aff" letter-spacing="1" text-transform="uppercase">VISION</text>
+          <text x="200" y="207" text-anchor="middle" font-family="DM Mono" font-size="9" fill="#4a7aff" letter-spacing="1">SYSTÉMIQUE</text>
+          <!-- Cercle 1 : Le Bâtisseur (haut) -->
+          <g class="synergy-node" id="node-builder" onclick="highlightNode('builder')" style="cursor:pointer">
+            <circle cx="200" cy="52" r="48" fill="rgba(46,204,113,.12)" stroke="#2ecc71" stroke-width="1.5" class="node-circle"/>
+            <text x="200" y="43" text-anchor="middle" font-family="Syne" font-size="11" font-weight="700" fill="#2ecc71" class="node-label-en">Le</text>
+            <text x="200" y="57" text-anchor="middle" font-family="Syne" font-size="11" font-weight="700" fill="#2ecc71" class="node-label-en">Bâtisseur</text>
+            <text x="200" y="43" text-anchor="middle" font-family="Syne" font-size="11" font-weight="700" fill="#2ecc71" class="node-label-fr" style="display:none">Le</text>
+            <text x="200" y="57" text-anchor="middle" font-family="Syne" font-size="11" font-weight="700" fill="#2ecc71" class="node-label-fr" style="display:none">Bâtisseur</text>
+          </g>
+          <!-- Cercle 2 : L'Architecte (bas droite) -->
+          <g class="synergy-node" id="node-architect" onclick="highlightNode('architect')" style="cursor:pointer">
+            <circle cx="354" cy="312" r="48" fill="rgba(232,83,60,.12)" stroke="#e8533c" stroke-width="1.5" class="node-circle"/>
+            <text x="354" y="303" text-anchor="middle" font-family="Syne" font-size="11" font-weight="700" fill="#e8533c">L'</text>
+            <text x="354" y="317" text-anchor="middle" font-family="Syne" font-size="11" font-weight="700" fill="#e8533c">Architecte</text>
+          </g>
+          <!-- Cercle 3 : L'Accompagnant (bas gauche) -->
+          <g class="synergy-node" id="node-enabler" onclick="highlightNode('enabler')" style="cursor:pointer">
+            <circle cx="46" cy="312" r="48" fill="rgba(245,200,66,.12)" stroke="#f5c842" stroke-width="1.5" class="node-circle"/>
+            <text x="46" y="303" text-anchor="middle" font-family="Syne" font-size="10" font-weight="700" fill="#f5c842" class="node-label-en">L'</text>
+            <text x="46" y="317" text-anchor="middle" font-family="Syne" font-size="9.5" font-weight="700" fill="#f5c842" class="node-label-en">Accompagnant</text>
+            <text x="46" y="303" text-anchor="middle" font-family="Syne" font-size="10" font-weight="700" fill="#f5c842" class="node-label-fr" style="display:none">L'</text>
+            <text x="46" y="317" text-anchor="middle" font-family="Syne" font-size="9.5" font-weight="700" fill="#f5c842" class="node-label-fr" style="display:none">Accompagnant</text>
+          </g>
+        </svg>
       </div>
-      <div class="sp-nature">
-        <div class="sp-nature-label" data-en>The architect</div>
-        <div class="sp-nature-label" data-fr>L'architecte</div>
-        <div class="sp-nature-tags">
-          <span class="sp-tag" data-en>Governance</span><span class="sp-tag" data-fr>Gouvernance</span>
-          <span class="sp-tag">Process</span>
-          <span class="sp-tag" data-en>Culture</span><span class="sp-tag" data-fr>Culture</span>
+      <div class="synergy-desc-col">
+        <div class="synergy-node-detail active" id="detail-builder">
+          <div class="synergy-node-title" style="color:#2ecc71" data-en>The builder</div>
+          <div class="synergy-node-title" style="color:#2ecc71" data-fr>Le bâtisseur</div>
+          <div class="sp-nature-tags" style="margin-bottom:14px;">
+            <span class="sp-tag" data-en>Product</span><span class="sp-tag" data-fr>Produit</span>
+            <span class="sp-tag">Design</span>
+            <span class="sp-tag">Tech &amp; IA</span>
+          </div>
+          <p class="sp-nature-desc" data-en>Knowing what's buildable changes how you design. Knowing how to design changes what you build. The best solutions live at that intersection.</p>
+          <p class="sp-nature-desc" data-fr>Savoir ce qui est faisable change la façon de concevoir. Savoir concevoir change ce qu'on construit. Les meilleures solutions vivent à cette intersection.</p>
         </div>
-        <p class="sp-nature-desc" data-en>A good roadmap fails if the team structure doesn't support it. Governance and product strategy have to be designed together.</p>
-        <p class="sp-nature-desc" data-fr>Une bonne roadmap échoue si la structure d'équipe ne la soutient pas. Gouvernance et stratégie produit se conçoivent ensemble.</p>
-      </div>
-      <div class="sp-nature">
-        <div class="sp-nature-label" data-en>The enabler</div>
-        <div class="sp-nature-label" data-fr>L'accompagnant</div>
-        <div class="sp-nature-tags">
-          <span class="sp-tag" data-en>Facilitation</span><span class="sp-tag" data-fr>Facilitation</span>
-          <span class="sp-tag" data-en>Coaching</span><span class="sp-tag" data-fr>Coaching</span>
-          <span class="sp-tag" data-en>Change</span><span class="sp-tag" data-fr>Changement</span>
+        <div class="synergy-node-detail" id="detail-architect">
+          <div class="synergy-node-title" style="color:#e8533c" data-en>The architect</div>
+          <div class="synergy-node-title" style="color:#e8533c" data-fr>L'architecte</div>
+          <div class="sp-nature-tags" style="margin-bottom:14px;">
+            <span class="sp-tag" data-en>Governance</span><span class="sp-tag" data-fr>Gouvernance</span>
+            <span class="sp-tag">Process</span>
+            <span class="sp-tag" data-en>Culture</span><span class="sp-tag" data-fr>Culture</span>
+          </div>
+          <p class="sp-nature-desc" data-en>A good roadmap fails if the team structure doesn't support it. Governance and product strategy have to be designed together, not in sequence.</p>
+          <p class="sp-nature-desc" data-fr>Une bonne roadmap échoue si la structure d'équipe ne la soutient pas. Gouvernance et stratégie produit se conçoivent ensemble, pas en séquence.</p>
         </div>
-        <p class="sp-nature-desc" data-en>The technical change is rarely the hard part. It's the human transition that determines whether it lasts.</p>
-        <p class="sp-nature-desc" data-fr>Le changement technique est rarement la partie difficile. C'est la transition humaine qui détermine si ça dure.</p>
+        <div class="synergy-node-detail" id="detail-enabler">
+          <div class="synergy-node-title" style="color:#f5c842" data-en>The enabler</div>
+          <div class="synergy-node-title" style="color:#f5c842" data-fr>L'accompagnant</div>
+          <div class="sp-nature-tags" style="margin-bottom:14px;">
+            <span class="sp-tag" data-en>Facilitation</span><span class="sp-tag" data-fr>Facilitation</span>
+            <span class="sp-tag" data-en>Coaching</span><span class="sp-tag" data-fr>Coaching</span>
+            <span class="sp-tag" data-en>Change</span><span class="sp-tag" data-fr>Changement</span>
+          </div>
+          <p class="sp-nature-desc" data-en>The technical change is rarely the hard part. It's the human transition that determines whether it lasts. When people understand the system and feel heard, something unlocks.</p>
+          <p class="sp-nature-desc" data-fr>Le changement technique est rarement la partie difficile. C'est la transition humaine qui détermine si ça dure. Quand les gens comprennent le système et se sentent entendus, quelque chose se débloque.</p>
+        </div>
       </div>
     </div>
 
@@ -1091,10 +1142,27 @@ document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.le
 
 
 // CAPSULES COMPÉTENCES
+const capColors = ['#4a7aff','#2ecc71','#c84fd8','#e8533c','#2ab8d8','#f5c842','#e84c7a'];
 function showCap(idx) {
   document.querySelectorAll('.cap').forEach(c => c.classList.toggle('active', parseInt(c.dataset.idx) === idx));
   document.querySelectorAll('.cap-content').forEach(c => c.classList.toggle('active', parseInt(c.dataset.idx) === idx));
+  const panel = document.querySelector('.cap-panel');
+  if(panel) panel.style.borderColor = (capColors[idx]||'rgba(240,234,216,.07)') + '55';
 }
+
+// SYNERGY NODES
+function highlightNode(id) {
+  document.querySelectorAll('.synergy-node-detail').forEach(d => d.classList.remove('active'));
+  const det = document.getElementById('detail-'+id);
+  if(det) det.classList.add('active');
+  document.querySelectorAll('.synergy-node').forEach(n => {
+    const c = n.querySelector('.node-circle');
+    if(c) c.style.opacity = n.id === 'node-'+id ? '1' : '0.4';
+  });
+}
+
+// LUCIDE ICONS
+document.addEventListener('DOMContentLoaded', () => { if(window.lucide) lucide.createIcons(); });
 
 // TYPEWRITER HERO
 const tl1=document.getElementById('tl1'),tl2=document.getElementById('tl2');
@@ -1122,6 +1190,7 @@ function startHeroAnim(){
   });
 }
 startHeroAnim();
+if(window.lucide) lucide.createIcons();
 document.querySelectorAll('.lang-btn').forEach(b=>b.addEventListener('click',()=>setTimeout(startHeroAnim,80)));
 
 const rvObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on');});},{threshold:.07});
