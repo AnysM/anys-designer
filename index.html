@@ -157,6 +157,25 @@ section{position:relative;z-index:1;}
 .why-diff-text{font-size:clamp(15px,1.6vw,18px);color:rgba(240,234,216,.8);font-weight:300;line-height:1.85;margin-bottom:16px;}
 .why-diff-text:last-child{margin-bottom:0;}
 
+
+/* SPECTRUM — profil unique */
+.sp-objection{max-width:760px;}
+.sp-obj-text{font-size:clamp(15px,1.6vw,17px);color:rgba(240,234,216,.78);font-weight:300;line-height:1.85;}
+.sp-three{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
+@media(max-width:900px){.sp-three{grid-template-columns:1fr;}}
+.sp-nature{padding:clamp(24px,3vw,36px);background:rgba(255,255,255,.03);border:1px solid rgba(240,234,216,.06);}
+.sp-nature-label{font-family:'Syne',sans-serif;font-size:clamp(16px,1.8vw,20px);font-weight:700;color:var(--cream);margin-bottom:12px;letter-spacing:-.01em;}
+.sp-nature-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px;}
+.sp-tag{font-family:'DM Mono',monospace;font-size:9px;padding:2px 9px;border:1px solid rgba(74,122,255,.25);border-radius:20px;color:var(--blue-l);letter-spacing:.06em;}
+.sp-nature-desc{font-size:14px;color:rgba(240,234,216,.65);font-weight:300;line-height:1.75;}
+.sp-connections{padding-top:clamp(32px,5vw,56px);border-top:1px solid rgba(240,234,216,.07);}
+.sp-conn-label{font-family:'DM Mono',monospace;font-size:10px;color:var(--blue-l);letter-spacing:.12em;text-transform:uppercase;margin-bottom:20px;}
+.sp-conn-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px 32px;}
+@media(max-width:900px){.sp-conn-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:580px){.sp-conn-grid{grid-template-columns:1fr;}}
+.sp-conn-title{font-family:'DM Mono',monospace;font-size:10px;color:var(--blue-l);letter-spacing:.08em;margin-bottom:8px;}
+.sp-conn-desc{font-size:13px;color:rgba(240,234,216,.55);font-weight:300;line-height:1.7;}
+
 /* SPECTRUM */
 .spec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
 @media(max-width:900px){.spec-grid{grid-template-columns:1fr 1fr;}}
@@ -888,6 +907,25 @@ section{position:relative;z-index:1;}
 .why-diff-text{font-size:clamp(15px,1.6vw,18px);color:rgba(240,234,216,.8);font-weight:300;line-height:1.85;margin-bottom:16px;}
 .why-diff-text:last-child{margin-bottom:0;}
 
+
+/* SPECTRUM — profil unique */
+.sp-objection{max-width:760px;}
+.sp-obj-text{font-size:clamp(15px,1.6vw,17px);color:rgba(240,234,216,.78);font-weight:300;line-height:1.85;}
+.sp-three{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
+@media(max-width:900px){.sp-three{grid-template-columns:1fr;}}
+.sp-nature{padding:clamp(24px,3vw,36px);background:rgba(255,255,255,.03);border:1px solid rgba(240,234,216,.06);}
+.sp-nature-label{font-family:'Syne',sans-serif;font-size:clamp(16px,1.8vw,20px);font-weight:700;color:var(--cream);margin-bottom:12px;letter-spacing:-.01em;}
+.sp-nature-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px;}
+.sp-tag{font-family:'DM Mono',monospace;font-size:9px;padding:2px 9px;border:1px solid rgba(74,122,255,.25);border-radius:20px;color:var(--blue-l);letter-spacing:.06em;}
+.sp-nature-desc{font-size:14px;color:rgba(240,234,216,.65);font-weight:300;line-height:1.75;}
+.sp-connections{padding-top:clamp(32px,5vw,56px);border-top:1px solid rgba(240,234,216,.07);}
+.sp-conn-label{font-family:'DM Mono',monospace;font-size:10px;color:var(--blue-l);letter-spacing:.12em;text-transform:uppercase;margin-bottom:20px;}
+.sp-conn-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px 32px;}
+@media(max-width:900px){.sp-conn-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:580px){.sp-conn-grid{grid-template-columns:1fr;}}
+.sp-conn-title{font-family:'DM Mono',monospace;font-size:10px;color:var(--blue-l);letter-spacing:.08em;margin-bottom:8px;}
+.sp-conn-desc{font-size:13px;color:rgba(240,234,216,.55);font-weight:300;line-height:1.7;}
+
 /* SPECTRUM */
 .spec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
 @media(max-width:900px){.spec-grid{grid-template-columns:1fr 1fr;}}
@@ -1550,79 +1588,88 @@ body:not(.en) span[data-fr]{display:inline;}
 
 <section id="spectrum" class="sec-dark" style="padding:clamp(60px,10vw,120px) 0;">
   <div class="container">
+
     <div class="rv" style="max-width:680px;margin-bottom:clamp(40px,6vw,64px);">
-      <div class="section-label" data-en>The 7 dimensions</div>
-      <div class="section-label" data-fr>Les 7 dimensions</div>
-      <h2 class="section-title" data-en>Each one feeds the others.<br>That's the whole point.</h2>
-      <h2 class="section-title" data-fr>Chacune nourrit les autres.<br>C'est tout l'intérêt.</h2>
+      <div class="section-label" data-en>A rare profile</div>
+      <div class="section-label" data-fr>Un profil rare</div>
+      <h2 class="section-title" data-en>You might think: he does everything,<br>so he does nothing well.</h2>
+      <h2 class="section-title" data-fr>Vous pensez peut-être : il fait tout,<br>donc il ne fait rien bien.</h2>
     </div>
-    <div class="spec-grid">
-      <div class="spec-item rv">
-        <div class="spec-num">01</div>
-        <div class="spec-name" data-en>Systemic vision</div>
-        <div class="spec-name" data-fr>Vision systémique</div>
-        <p class="spec-desc" data-en>Reading an organisation as a whole, tools, people, culture, processes, to find the real leverage point, not the obvious one.</p>
-        <p class="spec-desc" data-fr>Lire une organisation comme un tout, outils, personnes, culture, process, pour trouver le vrai levier, pas le plus évident.</p>
-        <div class="spec-link" data-en>Feeds everything else</div>
-        <div class="spec-link" data-fr>Nourrit tout le reste</div>
+
+    <div class="sp-objection rv" style="margin-bottom:clamp(48px,7vw,80px);">
+      <p class="sp-obj-text" data-en>You're right that a specialist goes deeper on one thing. What's rare isn't mastering seven disciplines. It's understanding how they affect each other — and knowing where to act when the real problem lives at the intersection. For delivery, I work with specialists. What I bring is the global view that's missing when everyone looks at their own corner.</p>
+      <p class="sp-obj-text" data-fr>Un spécialiste va plus loin sur une chose, c'est vrai. Ce qui est rare, ce n'est pas de maîtriser sept disciplines. C'est de comprendre comment elles s'affectent mutuellement — et de savoir où agir quand le vrai problème vit à l'intersection. Pour délivrer, je travaille avec des spécialistes. Ce que j'apporte, c'est la vision globale qui manque quand chacun regarde son coin.</p>
+    </div>
+
+    <div class="sp-three rv" style="margin-bottom:clamp(48px,7vw,80px);">
+      <div class="sp-nature rv">
+        <div class="sp-nature-label" data-en>The builder</div>
+        <div class="sp-nature-label" data-fr>Le bâtisseur</div>
+        <div class="sp-nature-tags">
+          <span class="sp-tag" data-en>Product</span><span class="sp-tag" data-fr>Produit</span>
+          <span class="sp-tag">Design</span>
+          <span class="sp-tag">Tech & IA</span>
+        </div>
+        <p class="sp-nature-desc" data-en>I turn ideas into working things. A good roadmap, a usable interface, a custom tool built in days. Knowing what's buildable changes how you design. Knowing how to design changes what you build.</p>
+        <p class="sp-nature-desc" data-fr>Je transforme les idées en choses qui fonctionnent. Une bonne roadmap, une interface utilisable, un outil sur mesure construit en quelques jours. Savoir ce qui est faisable change la façon de concevoir. Savoir concevoir change ce qu'on construit.</p>
       </div>
-      <div class="spec-item rv d1">
-        <div class="spec-num">02</div>
-        <div class="spec-name" data-en>Product & design</div>
-        <div class="spec-name" data-fr>Produit & design</div>
-        <p class="spec-desc" data-en>Turning a vision into something usable. Without design sense, product decisions are blind. Without product sense, design is decoration.</p>
-        <p class="spec-desc" data-fr>Transformer une vision en quelque chose d'utilisable. Sans sens du design, les décisions produit sont aveugles. Sans sens produit, le design est décoratif.</p>
-        <div class="spec-link" data-en>→ Clarifies the vision</div>
-        <div class="spec-link" data-fr>→ Clarifie la vision</div>
+      <div class="sp-nature rv d1">
+        <div class="sp-nature-label" data-en>The architect</div>
+        <div class="sp-nature-label" data-fr>L'architecte</div>
+        <div class="sp-nature-tags">
+          <span class="sp-tag" data-en>Governance</span><span class="sp-tag" data-fr>Gouvernance</span>
+          <span class="sp-tag" data-en>Process</span><span class="sp-tag" data-fr>Process</span>
+          <span class="sp-tag" data-en>Culture</span><span class="sp-tag" data-fr>Culture</span>
+        </div>
+        <p class="sp-nature-desc" data-en>I design structures that people actually own. A good process nobody adopts is just paperwork. A PM without organisational sense builds roadmaps that hit a wall of inertia. Governance and product strategy have to be designed together.</p>
+        <p class="sp-nature-desc" data-fr>Je conçois des structures que les gens s'approprient vraiment. Un bon process que personne n'adopte, c'est de la paperasse. Un PM sans sens organisationnel construit des roadmaps qui heurtent un mur d'inertie. Gouvernance et stratégie produit se conçoivent ensemble.</p>
       </div>
-      <div class="spec-item rv d2">
-        <div class="spec-num">03</div>
-        <div class="spec-name" data-en>Tech & AI</div>
-        <div class="spec-name" data-fr>Tech & IA</div>
-        <p class="spec-desc" data-en>Knowing what's buildable changes how you design. Today, AI makes it possible to build lightweight custom tools in days, if you know how to drive it.</p>
-        <p class="spec-desc" data-fr>Savoir ce qui est faisable change la façon de concevoir. Aujourd'hui, l'IA permet de construire des outils sur mesure en quelques jours, si on sait la piloter.</p>
-        <div class="spec-link" data-en>→ Unlocks speed</div>
-        <div class="spec-link" data-fr>→ Débloque la vitesse</div>
-      </div>
-      <div class="spec-item rv d1">
-        <div class="spec-num">04</div>
-        <div class="spec-name" data-en>Governance & process</div>
-        <div class="spec-name" data-fr>Gouvernance & process</div>
-        <p class="spec-desc" data-en>Designing structures people actually adopt. A good process nobody owns is just paperwork. Governance and product strategy have to be designed together.</p>
-        <p class="spec-desc" data-fr>Concevoir des structures que les gens s'approprient. Un bon process que personne ne porte, c'est de la paperasse. Gouvernance et stratégie se conçoivent ensemble.</p>
-        <div class="spec-link" data-en>→ Makes things stick</div>
-        <div class="spec-link" data-fr>→ Fait tenir les choses</div>
-      </div>
-      <div class="spec-item rv d2">
-        <div class="spec-num">05</div>
-        <div class="spec-name" data-en>Cohesion & culture</div>
-        <div class="spec-name" data-fr>Cohésion & culture</div>
-        <p class="spec-desc" data-en>The human work that holds everything else together. When people understand the system and feel heard, something unlocks, no team building required.</p>
-        <p class="spec-desc" data-fr>Le travail humain qui fait tenir le reste. Quand les gens comprennent le système et se sentent entendus, quelque chose se débloque, sans team building.</p>
-        <div class="spec-link" data-en>→ Sustains the change</div>
-        <div class="spec-link" data-fr>→ Ancre le changement</div>
-      </div>
-      <div class="spec-item rv d1">
-        <div class="spec-num">06</div>
-        <div class="spec-name" data-en>Facilitation & coaching</div>
-        <div class="spec-name" data-fr>Facilitation & coaching</div>
-        <p class="spec-desc" data-en>Making things emerge rather than imposing them. People who find their own answers commit to them. Individual coaching accelerates what collective work can't reach alone.</p>
-        <p class="spec-desc" data-fr>Faire émerger plutôt qu'imposer. Les gens qui trouvent leurs propres réponses s'y engagent. Le coaching individuel accélère ce que le collectif seul ne peut pas atteindre.</p>
-        <div class="spec-link" data-en>→ Builds ownership</div>
-        <div class="spec-link" data-fr>→ Crée l'appropriation</div>
-      </div>
-      <div class="spec-item rv d2">
-        <div class="spec-num">07</div>
-        <div class="spec-name" data-en>Change management</div>
-        <div class="spec-name" data-fr>Conduite du changement</div>
-        <p class="spec-desc" data-en>Crossing the organisation's resistance without breaking it. The technical change is rarely the hard part. It's the human transition that determines whether it lasts.</p>
-        <p class="spec-desc" data-fr>Traverser la résistance de l'organisation sans la briser. Le changement technique est rarement la partie difficile. C'est la transition humaine qui détermine si ça dure.</p>
-        <div class="spec-link" data-en>→ The last mile</div>
-        <div class="spec-link" data-fr>→ Le dernier kilomètre</div>
+      <div class="sp-nature rv d2">
+        <div class="sp-nature-label" data-en>The enabler</div>
+        <div class="sp-nature-label" data-fr>L'accompagnant</div>
+        <div class="sp-nature-tags">
+          <span class="sp-tag" data-en>Facilitation</span><span class="sp-tag" data-fr>Facilitation</span>
+          <span class="sp-tag" data-en>Coaching</span><span class="sp-tag" data-fr>Coaching</span>
+          <span class="sp-tag" data-en>Change</span><span class="sp-tag" data-fr>Changement</span>
+        </div>
+        <p class="sp-nature-desc" data-en>I make things emerge rather than imposing them. The technical change is rarely the hard part. It's the human transition that determines whether it lasts. When people understand the system they're in and feel genuinely heard, something unlocks.</p>
+        <p class="sp-nature-desc" data-fr>Je fais émerger plutôt qu'imposer. Le changement technique est rarement la partie difficile. C'est la transition humaine qui détermine si ça dure. Quand les gens comprennent le système dans lequel ils évoluent et se sentent vraiment entendus, quelque chose se débloque.</p>
       </div>
     </div>
+
+    <div class="sp-connections rv">
+      <div class="sp-conn-label" data-en>Where the intersections change everything</div>
+      <div class="sp-conn-label" data-fr>Là où les intersections changent tout</div>
+      <div class="sp-conn-grid">
+        <div class="sp-conn-item">
+          <div class="sp-conn-title" data-en>Design × Product</div>
+          <div class="sp-conn-title" data-fr>Design × Produit</div>
+          <p class="sp-conn-desc" data-en>A PM without design sense makes blind trade-offs. A designer without product vision builds beautiful things nobody needs.</p>
+          <p class="sp-conn-desc" data-fr>Un PM sans sens du design fait des arbitrages à l'aveugle. Un designer sans vision produit construit de belles choses dont personne n'a besoin.</p>
+        </div>
+        <div class="sp-conn-item">
+          <div class="sp-conn-title" data-en>Product × Organisation</div>
+          <div class="sp-conn-title" data-fr>Produit × Organisation</div>
+          <p class="sp-conn-desc" data-en>A good roadmap fails if the team structure doesn't support it. Governance and product strategy have to be designed together.</p>
+          <p class="sp-conn-desc" data-fr>Une bonne roadmap échoue si la structure d'équipe ne la soutient pas. Gouvernance et stratégie produit se conçoivent ensemble.</p>
+        </div>
+        <div class="sp-conn-item">
+          <div class="sp-conn-title" data-en>Organisation × Human</div>
+          <div class="sp-conn-title" data-fr>Organisation × Humain</div>
+          <p class="sp-conn-desc" data-en>A process nobody buys into is just paperwork. Change only sticks when people inside understand why and feel part of it.</p>
+          <p class="sp-conn-desc" data-fr>Un process que personne n'adopte, c'est de la paperasse. Le changement tient uniquement quand les gens comprennent pourquoi et s'en sentent partie prenante.</p>
+        </div>
+        <div class="sp-conn-item">
+          <div class="sp-conn-title" data-en>Tech × Design</div>
+          <div class="sp-conn-title" data-fr>Tech × Design</div>
+          <p class="sp-conn-desc" data-en>Knowing what's buildable changes how you design. Knowing how to design changes what you build. The best solutions live at that intersection.</p>
+          <p class="sp-conn-desc" data-fr>Savoir ce qui est faisable change la façon de concevoir. Savoir concevoir change ce qu'on construit. Les meilleures solutions vivent à cette intersection.</p>
+        </div>
+      </div>
+    </div>
+
   </div>
-</section>div>
+</section>
         <div class="proj-visual">
           <div class="proj-visual-inner">
             <div class="proj-big">140</div>
