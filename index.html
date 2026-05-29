@@ -157,6 +157,17 @@ section{position:relative;z-index:1;}
 .why-diff-text:last-child{margin-bottom:0;}
 
 
+
+/* CAPSULES COMPÉTENCES */
+.caps-wrap{background:rgba(255,255,255,.02);border:1px solid rgba(240,234,216,.06);border-radius:4px;overflow:hidden;}
+.caps-list{display:flex;flex-wrap:wrap;gap:0;padding:20px 24px;border-bottom:1px solid rgba(240,234,216,.07);}
+.cap{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.06em;padding:8px 16px;border-radius:20px;border:1px solid rgba(240,234,216,.1);background:transparent;color:rgba(240,234,216,.5);cursor:pointer;transition:all .2s;margin:4px;}
+.cap:hover{border-color:rgba(74,122,255,.4);color:var(--blue-l);}
+.cap.active{background:var(--blue);border-color:var(--blue);color:#fff;}
+.cap-panel{padding:28px 32px;min-height:120px;}
+.cap-content{display:none;font-size:15px;color:rgba(240,234,216,.78);font-weight:300;line-height:1.8;}
+.cap-content.active{display:block;}
+
 /* SPECTRUM PROFIL */
 .sp-three{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:clamp(48px,7vw,80px);}
 @media(max-width:900px){.sp-three{grid-template-columns:1fr;}}
@@ -665,151 +676,8 @@ body:not(.en) span[data-fr]{display:inline;}
     <div class="wid-grid">
       <div class="wid-card c-enter rv-l d1"><div class="c-num-bg">01</div><div class="c-phase e" data-en>Week 1</div><div class="c-phase e" data-fr>Semaine 1</div><h3 class="c-title" data-en>You finally know what the real problem is</h3><h3 class="c-title" data-fr>Vous savez enfin quel est le vrai problème</h3><p class="c-body" data-en>Not the one everyone's been talking about. The one underneath. Fast audit, team interviews, no assumptions. You get a clear diagnosis and a direction you can act on.</p><p class="c-body" data-fr>Pas celui dont tout le monde parle. Celui qui est en dessous. Audit rapide, écoute de l'équipe, sans a priori. Vous repartez avec un diagnostic clair et une direction sur laquelle agir.</p></div>
       <div class="wid-card c-build rv d2"><div class="c-num-bg">02</div><div class="c-phase b" data-en>During the mission</div><div class="c-phase b" data-fr>Pendant la mission</div><h3 class="c-title" data-en>Things move. Without waiting for alignment.</h3><h3 class="c-title" data-fr>Ça avance. Sans attendre l'alignement général.</h3><p class="c-body" data-en>Design, prototype, build, iterate. Decisions are made. You see progress every week, not decks, not promises. Working product.</p><p class="c-body" data-fr>Design, prototype, code, itération. Les décisions sont prises. Vous voyez des avancées chaque semaine, pas des slides, pas des promesses. Un produit qui fonctionne.</p></div>
-      <div class="wid-card c-transmit rv-r d3"><div class="c-num-bg">03</div><div class="c-phase t" data-en>End of mission</div><div class="c-phase t" data-fr>Fin de mission</div><h3 class="c-title" data-en>Your team runs it. You don't need me anymore.</h3><h3 class="c-title" data-fr>Votre équipe tient la route. Sans dépendance.</h3><p class="c-body" data-en>Processes, culture, skills are in place. The team knows what to do and why. That's when I know the mission is done.</p><p class="c-body" data-fr>Process, culture, compétences sont en place. L'équipe sait quoi faire et pourquoi. C'est à ce moment que je sais que la mission est accomplie.</p></div>
+      <div class="wid-card c-transmit rv-r d3"><div class="c-num-bg">03</div><div class="c-phase t" data-en>End of mission</div><div class="c-phase t" data-fr>Fin de mission</div><h3 class="c-title" data-en>Your team runs it. Without depending on me.</h3><h3 class="c-title" data-fr>Votre équipe tient la route. Sans dépendance.</h3><p class="c-body" data-en>Processes, culture, skills are in place. The team knows what to do and why. That's when I know the mission is done.</p><p class="c-body" data-fr>Process, culture, compétences sont en place. L'équipe sait quoi faire et pourquoi. C'est à ce moment que je sais que la mission est accomplie.</p></div>
     </div>
-  </div>
-</section>
-
-<section id="spectrum" class="sec-dark" style="padding:clamp(60px,10vw,120px) 0;">
-  <div class="container">
-
-    <div class="rv" style="max-width:680px;margin-bottom:clamp(40px,6vw,64px);">
-      <div class="section-label" data-en>Skills</div>
-      <div class="section-label" data-fr>Compétences</div>
-      <h2 class="section-title" data-en>What I can do.<br>And why together it's different.</h2>
-      <h2 class="section-title" data-fr>Ce que je sais faire.<br>Et pourquoi ensemble c'est différent.</h2>
-    </div>
-
-    <!-- TEMPS 1 : LISTE DES 7 COMPÉTENCES -->
-    <div class="spec-grid rv" style="margin-bottom:clamp(48px,7vw,96px);">
-      <div class="spec-item">
-        <div class="spec-num">01</div>
-        <div class="spec-name" data-en>Systemic vision</div>
-        <div class="spec-name" data-fr>Vision systémique</div>
-        <p class="spec-desc" data-en>Read an organisation as a whole — tools, people, culture, process — to find the real lever, not the most obvious one.</p>
-        <p class="spec-desc" data-fr>Lire une organisation comme un tout : outils, personnes, culture, process. Trouver le vrai levier, pas le plus évident.</p>
-      </div>
-      <div class="spec-item">
-        <div class="spec-num">02</div>
-        <div class="spec-name" data-en>Product strategy</div>
-        <div class="spec-name" data-fr>Stratégie produit</div>
-        <p class="spec-desc" data-en>Vision, roadmap, prioritisation, user research. From the idea to a product that actually works in real conditions.</p>
-        <p class="spec-desc" data-fr>Vision, roadmap, priorisation, recherche utilisateur. De l'idée à un produit qui fonctionne dans les conditions réelles.</p>
-      </div>
-      <div class="spec-item">
-        <div class="spec-num">03</div>
-        <div class="spec-name" data-en>UX / Design</div>
-        <div class="spec-name" data-fr>UX / Design</div>
-        <p class="spec-desc" data-en>Interface design, user experience, visual identity, prototyping. Clarity of use as a strategic asset, not just aesthetics.</p>
-        <p class="spec-desc" data-fr>Design d'interface, expérience utilisateur, identité visuelle, prototypage. La clarté d'usage comme levier stratégique, pas juste esthétique.</p>
-      </div>
-      <div class="spec-item">
-        <div class="spec-num">04</div>
-        <div class="spec-name" data-en>Tech & AI</div>
-        <div class="spec-name" data-fr>Tech & IA</div>
-        <p class="spec-desc" data-en>Front-end development, architecture, custom lightweight tools. AI as a speed lever — not a gadget. I build or pilot the build.</p>
-        <p class="spec-desc" data-fr>Développement front-end, architecture, outils sur mesure. L'IA comme levier de vitesse, pas un gadget. Je construis ou je pilote la construction.</p>
-      </div>
-      <div class="spec-item">
-        <div class="spec-num">05</div>
-        <div class="spec-name" data-en>Governance & process</div>
-        <div class="spec-name" data-fr>Gouvernance & process</div>
-        <p class="spec-desc" data-en>Agile, Holacracy, SAFe. Structuring working methods, decision-making frameworks, and collective rituals that people actually adopt.</p>
-        <p class="spec-desc" data-fr>Agile, Holacratie, SAFe. Structurer des modes de travail, des cadres de décision et des rituels collectifs que les gens s'approprient vraiment.</p>
-      </div>
-      <div class="spec-item">
-        <div class="spec-num">06</div>
-        <div class="spec-name" data-en>Facilitation & coaching</div>
-        <div class="spec-name" data-fr>Facilitation & coaching</div>
-        <p class="spec-desc" data-en>Workshops, individual coaching, collective intelligence. Making things emerge rather than imposing. People who find their own answers commit to them.</p>
-        <p class="spec-desc" data-fr>Ateliers, coaching individuel, intelligence collective. Faire émerger plutôt qu'imposer. Les gens qui trouvent leurs propres réponses s'y engagent.</p>
-      </div>
-      <div class="spec-item">
-        <div class="spec-num">07</div>
-        <div class="spec-name" data-en>Change management</div>
-        <div class="spec-name" data-fr>Conduite du changement</div>
-        <p class="spec-desc" data-en>Crossing organisational resistance without breaking it. The technical change is rarely the hard part. It's the human transition that determines whether it lasts.</p>
-        <p class="spec-desc" data-fr>Traverser la résistance organisationnelle sans la briser. Le changement technique est rarement la partie difficile. C'est la transition humaine qui détermine si ça dure.</p>
-      </div>
-    </div>
-
-    <!-- TEMPS 2 : POURQUOI C'EST DIFFÉRENT -->
-    <div style="padding-top:clamp(40px,6vw,72px);border-top:1px solid rgba(240,234,216,.08);">
-
-      <div class="rv" style="max-width:680px;margin-bottom:clamp(32px,5vw,56px);">
-        <div class="section-label" data-en>Why together it's rare</div>
-        <div class="section-label" data-fr>Pourquoi ensemble c'est rare</div>
-        <h2 class="section-title" data-en>You might think: he does everything,<br>so he does nothing well.</h2>
-        <h2 class="section-title" data-fr>Vous pensez peut-être : il fait tout,<br>donc il ne fait rien bien.</h2>
-        <p style="font-size:clamp(15px,1.6vw,17px);color:rgba(240,234,216,.78);font-weight:300;line-height:1.85;margin-top:16px;" data-en>You're right that a specialist goes deeper on one thing. What's rare isn't mastering seven disciplines. It's understanding how they affect each other — and acting at the right level when the real problem lives at the intersection. For delivery, I work with specialists. What I bring is the global view that's missing when everyone looks at their own corner.</p>
-        <p style="font-size:clamp(15px,1.6vw,17px);color:rgba(240,234,216,.78);font-weight:300;line-height:1.85;margin-top:16px;" data-fr>Un spécialiste va plus loin sur une chose, c'est vrai. Ce qui est rare, ce n'est pas de maîtriser sept disciplines. C'est de comprendre comment elles s'affectent mutuellement, et d'agir au bon niveau quand le vrai problème vit à l'intersection. Pour délivrer, je travaille avec des spécialistes. Ce que j'apporte, c'est la vision globale qui manque quand chacun regarde son coin.</p>
-      </div>
-
-      <div class="sp-three rv" style="margin-bottom:clamp(40px,6vw,64px);">
-        <div class="sp-nature">
-          <div class="sp-nature-label" data-en>The builder</div>
-          <div class="sp-nature-label" data-fr>Le bâtisseur</div>
-          <div class="sp-nature-tags">
-            <span class="sp-tag" data-en>Product</span><span class="sp-tag" data-fr>Produit</span>
-            <span class="sp-tag">Design</span>
-            <span class="sp-tag">Tech &amp; IA</span>
-          </div>
-          <p class="sp-nature-desc" data-en>Knowing what's buildable changes how you design. Knowing how to design changes what you build. The best solutions live at that intersection.</p>
-          <p class="sp-nature-desc" data-fr>Savoir ce qui est faisable change la façon de concevoir. Savoir concevoir change ce qu'on construit. Les meilleures solutions vivent à cette intersection.</p>
-        </div>
-        <div class="sp-nature">
-          <div class="sp-nature-label" data-en>The architect</div>
-          <div class="sp-nature-label" data-fr>L'architecte</div>
-          <div class="sp-nature-tags">
-            <span class="sp-tag" data-en>Governance</span><span class="sp-tag" data-fr>Gouvernance</span>
-            <span class="sp-tag">Process</span>
-            <span class="sp-tag" data-en>Culture</span><span class="sp-tag" data-fr>Culture</span>
-          </div>
-          <p class="sp-nature-desc" data-en>A good roadmap fails if the team structure doesn't support it. Governance and product strategy have to be designed together — not in sequence.</p>
-          <p class="sp-nature-desc" data-fr>Une bonne roadmap échoue si la structure d'équipe ne la soutient pas. Gouvernance et stratégie produit se conçoivent ensemble, pas en séquence.</p>
-        </div>
-        <div class="sp-nature">
-          <div class="sp-nature-label" data-en>The enabler</div>
-          <div class="sp-nature-label" data-fr>L'accompagnant</div>
-          <div class="sp-nature-tags">
-            <span class="sp-tag" data-en>Facilitation</span><span class="sp-tag" data-fr>Facilitation</span>
-            <span class="sp-tag" data-en>Coaching</span><span class="sp-tag" data-fr>Coaching</span>
-            <span class="sp-tag" data-en>Change</span><span class="sp-tag" data-fr>Changement</span>
-          </div>
-          <p class="sp-nature-desc" data-en>The technical change is rarely the hard part. It's the human transition that determines whether it lasts. When people understand the system and feel genuinely heard, something unlocks.</p>
-          <p class="sp-nature-desc" data-fr>Le changement technique est rarement la partie difficile. C'est la transition humaine qui détermine si ça dure. Quand les gens comprennent le système et se sentent vraiment entendus, quelque chose se débloque.</p>
-        </div>
-      </div>
-
-      <div class="rv" style="padding-top:clamp(32px,5vw,48px);border-top:1px solid rgba(240,234,216,.06);">
-        <div class="section-label" data-en>The key intersections</div>
-        <div class="section-label" data-fr>Les intersections clés</div>
-        <div class="sp-conn-grid">
-          <div class="sp-conn-item">
-            <div class="sp-conn-title">Design × Produit</div>
-            <p class="sp-conn-desc" data-en>A PM without design sense makes blind trade-offs. A designer without product vision builds beautiful things nobody needs.</p>
-            <p class="sp-conn-desc" data-fr>Un PM sans sens du design fait des arbitrages à l'aveugle. Un designer sans vision produit construit de belles choses dont personne n'a besoin.</p>
-          </div>
-          <div class="sp-conn-item">
-            <div class="sp-conn-title">Produit × Organisation</div>
-            <p class="sp-conn-desc" data-en>A good roadmap fails if the team structure doesn't support it. Governance and product strategy have to be designed together.</p>
-            <p class="sp-conn-desc" data-fr>Une bonne roadmap échoue si la structure d'équipe ne la soutient pas. Gouvernance et stratégie produit se conçoivent ensemble.</p>
-          </div>
-          <div class="sp-conn-item">
-            <div class="sp-conn-title">Organisation × Humain</div>
-            <p class="sp-conn-desc" data-en>A process nobody buys into is just paperwork. Change only sticks when people understand why and feel part of it.</p>
-            <p class="sp-conn-desc" data-fr>Un process que personne n'adopte, c'est de la paperasse. Le changement tient quand les gens comprennent pourquoi et s'en sentent partie prenante.</p>
-          </div>
-          <div class="sp-conn-item">
-            <div class="sp-conn-title">Tech × Design</div>
-            <p class="sp-conn-desc" data-en>Knowing what's buildable changes how you design. Knowing how to design changes what you build.</p>
-            <p class="sp-conn-desc" data-fr>Savoir ce qui est faisable change la façon de concevoir. Savoir concevoir change ce qu'on construit.</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
   </div>
 </section>
 
@@ -906,6 +774,133 @@ body:not(.en) span[data-fr]{display:inline;}
   </div>
 </section>
 
+<section id="spectrum" class="sec-dark" style="padding:clamp(60px,10vw,120px) 0;">
+  <div class="container">
+
+    <!-- TITRE -->
+    <div class="rv" style="max-width:680px;margin-bottom:clamp(40px,6vw,64px);">
+      <div class="section-label" data-en>Skills & expertise</div>
+      <div class="section-label" data-fr>Compétences & expertise</div>
+      <h2 class="section-title" data-en>What I can do.<br>And why together it's different.</h2>
+      <h2 class="section-title" data-fr>Ce que je sais faire.<br>Et pourquoi ensemble c'est différent.</h2>
+    </div>
+
+    <!-- CAPSULES CLIQUABLES -->
+    <div class="caps-wrap rv" style="margin-bottom:clamp(32px,5vw,56px);">
+      <div class="caps-list">
+        <button class="cap active" data-idx="0" onclick="showCap(0)"><span data-en>Systemic vision</span><span data-fr>Vision systémique</span></button>
+        <button class="cap" data-idx="1" onclick="showCap(1)"><span data-en>Product strategy</span><span data-fr>Stratégie produit</span></button>
+        <button class="cap" data-idx="2" onclick="showCap(2)">UX / Design</button>
+        <button class="cap" data-idx="3" onclick="showCap(3)">Tech &amp; IA</button>
+        <button class="cap" data-idx="4" onclick="showCap(4)"><span data-en>Governance & process</span><span data-fr>Gouvernance & process</span></button>
+        <button class="cap" data-idx="5" onclick="showCap(5)"><span data-en>Facilitation & coaching</span><span data-fr>Facilitation & coaching</span></button>
+        <button class="cap" data-idx="6" onclick="showCap(6)"><span data-en>Change management</span><span data-fr>Conduite du changement</span></button>
+      </div>
+      <div class="cap-panel">
+        <div class="cap-content active" data-idx="0">
+          <p data-en>Read an organisation as a whole — tools, people, culture, process — to find the real lever, not the most obvious one. That's what makes it possible to act at the right level instead of optimising one corner while the real problem is elsewhere.</p>
+          <p data-fr>Lire une organisation comme un tout : outils, personnes, culture, process. Trouver le vrai levier, pas le plus évident. C'est ce qui permet d'agir au bon niveau plutôt que d'optimiser un coin pendant que le vrai problème est ailleurs.</p>
+        </div>
+        <div class="cap-content" data-idx="1">
+          <p data-en>Vision, roadmap, prioritisation, user research. From the idea to a product that actually works in real conditions. A PM without design sense makes blind trade-offs — I've been both.</p>
+          <p data-fr>Vision, roadmap, priorisation, recherche utilisateur. De l'idée à un produit qui fonctionne dans les conditions réelles. Un PM sans sens du design fait des arbitrages à l'aveugle. J'ai été les deux.</p>
+        </div>
+        <div class="cap-content" data-idx="2">
+          <p data-en>Interface design, user experience, visual identity, prototyping. Clarity of use as a strategic asset. A designer without product vision builds beautiful things nobody needs. The best solutions live at the intersection of both.</p>
+          <p data-fr>Design d'interface, expérience utilisateur, identité visuelle, prototypage. La clarté d'usage comme levier stratégique. Un designer sans vision produit construit de belles choses dont personne n'a besoin. Les meilleures solutions vivent à l'intersection des deux.</p>
+        </div>
+        <div class="cap-content" data-idx="3">
+          <p data-en>Front-end development, architecture, custom lightweight tools. AI as a speed lever — not a gadget. I build or pilot the build. Knowing what's buildable changes how you design. Knowing how to design changes what you build.</p>
+          <p data-fr>Développement front-end, architecture, outils sur mesure. L'IA comme levier de vitesse, pas un gadget. Je construis ou je pilote la construction. Savoir ce qui est faisable change la façon de concevoir. Savoir concevoir change ce qu'on construit.</p>
+        </div>
+        <div class="cap-content" data-idx="4">
+          <p data-en>Agile, Holacracy, SAFe. Structuring working methods and decision-making frameworks that people actually adopt. A good process nobody owns is just paperwork. Governance and product strategy have to be designed together — not in sequence.</p>
+          <p data-fr>Agile, Holacratie, SAFe. Structurer des modes de travail et des cadres de décision que les gens s'approprient vraiment. Un bon process que personne ne porte, c'est de la paperasse. Gouvernance et stratégie produit se conçoivent ensemble, pas en séquence.</p>
+        </div>
+        <div class="cap-content" data-idx="5">
+          <p data-en>Workshops, individual coaching, collective intelligence. Making things emerge rather than imposing. People who find their own answers commit to them. Individual coaching accelerates what collective work alone can't reach.</p>
+          <p data-fr>Ateliers, coaching individuel, intelligence collective. Faire émerger plutôt qu'imposer. Les gens qui trouvent leurs propres réponses s'y engagent. Le coaching individuel accélère ce que le collectif seul ne peut pas atteindre.</p>
+        </div>
+        <div class="cap-content" data-idx="6">
+          <p data-en>Crossing organisational resistance without breaking it. The technical change is rarely the hard part. It's the human transition that determines whether it lasts. When people understand the system and feel genuinely heard, something unlocks.</p>
+          <p data-fr>Traverser la résistance organisationnelle sans la briser. Le changement technique est rarement la partie difficile. C'est la transition humaine qui détermine si ça dure. Quand les gens comprennent le système et se sentent vraiment entendus, quelque chose se débloque.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- EN PRATIQUE -->
+    <div class="rv" style="max-width:760px;margin-bottom:clamp(48px,7vw,80px);padding:clamp(24px,4vw,40px);background:rgba(74,122,255,.04);border-left:3px solid var(--blue-l);">
+      <div class="section-label" data-en>In practice</div>
+      <div class="section-label" data-fr>En pratique</div>
+      <p style="font-size:clamp(15px,1.6vw,17px);color:rgba(240,234,216,.78);font-weight:300;line-height:1.85;margin-bottom:12px;" data-en>When I enter a team, I don't arrive with a ready-made answer. I look at the whole system — tools, processes, people, culture — and identify where the actual leverage point is. Sometimes it's a tool. Sometimes it's governance. Often it's both, plus something nobody had named yet.</p>
+      <p style="font-size:clamp(15px,1.6vw,17px);color:rgba(240,234,216,.78);font-weight:300;line-height:1.85;margin-bottom:12px;" data-fr>Quand j'entre dans une équipe, je n'arrive pas avec une réponse toute faite. Je regarde le système entier : outils, process, personnes, culture. J'identifie où est le vrai levier. Parfois c'est un outil. Parfois c'est une question de gouvernance. Souvent c'est les deux, plus quelque chose que personne n'avait encore nommé.</p>
+      <p style="font-size:clamp(15px,1.6vw,17px);color:rgba(240,234,216,.78);font-weight:300;line-height:1.85;" data-en>That's what 15 years across design, product, tech, coaching and org transformation gives: the ability to act at the right level, not just the most obvious one. For delivery, I work with specialists. What I bring is the global view that's missing when everyone looks at their own corner.</p>
+      <p style="font-size:clamp(15px,1.6vw,17px);color:rgba(240,234,216,.78);font-weight:300;line-height:1.85;" data-fr>C'est ce que 15 ans entre design, produit, tech, coaching et transformation organisationnelle donnent : la capacité d'agir au bon niveau. Pour délivrer, je travaille avec des spécialistes. Ce que j'apporte, c'est la vision globale qui manque quand chacun regarde son coin.</p>
+    </div>
+
+    <!-- 3 NATURES + 4 CONNEXIONS -->
+    <div class="sp-three rv" style="margin-bottom:clamp(40px,6vw,64px);">
+      <div class="sp-nature">
+        <div class="sp-nature-label" data-en>The builder</div>
+        <div class="sp-nature-label" data-fr>Le bâtisseur</div>
+        <div class="sp-nature-tags">
+          <span class="sp-tag" data-en>Product</span><span class="sp-tag" data-fr>Produit</span>
+          <span class="sp-tag">Design</span>
+          <span class="sp-tag">Tech &amp; IA</span>
+        </div>
+        <p class="sp-nature-desc" data-en>Knowing what's buildable changes how you design. Knowing how to design changes what you build.</p>
+        <p class="sp-nature-desc" data-fr>Savoir ce qui est faisable change la façon de concevoir. Savoir concevoir change ce qu'on construit.</p>
+      </div>
+      <div class="sp-nature">
+        <div class="sp-nature-label" data-en>The architect</div>
+        <div class="sp-nature-label" data-fr>L'architecte</div>
+        <div class="sp-nature-tags">
+          <span class="sp-tag" data-en>Governance</span><span class="sp-tag" data-fr>Gouvernance</span>
+          <span class="sp-tag">Process</span>
+          <span class="sp-tag" data-en>Culture</span><span class="sp-tag" data-fr>Culture</span>
+        </div>
+        <p class="sp-nature-desc" data-en>A good roadmap fails if the team structure doesn't support it. Governance and product strategy have to be designed together.</p>
+        <p class="sp-nature-desc" data-fr>Une bonne roadmap échoue si la structure d'équipe ne la soutient pas. Gouvernance et stratégie produit se conçoivent ensemble.</p>
+      </div>
+      <div class="sp-nature">
+        <div class="sp-nature-label" data-en>The enabler</div>
+        <div class="sp-nature-label" data-fr>L'accompagnant</div>
+        <div class="sp-nature-tags">
+          <span class="sp-tag" data-en>Facilitation</span><span class="sp-tag" data-fr>Facilitation</span>
+          <span class="sp-tag" data-en>Coaching</span><span class="sp-tag" data-fr>Coaching</span>
+          <span class="sp-tag" data-en>Change</span><span class="sp-tag" data-fr>Changement</span>
+        </div>
+        <p class="sp-nature-desc" data-en>The technical change is rarely the hard part. It's the human transition that determines whether it lasts.</p>
+        <p class="sp-nature-desc" data-fr>Le changement technique est rarement la partie difficile. C'est la transition humaine qui détermine si ça dure.</p>
+      </div>
+    </div>
+
+    <!-- TÉMOIGNAGE + CERTIFICATIONS -->
+    <div class="rv" style="display:grid;grid-template-columns:1fr 1fr;gap:32px;padding-top:clamp(32px,5vw,56px);border-top:1px solid rgba(240,234,216,.07);">
+      <div>
+        <div class="section-label" data-en>They worked with me</div>
+        <div class="section-label" data-fr>Ils ont travaillé avec moi</div>
+        <div style="margin-top:16px;padding:24px 28px;border-left:3px solid var(--blue-l);background:rgba(74,122,255,.04);">
+          <p style="font-size:14px;font-weight:300;color:var(--cream2);line-height:1.8;font-style:italic;" data-en>"He was able to implement the Scrum methodology with regular questioning. The result met expectations despite stakeholder skepticism. He protected the development team from pressure, and trained Product Owners and Scrum Masters to strengthen the team."</p>
+          <p style="font-size:14px;font-weight:300;color:var(--cream2);line-height:1.8;font-style:italic;" data-fr>"Il a su mettre en place la méthodologie Scrum avec de régulières remises en question. Le résultat est à la hauteur des attentes malgré le scepticisme des parties prenantes. Il a su préserver l'équipe de développement de la pression et former des Product Owners et Scrum Masters pour renforcer l'équipe."</p>
+          <div style="margin-top:14px;font-family:'DM Mono',monospace;font-size:11px;color:var(--blue-l);letter-spacing:.06em;">Stéphane Ravet <span style="color:var(--cream2);opacity:.5;">· Architecte Web · IA · Proximedia</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="section-label" data-en>Certifications & training</div>
+        <div class="section-label" data-fr>Certifications & formations</div>
+        <div style="margin-top:16px;display:flex;flex-direction:column;gap:10px;">
+          <div class="cross-cert">PSPO I <span>· Professional Scrum Product Owner™ I</span></div>
+          <div class="cross-cert" data-en>Formation Instant Z <span>· Shared governance: piloting an agile organisation</span></div>
+          <div class="cross-cert" data-fr>Formation Instant Z <span>· Gouvernance partagée : piloter une organisation agile</span></div>
+          <div class="cross-cert">CYTech / EISTI · 2012 <span data-en>· Engineer, CS & Management Systems</span><span data-fr>· Ingénieur, Informatique & Management des SI</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <section id="cases" class="sec-coral">
   <div class="photo-bg" style="background-image:url('photo-projects.jpg');"></div>
   <div class="container">
@@ -986,76 +981,7 @@ body:not(.en) span[data-fr]{display:inline;}
   </div>
 </section>
 
-<section id="skills" class="sec-dark" style="padding:clamp(60px,10vw,140px) 0;">
-  <div class="container">
-    <div class="rv" style="max-width:680px;margin-bottom:clamp(40px,7vw,80px);">
-      <div class="section-label" data-en>Why it matters</div>
-      <div class="section-label" data-fr>Pourquoi ça change tout</div>
-      <h2 class="section-title" data-en>Most specialists see one piece.<br>I see how they connect.</h2>
-      <h2 class="section-title" data-fr>La plupart des spécialistes voient une pièce.<br>Je vois comment elles s'articulent.</h2>
-    </div>
 
-    <div class="cross-grid rv">
-      <div class="cross-conn">
-        <div class="cross-node cross-center rv">
-          <div class="cross-center-label" data-en>The systemic<br>view</div>
-          <div class="cross-center-label" data-fr>La vision<br>systémique</div>
-        </div>
-        <div class="cross-links">
-          <div class="cross-link rv-l d1">
-            <div class="cross-link-tag" data-en>Design × Product</div>
-            <div class="cross-link-tag" data-fr>Design × Produit</div>
-            <p class="cross-link-desc" data-en>A PM without design sense makes blind trade-offs. A designer without product vision builds beautiful things nobody needs.</p>
-            <p class="cross-link-desc" data-fr>Un PM sans sens du design fait des arbitrages à l'aveugle. Un designer sans vision produit construit de belles choses dont personne n'a besoin.</p>
-          </div>
-          <div class="cross-link rv d2">
-            <div class="cross-link-tag" data-en>Product × Organisation</div>
-            <div class="cross-link-tag" data-fr>Produit × Organisation</div>
-            <p class="cross-link-desc" data-en>A good roadmap fails if the team structure doesn't support it. Governance and product strategy have to be designed together.</p>
-            <p class="cross-link-desc" data-fr>Une bonne roadmap échoue si la structure d'équipe ne la soutient pas. Gouvernance et stratégie produit doivent être pensées ensemble.</p>
-          </div>
-          <div class="cross-link rv-r d3">
-            <div class="cross-link-tag" data-en>Organisation × Human</div>
-            <div class="cross-link-tag" data-fr>Organisation × Humain</div>
-            <p class="cross-link-desc" data-en>A process nobody buys into is just paperwork. Change only sticks when the people inside understand why and feel part of it.</p>
-            <p class="cross-link-desc" data-fr>Un process que personne n'adopte, c'est juste de la paperasse. Le changement tient uniquement quand les personnes comprennent pourquoi et s'en sentent partie prenante.</p>
-          </div>
-          <div class="cross-link rv-l d2">
-            <div class="cross-link-tag" data-en>Tech × Design</div>
-            <div class="cross-link-tag" data-fr>Tech × Design</div>
-            <p class="cross-link-desc" data-en>Knowing what's buildable changes how you design. Knowing how to design changes what you build. The best solutions live at that intersection.</p>
-            <p class="cross-link-desc" data-fr>Savoir ce qui est faisable change la façon dont on conçoit. Savoir concevoir change ce qu'on construit. Les meilleures solutions vivent à cette intersection.</p>
-          </div>
-        </div>
-      </div>
-      <div class="cross-proof rv-r">
-        <div class="cross-proof-label" data-en>In practice</div>
-        <div class="cross-proof-label" data-fr>En pratique</div>
-        <p class="cross-proof-text" data-en>When I enter a team, I don't arrive with a ready-made answer. I look at the whole system, tools, processes, people, culture, and I identify where the actual leverage point is. Sometimes it's a tool. Sometimes it's a governance issue. Often it's both, plus something nobody had named yet.</p>
-        <p class="cross-proof-text" data-fr>Quand j'entre dans une équipe, je n'arrive pas avec une réponse toute faite. Je regarde le système entier, outils, process, personnes, culture, et j'identifie où est le vrai levier. Parfois c'est un outil. Parfois c'est une question de gouvernance. Souvent c'est les deux, plus quelque chose que personne n'avait encore nommé.</p>
-        <p class="cross-proof-text" data-en>That's what 15 years across design, product, tech, coaching and org transformation gives you: the ability to act at the right level, not just the most obvious one.</p>
-        <p class="cross-proof-text" data-fr>C'est ce que 15 ans entre design, produit, tech, coaching et transformation organisationnelle donnent : la capacité d'agir au bon niveau, pas seulement au plus évident.</p>
-        <div class="cross-proof-certs">
-          <div class="cross-cert">PSPO I <span>· Professional Scrum Product Owner™ I</span></div>
-          <div class="cross-cert" data-en>Formation Instant Z <span>· Shared governance: piloting an agile organisation</span></div>
-          <div class="cross-cert" data-fr>Formation Instant Z <span>· Gouvernance partagée : piloter une organisation agile</span></div>
-          <div class="cross-cert">CYTech / EISTI · 2012 <span data-en>· Engineer, Computer Science & Management Systems</span><span data-fr>· Ingénieur, Informatique & Management des SI</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="rv" style="margin-top:clamp(48px,8vw,96px);padding-top:40px;border-top:1px solid rgba(240,234,216,.07);max-width:720px;">
-      <div class="section-label" data-en>They worked with me</div>
-      <div class="section-label" data-fr>Ils ont travaillé avec moi</div>
-      <div style="margin-top:20px;padding:28px 32px;border-left:3px solid var(--blue-l);background:rgba(74,122,255,.04);">
-        <p style="font-size:14px;font-weight:300;color:var(--cream2);line-height:1.8;font-style:italic;" data-en>"He was able to implement the Scrum methodology with regular questioning. The result met expectations despite stakeholder skepticism. He protected the development team from pressure from various parties, and worked hard to train Product Owners and Scrum Masters to strengthen the team."</p>
-        <p style="font-size:14px;font-weight:300;color:var(--cream2);line-height:1.8;font-style:italic;" data-fr>"Il a su mettre en place la méthodologie Scrum avec de régulières remises en question. Le résultat est à la hauteur des attentes malgré le scepticisme des parties prenantes. Il a su préserver l'équipe de développement de la pression et s'est efforcé de former des Product Owners et Scrum Masters pour renforcer l'équipe."</p>
-        <div style="margin-top:14px;font-family:'DM Mono',monospace;font-size:11px;color:var(--blue-l);letter-spacing:.06em;">Stéphane Ravet <span style="color:var(--cream2);opacity:.5;">· Architecte Web · IA · Proximedia</span></div>
-      </div>
-    </div>
-
-  </div>
-</section>
 
 <section id="human" class="sec-dark" style="padding:clamp(60px,10vw,140px) 0;">
   <div class="container">
@@ -1154,6 +1080,13 @@ const cur=document.getElementById('cur'),cr=document.getElementById('cur-ring');
 let mx=0,my=0,rx=0,ry=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
 (function ar(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;cr.style.left=rx+'px';cr.style.top=ry+'px';requestAnimationFrame(ar);})();
+
+
+// CAPSULES COMPÉTENCES
+function showCap(idx) {
+  document.querySelectorAll('.cap').forEach(c => c.classList.toggle('active', parseInt(c.dataset.idx) === idx));
+  document.querySelectorAll('.cap-content').forEach(c => c.classList.toggle('active', parseInt(c.dataset.idx) === idx));
+}
 
 // TYPEWRITER HERO
 const tl1=document.getElementById('tl1'),tl2=document.getElementById('tl2');
