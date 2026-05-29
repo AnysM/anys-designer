@@ -21,7 +21,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;overflow-x:hidden;}
-body{background:var(--bg);color:var(--cream);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden;}
+body{background:var(--bg);color:var(--cream);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.65;overflow-x:hidden;}
 @media(pointer:fine){body{cursor:none;}}
 @media(max-width:640px){body{font-size:14px;line-height:1.6;}}
 
@@ -64,7 +64,7 @@ section{position:relative;z-index:1;}
 .sec-coral .section-title{color:var(--cream);}
 
 .section-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--blue-l);margin-bottom:12px;}
-.section-title{font-family:'Syne',sans-serif;font-size:clamp(20px,3vw,38px);font-weight:700;letter-spacing:-.02em;line-height:1.15;margin-bottom:24px;}
+.section-title{font-family:'Syne',sans-serif;font-size:clamp(20px,4vw,52px);font-weight:700;letter-spacing:-.02em;line-height:1.1;margin-bottom:28px;}
 @media(max-width:480px){.section-title{font-size:clamp(18px,5vw,24px);}}
 .sec-dark{background:transparent;padding:clamp(48px,9vw,120px) 0;}
 .sec-blue{background:rgba(15,42,122,.85);backdrop-filter:blur(2px);padding:clamp(48px,9vw,120px) 0;}
@@ -90,7 +90,7 @@ section{position:relative;z-index:1;}
 @media(max-width:768px){.hero-photo-zone{width:48%;margin:24px auto 0;}}
 .hero-scroll{display:none;}
 .hero-tag{display:block;font-family:'DM Mono',monospace;font-size:9px;color:var(--blue-l);letter-spacing:.06em;text-transform:uppercase;margin-bottom:20px;opacity:0;animation:fup .8s .3s forwards;line-height:1.7;}
-.hero-title-wrap{font-family:'Syne',sans-serif;font-size:clamp(22px,3.5vw,48px);font-weight:800;line-height:1.08;letter-spacing:-.025em;margin-bottom:20px;opacity:0;animation:fup .9s .5s forwards;}
+.hero-title-wrap{font-family:'Syne',sans-serif;font-size:clamp(24px,4vw,56px);font-weight:800;line-height:1.08;letter-spacing:-.025em;margin-bottom:20px;opacity:0;animation:fup .9s .5s forwards;}
 .line-cream{color:var(--cream);display:block;}
 .line-blue{color:var(--blue-l);display:block;min-height:1.15em;}
 .cur-blink{display:inline-block;width:3px;height:.8em;background:var(--blue-l);margin-left:4px;vertical-align:middle;animation:blink 1s step-end infinite;}
@@ -113,30 +113,28 @@ section{position:relative;z-index:1;}
 
 /* PROBLEMS SECTION */
 .pb-grid{display:flex;flex-direction:column;gap:2px;}
-.pb-item{display:grid;grid-template-columns:1fr;gap:0;cursor:pointer;}
-
+.pb-item{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;cursor:pointer;}
+@media(max-width:900px){.pb-item{grid-template-columns:1fr;}}
 .pb-trigger{padding:clamp(24px,4vw,48px);background:rgba(255,255,255,.03);border:1px solid rgba(240,234,216,.05);transition:background .3s;display:flex;flex-direction:column;justify-content:space-between;gap:20px;}
 .pb-item:hover .pb-trigger{background:rgba(255,255,255,.06);}
 .pb-item.active .pb-trigger{background:rgba(255,255,255,.06);border-color:rgba(240,234,216,.12);}
 .pb-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--blue-l);letter-spacing:.12em;opacity:.5;margin-bottom:8px;}
-.pb-title{font-family:'Syne',sans-serif;font-size:clamp(17px,2vw,24px);font-weight:700;color:var(--cream);line-height:1.25;letter-spacing:-.01em;}
+.pb-title{font-family:'Syne',sans-serif;font-size:clamp(16px,2vw,22px);font-weight:700;color:var(--cream);line-height:1.25;letter-spacing:-.01em;}
 .pb-subtitle{font-size:12px;color:rgba(240,234,216,.45);font-weight:300;line-height:1.6;margin-top:8px;}
 .pb-arrow{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.08em;color:var(--blue-l);border:1px solid rgba(74,122,255,.35);border-radius:20px;padding:5px 14px;align-self:flex-end;transition:all .3s;}
 .pb-item.active .pb-arrow,.pb-item:hover .pb-arrow{background:rgba(74,122,255,.15);}
 .pb-item.active .pb-arrow,.pb-item:hover .pb-arrow{opacity:1;}
-.pb-detail{padding:clamp(24px,4vw,40px) clamp(24px,4vw,48px);background:rgba(74,122,255,.04);border:1px solid rgba(74,122,255,.1);display:none;display:none;gap:0;}
-.pb-item.active .pb-detail{display:grid;grid-template-columns:1fr 1fr 1.2fr;gap:32px;}
-@media(max-width:900px){.pb-item.active .pb-detail{grid-template-columns:1fr;}}
-
+.pb-detail{padding:clamp(24px,4vw,48px);background:rgba(74,122,255,.04);border:1px solid rgba(74,122,255,.1);display:none;flex-direction:column;gap:0;}
+.pb-item.active .pb-detail{display:flex;}
 .pb-col{padding:0;}
-.pb-col-label{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid rgba(240,234,216,.07);}
+.pb-col-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid rgba(240,234,216,.07);}
 .pb-col-label.l-grey{color:rgba(240,234,216,.35);}
 .pb-col-label.l-orange{color:var(--coral);}
 .pb-col-label.l-blue{color:var(--blue-l);}
-.pb-col-text{font-size:15px;color:rgba(240,234,216,.72);font-weight:300;line-height:1.8;}
-.pb-col-text li{margin-bottom:10px;padding-left:14px;position:relative;line-height:1.6;}
+.pb-col-text{font-size:13px;color:rgba(240,234,216,.72);font-weight:300;line-height:1.8;}
+.pb-col-text li{margin-bottom:8px;padding-left:12px;position:relative;}
 .pb-col-text li::before{content:'·';position:absolute;left:0;color:var(--blue-l);}
-.pb-hint{font-size:15px;color:rgba(240,234,216,.55);font-weight:300;line-height:1.65;margin-top:10px;font-style:italic;}
+.pb-hint{font-size:13px;color:rgba(240,234,216,.55);font-weight:300;line-height:1.65;margin-top:10px;font-style:italic;}
 .pb-shift{margin-top:16px;padding:14px 16px;background:rgba(74,122,255,.08);border-left:2px solid var(--blue-l);font-size:13px;color:rgba(240,234,216,.85);font-weight:300;line-height:1.7;font-style:italic;}
 
 /* WHY SECTION */
@@ -146,7 +144,7 @@ section{position:relative;z-index:1;}
 @media(max-width:640px){.why-sit{grid-template-columns:40px 1fr;gap:0 16px;}}
 .why-sit-num{font-family:'DM Mono',monospace;font-size:11px;color:var(--blue-l);opacity:.4;padding-top:4px;letter-spacing:.06em;}
 .why-sit-title{font-family:'Syne',sans-serif;font-size:clamp(16px,1.8vw,20px);font-weight:700;color:var(--cream);line-height:1.3;margin-bottom:12px;letter-spacing:-.01em;}
-.why-sit-desc{font-size:15px;color:rgba(240,234,216,.78);font-weight:300;line-height:1.8;max-width:600px;}
+.why-sit-desc{font-size:14px;color:rgba(240,234,216,.72);font-weight:300;line-height:1.8;max-width:600px;}
 .why-cost-inner{background:rgba(74,122,255,.05);border:1px solid rgba(74,122,255,.12);border-left:3px solid var(--blue-l);padding:clamp(24px,4vw,40px);}
 .why-cost-label{font-family:'DM Mono',monospace;font-size:10px;color:var(--blue-l);letter-spacing:.12em;text-transform:uppercase;margin-bottom:20px;}
 .why-cost-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px 40px;}
@@ -154,23 +152,19 @@ section{position:relative;z-index:1;}
 .why-cost-item{font-size:13px;color:rgba(240,234,216,.65);font-weight:300;line-height:1.5;display:flex;gap:10px;align-items:baseline;}
 .why-cost-n{color:var(--blue-l);font-weight:700;flex-shrink:0;}
 .why-diff-label{font-family:'DM Mono',monospace;font-size:10px;color:var(--yellow);letter-spacing:.12em;text-transform:uppercase;margin-bottom:20px;}
-.why-diff-text{font-size:clamp(15px,1.6vw,18px);color:rgba(240,234,216,.8);font-weight:300;line-height:1.85;margin-bottom:16px;}
+.why-diff-text{font-size:clamp(15px,1.6vw,17px);color:rgba(240,234,216,.8);font-weight:300;line-height:1.85;margin-bottom:16px;}
 .why-diff-text:last-child{margin-bottom:0;}
 
 
-/* SPECTRUM — profil unique */
-.sp-objection{max-width:760px;}
-.sp-obj-text{font-size:clamp(15px,1.6vw,17px);color:rgba(240,234,216,.78);font-weight:300;line-height:1.85;}
-.sp-three{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
+/* SPECTRUM PROFIL */
+.sp-three{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:clamp(48px,7vw,80px);}
 @media(max-width:900px){.sp-three{grid-template-columns:1fr;}}
 .sp-nature{padding:clamp(24px,3vw,36px);background:rgba(255,255,255,.03);border:1px solid rgba(240,234,216,.06);}
 .sp-nature-label{font-family:'Syne',sans-serif;font-size:clamp(16px,1.8vw,20px);font-weight:700;color:var(--cream);margin-bottom:12px;letter-spacing:-.01em;}
 .sp-nature-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px;}
 .sp-tag{font-family:'DM Mono',monospace;font-size:9px;padding:2px 9px;border:1px solid rgba(74,122,255,.25);border-radius:20px;color:var(--blue-l);letter-spacing:.06em;}
 .sp-nature-desc{font-size:14px;color:rgba(240,234,216,.65);font-weight:300;line-height:1.75;}
-.sp-connections{padding-top:clamp(32px,5vw,56px);border-top:1px solid rgba(240,234,216,.07);}
-.sp-conn-label{font-family:'DM Mono',monospace;font-size:10px;color:var(--blue-l);letter-spacing:.12em;text-transform:uppercase;margin-bottom:20px;}
-.sp-conn-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px 32px;}
+.sp-conn-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px 32px;margin-top:20px;}
 @media(max-width:900px){.sp-conn-grid{grid-template-columns:1fr 1fr;}}
 @media(max-width:580px){.sp-conn-grid{grid-template-columns:1fr;}}
 .sp-conn-title{font-family:'DM Mono',monospace;font-size:10px;color:var(--blue-l);letter-spacing:.08em;margin-bottom:8px;}
@@ -184,7 +178,7 @@ section{position:relative;z-index:1;}
 .spec-item:hover{background:rgba(255,255,255,.06);}
 .spec-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--blue-l);letter-spacing:.1em;margin-bottom:12px;opacity:.5;}
 .spec-name{font-family:'Syne',sans-serif;font-size:clamp(14px,1.6vw,17px);font-weight:700;color:var(--cream);margin-bottom:10px;letter-spacing:-.01em;}
-.spec-desc{font-size:14px;color:rgba(240,234,216,.65);font-weight:300;line-height:1.7;margin-bottom:12px;}
+.spec-desc{font-size:13px;color:rgba(240,234,216,.65);font-weight:300;line-height:1.7;margin-bottom:12px;}
 .spec-link{font-family:'DM Mono',monospace;font-size:10px;color:var(--blue-l);letter-spacing:.08em;opacity:.6;}
 
 /* WHAT I DO *//* WHAT I DO */
@@ -210,7 +204,7 @@ section{position:relative;z-index:1;}
 .c-phase.t{color:var(--coral);}
 .wid-card h3.c-title{font-family:'Syne',sans-serif;font-size:clamp(15px,1.6vw,18px);font-weight:700;color:#fff;margin-bottom:14px;letter-spacing:-.01em;line-height:1.35;}
 @media(max-width:768px){.wid-card h3.c-title{font-size:16px;}}
-.c-body{font-size:15px;color:rgba(240,234,216,.8);font-weight:300;line-height:1.8;}
+.c-body{font-size:14px;color:rgba(240,234,216,.75);font-weight:300;line-height:1.8;}
 
 /* TIMELINE */
 #timeline-section{padding:clamp(40px,8vw,120px) 0;}
@@ -228,7 +222,7 @@ section{position:relative;z-index:1;}
 .tl-company{font-family:'Syne',sans-serif;font-size:clamp(17px,2vw,22px);font-weight:700;color:var(--cream);margin-bottom:4px;}
 .tl-role{font-size:13px;color:var(--blue-l);margin-bottom:4px;}
 .tl-period{font-family:'DM Mono',monospace;font-size:11px;color:var(--cream2);opacity:.5;margin-bottom:14px;}
-.tl-story{font-size:15px;color:rgba(240,234,216,.82);font-weight:300;line-height:1.75;max-width:560px;}
+.tl-story{font-size:14px;color:rgba(240,234,216,.78);font-weight:300;line-height:1.75;max-width:560px;}
 .tl-story strong{color:var(--cream);font-weight:500;}
 .tl-card{background:rgba(255,255,255,.02);border:1px solid rgba(240,234,216,.07);border-radius:4px;padding:clamp(14px,2.5vw,28px);margin-bottom:8px;transition:all .4s;position:relative;overflow:hidden;}
 .tl-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--blue-l);transform:scaleY(0);transform-origin:top;transition:transform .5s cubic-bezier(.16,1,.3,1);}
@@ -250,10 +244,10 @@ section{position:relative;z-index:1;}
 .proj-idx{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px;opacity:.5;color:var(--cream2);}
 .proj-name{font-family:'Syne',sans-serif;font-size:clamp(18px,2vw,24px);font-weight:700;color:var(--cream);line-height:1.2;margin-bottom:12px;letter-spacing:-.01em;}
 .proj-what{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px;}
-.proj-row-1 .proj-what{color:var(--yellow);}
+.proj-row-1 .proj-what{color:var(--blue);}
 .proj-row-2 .proj-what{color:var(--coral);}
 .proj-row-3 .proj-what{color:var(--blue);}
-.proj-ctx{font-size:15px;color:rgba(240,234,216,.78);font-weight:300;line-height:1.75;margin-bottom:20px;}
+.proj-ctx{font-size:14px;color:rgba(240,234,216,.7);font-weight:300;line-height:1.75;margin-bottom:20px;}
 .proj-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:24px;}
 .tag{font-family:'DM Mono',monospace;font-size:10px;padding:3px 10px;border:1px solid rgba(240,234,216,.1);border-radius:20px;color:rgba(240,234,216,.45);letter-spacing:.05em;}
 .proj-cta{display:inline-flex;align-items:center;gap:6px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;font-weight:500;padding:10px 20px;border-radius:3px;transition:all .2s;align-self:flex-start;}
@@ -301,7 +295,7 @@ section{position:relative;z-index:1;}
 .bio-photo{width:100%;border-radius:4px;display:block;filter:grayscale(20%);}
 .bio-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px;}
 .bio-tag{font-family:'DM Mono',monospace;font-size:10px;padding:4px 10px;border:1px solid rgba(240,234,216,.12);border-radius:20px;color:rgba(240,234,216,.5);letter-spacing:.04em;}
-.bio-p{font-size:clamp(15px,1.5vw,17px);color:rgba(240,234,216,.75);font-weight:300;line-height:1.85;margin-bottom:20px;}
+.bio-p{font-size:clamp(14px,1.5vw,16px);color:rgba(240,234,216,.75);font-weight:300;line-height:1.85;margin-bottom:20px;}
 .bio-credentials{display:flex;gap:32px;margin-top:32px;padding-top:28px;border-top:1px solid rgba(240,234,216,.08);flex-wrap:wrap;}
 .bio-cred{display:flex;align-items:baseline;gap:8px;}
 .bio-cred-n{font-family:'Syne',sans-serif;font-size:32px;font-weight:800;color:var(--blue);letter-spacing:-.03em;}
@@ -675,753 +669,84 @@ body:not(.en) span[data-fr]{display:inline;}
   </div>
 </section>
 
-<section id="timeline-section" class="sec-dark">
-  <div class="container">
-    <div class="rv">
-      <div class="section-label" data-en>Track record</div>
-      <div class="section-label" data-fr>Parcours</div>
-      <h2 class="section-title" data-en>15 years changing things from within.</h2>
-      <h2 class="section-title" data-fr>15 ans à changer les choses de l'intérieur.</h2>
-    </div>
-    <div class="tl-outer">
-      <div class="tl-items-col">
-      <div class="tl-fill-line" id="tl-fill"></div>
-        <div class="tl-item rv" id="tl-proximedia">
-          <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
-          <div class="tl-content">
-            <div class="tl-year">2013, 2018</div>
-            <div class="tl-card">
-              <div class="tl-company">Proximedia / Publicis Groupe</div>
-              <div class="tl-role" data-en>Front-end Dev → Head of Product & Innovation</div>
-              <div class="tl-role" data-fr>Dév. Front → Resp. Produit & Innovation</div>
-              <div class="tl-period" data-en>5 years · 3 roles · France, Belgium, Netherlands, Spain</div>
-              <div class="tl-period" data-fr>5 ans · 3 rôles · France, Belgique, Pays-Bas, Espagne</div>
-              <p class="tl-story" data-en>Entered as a developer. Identified a systemic problem no one saw, the <strong>internal tooling</strong>. Built a 150-page diagnosis, pitched the direction, got the green light. Created an internal CMS from scratch. Recruited and trained UX/UI designers. Implemented Agile (SCRUM). <strong>3 → 25 people</strong>. Exited as Head of Product & Innovation.</p>
-              <p class="tl-story" data-fr>Entré comme développeur. Identifié un problème systémique que personne ne voyait, les <strong>outils internes</strong>. Produit un diagnostic de 150 pages, pitché la direction, obtenu le feu vert. Créé un CMS maison de zéro. Recruté et formé des designers UX/UI. Mis en place l'Agile (SCRUM). <strong>3 → 25 personnes</strong>. Sorti Resp. Produit & Innovation.</p>
-            </div>
-          </div>
-        </div>
-        <div class="tl-item rv d1" id="tl-deligreens">
-          <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
-          <div class="tl-content">
-            <div class="tl-year">2018, 2019</div>
-            <div class="tl-card">
-              <div class="tl-company">Deligreens <span style="font-size:11px;opacity:.5;font-weight:400;">· Carrefour backed</span></div>
-              <div class="tl-role" data-en>Organisational Coach & Product Lead</div>
-              <div class="tl-role" data-fr>Coach Organisationnel & Responsable Produit</div>
-              <div class="tl-period" data-en>1 year · 25 people · €2.5M raised</div>
-              <div class="tl-period" data-fr>1 an · 25 collaborateurs · 2,5M€ levés</div>
-              <p class="tl-story" data-en>Bio food delivery startup. Built the <strong>full brand identity</strong>, e-commerce platform and a custom logistics app instead of buying an off-the-shelf tool. Recruited front-end devs. Implemented Holacracy from day one. UX research and conversion optimisation. Acquired by Le Comptoir Local.</p>
-              <p class="tl-story" data-fr>Startup livraison bio. Construit l'<strong>identité visuelle complète</strong>, la plateforme e-commerce et une app logistique sur mesure plutôt qu'un outil inadapté. Recruté des devs front. Mis en place l'Holacratie dès le départ. Recherche UX et optimisation tunnel de vente. Racheté par Le Comptoir Local.</p>
-            </div>
-          </div>
-        </div>
-        <div class="tl-item rv d2" id="tl-aoni">
-          <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
-          <div class="tl-content">
-            <div class="tl-year" data-en>2020, present</div>
-            <div class="tl-year" data-fr>2020, présent</div>
-            <div class="tl-card">
-              <div class="tl-company">Neoqii + Aoni</div>
-              <div class="tl-role" data-en>Consultant · Product Designer · Creative Director</div>
-              <div class="tl-role" data-fr>Consultant · Product Designer · Directeur Créatif</div>
-              <div class="tl-period" data-en>Independent, ongoing</div>
-              <div class="tl-period" data-fr>Indépendant, en cours</div>
-              <p class="tl-story" data-en>Product and design missions for clients (Genève-loisirs, Millet, Résiliences…). Brand identities, digital products, organisational transformation. IN CARNE, <strong>La Forge</strong>, a gamified React app for a 120-day men's program. Coaching and project creation support.</p>
-              <p class="tl-story" data-fr>Missions produit et design pour clients (Genève-loisirs, Millet, Résiliences…). Identités visuelles, produits digitaux, transformation organisationnelle. IN CARNE, <strong>La Forge</strong>, app React gamifiée pour un programme de 120 jours pour hommes. Coaching et accompagnement à la création de projets.</p>
-            </div>
-          </div>
-        </div>
-        
-<div class="tl-item rv d2" id="tl-vortex">
-          <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
-          <div class="tl-content">
-            <div class="tl-year" data-en>2026 — present</div>
-            <div class="tl-year" data-fr>2026 — présent</div>
-            <div class="tl-card">
-              <div class="tl-company">Vortex Activation <span style="font-size:11px;opacity:.5;font-weight:400;">avec Mehdi Baer</span></div>
-              <div class="tl-role" data-en>Co-creator · Product · Mobile</div>
-              <div class="tl-role" data-fr>Co-créateur · Produit · Mobile</div>
-              <div class="tl-period" data-en>Ongoing</div>
-              <div class="tl-period" data-fr>En cours</div>
-              <p class="tl-story" data-en>Co-created a mobile activation app for successful entrepreneurs. Designed the full product experience, from concept to architecture. Built for a high-demand audience that expects both depth and simplicity.</p>
-              <p class="tl-story" data-fr>Co-création d'une application mobile d'activation pour entrepreneurs à succès. Conception de l'expérience produit complète, du concept à l'architecture. Conçu pour une audience exigeante qui attend à la fois profondeur et simplicité.</p>
-            </div>
-          </div>
-        </div>
-        en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Anys Mechkar, Product Builder</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
-<style>
-:root {
-  --bg:       #0c0d10;
-  --blue-deep:#0f2a7a;
-  --cream-bg: #f4edd8;
-  --coral-bg: #2a0f08;
-  --cream:    #f0ead8;
-  --cream2:   #b8b09a;
-  --blue:     #1a4fd6;
-  --blue-l:   #4a7aff;
-  --yellow:   #f5c842;
-  --coral:    #e8533c;
-  --pad: clamp(16px,4vw,48px);
-}
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;overflow-x:hidden;}
-body{background:var(--bg);color:var(--cream);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden;}
-@media(pointer:fine){body{cursor:none;}}
-@media(max-width:640px){body{font-size:14px;line-height:1.6;}}
-
-/* CURSOR */
-.cur,.cur-ring{position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);display:none;}
-.cur{width:10px;height:10px;background:var(--blue-l);border-radius:50%;}
-.cur-ring{width:36px;height:36px;border:1px solid rgba(74,122,255,.5);border-radius:50%;z-index:9998;}
-@media(pointer:fine){.cur,.cur-ring{display:block;}}
-
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:20px var(--pad);gap:16px;}
-nav::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(12,13,16,.95) 0%,transparent 100%);pointer-events:none;}
-.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:18px;color:var(--cream);text-decoration:none;position:relative;z-index:1;}
-.nav-links{display:flex;gap:28px;list-style:none;position:relative;z-index:1;}
-.nav-links a{font-family:'DM Mono',monospace;font-size:11px;color:var(--cream2);text-decoration:none;letter-spacing:.08em;text-transform:uppercase;transition:color .2s;}
-.nav-links a:hover{color:var(--cream);}
-.lang-toggle{display:flex;gap:4px;background:rgba(255,255,255,.04);border:1px solid rgba(240,234,216,.08);border-radius:20px;padding:4px;position:relative;z-index:1;}
-.lang-btn{font-family:'DM Mono',monospace;font-size:11px;padding:4px 10px;border-radius:16px;border:none;background:transparent;color:var(--cream2);cursor:pointer;transition:all .2s;letter-spacing:.06em;}
-.lang-btn.active{background:var(--blue);color:#fff;}
-@media(max-width:640px){.nav-links{display:none;}}
-
-/* CANVAS */
-#bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;}
-
-/* SECTIONS */
-section{position:relative;z-index:1;}
-.container{max-width:1100px;margin:0 auto;padding:0 var(--pad);}
-.photo-bg{position:absolute;inset:0;background-size:cover;background-position:center;z-index:0;pointer-events:none;}
-#hero .photo-bg{background-position:right center;opacity:.12;}
-#cases .photo-bg{background-position:center 30%;opacity:.07;}
-#contact .photo-bg{background-position:center 40%;opacity:.07;}
-
-.sec-cream .section-label,.sec-cream .sp-num{color:var(--blue);}
-.sec-cream .section-title{color:#0a0b0e;}
-.sec-cream .sp-name{color:#0a0b0e;}
-.sec-cream .sp-desc{color:#555;}
-.sec-blue .section-label{color:var(--yellow);}
-.sec-blue .section-title{color:#fff;}
-.sec-coral .section-label{color:var(--coral);}
-.sec-coral .section-title{color:var(--cream);}
-
-.section-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--blue-l);margin-bottom:12px;}
-.section-title{font-family:'Syne',sans-serif;font-size:clamp(20px,3vw,38px);font-weight:700;letter-spacing:-.02em;line-height:1.15;margin-bottom:24px;}
-@media(max-width:480px){.section-title{font-size:clamp(18px,5vw,24px);}}
-.sec-dark{background:transparent;padding:clamp(48px,9vw,120px) 0;}
-.sec-blue{background:rgba(15,42,122,.85);backdrop-filter:blur(2px);padding:clamp(48px,9vw,120px) 0;}
-.sec-cream{background:var(--cream-bg);padding:clamp(48px,9vw,120px) 0;color:#111;}
-.sec-coral{background:#1a0a06;padding:clamp(48px,9vw,120px) 0;}
-
-/* REVEAL, visible par défaut, animation au scroll en bonus */
-.rv,.rv-l,.rv-r{opacity:1;transform:none;transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);}
-.rv.pre{opacity:0;transform:translateY(36px);}
-.rv-l.pre{opacity:0;transform:translateX(-40px);}
-.rv-r.pre{opacity:0;transform:translateX(40px);}
-.rv.pre.on,.rv-l.pre.on,.rv-r.pre.on{opacity:1;transform:none;}
-.d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}.d4{transition-delay:.4s;}
-
-/* HERO */
-#hero{min-height:100vh;display:grid;grid-template-columns:1fr auto;align-items:end;padding-top:80px;position:relative;overflow:hidden;}
-@media(max-width:768px){#hero{grid-template-columns:1fr;min-height:auto;align-items:start;padding-bottom:0;}}
-.hero-inner{display:flex;flex-direction:column;justify-content:flex-end;padding:0 0 60px;position:relative;z-index:1;}
-.hero-text-block{display:flex;flex-direction:column;justify-content:flex-end;}
-@media(max-width:768px){.hero-text-block{padding-top:32px;padding-bottom:24px;}}
-.hero-photo-zone{align-self:flex-end;width:clamp(200px,24vw,380px);flex-shrink:0;margin:0;padding:0;line-height:0;}
-.hero-photo-zone img{width:100%;display:block;object-fit:contain;object-position:bottom center;margin:0;padding:0;vertical-align:bottom;}
-@media(max-width:768px){.hero-photo-zone{width:48%;margin:24px auto 0;}}
-.hero-scroll{display:none;}
-.hero-tag{display:block;font-family:'DM Mono',monospace;font-size:9px;color:var(--blue-l);letter-spacing:.06em;text-transform:uppercase;margin-bottom:20px;opacity:0;animation:fup .8s .3s forwards;line-height:1.7;}
-.hero-title-wrap{font-family:'Syne',sans-serif;font-size:clamp(22px,3.5vw,48px);font-weight:800;line-height:1.08;letter-spacing:-.025em;margin-bottom:20px;opacity:0;animation:fup .9s .5s forwards;}
-.line-cream{color:var(--cream);display:block;}
-.line-blue{color:var(--blue-l);display:block;min-height:1.15em;}
-.cur-blink{display:inline-block;width:3px;height:.8em;background:var(--blue-l);margin-left:4px;vertical-align:middle;animation:blink 1s step-end infinite;}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-@keyframes fup{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-.hero-sub-wrap{opacity:0;animation:fup .9s .8s forwards;}
-.hero-sub{font-size:14px;font-weight:300;color:var(--cream2);line-height:1.65;margin-bottom:10px;max-width:580px;}
-.hero-sub strong{color:var(--cream);font-weight:500;}
-.hero-sub-detail{font-size:11px;font-weight:300;color:var(--cream2);line-height:1.6;opacity:.55;}
-.hero-target{font-size:12px;font-weight:400;color:var(--blue-l);line-height:1.6;margin-top:10px;letter-spacing:.01em;opacity:.85;}
-.hero-cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px;opacity:0;animation:fup .9s 1s forwards;}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:4px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;text-decoration:none;cursor:pointer;transition:all .25s;border:none;}
-@media(max-width:640px){.btn{padding:10px 16px;font-size:12px;}}
-.btn-p{background:var(--blue);color:#fff;}
-.btn-p:hover{background:var(--blue-l);box-shadow:0 0 40px rgba(74,122,255,.4);transform:translateY(-2px);}
-.btn-s{background:transparent;color:var(--cream2);border:1px solid rgba(240,234,216,.1);}
-.btn-s:hover{border-color:rgba(240,234,216,.22);color:var(--cream);}
-
-
-
-/* PROBLEMS SECTION */
-.pb-grid{display:flex;flex-direction:column;gap:2px;}
-.pb-item{display:grid;grid-template-columns:1fr;gap:0;cursor:pointer;}
-
-.pb-trigger{padding:clamp(24px,4vw,48px);background:rgba(255,255,255,.03);border:1px solid rgba(240,234,216,.05);transition:background .3s;display:flex;flex-direction:column;justify-content:space-between;gap:20px;}
-.pb-item:hover .pb-trigger{background:rgba(255,255,255,.06);}
-.pb-item.active .pb-trigger{background:rgba(255,255,255,.06);border-color:rgba(240,234,216,.12);}
-.pb-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--blue-l);letter-spacing:.12em;opacity:.5;margin-bottom:8px;}
-.pb-title{font-family:'Syne',sans-serif;font-size:clamp(17px,2vw,24px);font-weight:700;color:var(--cream);line-height:1.25;letter-spacing:-.01em;}
-.pb-subtitle{font-size:12px;color:rgba(240,234,216,.45);font-weight:300;line-height:1.6;margin-top:8px;}
-.pb-arrow{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.08em;color:var(--blue-l);border:1px solid rgba(74,122,255,.35);border-radius:20px;padding:5px 14px;align-self:flex-end;transition:all .3s;}
-.pb-item.active .pb-arrow,.pb-item:hover .pb-arrow{background:rgba(74,122,255,.15);}
-.pb-item.active .pb-arrow,.pb-item:hover .pb-arrow{opacity:1;}
-.pb-detail{padding:clamp(24px,4vw,40px) clamp(24px,4vw,48px);background:rgba(74,122,255,.04);border:1px solid rgba(74,122,255,.1);display:none;display:none;gap:0;}
-.pb-item.active .pb-detail{display:grid;grid-template-columns:1fr 1fr 1.2fr;gap:32px;}
-@media(max-width:900px){.pb-item.active .pb-detail{grid-template-columns:1fr;}}
-
-.pb-col{padding:0;}
-.pb-col-label{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid rgba(240,234,216,.07);}
-.pb-col-label.l-grey{color:rgba(240,234,216,.35);}
-.pb-col-label.l-orange{color:var(--coral);}
-.pb-col-label.l-blue{color:var(--blue-l);}
-.pb-col-text{font-size:15px;color:rgba(240,234,216,.72);font-weight:300;line-height:1.8;}
-.pb-col-text li{margin-bottom:10px;padding-left:14px;position:relative;line-height:1.6;}
-.pb-col-text li::before{content:'·';position:absolute;left:0;color:var(--blue-l);}
-.pb-hint{font-size:15px;color:rgba(240,234,216,.55);font-weight:300;line-height:1.65;margin-top:10px;font-style:italic;}
-.pb-shift{margin-top:16px;padding:14px 16px;background:rgba(74,122,255,.08);border-left:2px solid var(--blue-l);font-size:13px;color:rgba(240,234,216,.85);font-weight:300;line-height:1.7;font-style:italic;}
-
-/* WHY SECTION */
-.why-situations{display:flex;flex-direction:column;gap:0;}
-.why-sit{display:grid;grid-template-columns:64px 1fr;gap:0 32px;padding:32px 0;border-top:1px solid rgba(240,234,216,.06);}
-.why-sit:last-child{border-bottom:1px solid rgba(240,234,216,.06);}
-@media(max-width:640px){.why-sit{grid-template-columns:40px 1fr;gap:0 16px;}}
-.why-sit-num{font-family:'DM Mono',monospace;font-size:11px;color:var(--blue-l);opacity:.4;padding-top:4px;letter-spacing:.06em;}
-.why-sit-title{font-family:'Syne',sans-serif;font-size:clamp(16px,1.8vw,20px);font-weight:700;color:var(--cream);line-height:1.3;margin-bottom:12px;letter-spacing:-.01em;}
-.why-sit-desc{font-size:15px;color:rgba(240,234,216,.78);font-weight:300;line-height:1.8;max-width:600px;}
-.why-cost-inner{background:rgba(74,122,255,.05);border:1px solid rgba(74,122,255,.12);border-left:3px solid var(--blue-l);padding:clamp(24px,4vw,40px);}
-.why-cost-label{font-family:'DM Mono',monospace;font-size:10px;color:var(--blue-l);letter-spacing:.12em;text-transform:uppercase;margin-bottom:20px;}
-.why-cost-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px 40px;}
-@media(max-width:640px){.why-cost-grid{grid-template-columns:1fr;}}
-.why-cost-item{font-size:13px;color:rgba(240,234,216,.65);font-weight:300;line-height:1.5;display:flex;gap:10px;align-items:baseline;}
-.why-cost-n{color:var(--blue-l);font-weight:700;flex-shrink:0;}
-.why-diff-label{font-family:'DM Mono',monospace;font-size:10px;color:var(--yellow);letter-spacing:.12em;text-transform:uppercase;margin-bottom:20px;}
-.why-diff-text{font-size:clamp(15px,1.6vw,18px);color:rgba(240,234,216,.8);font-weight:300;line-height:1.85;margin-bottom:16px;}
-.why-diff-text:last-child{margin-bottom:0;}
-
-
-/* SPECTRUM — profil unique */
-.sp-objection{max-width:760px;}
-.sp-obj-text{font-size:clamp(15px,1.6vw,17px);color:rgba(240,234,216,.78);font-weight:300;line-height:1.85;}
-.sp-three{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
-@media(max-width:900px){.sp-three{grid-template-columns:1fr;}}
-.sp-nature{padding:clamp(24px,3vw,36px);background:rgba(255,255,255,.03);border:1px solid rgba(240,234,216,.06);}
-.sp-nature-label{font-family:'Syne',sans-serif;font-size:clamp(16px,1.8vw,20px);font-weight:700;color:var(--cream);margin-bottom:12px;letter-spacing:-.01em;}
-.sp-nature-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px;}
-.sp-tag{font-family:'DM Mono',monospace;font-size:9px;padding:2px 9px;border:1px solid rgba(74,122,255,.25);border-radius:20px;color:var(--blue-l);letter-spacing:.06em;}
-.sp-nature-desc{font-size:14px;color:rgba(240,234,216,.65);font-weight:300;line-height:1.75;}
-.sp-connections{padding-top:clamp(32px,5vw,56px);border-top:1px solid rgba(240,234,216,.07);}
-.sp-conn-label{font-family:'DM Mono',monospace;font-size:10px;color:var(--blue-l);letter-spacing:.12em;text-transform:uppercase;margin-bottom:20px;}
-.sp-conn-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px 32px;}
-@media(max-width:900px){.sp-conn-grid{grid-template-columns:1fr 1fr;}}
-@media(max-width:580px){.sp-conn-grid{grid-template-columns:1fr;}}
-.sp-conn-title{font-family:'DM Mono',monospace;font-size:10px;color:var(--blue-l);letter-spacing:.08em;margin-bottom:8px;}
-.sp-conn-desc{font-size:13px;color:rgba(240,234,216,.55);font-weight:300;line-height:1.7;}
-
-/* SPECTRUM */
-.spec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
-@media(max-width:900px){.spec-grid{grid-template-columns:1fr 1fr;}}
-@media(max-width:580px){.spec-grid{grid-template-columns:1fr;}}
-.spec-item{padding:clamp(20px,3vw,32px);background:rgba(255,255,255,.03);border:1px solid rgba(240,234,216,.05);transition:background .3s;}
-.spec-item:hover{background:rgba(255,255,255,.06);}
-.spec-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--blue-l);letter-spacing:.1em;margin-bottom:12px;opacity:.5;}
-.spec-name{font-family:'Syne',sans-serif;font-size:clamp(14px,1.6vw,17px);font-weight:700;color:var(--cream);margin-bottom:10px;letter-spacing:-.01em;}
-.spec-desc{font-size:14px;color:rgba(240,234,216,.65);font-weight:300;line-height:1.7;margin-bottom:12px;}
-.spec-link{font-family:'DM Mono',monospace;font-size:10px;color:var(--blue-l);letter-spacing:.08em;opacity:.6;}
-
-/* WHAT I DO *//* WHAT I DO */
-.wid-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-@media(max-width:768px){.wid-grid{grid-template-columns:1fr;gap:14px;}}
-.wid-card{padding:clamp(24px,3.5vw,40px) clamp(20px,3vw,32px);border-radius:6px;background:rgba(255,255,255,.04);position:relative;overflow:hidden;transition:all .35s;border:1px solid rgba(255,255,255,.07);}
-.wid-card:hover{transform:translateY(-6px);background:rgba(255,255,255,.08);}
-.wid-card.c-enter{border-color:rgba(74,122,255,.3);}
-.wid-card.c-enter:hover{box-shadow:0 20px 60px rgba(0,0,0,.3),0 0 40px rgba(74,122,255,.2);}
-.wid-card.c-build{border-color:rgba(245,200,66,.25);}
-.wid-card.c-build:hover{box-shadow:0 20px 60px rgba(0,0,0,.3),0 0 40px rgba(245,200,66,.15);}
-.wid-card.c-transmit{border-color:rgba(232,83,60,.25);}
-.wid-card.c-transmit:hover{box-shadow:0 20px 60px rgba(0,0,0,.3),0 0 40px rgba(232,83,60,.15);}
-.wid-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;transform:scaleX(0);transform-origin:left;transition:transform .4s cubic-bezier(.16,1,.3,1);}
-.wid-card.c-enter::before{background:var(--blue-l);}
-.wid-card.c-build::before{background:var(--yellow);}
-.wid-card.c-transmit::before{background:var(--coral);}
-.wid-card:hover::before{transform:scaleX(1);}
-.c-num-bg{font-family:'Syne',sans-serif;font-size:clamp(36px,5vw,56px);font-weight:800;line-height:1;position:absolute;top:16px;right:20px;letter-spacing:-.04em;opacity:.06;}
-.c-phase{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:16px;}
-.c-phase.e{color:var(--blue-l);}
-.c-phase.b{color:var(--yellow);}
-.c-phase.t{color:var(--coral);}
-.wid-card h3.c-title{font-family:'Syne',sans-serif;font-size:clamp(15px,1.6vw,18px);font-weight:700;color:#fff;margin-bottom:14px;letter-spacing:-.01em;line-height:1.35;}
-@media(max-width:768px){.wid-card h3.c-title{font-size:16px;}}
-.c-body{font-size:15px;color:rgba(240,234,216,.8);font-weight:300;line-height:1.8;}
-
-/* TIMELINE */
-#timeline-section{padding:clamp(40px,8vw,120px) 0;}
-.tl-outer{position:relative;}
-.tl-items-col{display:flex;flex-direction:column;gap:0;position:relative;}
-.tl-items-col::before{content:'';position:absolute;left:13px;top:14px;bottom:0;width:2px;background:rgba(240,234,216,.07);}
-.tl-fill-line{position:absolute;left:13px;top:14px;width:2px;height:0;background:linear-gradient(to bottom,var(--blue),var(--blue-l));box-shadow:0 0 10px rgba(74,122,255,.5);transition:height .1s linear;z-index:1;pointer-events:none;}
-.tl-item{display:grid;grid-template-columns:28px 1fr;gap:0 28px;align-items:start;padding-bottom:52px;position:relative;}
-.tl-item:last-child{padding-bottom:0;}
-.tl-dot-wrap{display:flex;justify-content:center;padding-top:0;position:relative;z-index:2;}
-.tl-dot{width:14px;height:14px;border-radius:50%;border:2px solid rgba(74,122,255,.3);background:var(--bg);flex-shrink:0;transition:background .3s,border-color .3s,box-shadow .3s;}
-.tl-item.reached .tl-dot{border-color:var(--blue-l);background:var(--blue-l);box-shadow:0 0 14px rgba(74,122,255,.7);}
-.tl-content{padding-top:0;}
-.tl-year{font-family:'DM Mono',monospace;font-size:11px;color:var(--blue-l);letter-spacing:.08em;margin-bottom:10px;opacity:.7;}
-.tl-company{font-family:'Syne',sans-serif;font-size:clamp(17px,2vw,22px);font-weight:700;color:var(--cream);margin-bottom:4px;}
-.tl-role{font-size:13px;color:var(--blue-l);margin-bottom:4px;}
-.tl-period{font-family:'DM Mono',monospace;font-size:11px;color:var(--cream2);opacity:.5;margin-bottom:14px;}
-.tl-story{font-size:15px;color:rgba(240,234,216,.82);font-weight:300;line-height:1.75;max-width:560px;}
-.tl-story strong{color:var(--cream);font-weight:500;}
-.tl-card{background:rgba(255,255,255,.02);border:1px solid rgba(240,234,216,.07);border-radius:4px;padding:clamp(14px,2.5vw,28px);margin-bottom:8px;transition:all .4s;position:relative;overflow:hidden;}
-.tl-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--blue-l);transform:scaleY(0);transform-origin:top;transition:transform .5s cubic-bezier(.16,1,.3,1);}
-.tl-item.reached .tl-card{border-color:rgba(74,122,255,.18);box-shadow:0 0 40px rgba(74,122,255,.06);}
-.tl-item.reached .tl-card::before{transform:scaleY(1);}
-
-/* PROJECTS */
-.proj-list{display:flex;flex-direction:column;gap:3px;}
-.proj-row{display:grid;grid-template-columns:1fr 1fr;gap:0;background:rgba(255,255,255,.05);color:var(--cream);overflow:hidden;border:1px solid rgba(240,234,216,.07);}
-.proj-row:nth-child(even){direction:rtl;}
-.proj-row:nth-child(even) .proj-text{direction:ltr;}
-.proj-text{padding:clamp(32px,5vw,60px) clamp(24px,4vw,56px);display:flex;flex-direction:column;justify-content:center;gap:0;}
-.proj-visual{background:rgba(0,0,0,.2);display:flex;align-items:center;justify-content:center;min-height:280px;position:relative;overflow:hidden;}
-.proj-visual-inner{padding:40px;text-align:center;}
-.proj-big{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(44px,6vw,72px);line-height:1;letter-spacing:-.04em;}
-.proj-row-1 .proj-big{color:var(--yellow);}
-.proj-row-2 .proj-big{color:var(--coral);}
-.proj-row-3 .proj-big{color:var(--blue);}
-.proj-idx{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px;opacity:.5;color:var(--cream2);}
-.proj-name{font-family:'Syne',sans-serif;font-size:clamp(18px,2vw,24px);font-weight:700;color:var(--cream);line-height:1.2;margin-bottom:12px;letter-spacing:-.01em;}
-.proj-what{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px;}
-.proj-row-1 .proj-what{color:var(--yellow);}
-.proj-row-2 .proj-what{color:var(--coral);}
-.proj-row-3 .proj-what{color:var(--blue);}
-.proj-ctx{font-size:15px;color:rgba(240,234,216,.78);font-weight:300;line-height:1.75;margin-bottom:20px;}
-.proj-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:24px;}
-.tag{font-family:'DM Mono',monospace;font-size:10px;padding:3px 10px;border:1px solid rgba(240,234,216,.1);border-radius:20px;color:rgba(240,234,216,.45);letter-spacing:.05em;}
-.proj-cta{display:inline-flex;align-items:center;gap:6px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;font-weight:500;padding:10px 20px;border-radius:3px;transition:all .2s;align-self:flex-start;}
-.proj-row-1 .proj-cta{background:var(--yellow);color:#000;}
-.proj-row-1 .proj-cta:hover{background:#e5b800;}
-.proj-row-2 .proj-cta{background:var(--coral);color:#fff;}
-.proj-row-2 .proj-cta:hover{background:#d4402a;}
-.proj-row-3 .proj-cta{background:var(--blue);color:#fff;}
-.proj-row-3 .proj-cta:hover{background:var(--blue-l);}
-@media(max-width:768px){.proj-row{grid-template-columns:1fr;direction:ltr;}.proj-row .proj-text{direction:ltr;}.proj-visual{min-height:160px;}}
-
-
-/* CROSS-FUNCTIONAL */
-.cross-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,80px);align-items:start;}
-@media(max-width:768px){.cross-grid{grid-template-columns:1fr;}}
-.cross-center{width:80px;height:80px;border-radius:50%;border:2px solid var(--blue-l);display:flex;align-items:center;justify-content:center;margin-bottom:32px;flex-shrink:0;}
-.cross-center-label{font-family:'DM Mono',monospace;font-size:9px;color:var(--blue-l);letter-spacing:.08em;text-transform:uppercase;text-align:center;line-height:1.5;}
-.cross-links{display:flex;flex-direction:column;gap:0;}
-.cross-link{padding:20px 0;border-top:1px solid rgba(240,234,216,.06);}
-.cross-link:last-child{border-bottom:1px solid rgba(240,234,216,.06);}
-.cross-link-tag{font-family:'DM Mono',monospace;font-size:10px;color:var(--blue-l);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;}
-.cross-link-desc{font-size:14px;color:rgba(240,234,216,.72);font-weight:300;line-height:1.75;}
-.cross-proof-label{font-family:'DM Mono',monospace;font-size:10px;color:var(--yellow);letter-spacing:.12em;text-transform:uppercase;margin-bottom:20px;}
-.cross-proof-text{font-size:clamp(14px,1.5vw,16px);color:rgba(240,234,216,.78);font-weight:300;line-height:1.85;margin-bottom:16px;}
-.cross-proof-certs{display:flex;flex-direction:column;gap:8px;margin-top:28px;padding-top:24px;border-top:1px solid rgba(240,234,216,.07);}
-.cross-cert{font-family:'DM Mono',monospace;font-size:11px;color:var(--cream2);opacity:.7;}
-.cross-cert span{opacity:.5;}
-
-/* SKILLS */
-.sk-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:40px 80px;}
-@media(max-width:640px){.sk-grid{grid-template-columns:1fr;gap:32px;}}
-.sk-group-title{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--cream);letter-spacing:.06em;text-transform:uppercase;margin-bottom:24px;padding-bottom:14px;border-bottom:1px solid rgba(240,234,216,.08);}
-.sk-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;gap:12px;}
-.sk-name{font-size:13px;color:var(--cream2);white-space:nowrap;min-width:120px;font-weight:300;}
-.sk-track{flex:1;height:2px;background:rgba(240,234,216,.07);border-radius:2px;position:relative;}
-.sk-fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--blue-l));border-radius:2px;width:0%;transition:width 1.4s cubic-bezier(.16,1,.3,1);position:relative;}
-.sk-fill::after{content:'';position:absolute;right:-4px;top:-4px;width:10px;height:10px;background:var(--blue-l);border-radius:50%;box-shadow:0 0 12px var(--blue-l),0 0 24px rgba(74,122,255,.4);}
-.sk-lvl{font-family:'DM Mono',monospace;font-size:11px;color:var(--cream2);opacity:.4;}
-
-
-/* BIO */
-.bio-grid{display:grid;grid-template-columns:1fr 2fr;gap:clamp(40px,6vw,80px);align-items:start;}
-@media(max-width:768px){.bio-grid{grid-template-columns:1fr;}}
-.bio-photo-wrap{position:sticky;top:100px;}
-.bio-photo{width:100%;border-radius:4px;display:block;filter:grayscale(20%);}
-.bio-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px;}
-.bio-tag{font-family:'DM Mono',monospace;font-size:10px;padding:4px 10px;border:1px solid rgba(240,234,216,.12);border-radius:20px;color:rgba(240,234,216,.5);letter-spacing:.04em;}
-.bio-p{font-size:clamp(15px,1.5vw,17px);color:rgba(240,234,216,.75);font-weight:300;line-height:1.85;margin-bottom:20px;}
-.bio-credentials{display:flex;gap:32px;margin-top:32px;padding-top:28px;border-top:1px solid rgba(240,234,216,.08);flex-wrap:wrap;}
-.bio-cred{display:flex;align-items:baseline;gap:8px;}
-.bio-cred-n{font-family:'Syne',sans-serif;font-size:32px;font-weight:800;color:var(--blue);letter-spacing:-.03em;}
-.bio-cred-label{font-family:'DM Mono',monospace;font-size:11px;color:rgba(240,234,216,.45);letter-spacing:.06em;text-transform:uppercase;}
-
-/* HUMAN */
-.human-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
-@media(max-width:768px){.human-grid{grid-template-columns:1fr;gap:40px;}}
-.human-intro{font-size:clamp(15px,1.8vw,18px);font-weight:300;color:#444;line-height:1.65;margin-bottom:28px;}
-.human-intro strong{color:#0a0b0e;font-weight:500;}
-.h-tags{display:flex;flex-wrap:wrap;gap:8px;}
-.h-tag{padding:8px 16px;border:1px solid rgba(20,30,60,.12);border-radius:40px;font-size:13px;color:#555;font-weight:300;transition:all .3s;}
-.h-tag:hover{border-color:var(--blue);color:var(--blue);background:rgba(26,79,214,.05);}
-.hv-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-.hv-card{padding:clamp(18px,2.5vw,24px) clamp(14px,2vw,20px);background:#fff;border-radius:4px;transition:all .35s;position:relative;overflow:hidden;}
-.hv-card.yc{border:1px solid rgba(245,200,66,.2);box-shadow:0 2px 0 rgba(245,200,66,.08);}
-.hv-card.yc:hover{border-color:rgba(245,200,66,.4);transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,.08),0 0 20px rgba(245,200,66,.12);}
-.hv-card.rc{border:1px solid rgba(232,83,60,.15);box-shadow:0 2px 0 rgba(232,83,60,.06);}
-.hv-card.rc:hover{border-color:rgba(232,83,60,.35);transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,.08),0 0 20px rgba(232,83,60,.1);}
-.hv-card.bc{border:1px solid rgba(26,79,214,.15);box-shadow:0 2px 0 rgba(26,79,214,.06);}
-.hv-card.bc:hover{border-color:rgba(26,79,214,.3);transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,.08),0 0 20px rgba(26,79,214,.1);}
-.hv-icon{font-size:22px;margin-bottom:10px;display:block;}
-.hv-title{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:#0a0b0e;margin-bottom:4px;}
-.hv-sub{font-size:12px;color:#666;font-weight:300;line-height:1.5;}
-
-/* CONTACT */
-#contact{padding:clamp(60px,10vw,120px) 0 60px;position:relative;overflow:hidden;}
-.c-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:400px;background:radial-gradient(ellipse,rgba(74,122,255,.12) 0%,transparent 70%);pointer-events:none;animation:gp 4s ease-in-out infinite;}
-@keyframes gp{0%,100%{opacity:.5;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.1)}}
-.c-inner{text-align:center;position:relative;z-index:1;}
-.c-title{font-family:'Syne',sans-serif;font-size:clamp(20px,3vw,38px);font-weight:700;letter-spacing:-.02em;color:var(--cream);margin-bottom:20px;line-height:1.25;}
-@media(max-width:480px){.c-title{font-size:clamp(18px,5vw,26px);}}
-.c-sub{font-size:clamp(14px,1.8vw,17px);color:var(--cream2);font-weight:300;margin-bottom:40px;max-width:400px;margin-left:auto;margin-right:auto;}
-.c-links{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:60px;}
-.footer-line{border-top:1px solid rgba(240,234,216,.06);padding-top:32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
-.footer-copy{font-family:'DM Mono',monospace;font-size:11px;color:var(--cream2);opacity:.35;letter-spacing:.04em;}
-.footer-status{display:flex;align-items:center;gap:8px;font-family:'DM Mono',monospace;font-size:11px;color:var(--cream2);opacity:.55;letter-spacing:.04em;}
-.sdot{width:6px;height:6px;background:#4ade80;border-radius:50%;box-shadow:0 0 8px #4ade80;animation:spls 2s ease-in-out infinite;}
-@keyframes spls{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
-
-/* LANG, FR par défaut */
-[data-en]{display:none;}
-body.en [data-fr]{display:none;}
-body.en [data-en]{display:block;}
-body.en span[data-en]{display:inline;}
-body.en span[data-fr]{display:none;}
-body:not(.en) [data-fr]{display:block;}
-body:not(.en) span[data-fr]{display:inline;}
-
-::-webkit-scrollbar{width:3px;}
-::-webkit-scrollbar-track{background:var(--bg);}
-::-webkit-scrollbar-thumb{background:var(--blue);border-radius:2px;}
-</style>
-</head>
-<body>
-
-<canvas id="bg-canvas"></canvas>
-<div class="cur" id="cur"></div>
-<div class="cur-ring" id="cur-ring"></div>
-
-<nav>
-  <a href="#" class="nav-logo">AM.</a>
-  <ul class="nav-links">
-    <li><a href="#spectrum" data-en>Expertise</a><a href="#spectrum" data-fr>Expertise</a></li>
-    <li><a href="#timeline-section" data-en>Experience</a><a href="#timeline-section" data-fr>Expérience</a></li>
-    <li><a href="#cases" data-en>Cases</a><a href="#cases" data-fr>Cas clients</a></li>
-    <li><a href="https://calendly.com/a-mechkar/decouverte-45-min" target="_blank" data-en>Book a call</a><a href="https://calendly.com/a-mechkar/decouverte-45-min" target="_blank" data-fr>Réserver</a></li>
-  </ul>
-  <div class="lang-toggle">
-    <button class="lang-btn" onclick="setLang('en')">EN</button>
-    <button class="lang-btn active" onclick="setLang('fr')">FR</button>
-  </div>
-</nav>
-
-<section id="hero" class="sec-dark">
-  <div class="photo-bg" style="background-image:url('photo-hero.jpg');"></div>
-  <div class="hero-inner">
-    <div class="container">
-      <div class="hero-text-block">
-        <div class="hero-tag" data-en>Fractional CPO · Transition Manager · Full Remote · Available</div>
-        <div class="hero-tag" data-fr>Fractional CPO · Manager de Transition · Full Remote · Disponible</div>
-        <div class="hero-title-wrap">
-          <span class="line-cream" id="tl1"></span>
-          <span class="line-blue" id="tl2" style="opacity:0;min-height:1.15em;display:block;"></span>
-        </div>
-        <div class="hero-sub-wrap" id="hero-sub-wrap" style="visibility:hidden;">
-          <p class="hero-sub" data-en>I work with founders, managers and leaders who want to move to the next level, and need someone who can read the whole system, act at the right level, and leave when the team stands on its own.</p>
-          <p class="hero-sub" data-fr>J'interviens auprès des fondateurs, managers et dirigeants qui veulent passer un cap, et qui ont besoin de quelqu'un capable de lire le système entier, d'agir au bon niveau, et de partir quand l'équipe tient seule.</p>
-          <div class="hero-sub-detail" data-en>Product · Design · Tech · Organisation · Human. 15 years. 3 countries.</div>
-          <div class="hero-sub-detail" data-fr>Produit · Design · Tech · Organisation · Humain. 15 ans. 3 pays.</div>
-          <div class="hero-target" data-en>For startups, SMEs and purpose-driven organisations who refuse to choose between performance and people.</div>
-          <div class="hero-target" data-fr>Pour les startups, TPE/PME et organisations à mission qui refusent de choisir entre performance et humanité.</div>
-          <div class="hero-cta">
-            <a href="https://calendly.com/a-mechkar/decouverte-45-min?locale=en" target="_blank" class="btn btn-p" data-en>Book a 45-min call →</a>
-            <a href="https://calendly.com/a-mechkar/decouverte-45-min?locale=fr" target="_blank" class="btn btn-p" data-fr>Réserver un appel 45 min →</a>
-            <a href="#cases" class="btn btn-s" data-en>See case studies</a>
-            <a href="#cases" class="btn btn-s" data-fr>Voir les cas clients</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="hero-photo-zone">
-    <img src="photo-anys.png" alt="Anys Mechkar">
-  </div>
-</section>
-
-<section id="why" class="sec-dark" style="padding:clamp(60px,10vw,140px) 0;">
+<section id="spectrum" class="sec-dark" style="padding:clamp(60px,10vw,120px) 0;">
   <div class="container">
 
-    <div class="rv" style="max-width:680px;margin-bottom:clamp(48px,8vw,96px);">
-      <div class="section-label" data-en>Why call me</div>
-      <div class="section-label" data-fr>Pourquoi faire appel à moi</div>
-      <h2 class="section-title" data-en>Something is stuck.<br>You feel it. You just can't put your finger on it.</h2>
-      <h2 class="section-title" data-fr>Quelque chose coince.<br>Vous le sentez. Mais vous n'arrivez pas à mettre le doigt dessus.</h2>
-    </div>
-
-    <div class="why-situations rv" style="margin-bottom:clamp(48px,8vw,96px);">
-      <div class="why-sit">
-        <div class="why-sit-num">01</div>
-        <div class="why-sit-body">
-          <div class="why-sit-title" data-en>The tools aren't the problem. Or maybe they are. You're not sure anymore.</div>
-          <div class="why-sit-title" data-fr>Les outils ne sont pas le problème. Ou peut-être si. Vous ne savez plus vraiment.</div>
-          <p class="why-sit-desc" data-en>You've changed tools twice. The teams work around them instead of with them. You've bought software that nobody uses. Meanwhile people build their own little workarounds in spreadsheets, and those are the ones that actually run the business.</p>
-          <p class="why-sit-desc" data-fr>Vous avez changé d'outil deux fois. Les équipes travaillent autour plutôt qu'avec. Vous avez acheté des logiciels que personne n'utilise. Pendant ce temps, des gens ont construit leurs propres contournements dans des tableurs, et ce sont eux qui font vraiment tourner le business.</p>
-        </div>
-      </div>
-      <div class="why-sit">
-        <div class="why-sit-num">02</div>
-        <div class="why-sit-body">
-          <div class="why-sit-title" data-en>You have good people. But they don't move in the same direction.</div>
-          <div class="why-sit-title" data-fr>Vous avez de bonnes personnes. Mais elles n'avancent pas dans le même sens.</div>
-          <p class="why-sit-desc" data-en>Everyone is competent. Everyone works hard. But something between them doesn't connect, silos, miscommunication, priorities that aren't shared. The problem isn't individual. It's systemic. And nobody inside can see it clearly because everyone is too close.</p>
-          <p class="why-sit-desc" data-fr>Chacun est compétent. Chacun travaille dur. Mais quelque chose entre eux ne connecte pas, silos, incompréhensions, priorités non partagées. Le problème n'est pas individuel. Il est systémique. Et personne en interne ne le voit clairement parce que tout le monde est trop dedans.</p>
-        </div>
-      </div>
-      <div class="why-sit">
-        <div class="why-sit-num">03</div>
-        <div class="why-sit-body">
-          <div class="why-sit-title" data-en>You have a clear idea. It's a good one. But you don't know how to make it happen.</div>
-          <div class="why-sit-title" data-fr>Vous avez une idée claire. Elle est bonne. Mais vous ne savez pas comment la faire advenir.</div>
-          <p class="why-sit-desc" data-en>A new product, a restructuring, a process overhaul. The direction is right. What's missing is someone who can translate vision into structure, structure into tools, tools into adoption. Someone who speaks the language of both the CEO and the developer.</p>
-          <p class="why-sit-desc" data-fr>Un nouveau produit, une restructuration, une refonte de process. La direction est bonne. Ce qui manque, c'est quelqu'un capable de traduire la vision en structure, la structure en outils, les outils en adoption. Quelqu'un qui parle à la fois le langage du dirigeant et du développeur.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="why-cost rv" style="margin-bottom:clamp(48px,8vw,96px);">
-      <div class="why-cost-inner">
-        <div class="why-cost-label" data-en>What it actually costs you</div>
-        <div class="why-cost-label" data-fr>Ce que ça vous coûte vraiment</div>
-        <div class="why-cost-grid">
-          <div class="why-cost-item" data-en><span class="why-cost-n">→</span> Hours lost to workarounds nobody questions anymore</div>
-          <div class="why-cost-item" data-fr><span class="why-cost-n">→</span> Des heures perdues en contournements que plus personne ne remet en question</div>
-          <div class="why-cost-item" data-en><span class="why-cost-n">→</span> Good people who disengage because nothing seems to move</div>
-          <div class="why-cost-item" data-fr><span class="why-cost-n">→</span> De bonnes personnes qui se démotivent parce que rien ne semble avancer</div>
-          <div class="why-cost-item" data-en><span class="why-cost-n">→</span> Decisions made without the full picture</div>
-          <div class="why-cost-item" data-fr><span class="why-cost-n">→</span> Des décisions prises sans vision d'ensemble</div>
-          <div class="why-cost-item" data-en><span class="why-cost-n">→</span> A level you can see but can't seem to reach</div>
-          <div class="why-cost-item" data-fr><span class="why-cost-n">→</span> Un palier que vous voyez mais que vous n'arrivez pas à franchir</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="why-diff rv" style="max-width:760px;">
-      <div class="why-diff-label" data-en>What's different with me</div>
-      <div class="why-diff-label" data-fr>Ce qui est différent avec moi</div>
-      <p class="why-diff-text" data-en>A consulting firm costs a lot and delivers slides. A permanent hire takes time and creates commitment. What you sometimes need is someone who enters the system, understands it as a whole, acts at the right level, and leaves when the team stands on its own.</p>
-      <p class="why-diff-text" data-fr>Un cabinet de conseil coûte cher et livre des slides. Un recrutement CDI prend du temps et engage. Ce dont vous avez parfois besoin, c'est de quelqu'un qui entre dans le système, le comprend dans sa globalité, agit au bon niveau, et part quand l'équipe tient seule.</p>
-      <p class="why-diff-text" data-en>Not a specialist who optimises one corner. Someone who sees the connections between tools, processes, people, and strategy, and can act on all of them.</p>
-      <p class="why-diff-text" data-fr>Pas un spécialiste qui optimise un seul coin. Quelqu'un qui voit les connexions entre les outils, les process, les personnes et la stratégie, et qui peut agir sur tous ces leviers.</p>
-    </div>
-
-  </div>
-</section>
-
-<section id="problems" class="sec-dark" style="padding:clamp(60px,10vw,120px) 0;">
-  <div class="container">
     <div class="rv" style="max-width:680px;margin-bottom:clamp(40px,6vw,64px);">
-      <div class="section-label" data-en>Three situations</div>
-      <div class="section-label" data-fr>Trois situations</div>
-      <h2 class="section-title" data-en>You've probably already tried something.<br>It just didn't stick.</h2>
-      <h2 class="section-title" data-fr>Vous avez probablement déjà essayé quelque chose.<br>Ça n'a pas pris.</h2>
+      <div class="section-label" data-en>A rare profile</div>
+      <div class="section-label" data-fr>Un profil rare</div>
+      <h2 class="section-title" data-en>You might think: he does everything,<br>so he does nothing well.</h2>
+      <h2 class="section-title" data-fr>Vous pensez peut-être : il fait tout,<br>donc il ne fait rien bien.</h2>
     </div>
 
-    <div class="pb-grid">
+    <div class="rv" style="max-width:760px;margin-bottom:clamp(48px,7vw,80px);">
+      <p style="font-size:clamp(15px,1.6vw,17px);color:rgba(240,234,216,.78);font-weight:300;line-height:1.85;" data-en>You're right that a specialist goes deeper on one thing. What's rare isn't mastering seven disciplines. It's understanding how they affect each other — and knowing where to act when the real problem lives at the intersection. For delivery, I work with specialists. What I bring is the global view that's missing when everyone looks at their own corner.</p>
+      <p style="font-size:clamp(15px,1.6vw,17px);color:rgba(240,234,216,.78);font-weight:300;line-height:1.85;" data-fr>Un spécialiste va plus loin sur une chose, c'est vrai. Ce qui est rare, ce n'est pas de maîtriser sept disciplines. C'est de comprendre comment elles s'affectent mutuellement, et de savoir où agir quand le vrai problème vit à l'intersection. Pour délivrer, je travaille avec des spécialistes. Ce que j'apporte, c'est la vision globale qui manque quand chacun regarde son coin.</p>
+    </div>
 
-      <!-- 01 COHÉSION -->
-      <div class="pb-item" onclick="this.classList.toggle('active')">
-        <div class="pb-trigger">
-          <div>
-            <div class="pb-num">01</div>
-            <div class="pb-title" data-en>The team is burning out.<br>Nobody says it out loud.</div>
-            <div class="pb-title" data-fr>L'équipe s'épuise.<br>Personne ne le dit vraiment.</div>
-            <div class="pb-subtitle" data-en>Culture · Cohesion · Internal conflict</div>
-            <div class="pb-subtitle" data-fr>Culture · Cohésion · Conflits internes</div>
-          </div>
-          <div class="pb-hint" data-en>Team buildings, new org charts, consultants, you've tried. Nothing stuck. Here's why.</div><div class="pb-hint" data-fr>Team buildings, nouvel organigramme, consultants, vous avez essayé. Rien n'a tenu. Voilà pourquoi.</div>
-          <div class="pb-arrow"><span data-en>Open diagnosis →</span><span data-fr>Voir le diagnostic →</span></div>
+    <div class="sp-three rv" style="margin-bottom:clamp(48px,7vw,80px);">
+      <div class="sp-nature">
+        <div class="sp-nature-label" data-en>The builder</div>
+        <div class="sp-nature-label" data-fr>Le bâtisseur</div>
+        <div class="sp-nature-tags">
+          <span class="sp-tag" data-en>Product</span><span class="sp-tag" data-fr>Produit</span>
+          <span class="sp-tag">Design</span>
+          <span class="sp-tag">Tech &amp; IA</span>
         </div>
-        <div class="pb-detail">
-          <div class="pb-col">
-            <div class="pb-col-label l-grey" data-en>What's happening</div>
-            <div class="pb-col-label l-grey" data-fr>Ce qui se passe</div>
-            <ul class="pb-col-text" data-en>
-              <li>Teams working in silos, a shared vision that doesn't land</li>
-              <li>Rising absenteeism, quiet disengagement, subtle tensions</li>
-              <li>A direction that makes sense on paper but nobody owns it</li>
-              <li>Burnout that management sees coming but doesn't know how to stop</li>
-            </ul>
-            <ul class="pb-col-text" data-fr>
-              <li>Équipes en silos, une vision partagée qui ne passe pas</li>
-              <li>Absentéisme en hausse, désengagement silencieux, tensions sourdes</li>
-              <li>Une direction qui a du sens sur le papier mais que personne ne s'approprie</li>
-              <li>Des burnouts que le management voit venir sans savoir comment les arrêter</li>
-            </ul>
-          </div>
-          <div class="pb-col">
-            <div class="pb-col-label l-orange" data-en>What you've tried</div>
-            <div class="pb-col-label l-orange" data-fr>Ce que vous avez essayé</div>
-            <ul class="pb-col-text" data-en>
-              <li>Team building activities, nice day, nothing changed on Monday</li>
-              <li>A new org chart, same dynamics, different boxes</li>
-              <li>A consultant who delivered a report, still on a shelf somewhere</li>
-              <li>A manager who "manages morale", surface-level at best</li>
-            </ul>
-            <ul class="pb-col-text" data-fr>
-              <li>Des team buildings, belle journée, rien n'a changé le lundi</li>
-              <li>Un nouvel organigramme, mêmes dynamiques, cases différentes</li>
-              <li>Un consultant qui a livré un rapport, toujours sur une étagère</li>
-              <li>Un manager qui "gère le moral", cosmétique au mieux</li>
-            </ul>
-          </div>
-          <div class="pb-col">
-            <div class="pb-col-label l-blue" data-en>The real shift</div>
-            <div class="pb-col-label l-blue" data-fr>Le vrai déclic</div>
-            <p class="pb-col-text" data-en>Culture isn't built with events. It's built with clarity, on roles, decisions, and what matters. When people understand the system they're in, and feel genuinely heard, something unlocks. The work is to redesign the structure so it supports people instead of grinding them down.</p>
-            <p class="pb-col-text" data-fr>La culture ne se construit pas avec des événements. Elle se construit avec de la clarté, sur les rôles, les décisions, ce qui compte. Quand les gens comprennent le système dans lequel ils évoluent et se sentent vraiment entendus, quelque chose se débloque. Le travail, c'est de reconstruire la structure pour qu'elle soutienne les gens plutôt qu'elle ne les use.</p>
-          </div>
+        <p class="sp-nature-desc" data-en>I turn ideas into working things. Knowing what's buildable changes how you design. Knowing how to design changes what you build. The best solutions live at that intersection.</p>
+        <p class="sp-nature-desc" data-fr>Je transforme les idées en choses qui fonctionnent. Savoir ce qui est faisable change la façon de concevoir. Savoir concevoir change ce qu'on construit. Les meilleures solutions vivent à cette intersection.</p>
+      </div>
+      <div class="sp-nature">
+        <div class="sp-nature-label" data-en>The architect</div>
+        <div class="sp-nature-label" data-fr>L'architecte</div>
+        <div class="sp-nature-tags">
+          <span class="sp-tag" data-en>Governance</span><span class="sp-tag" data-fr>Gouvernance</span>
+          <span class="sp-tag" data-en>Process</span><span class="sp-tag" data-fr>Process</span>
+          <span class="sp-tag" data-en>Culture</span><span class="sp-tag" data-fr>Culture</span>
+        </div>
+        <p class="sp-nature-desc" data-en>I design structures people actually own. A good roadmap fails if the team structure doesn't support it. Governance and product strategy have to be designed together — not in sequence.</p>
+        <p class="sp-nature-desc" data-fr>Je conçois des structures que les gens s'approprient. Une bonne roadmap échoue si la structure d'équipe ne la soutient pas. Gouvernance et stratégie produit se conçoivent ensemble, pas en séquence.</p>
+      </div>
+      <div class="sp-nature">
+        <div class="sp-nature-label" data-en>The enabler</div>
+        <div class="sp-nature-label" data-fr>L'accompagnant</div>
+        <div class="sp-nature-tags">
+          <span class="sp-tag" data-en>Facilitation</span><span class="sp-tag" data-fr>Facilitation</span>
+          <span class="sp-tag" data-en>Coaching</span><span class="sp-tag" data-fr>Coaching</span>
+          <span class="sp-tag" data-en>Change</span><span class="sp-tag" data-fr>Changement</span>
+        </div>
+        <p class="sp-nature-desc" data-en>The technical change is rarely the hard part. It's the human transition that determines whether it lasts. When people understand the system and feel genuinely heard, something unlocks.</p>
+        <p class="sp-nature-desc" data-fr>Le changement technique est rarement la partie difficile. C'est la transition humaine qui détermine si ça dure. Quand les gens comprennent le système et se sentent vraiment entendus, quelque chose se débloque.</p>
+      </div>
+    </div>
+
+    <div class="rv" style="padding-top:clamp(32px,5vw,56px);border-top:1px solid rgba(240,234,216,.07);">
+      <div class="section-label" data-en>Where the intersections change everything</div>
+      <div class="section-label" data-fr>Là où les intersections changent tout</div>
+      <div class="sp-conn-grid">
+        <div class="sp-conn-item">
+          <div class="sp-conn-title">Design × Produit</div>
+          <p class="sp-conn-desc" data-en>A PM without design sense makes blind trade-offs. A designer without product vision builds beautiful things nobody needs.</p>
+          <p class="sp-conn-desc" data-fr>Un PM sans sens du design fait des arbitrages à l'aveugle. Un designer sans vision produit construit de belles choses dont personne n'a besoin.</p>
+        </div>
+        <div class="sp-conn-item">
+          <div class="sp-conn-title">Produit × Organisation</div>
+          <p class="sp-conn-desc" data-en>A good roadmap fails if the team structure doesn't support it. Governance and product strategy have to be designed together.</p>
+          <p class="sp-conn-desc" data-fr>Une bonne roadmap échoue si la structure d'équipe ne la soutient pas. Gouvernance et stratégie produit se conçoivent ensemble.</p>
+        </div>
+        <div class="sp-conn-item">
+          <div class="sp-conn-title">Organisation × Humain</div>
+          <p class="sp-conn-desc" data-en>A process nobody buys into is just paperwork. Change only sticks when people understand why and feel part of it.</p>
+          <p class="sp-conn-desc" data-fr>Un process que personne n'adopte, c'est de la paperasse. Le changement tient quand les gens comprennent pourquoi et s'en sentent partie prenante.</p>
+        </div>
+        <div class="sp-conn-item">
+          <div class="sp-conn-title">Tech × Design</div>
+          <p class="sp-conn-desc" data-en>Knowing what's buildable changes how you design. Knowing how to design changes what you build.</p>
+          <p class="sp-conn-desc" data-fr>Savoir ce qui est faisable change la façon de concevoir. Savoir concevoir change ce qu'on construit.</p>
         </div>
       </div>
-
-      <!-- 02 INNOVATION -->
-      <div class="pb-item" onclick="this.classList.toggle('active')">
-        <div class="pb-trigger">
-          <div>
-            <div class="pb-num">02</div>
-            <div class="pb-title" data-en>You have ideas. Good ones.<br>They never quite land.</div>
-            <div class="pb-title" data-fr>Vous avez des idées. De bonnes idées.<br>Elles n'aboutissent jamais vraiment.</div>
-            <div class="pb-subtitle" data-en>Innovation · Vision · Execution</div>
-            <div class="pb-subtitle" data-fr>Innovation · Vision · Exécution</div>
-          </div>
-          <div class="pb-hint" data-en>The run absorbs everything. Good ideas stay anecdotal. Here's the real blocker.</div><div class="pb-hint" data-fr>Le run absorbe tout. Les bonnes idées restent anecdotiques. Voilà le vrai blocage.</div>
-          <div class="pb-arrow"><span data-en>Open diagnosis →</span><span data-fr>Voir le diagnostic →</span></div>
-        </div>
-        <div class="pb-detail">
-          <div class="pb-col">
-            <div class="pb-col-label l-grey" data-en>What's happening</div>
-            <div class="pb-col-label l-grey" data-fr>Ce qui se passe</div>
-            <ul class="pb-col-text" data-en>
-              <li>The run absorbs everything, no space left for building something new</li>
-              <li>People with ideas but no resources, no mandate, no path forward</li>
-              <li>Innovation that starts, then gets deprioritised when things get busy</li>
-              <li>New initiatives that don't root, they stay anecdotal, then disappear</li>
-            </ul>
-            <ul class="pb-col-text" data-fr>
-              <li>Le run absorbe tout, plus d'espace pour construire quelque chose de nouveau</li>
-              <li>Des gens qui ont des idées mais pas les ressources, pas le mandat, pas de chemin</li>
-              <li>Une innovation qui démarre, puis déprioritisée quand ça s'emballe</li>
-              <li>Des initiatives qui ne s'enracinent pas, elles restent anecdotiques, puis disparaissent</li>
-            </ul>
-          </div>
-          <div class="pb-col">
-            <div class="pb-col-label l-orange" data-en>What you've tried</div>
-            <div class="pb-col-label l-orange" data-fr>Ce que vous avez essayé</div>
-            <ul class="pb-col-text" data-en>
-              <li>An "innovation lab" that never connected to the real business</li>
-              <li>A sprint, great energy for two weeks, then back to normal</li>
-              <li>Hiring someone to "lead transformation", they hit a wall of inertia</li>
-              <li>Waiting for the right moment, which never comes</li>
-            </ul>
-            <ul class="pb-col-text" data-fr>
-              <li>Un "lab d'innovation" qui n'a jamais connecté au vrai business</li>
-              <li>Un sprint, belle énergie deux semaines, puis retour à la normale</li>
-              <li>Recruter quelqu'un pour "piloter la transformation", il a heurté un mur d'inertie</li>
-              <li>Attendre le bon moment, qui n'arrive jamais</li>
-            </ul>
-          </div>
-          <div class="pb-col">
-            <div class="pb-col-label l-blue" data-en>The real shift</div>
-            <div class="pb-col-label l-blue" data-fr>Le vrai déclic</div>
-            <p class="pb-col-text" data-en>Innovation doesn't need a lab. It needs someone who can hold the vision and move through the organisation's resistance without breaking it. The work is to identify the real blockers, not the stated ones, and to create enough momentum that the new thing becomes more attractive than staying still.</p>
-            <p class="pb-col-text" data-fr>L'innovation n'a pas besoin d'un lab. Elle a besoin de quelqu'un qui peut tenir la vision et traverser la résistance de l'organisation sans la briser. Le travail, c'est d'identifier les vrais blocages, pas ceux qu'on déclare, et de créer suffisamment d'élan pour que la nouveauté devienne plus attractive que le statu quo.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- 03 OUTILS -->
-      <div class="pb-item" onclick="this.classList.toggle('active')">
-        <div class="pb-trigger">
-          <div>
-            <div class="pb-num">03</div>
-            <div class="pb-title" data-en>Your tools are slowing you down.<br>And AI could change everything, if only.</div>
-            <div class="pb-title" data-fr>Vos outils vous ralentissent.<br>Et l'IA pourrait tout changer, si seulement.</div>
-            <div class="pb-subtitle" data-en>Tools · Processes · AI adoption</div>
-            <div class="pb-subtitle" data-fr>Outils · Process · Adoption de l'IA</div>
-          </div>
-          <div class="pb-hint" data-en>You bought tools nobody uses. AI could save you hours every week. Here's the shortcut.</div><div class="pb-hint" data-fr>Vous avez acheté des outils que personne n'utilise. L'IA pourrait tout changer. Voilà le raccourci.</div>
-          <div class="pb-arrow"><span data-en>Open diagnosis →</span><span data-fr>Voir le diagnostic →</span></div>
-        </div>
-        <div class="pb-detail">
-          <div class="pb-col">
-            <div class="pb-col-label l-grey" data-en>What's happening</div>
-            <div class="pb-col-label l-grey" data-fr>Ce qui se passe</div>
-            <ul class="pb-col-text" data-en>
-              <li>Outdated tools, non-standard processes, everyone doing it their own way</li>
-              <li>Workarounds that became the norm, spreadsheets running the business</li>
-              <li>AI potential everyone can see, but nobody has the time or skills to act on it</li>
-              <li>Hours lost every week to tasks that could be automated in days</li>
-            </ul>
-            <ul class="pb-col-text" data-fr>
-              <li>Des outils vieillissants, des process non harmonisés, chacun fait à sa façon</li>
-              <li>Des contournements devenus la norme, des tableurs qui font tourner le business</li>
-              <li>Un potentiel IA que tout le monde voit, mais personne n'a le temps ni les compétences pour l'activer</li>
-              <li>Des heures perdues chaque semaine sur des tâches automatisables en quelques jours</li>
-            </ul>
-          </div>
-          <div class="pb-col">
-            <div class="pb-col-label l-orange" data-en>What you've tried</div>
-            <div class="pb-col-label l-orange" data-fr>Ce que vous avez essayé</div>
-            <ul class="pb-col-text" data-en>
-              <li>Buying a new tool, adoption was zero, the old way persisted</li>
-              <li>Asking someone internal to "look into AI", between two other tasks</li>
-              <li>A consultant who recommended an expensive platform, overkill for your size</li>
-              <li>Waiting for someone with the right profile to join, still waiting</li>
-            </ul>
-            <ul class="pb-col-text" data-fr>
-              <li>Acheter un nouvel outil, adoption nulle, l'ancienne façon a persisté</li>
-              <li>Demander à quelqu'un en interne de "regarder l'IA", entre deux autres tâches</li>
-              <li>Un consultant qui a recommandé une plateforme coûteuse, surdimensionné pour vous</li>
-              <li>Attendre le bon profil, toujours en attente</li>
-            </ul>
-          </div>
-          <div class="pb-col">
-            <div class="pb-col-label l-blue" data-en>The real shift</div>
-            <div class="pb-col-label l-blue" data-fr>Le vrai déclic</div>
-            <p class="pb-col-text" data-en>The problem is rarely the tool. It's the process the tool is supposed to support. Fix the process first, then choose the right tool, not the other way around. With AI, the right intervention can now build a custom, lightweight solution in days that fits exactly how your team works. No over-engineering. No change management nightmare.</p>
-            <p class="pb-col-text" data-fr>Le problème, c'est rarement l'outil. C'est le process que l'outil est censé soutenir. Corriger le process d'abord, choisir le bon outil ensuite, pas l'inverse. Avec l'IA, la bonne intervention peut aujourd'hui construire une solution légère et sur mesure en quelques jours, qui colle exactement à la façon dont votre équipe travaille. Sans usine à gaz. Sans cauchemar de conduite du changement.</p>
-          </div>
-        </div>
-      </div>
-
     </div>
-  </div>
-</section>
 
-
-<section id="whatido" class="sec-blue">
-  <div class="container">
-    <div class="rv">
-      <div class="section-label" data-en>How I work</div>
-      <div class="section-label" data-fr>Comment je travaille</div>
-      <h2 class="section-title" data-en>Clarity fast.<br>Shipped. Your team stands on its own.</h2>
-      <h2 class="section-title" data-fr>De la clarté vite.<br>Un produit livré. Votre équipe autonome.</h2>
-    </div>
-    <div class="wid-grid">
-      <div class="wid-card c-enter rv-l d1"><div class="c-num-bg">01</div><div class="c-phase e" data-en>Week 1</div><div class="c-phase e" data-fr>Semaine 1</div><h3 class="c-title" data-en>You finally know what the real problem is</h3><h3 class="c-title" data-fr>Vous savez enfin quel est le vrai problème</h3><p class="c-body" data-en>Not the one everyone's been talking about. The one underneath. Fast audit, team interviews, no assumptions. You get a clear diagnosis and a direction you can act on.</p><p class="c-body" data-fr>Pas celui dont tout le monde parle. Celui qui est en dessous. Audit rapide, écoute de l'équipe, sans a priori. Vous repartez avec un diagnostic clair et une direction sur laquelle agir.</p></div>
-      <div class="wid-card c-build rv d2"><div class="c-num-bg">02</div><div class="c-phase b" data-en>During the mission</div><div class="c-phase b" data-fr>Pendant la mission</div><h3 class="c-title" data-en>Things move. Without waiting for alignment.</h3><h3 class="c-title" data-fr>Ça avance. Sans attendre l'alignement général.</h3><p class="c-body" data-en>Design, prototype, build, iterate. Decisions are made. You see progress every week, not decks, not promises. Working product.</p><p class="c-body" data-fr>Design, prototype, code, itération. Les décisions sont prises. Vous voyez des avancées chaque semaine, pas des slides, pas des promesses. Un produit qui fonctionne.</p></div>
-      <div class="wid-card c-transmit rv-r d3"><div class="c-num-bg">03</div><div class="c-phase t" data-en>End of mission</div><div class="c-phase t" data-fr>Fin de mission</div><h3 class="c-title" data-en>Your team runs it. You don't need me anymore.</h3><h3 class="c-title" data-fr>Votre équipe tient la route. Sans dépendance.</h3><p class="c-body" data-en>Processes, culture, skills are in place. The team knows what to do and why. That's when I know the mission is done.</p><p class="c-body" data-fr>Process, culture, compétences sont en place. L'équipe sait quoi faire et pourquoi. C'est à ce moment que je sais que la mission est accomplie.</p></div>
-    </div>
   </div>
 </section>
 
@@ -1479,22 +804,6 @@ body:not(.en) span[data-fr]{display:inline;}
               <div class="tl-period" data-fr>Indépendant, en cours</div>
               <p class="tl-story" data-en>Product and design missions for clients (Genève-loisirs, Millet, Résiliences…). Brand identities, digital products, organisational transformation. IN CARNE, <strong>La Forge</strong>, a gamified React app for a 120-day men's program. Coaching and project creation support.</p>
               <p class="tl-story" data-fr>Missions produit et design pour clients (Genève-loisirs, Millet, Résiliences…). Identités visuelles, produits digitaux, transformation organisationnelle. IN CARNE, <strong>La Forge</strong>, app React gamifiée pour un programme de 120 jours pour hommes. Coaching et accompagnement à la création de projets.</p>
-            </div>
-          </div>
-        </div>
-        <div class="tl-item rv d2" id="tl-vortex">
-          <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
-          <div class="tl-content">
-            <div class="tl-year" data-en>2026 — present</div>
-            <div class="tl-year" data-fr>2026 — présent</div>
-            <div class="tl-card">
-              <div class="tl-company">Vortex Activation <span style="font-size:11px;opacity:.5;font-weight:400;">avec Mehdi Baer</span></div>
-              <div class="tl-role" data-en>Co-creator · Product · Mobile</div>
-              <div class="tl-role" data-fr>Co-créateur · Produit · Mobile</div>
-              <div class="tl-period" data-en>Ongoing</div>
-              <div class="tl-period" data-fr>En cours</div>
-              <p class="tl-story" data-en>Co-created a mobile activation app for successful entrepreneurs. Designed the full product experience, from concept to architecture. Built for a high-demand audience that expects both depth and simplicity.</p>
-              <p class="tl-story" data-fr>Co-création d'une application mobile d'activation pour entrepreneurs à succès. Conception de l'expérience produit complète, du concept à l'architecture. Conçu pour une audience exigeante qui attend à la fois profondeur et simplicité.</p>
             </div>
           </div>
         </div>
@@ -1584,92 +893,7 @@ body:not(.en) span[data-fr]{display:inline;}
           <div class="proj-tags"><span class="tag" data-en>Solo Build</span><span class="tag" data-fr>Build solo</span><span class="tag">Holacracy</span><span class="tag" data-en>Change Management</span><span class="tag" data-fr>Conduite du changement</span></div>
           <a href="case-geneve-loisirs.html" class="proj-cta" data-en>Read full case →</a>
           <a href="case-geneve-loisirs.html?lang=fr" class="proj-cta" data-fr>Lire le cas complet →</a>
-        </
-
-<section id="spectrum" class="sec-dark" style="padding:clamp(60px,10vw,120px) 0;">
-  <div class="container">
-
-    <div class="rv" style="max-width:680px;margin-bottom:clamp(40px,6vw,64px);">
-      <div class="section-label" data-en>A rare profile</div>
-      <div class="section-label" data-fr>Un profil rare</div>
-      <h2 class="section-title" data-en>You might think: he does everything,<br>so he does nothing well.</h2>
-      <h2 class="section-title" data-fr>Vous pensez peut-être : il fait tout,<br>donc il ne fait rien bien.</h2>
-    </div>
-
-    <div class="sp-objection rv" style="margin-bottom:clamp(48px,7vw,80px);">
-      <p class="sp-obj-text" data-en>You're right that a specialist goes deeper on one thing. What's rare isn't mastering seven disciplines. It's understanding how they affect each other — and knowing where to act when the real problem lives at the intersection. For delivery, I work with specialists. What I bring is the global view that's missing when everyone looks at their own corner.</p>
-      <p class="sp-obj-text" data-fr>Un spécialiste va plus loin sur une chose, c'est vrai. Ce qui est rare, ce n'est pas de maîtriser sept disciplines. C'est de comprendre comment elles s'affectent mutuellement — et de savoir où agir quand le vrai problème vit à l'intersection. Pour délivrer, je travaille avec des spécialistes. Ce que j'apporte, c'est la vision globale qui manque quand chacun regarde son coin.</p>
-    </div>
-
-    <div class="sp-three rv" style="margin-bottom:clamp(48px,7vw,80px);">
-      <div class="sp-nature rv">
-        <div class="sp-nature-label" data-en>The builder</div>
-        <div class="sp-nature-label" data-fr>Le bâtisseur</div>
-        <div class="sp-nature-tags">
-          <span class="sp-tag" data-en>Product</span><span class="sp-tag" data-fr>Produit</span>
-          <span class="sp-tag">Design</span>
-          <span class="sp-tag">Tech & IA</span>
         </div>
-        <p class="sp-nature-desc" data-en>I turn ideas into working things. A good roadmap, a usable interface, a custom tool built in days. Knowing what's buildable changes how you design. Knowing how to design changes what you build.</p>
-        <p class="sp-nature-desc" data-fr>Je transforme les idées en choses qui fonctionnent. Une bonne roadmap, une interface utilisable, un outil sur mesure construit en quelques jours. Savoir ce qui est faisable change la façon de concevoir. Savoir concevoir change ce qu'on construit.</p>
-      </div>
-      <div class="sp-nature rv d1">
-        <div class="sp-nature-label" data-en>The architect</div>
-        <div class="sp-nature-label" data-fr>L'architecte</div>
-        <div class="sp-nature-tags">
-          <span class="sp-tag" data-en>Governance</span><span class="sp-tag" data-fr>Gouvernance</span>
-          <span class="sp-tag" data-en>Process</span><span class="sp-tag" data-fr>Process</span>
-          <span class="sp-tag" data-en>Culture</span><span class="sp-tag" data-fr>Culture</span>
-        </div>
-        <p class="sp-nature-desc" data-en>I design structures that people actually own. A good process nobody adopts is just paperwork. A PM without organisational sense builds roadmaps that hit a wall of inertia. Governance and product strategy have to be designed together.</p>
-        <p class="sp-nature-desc" data-fr>Je conçois des structures que les gens s'approprient vraiment. Un bon process que personne n'adopte, c'est de la paperasse. Un PM sans sens organisationnel construit des roadmaps qui heurtent un mur d'inertie. Gouvernance et stratégie produit se conçoivent ensemble.</p>
-      </div>
-      <div class="sp-nature rv d2">
-        <div class="sp-nature-label" data-en>The enabler</div>
-        <div class="sp-nature-label" data-fr>L'accompagnant</div>
-        <div class="sp-nature-tags">
-          <span class="sp-tag" data-en>Facilitation</span><span class="sp-tag" data-fr>Facilitation</span>
-          <span class="sp-tag" data-en>Coaching</span><span class="sp-tag" data-fr>Coaching</span>
-          <span class="sp-tag" data-en>Change</span><span class="sp-tag" data-fr>Changement</span>
-        </div>
-        <p class="sp-nature-desc" data-en>I make things emerge rather than imposing them. The technical change is rarely the hard part. It's the human transition that determines whether it lasts. When people understand the system they're in and feel genuinely heard, something unlocks.</p>
-        <p class="sp-nature-desc" data-fr>Je fais émerger plutôt qu'imposer. Le changement technique est rarement la partie difficile. C'est la transition humaine qui détermine si ça dure. Quand les gens comprennent le système dans lequel ils évoluent et se sentent vraiment entendus, quelque chose se débloque.</p>
-      </div>
-    </div>
-
-    <div class="sp-connections rv">
-      <div class="sp-conn-label" data-en>Where the intersections change everything</div>
-      <div class="sp-conn-label" data-fr>Là où les intersections changent tout</div>
-      <div class="sp-conn-grid">
-        <div class="sp-conn-item">
-          <div class="sp-conn-title" data-en>Design × Product</div>
-          <div class="sp-conn-title" data-fr>Design × Produit</div>
-          <p class="sp-conn-desc" data-en>A PM without design sense makes blind trade-offs. A designer without product vision builds beautiful things nobody needs.</p>
-          <p class="sp-conn-desc" data-fr>Un PM sans sens du design fait des arbitrages à l'aveugle. Un designer sans vision produit construit de belles choses dont personne n'a besoin.</p>
-        </div>
-        <div class="sp-conn-item">
-          <div class="sp-conn-title" data-en>Product × Organisation</div>
-          <div class="sp-conn-title" data-fr>Produit × Organisation</div>
-          <p class="sp-conn-desc" data-en>A good roadmap fails if the team structure doesn't support it. Governance and product strategy have to be designed together.</p>
-          <p class="sp-conn-desc" data-fr>Une bonne roadmap échoue si la structure d'équipe ne la soutient pas. Gouvernance et stratégie produit se conçoivent ensemble.</p>
-        </div>
-        <div class="sp-conn-item">
-          <div class="sp-conn-title" data-en>Organisation × Human</div>
-          <div class="sp-conn-title" data-fr>Organisation × Humain</div>
-          <p class="sp-conn-desc" data-en>A process nobody buys into is just paperwork. Change only sticks when people inside understand why and feel part of it.</p>
-          <p class="sp-conn-desc" data-fr>Un process que personne n'adopte, c'est de la paperasse. Le changement tient uniquement quand les gens comprennent pourquoi et s'en sentent partie prenante.</p>
-        </div>
-        <div class="sp-conn-item">
-          <div class="sp-conn-title" data-en>Tech × Design</div>
-          <div class="sp-conn-title" data-fr>Tech × Design</div>
-          <p class="sp-conn-desc" data-en>Knowing what's buildable changes how you design. Knowing how to design changes what you build. The best solutions live at that intersection.</p>
-          <p class="sp-conn-desc" data-fr>Savoir ce qui est faisable change la façon de concevoir. Savoir concevoir change ce qu'on construit. Les meilleures solutions vivent à cette intersection.</p>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
         <div class="proj-visual">
           <div class="proj-visual-inner">
             <div class="proj-big">140</div>
@@ -1683,6 +907,76 @@ body:not(.en) span[data-fr]{display:inline;}
   </div>
 </section>
 
+<section id="skills" class="sec-dark" style="padding:clamp(60px,10vw,140px) 0;">
+  <div class="container">
+    <div class="rv" style="max-width:680px;margin-bottom:clamp(40px,7vw,80px);">
+      <div class="section-label" data-en>Why it matters</div>
+      <div class="section-label" data-fr>Pourquoi ça change tout</div>
+      <h2 class="section-title" data-en>Most specialists see one piece.<br>I see how they connect.</h2>
+      <h2 class="section-title" data-fr>La plupart des spécialistes voient une pièce.<br>Je vois comment elles s'articulent.</h2>
+    </div>
+
+    <div class="cross-grid rv">
+      <div class="cross-conn">
+        <div class="cross-node cross-center rv">
+          <div class="cross-center-label" data-en>The systemic<br>view</div>
+          <div class="cross-center-label" data-fr>La vision<br>systémique</div>
+        </div>
+        <div class="cross-links">
+          <div class="cross-link rv-l d1">
+            <div class="cross-link-tag" data-en>Design × Product</div>
+            <div class="cross-link-tag" data-fr>Design × Produit</div>
+            <p class="cross-link-desc" data-en>A PM without design sense makes blind trade-offs. A designer without product vision builds beautiful things nobody needs.</p>
+            <p class="cross-link-desc" data-fr>Un PM sans sens du design fait des arbitrages à l'aveugle. Un designer sans vision produit construit de belles choses dont personne n'a besoin.</p>
+          </div>
+          <div class="cross-link rv d2">
+            <div class="cross-link-tag" data-en>Product × Organisation</div>
+            <div class="cross-link-tag" data-fr>Produit × Organisation</div>
+            <p class="cross-link-desc" data-en>A good roadmap fails if the team structure doesn't support it. Governance and product strategy have to be designed together.</p>
+            <p class="cross-link-desc" data-fr>Une bonne roadmap échoue si la structure d'équipe ne la soutient pas. Gouvernance et stratégie produit doivent être pensées ensemble.</p>
+          </div>
+          <div class="cross-link rv-r d3">
+            <div class="cross-link-tag" data-en>Organisation × Human</div>
+            <div class="cross-link-tag" data-fr>Organisation × Humain</div>
+            <p class="cross-link-desc" data-en>A process nobody buys into is just paperwork. Change only sticks when the people inside understand why and feel part of it.</p>
+            <p class="cross-link-desc" data-fr>Un process que personne n'adopte, c'est juste de la paperasse. Le changement tient uniquement quand les personnes comprennent pourquoi et s'en sentent partie prenante.</p>
+          </div>
+          <div class="cross-link rv-l d2">
+            <div class="cross-link-tag" data-en>Tech × Design</div>
+            <div class="cross-link-tag" data-fr>Tech × Design</div>
+            <p class="cross-link-desc" data-en>Knowing what's buildable changes how you design. Knowing how to design changes what you build. The best solutions live at that intersection.</p>
+            <p class="cross-link-desc" data-fr>Savoir ce qui est faisable change la façon dont on conçoit. Savoir concevoir change ce qu'on construit. Les meilleures solutions vivent à cette intersection.</p>
+          </div>
+        </div>
+      </div>
+      <div class="cross-proof rv-r">
+        <div class="cross-proof-label" data-en>In practice</div>
+        <div class="cross-proof-label" data-fr>En pratique</div>
+        <p class="cross-proof-text" data-en>When I enter a team, I don't arrive with a ready-made answer. I look at the whole system, tools, processes, people, culture, and I identify where the actual leverage point is. Sometimes it's a tool. Sometimes it's a governance issue. Often it's both, plus something nobody had named yet.</p>
+        <p class="cross-proof-text" data-fr>Quand j'entre dans une équipe, je n'arrive pas avec une réponse toute faite. Je regarde le système entier, outils, process, personnes, culture, et j'identifie où est le vrai levier. Parfois c'est un outil. Parfois c'est une question de gouvernance. Souvent c'est les deux, plus quelque chose que personne n'avait encore nommé.</p>
+        <p class="cross-proof-text" data-en>That's what 15 years across design, product, tech, coaching and org transformation gives you: the ability to act at the right level, not just the most obvious one.</p>
+        <p class="cross-proof-text" data-fr>C'est ce que 15 ans entre design, produit, tech, coaching et transformation organisationnelle donnent : la capacité d'agir au bon niveau, pas seulement au plus évident.</p>
+        <div class="cross-proof-certs">
+          <div class="cross-cert">PSPO I <span>· Professional Scrum Product Owner™ I</span></div>
+          <div class="cross-cert" data-en>Formation Instant Z <span>· Shared governance: piloting an agile organisation</span></div>
+          <div class="cross-cert" data-fr>Formation Instant Z <span>· Gouvernance partagée : piloter une organisation agile</span></div>
+          <div class="cross-cert">CYTech / EISTI · 2012 <span data-en>· Engineer, Computer Science & Management Systems</span><span data-fr>· Ingénieur, Informatique & Management des SI</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rv" style="margin-top:clamp(48px,8vw,96px);padding-top:40px;border-top:1px solid rgba(240,234,216,.07);max-width:720px;">
+      <div class="section-label" data-en>They worked with me</div>
+      <div class="section-label" data-fr>Ils ont travaillé avec moi</div>
+      <div style="margin-top:20px;padding:28px 32px;border-left:3px solid var(--blue-l);background:rgba(74,122,255,.04);">
+        <p style="font-size:14px;font-weight:300;color:var(--cream2);line-height:1.8;font-style:italic;" data-en>"He was able to implement the Scrum methodology with regular questioning. The result met expectations despite stakeholder skepticism. He protected the development team from pressure from various parties, and worked hard to train Product Owners and Scrum Masters to strengthen the team."</p>
+        <p style="font-size:14px;font-weight:300;color:var(--cream2);line-height:1.8;font-style:italic;" data-fr>"Il a su mettre en place la méthodologie Scrum avec de régulières remises en question. Le résultat est à la hauteur des attentes malgré le scepticisme des parties prenantes. Il a su préserver l'équipe de développement de la pression et s'est efforcé de former des Product Owners et Scrum Masters pour renforcer l'équipe."</p>
+        <div style="margin-top:14px;font-family:'DM Mono',monospace;font-size:11px;color:var(--blue-l);letter-spacing:.06em;">Stéphane Ravet <span style="color:var(--cream2);opacity:.5;">· Architecte Web · IA · Proximedia</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
 
 <section id="human" class="sec-dark" style="padding:clamp(60px,10vw,140px) 0;">
   <div class="container">
@@ -1724,7 +1018,7 @@ body:not(.en) span[data-fr]{display:inline;}
       </div>
     </div>
   </div>
-</section></section>
+</section>
 
 <section id="contact" class="sec-dark">
   <div class="photo-bg" style="background-image:url('photo-contact.jpg');"></div>
