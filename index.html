@@ -165,13 +165,16 @@ section{position:relative;z-index:1;}
 .cap svg{flex-shrink:0;opacity:.7;}
 .cap:hover{border-color:rgba(74,122,255,.45);color:var(--cream);background:rgba(74,122,255,.08);}
 .cap.active{color:#fff;}
-.cap[data-idx="0"].active{background:#1a4fd6;border-color:#4a7aff;box-shadow:0 4px 16px rgba(74,122,255,.35);}
-.cap[data-idx="1"].active{background:#3d1fc7;border-color:#6b4fff;box-shadow:0 4px 16px rgba(107,79,255,.35);}
-.cap[data-idx="2"].active{background:#7a1ab8;border-color:#b44aff;box-shadow:0 4px 16px rgba(180,74,255,.35);}
-.cap[data-idx="3"].active{background:#b51a1a;border-color:#ff4a4a;box-shadow:0 4px 16px rgba(232,60,60,.35);}
-.cap[data-idx="4"].active{background:#8a1a3d;border-color:#e8426a;box-shadow:0 4px 16px rgba(220,66,106,.35);}
-.cap[data-idx="5"].active{background:#b5820a;border-color:#f5c842;box-shadow:0 4px 16px rgba(245,200,66,.3);}
-.cap[data-idx="6"].active{background:#1a4a8a;border-color:#4a90e2;box-shadow:0 4px 16px rgba(74,144,226,.35);}
+/* 0-3 = bleu (Bâtisseur) */
+.cap[data-idx="0"].active{background:#1a4fd6;border-color:#4a7aff;box-shadow:0 4px 16px rgba(74,122,255,.4);}
+.cap[data-idx="1"].active{background:#1a4fd6;border-color:#4a7aff;box-shadow:0 4px 16px rgba(74,122,255,.4);}
+.cap[data-idx="2"].active{background:#1a4fd6;border-color:#4a7aff;box-shadow:0 4px 16px rgba(74,122,255,.4);}
+.cap[data-idx="3"].active{background:#1a4fd6;border-color:#4a7aff;box-shadow:0 4px 16px rgba(74,122,255,.4);}
+/* 4 = rouge (Architecte) */
+.cap[data-idx="4"].active{background:#9a1a1a;border-color:#d42828;box-shadow:0 4px 16px rgba(212,40,40,.4);}
+/* 5-6 = or (Accompagnant) */
+.cap[data-idx="5"].active{background:#7a5a08;border-color:#c89b0a;box-shadow:0 4px 16px rgba(200,155,10,.4);}
+.cap[data-idx="6"].active{background:#7a5a08;border-color:#c89b0a;box-shadow:0 4px 16px rgba(200,155,10,.4);}
 .cap-panel{padding:28px 32px;background:rgba(255,255,255,.02);border-radius:0 0 6px 6px;min-height:110px;}
 .cap-content{display:none;font-size:15px;color:rgba(240,234,216,.82);font-weight:300;line-height:1.85;}
 .cap-content.active{display:block;}
@@ -878,35 +881,36 @@ body:not(.en) span[data-fr]{display:inline;}
     <!-- GRAPHE CIRCULAIRE 3 NATURES -->
     <div class="synergy-wrap rv" style="margin-bottom:clamp(40px,6vw,64px);">
       <div class="synergy-svg-col">
-        <svg id="synergy-svg" viewBox="0 0 480 520" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px;display:block;margin:0 auto;">
-          <!-- Arc de fond -->
-          <circle cx="240" cy="270" r="165" fill="none" stroke="rgba(240,234,216,.05)" stroke-width="1"/>
-          <!-- Arcs de connexion -->
-          <path d="M 215 90 A 165 165 0 0 0 94 338" fill="none" stroke="rgba(74,122,255,.2)" stroke-width="1.5" stroke-dasharray="5 4"/>
-          <path d="M 266 90 A 165 165 0 0 1 386 338" fill="none" stroke="rgba(210,40,40,.2)" stroke-width="1.5" stroke-dasharray="5 4"/>
-          <path d="M 116 368 A 165 165 0 0 0 364 368" fill="none" stroke="rgba(200,155,10,.2)" stroke-width="1.5" stroke-dasharray="5 4"/>
-          <!-- Cercle central -->
-          <circle cx="240" cy="260" r="60" fill="rgba(74,122,255,.08)" stroke="#4a7aff" stroke-width="1.5"/>
-          <text x="240" y="254" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="#4a7aff" letter-spacing="2">VISION</text>
-          <text x="240" y="270" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="#4a7aff" letter-spacing="1.5">SYSTÉMIQUE</text>
-          <!-- BÂTISSEUR — haut — BLEU, label au-dessus -->
+        <svg id="synergy-svg" viewBox="0 0 400 360" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:360px;display:block;margin:0 auto;">
+
+          <!-- BÂTISSEUR — haut centre — BLEU #1a4fd6 -->
           <g class="synergy-node" id="node-builder" onclick="highlightNode('builder')" style="cursor:pointer">
-            <circle cx="240" cy="115" r="50" fill="rgba(74,122,255,.1)" stroke="#4a7aff" stroke-width="2" class="node-circle"/>
-            <text x="240" y="52" text-anchor="middle" font-family="Syne,sans-serif" font-size="14" font-weight="800" fill="#4a7aff">Le Bâtisseur</text>
-            <text x="240" y="70" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="rgba(74,122,255,.6)">Produit · Design · Tech</text>
+            <circle cx="200" cy="80" r="55" fill="rgba(26,79,214,.15)" stroke="#4a7aff" stroke-width="2.5" class="node-circle" style="transition:all .3s;"/>
+            <text x="200" y="18" text-anchor="middle" font-family="Syne,sans-serif" font-size="15" font-weight="800" fill="#4a7aff" data-fr>Le Bâtisseur</text>
+            <text x="200" y="18" text-anchor="middle" font-family="Syne,sans-serif" font-size="15" font-weight="800" fill="#4a7aff" data-en>The Builder</text>
+            <text x="200" y="35" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="rgba(74,122,255,.6)">Produit · Design · Tech</text>
           </g>
-          <!-- ARCHITECTE — bas droite — ROUGE, label à droite -->
+
+          <!-- ARCHITECTE — bas droite — ROUGE #b51a1a -->
           <g class="synergy-node" id="node-architect" onclick="highlightNode('architect')" style="cursor:pointer">
-            <circle cx="386" cy="378" r="50" fill="rgba(210,40,40,.1)" stroke="#d42828" stroke-width="2" class="node-circle"/>
-            <text x="430" y="450" text-anchor="middle" font-family="Syne,sans-serif" font-size="14" font-weight="800" fill="#d42828">L'Architecte</text>
-            <text x="430" y="467" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="rgba(212,40,40,.6)">Gouv. · Process · Culture</text>
+            <circle cx="320" cy="280" r="55" fill="rgba(181,26,26,.15)" stroke="#d42828" stroke-width="2.5" class="node-circle" style="transition:all .3s;"/>
+            <text x="340" y="352" text-anchor="middle" font-family="Syne,sans-serif" font-size="15" font-weight="800" fill="#d42828" data-fr>L'Architecte</text>
+            <text x="340" y="352" text-anchor="middle" font-family="Syne,sans-serif" font-size="15" font-weight="800" fill="#d42828" data-en>The Architect</text>
+            <text x="340" y="338" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="rgba(212,40,40,.6)">Gouv. · Process · Culture</text>
           </g>
-          <!-- ACCOMPAGNANT — bas gauche — OR, label à gauche -->
+
+          <!-- ACCOMPAGNANT — bas gauche — OR #b5820a -->
           <g class="synergy-node" id="node-enabler" onclick="highlightNode('enabler')" style="cursor:pointer">
-            <circle cx="94" cy="378" r="50" fill="rgba(200,155,10,.1)" stroke="#c89b0a" stroke-width="2" class="node-circle"/>
-            <text x="50" y="450" text-anchor="middle" font-family="Syne,sans-serif" font-size="13" font-weight="800" fill="#c89b0a">L'Accompagnant</text>
-            <text x="50" y="467" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="rgba(200,155,10,.6)">Facilitation · Coaching</text>
+            <circle cx="80" cy="280" r="55" fill="rgba(181,130,10,.15)" stroke="#c89b0a" stroke-width="2.5" class="node-circle" style="transition:all .3s;"/>
+            <text x="60" y="352" text-anchor="middle" font-family="Syne,sans-serif" font-size="14" font-weight="800" fill="#c89b0a" data-fr>L'Accompagnant</text>
+            <text x="60" y="352" text-anchor="middle" font-family="Syne,sans-serif" font-size="14" font-weight="800" fill="#c89b0a" data-en>The Enabler</text>
+            <text x="60" y="338" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="rgba(200,155,10,.6)">Facilitation · Coaching</text>
           </g>
+
+          <!-- Arcs de liaison discrets -->
+          <path d="M 175 128 Q 140 200 107 258" fill="none" stroke="rgba(74,122,255,.2)" stroke-width="1" stroke-dasharray="4 3"/>
+          <path d="M 225 128 Q 260 200 293 258" fill="none" stroke="rgba(212,40,40,.2)" stroke-width="1" stroke-dasharray="4 3"/>
+          <path d="M 133 285 L 267 285" fill="none" stroke="rgba(200,155,10,.2)" stroke-width="1" stroke-dasharray="4 3"/>
         </svg>
       </div>
       <div class="synergy-desc-col">
@@ -1154,24 +1158,29 @@ document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.le
 
 
 // CAPSULES COMPÉTENCES
-const capColors = ['#4a7aff','#6b4fff','#b44aff','#d42828','#e8426a','#f5c842','#4a90e2'];
+const capColors = ['#4a7aff','#4a7aff','#4a7aff','#4a7aff','#d42828','#c89b0a','#c89b0a'];
+const capNature = ['builder','builder','builder','builder','architect','enabler','enabler'];
 function showCap(idx) {
   document.querySelectorAll('.cap').forEach(c => c.classList.toggle('active', parseInt(c.dataset.idx) === idx));
   document.querySelectorAll('.cap-content').forEach(c => c.classList.toggle('active', parseInt(c.dataset.idx) === idx));
   const col = capColors[idx] || '#4a7aff';
   const wrap = document.querySelector('.caps-wrap');
-  if(wrap) wrap.style.borderColor = col + '88';
-  if(wrap) wrap.style.boxShadow = '0 0 32px ' + col + '22';
+  if(wrap) { wrap.style.borderColor = col + '99'; wrap.style.boxShadow = '0 0 32px ' + col + '22'; }
+  // Surligner la nature correspondante
+  const nature = capNature[idx];
+  highlightNode(nature, false);
 }
 
 // SYNERGY NODES
-function highlightNode(id) {
-  document.querySelectorAll('.synergy-node-detail').forEach(d => d.classList.remove('active'));
-  const det = document.getElementById('detail-'+id);
-  if(det) det.classList.add('active');
+function highlightNode(id, updateDetail=true) {
+  if(updateDetail) {
+    document.querySelectorAll('.synergy-node-detail').forEach(d => d.classList.remove('active'));
+    const det = document.getElementById('detail-'+id);
+    if(det) det.classList.add('active');
+  }
   document.querySelectorAll('.synergy-node').forEach(n => {
     const c = n.querySelector('.node-circle');
-    if(c) c.style.opacity = n.id === 'node-'+id ? '1' : '0.4';
+    if(c) c.style.opacity = n.id === 'node-'+id ? '1' : '0.35';
   });
 }
 
