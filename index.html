@@ -882,35 +882,33 @@ body:not(.en) span[data-fr]{display:inline;}
     <!-- GRAPHE CIRCULAIRE 3 NATURES -->
     <div class="synergy-wrap rv" style="margin-bottom:clamp(40px,6vw,64px);">
       <div class="synergy-svg-col">
-        <svg id="synergy-svg" viewBox="0 0 320 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:320px;display:block;margin:0 auto;">
+        <svg id="synergy-svg" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:280px;display:block;margin:0 auto;">
 
-          <!-- Arcs de liaison colorés entre cercles -->
-          <path d="M 160 52 Q 100 160 68 232" fill="none" stroke="rgba(74,122,255,.25)" stroke-width="1.5" stroke-dasharray="4 3"/>
-          <path d="M 160 52 Q 220 160 252 232" fill="none" stroke="rgba(212,40,40,.25)" stroke-width="1.5" stroke-dasharray="4 3"/>
-          <path d="M 90 248 L 230 248" fill="none" stroke="rgba(200,155,10,.25)" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <!-- Grand cercle qui relie les 3 natures -->
+          <circle cx="150" cy="150" r="110" fill="none" stroke="rgba(240,234,216,.1)" stroke-width="1.5"/>
 
-          <!-- BÂTISSEUR haut — BLEU -->
+          <!-- BÂTISSEUR — point haut — BLEU -->
           <g class="synergy-node" id="node-builder" onclick="highlightNode('builder')" style="cursor:pointer">
-            <circle cx="160" cy="68" r="40" fill="rgba(26,79,214,.12)" stroke="#4a7aff" stroke-width="2" class="node-circle" style="transition:all .3s;"/>
-            <text x="160" y="15" text-anchor="middle" font-family="Syne,sans-serif" font-size="13" font-weight="800" fill="#4a7aff" data-fr>Le Bâtisseur</text>
-            <text x="160" y="15" text-anchor="middle" font-family="Syne,sans-serif" font-size="13" font-weight="800" fill="#4a7aff" data-en>The Builder</text>
-            <text x="160" y="29" text-anchor="middle" font-family="DM Mono,monospace" font-size="8" fill="rgba(74,122,255,.55)">Produit · Design · Tech</text>
+            <circle cx="150" cy="40" r="10" fill="#4a7aff" stroke="none" class="node-circle" style="transition:all .3s;"/>
+            <text x="150" y="22" text-anchor="middle" font-family="Syne,sans-serif" font-size="13" font-weight="800" fill="#4a7aff" data-fr>Le Bâtisseur</text>
+            <text x="150" y="22" text-anchor="middle" font-family="Syne,sans-serif" font-size="13" font-weight="800" fill="#4a7aff" data-en>The Builder</text>
+            <text x="150" y="8" text-anchor="middle" font-family="DM Mono,monospace" font-size="8" fill="rgba(74,122,255,.6)">Produit · Design · Tech</text>
           </g>
 
-          <!-- ACCOMPAGNANT bas gauche — OR -->
+          <!-- ACCOMPAGNANT — point bas gauche — OR -->
           <g class="synergy-node" id="node-enabler" onclick="highlightNode('enabler')" style="cursor:pointer">
-            <circle cx="68" cy="248" r="40" fill="rgba(181,130,10,.12)" stroke="#c89b0a" stroke-width="2" class="node-circle" style="transition:all .3s;"/>
-            <text x="40" y="300" text-anchor="middle" font-family="Syne,sans-serif" font-size="12" font-weight="800" fill="#c89b0a" data-fr>L'Accompagnant</text>
-            <text x="40" y="300" text-anchor="middle" font-family="Syne,sans-serif" font-size="12" font-weight="800" fill="#c89b0a" data-en>The Enabler</text>
-            <text x="40" y="288" text-anchor="middle" font-family="DM Mono,monospace" font-size="7.5" fill="rgba(200,155,10,.5)">Facilit. · Coaching</text>
+            <circle cx="54" cy="205" r="10" fill="#c89b0a" stroke="none" class="node-circle" style="transition:all .3s;"/>
+            <text x="30" y="270" text-anchor="middle" font-family="Syne,sans-serif" font-size="12" font-weight="800" fill="#c89b0a" data-fr>L'Accompagnant</text>
+            <text x="30" y="270" text-anchor="middle" font-family="Syne,sans-serif" font-size="12" font-weight="800" fill="#c89b0a" data-en>The Enabler</text>
+            <text x="30" y="256" text-anchor="middle" font-family="DM Mono,monospace" font-size="7.5" fill="rgba(200,155,10,.55)">Facilit. · Coaching</text>
           </g>
 
-          <!-- ARCHITECTE bas droite — ROUGE -->
+          <!-- ARCHITECTE — point bas droite — ROUGE -->
           <g class="synergy-node" id="node-architect" onclick="highlightNode('architect')" style="cursor:pointer">
-            <circle cx="252" cy="248" r="40" fill="rgba(181,26,26,.12)" stroke="#d42828" stroke-width="2" class="node-circle" style="transition:all .3s;"/>
-            <text x="280" y="300" text-anchor="middle" font-family="Syne,sans-serif" font-size="12" font-weight="800" fill="#d42828" data-fr>L'Architecte</text>
-            <text x="280" y="300" text-anchor="middle" font-family="Syne,sans-serif" font-size="12" font-weight="800" fill="#d42828" data-en>The Architect</text>
-            <text x="280" y="288" text-anchor="middle" font-family="DM Mono,monospace" font-size="7.5" fill="rgba(212,40,40,.5)">Gouv. · Process · Cult.</text>
+            <circle cx="246" cy="205" r="10" fill="#d42828" stroke="none" class="node-circle" style="transition:all .3s;"/>
+            <text x="270" y="270" text-anchor="middle" font-family="Syne,sans-serif" font-size="12" font-weight="800" fill="#d42828" data-fr>L'Architecte</text>
+            <text x="270" y="270" text-anchor="middle" font-family="Syne,sans-serif" font-size="12" font-weight="800" fill="#d42828" data-en>The Architect</text>
+            <text x="270" y="256" text-anchor="middle" font-family="DM Mono,monospace" font-size="7.5" fill="rgba(212,40,40,.55)">Gouv. · Process · Cult.</text>
           </g>
         </svg>
       </div>
