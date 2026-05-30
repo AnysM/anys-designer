@@ -187,8 +187,8 @@ section{position:relative;z-index:1;}
 .synergy-svg-col svg{width:100%;max-width:340px;display:block;overflow:visible;}
 .synergy-node .node-circle{transition:all .3s;}
 .synergy-node:hover .node-circle{filter:brightness(1.4);r:52;}
-.synergy-node-detail{display:none;text-align:left;}
-.synergy-node-detail.active{display:block;}
+.synergy-role-detail{display:none;text-align:left;}
+.synergy-role-detail.active{display:block;}
 .synergy-node-title{font-family:'Syne',sans-serif;font-size:clamp(18px,2vw,24px);font-weight:800;letter-spacing:-.02em;margin-bottom:12px;display:inline-block;}
 .cap-panel{transition:border-color .3s;}
 
@@ -876,18 +876,21 @@ body:not(.en) span[data-fr]{display:inline;}
 
     <!-- SVG 3 NATURES -->
     <div class="rv" style="text-align:center;margin-bottom:12px;">
-      <div class="section-label" data-en>Three dimensions, one system</div>
-      <div class="section-label" data-fr>Trois dimensions, un système</div>
+      <div class="section-label" data-en>Three roles, one system</div>
+      <div class="section-label" data-fr>Trois rôles, un système</div>
     </div>
 
     <!-- GRAPHE CIRCULAIRE 3 NATURES -->
     <div class="synergy-wrap rv" style="margin-bottom:clamp(40px,6vw,64px);">
       <div class="synergy-svg-col">
-        <div style="text-align:center;margin-bottom:8px;">
-          <span style="font-family:'DM Mono',monospace;font-size:10px;color:rgba(240,234,216,.3);letter-spacing:.1em;" data-fr>↓ Cliquez sur une nature</span>
-          <span style="font-family:'DM Mono',monospace;font-size:10px;color:rgba(240,234,216,.3);letter-spacing:.1em;" data-en>↓ Click on a nature</span>
-        </div>
+
         <svg id="synergy-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:320px;display:block;margin:0 auto;overflow:visible;">
+
+          <!-- Hint au centre -->
+          <text x="200" y="196" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="rgba(240,234,216,.25)" letter-spacing="1" data-fr>CLIQUEZ SUR</text>
+          <text x="200" y="210" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="rgba(240,234,216,.25)" letter-spacing="1" data-fr>UN RÔLE</text>
+          <text x="200" y="196" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="rgba(240,234,216,.25)" letter-spacing="1" data-en>CLICK ON</text>
+          <text x="200" y="210" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="rgba(240,234,216,.25)" letter-spacing="1" data-en>A ROLE</text>
 
           <!-- Grand cercle de liaison -->
           <circle cx="200" cy="200" r="120" fill="none" stroke="rgba(240,234,216,.1)" stroke-width="1.5"/>
@@ -924,7 +927,7 @@ body:not(.en) span[data-fr]{display:inline;}
         </svg>
       </div>
       <div class="synergy-desc-col">
-        <div class="synergy-node-detail active" id="detail-builder">
+        <div class="synergy-role-detail active" id="detail-builder">
           <div class="synergy-node-title" style="color:#4a7aff" data-en>The builder</div>
           <div class="synergy-node-title" style="color:#4a7aff" data-fr>Le bâtisseur</div>
           <div class="sp-nature-tags" style="margin-bottom:14px;">
@@ -935,7 +938,7 @@ body:not(.en) span[data-fr]{display:inline;}
           <p class="sp-nature-desc" data-en>Knowing what's buildable changes how you design. Knowing how to design changes what you build. The best solutions live at that intersection.</p>
           <p class="sp-nature-desc" data-fr>Savoir ce qui est faisable change la façon de concevoir. Savoir concevoir change ce qu'on construit. Les meilleures solutions vivent à cette intersection.</p>
         </div>
-        <div class="synergy-node-detail" id="detail-architect">
+        <div class="synergy-role-detail" id="detail-architect">
           <div class="synergy-node-title" style="color:#e8533c" data-en>The architect</div>
           <div class="synergy-node-title" style="color:#e8533c" data-fr>L'architecte</div>
           <div class="sp-nature-tags" style="margin-bottom:14px;">
@@ -946,7 +949,7 @@ body:not(.en) span[data-fr]{display:inline;}
           <p class="sp-nature-desc" data-en>A good roadmap fails if the team structure doesn't support it. Governance and product strategy have to be designed together, not in sequence.</p>
           <p class="sp-nature-desc" data-fr>Une bonne roadmap échoue si la structure d'équipe ne la soutient pas. Gouvernance et stratégie produit se conçoivent ensemble, pas en séquence.</p>
         </div>
-        <div class="synergy-node-detail" id="detail-enabler">
+        <div class="synergy-role-detail" id="detail-enabler">
           <div class="synergy-node-title" style="color:#f5c842" data-en>The enabler</div>
           <div class="synergy-node-title" style="color:#f5c842" data-fr>L'accompagnant</div>
           <div class="sp-nature-tags" style="margin-bottom:14px;">
@@ -1184,7 +1187,7 @@ function showCap(idx) {
 // SYNERGY NODES
 function highlightNode(id, updateDetail=true) {
   if(updateDetail) {
-    document.querySelectorAll('.synergy-node-detail').forEach(d => d.classList.remove('active'));
+    document.querySelectorAll('.synergy-role-detail').forEach(d => d.classList.remove('active'));
     const det = document.getElementById('detail-'+id);
     if(det) det.classList.add('active');
   }
