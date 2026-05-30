@@ -96,7 +96,8 @@ section{position:relative;z-index:1;}
 .cur-blink{display:inline-block;width:3px;height:.8em;background:var(--blue-l);margin-left:4px;vertical-align:middle;animation:blink 1s step-end infinite;}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
 @keyframes fup{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-.hero-sub-wrap{opacity:0;animation:fup .9s .8s forwards;}
+.hero-sub-wrap{opacity:0;transition:opacity .8s, transform .8s;transform:translateY(12px);}
+.hero-sub-wrap.visible{opacity:1;transform:translateY(0);}
 .hero-sub{font-size:15px;font-weight:300;color:var(--cream2);line-height:1.75;margin-bottom:14px;max-width:540px;}
 .hero-sub strong{color:var(--cream);font-weight:500;}
 .hero-sub-detail{font-size:11px;font-weight:300;color:var(--cream2);line-height:1.6;opacity:.55;}
@@ -416,7 +417,7 @@ body:not(.en) span[data-fr]{display:inline;}
           <span class="line-cream" id="tl1"></span>
           <span class="line-blue" id="tl2" style="opacity:0;min-height:1.15em;display:block;"></span>
         </div>
-        <div class="hero-sub-wrap" id="hero-sub-wrap" style="visibility:hidden;">
+        <div class="hero-sub-wrap" id="hero-sub-wrap">
           <p class="hero-sub" data-en>I work with founders, managers and leaders who want to move to the next level, and need someone who can read the whole system, act at the right level, and leave when the team stands on its own.</p>
           <p class="hero-sub" data-fr>J'interviens auprès des fondateurs, managers et dirigeants qui veulent passer un cap, et qui ont besoin de quelqu'un capable de lire le système entier, d'agir au bon niveau, et de partir quand l'équipe tient seule.</p>
           <div class="hero-sub-detail" data-en>Product · Design · Tech · Organisation · Human. 15 years. 3 countries.</div>
@@ -1195,18 +1196,13 @@ function startHeroAnim(){
   const line1=fr?'Bonjour, je suis Anys.':'Hello, I\'m Anys.';
   const line2=fr?'Catalyseur de transitions.':'Change catalyst.';
   if(tl2){tl2.style.opacity='0';tl2.textContent='';}
-  if(subWrap){subWrap.style.visibility='hidden';subWrap.style.opacity='0';}
+  if(subWrap){subWrap.classList.remove('visible');}
   typeIt(tl1,line1,52,()=>{
     typeIt(tl2,line2,52,()=>{
       if(tl2)tl2.style.opacity='1';
       setTimeout(()=>{
-        if(subWrap){
-          subWrap.style.visibility='visible';
-          subWrap.style.transition='opacity .8s,transform .8s';
-          subWrap.style.transform='translateY(10px)';
-          setTimeout(()=>{subWrap.style.opacity='1';subWrap.style.transform='translateY(0)';},30);
-        }
-      },400);
+        if(subWrap) subWrap.classList.add('visible');
+      },300);
     });
     if(tl2)tl2.style.opacity='1';
   });
