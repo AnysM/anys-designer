@@ -192,6 +192,7 @@ section{position:relative;z-index:1;}
 .synergy-node-title{font-family:'Syne',sans-serif;font-size:clamp(18px,2vw,24px);font-weight:800;letter-spacing:-.02em;margin-bottom:12px;display:inline-block;}
 .cap-panel{transition:border-color .3s;}
 
+@media(max-width:640px){.temo-grid{grid-template-columns:1fr!important;}}
 /* SPECTRUM PROFIL */
 .sp-three{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:clamp(48px,7vw,80px);}
 @media(max-width:900px){.sp-three{grid-template-columns:1fr;}}
@@ -882,33 +883,43 @@ body:not(.en) span[data-fr]{display:inline;}
     <!-- GRAPHE CIRCULAIRE 3 NATURES -->
     <div class="synergy-wrap rv" style="margin-bottom:clamp(40px,6vw,64px);">
       <div class="synergy-svg-col">
-        <svg id="synergy-svg" viewBox="0 0 400 430" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:340px;display:block;margin:0 auto;overflow:visible;">
+        <div style="text-align:center;margin-bottom:8px;">
+          <span style="font-family:'DM Mono',monospace;font-size:10px;color:rgba(240,234,216,.3);letter-spacing:.1em;" data-fr>↓ Cliquez sur une nature</span>
+          <span style="font-family:'DM Mono',monospace;font-size:10px;color:rgba(240,234,216,.3);letter-spacing:.1em;" data-en>↓ Click on a nature</span>
+        </div>
+        <svg id="synergy-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:320px;display:block;margin:0 auto;overflow:visible;">
 
           <!-- Grand cercle de liaison -->
-          <circle cx="200" cy="210" r="120" fill="none" stroke="rgba(240,234,216,.15)" stroke-width="1.5"/>
+          <circle cx="200" cy="200" r="120" fill="none" stroke="rgba(240,234,216,.1)" stroke-width="1.5"/>
 
-          <!-- BÂTISSEUR — haut (200, 90) -->
+          <!-- BÂTISSEUR — haut (200, 80) — BLEU -->
           <g class="synergy-node" id="node-builder" onclick="highlightNode('builder')" style="cursor:pointer">
-            <circle cx="200" cy="90" r="14" fill="#4a7aff" class="node-circle" style="transition:all .3s;"/>
-            <text x="200" y="62" text-anchor="middle" font-family="Syne,sans-serif" font-size="16" font-weight="800" fill="#4a7aff" data-fr>Le Bâtisseur</text>
-            <text x="200" y="62" text-anchor="middle" font-family="Syne,sans-serif" font-size="16" font-weight="800" fill="#4a7aff" data-en>The Builder</text>
-            <text x="200" y="44" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" fill="rgba(74,122,255,.7)">Produit · Design · Tech</text>
+            <!-- Ligne point → label -->
+            <line x1="200" y1="80" x2="200" y2="40" stroke="#4a7aff" stroke-width="1.5" opacity="0.5"/>
+            <!-- Point -->
+            <circle cx="200" cy="80" r="14" fill="#4a7aff" class="node-circle" style="transition:all .3s;"/>
+            <!-- Label -->
+            <text x="200" y="30" text-anchor="middle" font-family="Syne,sans-serif" font-size="15" font-weight="800" fill="#4a7aff" data-fr>Le Bâtisseur</text>
+            <text x="200" y="30" text-anchor="middle" font-family="Syne,sans-serif" font-size="15" font-weight="800" fill="#4a7aff" data-en>The Builder</text>
+            <text x="200" y="14" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" fill="#4a7aff" opacity="0.6">Produit · Design · Tech</text>
           </g>
 
-          <!-- ACCOMPAGNANT — bas gauche (96, 270) -->
+          <!-- ACCOMPAGNANT — bas gauche (96, 260) — OR -->
           <g class="synergy-node" id="node-enabler" onclick="highlightNode('enabler')" style="cursor:pointer">
-            <circle cx="96" cy="270" r="14" fill="#c89b0a" class="node-circle" style="transition:all .3s;"/>
-            <text x="96" y="308" text-anchor="middle" font-family="Syne,sans-serif" font-size="15" font-weight="800" fill="#c89b0a" data-fr>L'Accompagnant</text>
-            <text x="96" y="308" text-anchor="middle" font-family="Syne,sans-serif" font-size="15" font-weight="800" fill="#c89b0a" data-en>The Enabler</text>
-            <text x="96" y="326" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" fill="rgba(200,155,10,.7)">Facilitation · Coaching</text>
+            <line x1="96" y1="260" x2="60" y2="310" stroke="#c89b0a" stroke-width="1.5" opacity="0.5"/>
+            <circle cx="96" cy="260" r="14" fill="#c89b0a" class="node-circle" style="transition:all .3s;"/>
+            <text x="60" y="328" text-anchor="middle" font-family="Syne,sans-serif" font-size="14" font-weight="800" fill="#c89b0a" data-fr>L'Accompagnant</text>
+            <text x="60" y="328" text-anchor="middle" font-family="Syne,sans-serif" font-size="14" font-weight="800" fill="#c89b0a" data-en>The Enabler</text>
+            <text x="60" y="344" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" fill="#c89b0a" opacity="0.6">Facilitation · Coaching</text>
           </g>
 
-          <!-- ARCHITECTE — bas droite (304, 270) -->
+          <!-- ARCHITECTE — bas droite (304, 260) — ROUGE -->
           <g class="synergy-node" id="node-architect" onclick="highlightNode('architect')" style="cursor:pointer">
-            <circle cx="304" cy="270" r="14" fill="#d42828" class="node-circle" style="transition:all .3s;"/>
-            <text x="304" y="308" text-anchor="middle" font-family="Syne,sans-serif" font-size="15" font-weight="800" fill="#d42828" data-fr>L'Architecte</text>
-            <text x="304" y="308" text-anchor="middle" font-family="Syne,sans-serif" font-size="15" font-weight="800" fill="#d42828" data-en>The Architect</text>
-            <text x="304" y="326" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" fill="rgba(212,40,40,.7)">Gouv. · Process · Culture</text>
+            <line x1="304" y1="260" x2="340" y2="310" stroke="#d42828" stroke-width="1.5" opacity="0.5"/>
+            <circle cx="304" cy="260" r="14" fill="#d42828" class="node-circle" style="transition:all .3s;"/>
+            <text x="340" y="328" text-anchor="middle" font-family="Syne,sans-serif" font-size="14" font-weight="800" fill="#d42828" data-fr>L'Architecte</text>
+            <text x="340" y="328" text-anchor="middle" font-family="Syne,sans-serif" font-size="14" font-weight="800" fill="#d42828" data-en>The Architect</text>
+            <text x="340" y="344" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" fill="#d42828" opacity="0.6">Gouv. · Process · Culture</text>
           </g>
         </svg>
       </div>
@@ -950,13 +961,13 @@ body:not(.en) span[data-fr]{display:inline;}
     </div>
 
     <!-- TÉMOIGNAGE + CERTIFICATIONS -->
-    <div class="rv" style="display:grid;grid-template-columns:1fr 1fr;gap:32px;padding-top:clamp(32px,5vw,56px);border-top:1px solid rgba(240,234,216,.07);">
+    <div class="rv temo-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:32px;padding-top:clamp(32px,5vw,56px);border-top:1px solid rgba(240,234,216,.07);">
       <div>
         <div class="section-label" data-en>They worked with me</div>
         <div class="section-label" data-fr>Ils ont travaillé avec moi</div>
         <div style="margin-top:16px;padding:24px 28px;border-left:3px solid var(--blue-l);background:rgba(74,122,255,.04);">
-          <p style="font-size:15px;font-weight:300;color:rgba(240,234,216,.8);line-height:1.85;font-style:italic;" data-en>"He was able to implement the Scrum methodology with regular questioning. The result met expectations despite stakeholder skepticism. He protected the development team from pressure, and trained Product Owners and Scrum Masters to strengthen the team."</p>
-          <p style="font-size:15px;font-weight:300;color:rgba(240,234,216,.8);line-height:1.85;font-style:italic;" data-fr>"Il a su mettre en place la méthodologie Scrum avec de régulières remises en question. Le résultat est à la hauteur des attentes malgré le scepticisme des parties prenantes. Il a su préserver l'équipe de développement de la pression et former des Product Owners et Scrum Masters pour renforcer l'équipe."</p>
+          <p style="font-size:13px;font-weight:300;color:rgba(240,234,216,.75);line-height:1.7;font-style:italic;" data-en>"He was able to implement the Scrum methodology with regular questioning. The result met expectations despite stakeholder skepticism. He protected the development team from pressure, and trained Product Owners and Scrum Masters to strengthen the team."</p>
+          <p style="font-size:13px;font-weight:300;color:rgba(240,234,216,.75);line-height:1.7;font-style:italic;" data-fr>"Il a su mettre en place la méthodologie Scrum avec de régulières remises en question. Le résultat est à la hauteur des attentes malgré le scepticisme des parties prenantes. Il a su préserver l'équipe de développement de la pression et former des Product Owners et Scrum Masters pour renforcer l'équipe."</p>
           <div style="margin-top:14px;font-family:'DM Mono',monospace;font-size:11px;color:var(--blue-l);letter-spacing:.06em;">Stéphane Ravet <span style="color:var(--cream2);opacity:.5;">· Architecte Web · IA · Proximedia</span></div>
         </div>
       </div>
